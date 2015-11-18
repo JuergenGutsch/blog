@@ -15,7 +15,7 @@
 		<div id="container">
 			<div id="side">
 				<a href="/" id="home" title="home" alt="home"><img src="/img/logo.png" alt="Site Name" /></a>
-				<div id="hometext"><a href="/" >ASP.NET and more...</a></div>
+				<div id="hometext"><a href="/" >ASP.NET Hacker</a></div>
 				<div class="section">
 					<ul>
 						<li><a href="/about.html">about</a></li>
@@ -30,12 +30,12 @@
 		<span class="postdate">Jürgen Gutsch - 17 November, 2015
 			
 		</span>
-		<p>For LightCore 2.0 I would like to show the build state inside the GitHub repository. I could use my personal Jenkins build server on a Azure VM, because Jenkins also brovides the build state, with a plug-in.</p>
+		<p>For LightCore 2.0 I would like to show the build state inside the GitHub repository. I could use my personal Jenkins build server on a Azure VM, because Jenkins also provides the build state, with a plug-in.</p>
 <p>But this seems to be the right moment to play around with AppVeyor:</p>
 <p><a href="https://ci.appveyor.com/project/JuergenGutsch/lightcore">https://ci.appveyor.com/project/JuergenGutsch/lightcore</a></p>
 <p>AppVeyor is a browser based SaaS (Software as a Service) application in the cloud. AppVeyor provides many useful features within a pretty simple, intuitive and clean UI. GitHub is completely integrated and it is really easy to create a build job for a GitHub project:</p>
 <p><img src="/img/AppVeyor-General.png" /></p>
-<p>The .NET Version Manager (DNVM) is already installed and you only need to figure out which runtime is used by default. I used the build output to see the results of the &quot;dnvm&quot; commands. Finally I choosed the way to install the needed Beta-8 with the batch scripts, every time the build starts:</p>
+<p>The .NET Version Manager (DNVM) is already installed and you only need to figure out which run-time is used by default. I used the build output to see the results of the &quot;dnvm&quot; commands. Finally I choosed the way to install the needed Beta-8 with the batch scripts, every time the build starts:</p>
 <p><img src="/img/AppVeyor-Environment.png" /></p>
 <pre><code>dnvm update-self
 dnvm install 1.0.0-beta8 -a x86 -r coreclr -OS win 

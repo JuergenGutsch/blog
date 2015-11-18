@@ -15,7 +15,7 @@
 		<div id="container">
 			<div id="side">
 				<a href="/" id="home" title="home" alt="home"><img src="/img/logo.png" alt="Site Name" /></a>
-				<div id="hometext"><a href="/" >ASP.NET and more...</a></div>
+				<div id="hometext"><a href="/" >ASP.NET Hacker</a></div>
 				<div class="section">
 					<ul>
 						<li><a href="/about.html">about</a></li>
@@ -30,15 +30,36 @@
 		<span class="postdate">Author - 20 November, 2015
 			
 		</span>
-		<p>Albert Weinert told us at the MVP Summit 2015 that ASP.NET has a huge problem: Almost all of our favorite tools ar not usable with .NET Core. Many unit test frameworks, IoC containers,  almost all mocking frameworks will not work with .NET Core and needs to be moved to be portable. Additionally amost all mocking frameworks are based on the Castle.Core library, which also needs to be moved to be portable.</p>
-<p>Currently I'm working at LightCore to make it compatible to .NET Core, to make the world a little better ;) This needs some steps to do. More details are in a separate blog post about LightCore 2.0. Beause the unit tests of LightCore don't use mocking tools this was easier than expected.</p>
+		<p>Albert Weinert told us at the MVP Summit 2015 that ASP.NET has a huge problem: Almost all of our favorite tools ar not usable with .NET Core. Many unit test frameworks, IoC containers,  almost all mocking frameworks will not work with .NET Core and needs to be moved to be portable. Additionally almost all mocking frameworks are based on the Castle.Core library, which also needs to be moved to be portable.</p>
+<p>Currently I'm working at LightCore to make it compatible to .NET Core, to make the world a little better ;) This needs some steps to do. More details are in a separate blog post about LightCore 2.0. Because the unit tests of LightCore don't use mocking tools this was easier than expected.</p>
 <p>With this post I want to tell you, what you need to do to move your library to .NET Core. I will use the 'Simple Object Store' to make a step by step tutorial. At the end my open source library will be compatible with .NET Core :)</p>
 <blockquote>
-<p>Aber warum sollte ich das tun? Verbaue ich mir da nichts? Was bringt der Aufwand? 
-Zuerst muss man wissen, dass DNX-Libraries (wie die .NET Core Bibliotheken genannt werden) nichts anderes als Portable Class Libraries sind. Der einzige Unterscheid besteht darin, dass Portable Class Libraries DLLs auswerfen und DNX-Projekte NuGet-Packages erzeugen. Alles andere ist identisch. Die Assemblies ist also auf vielen Plattformen und mit vielen Frameworks einsetzbar. Wenn ich also eine Bibliothek als DNX-Projekt erstelle, kann ich also das .NET Framework. .NET Core, Windows 10 und Mono unterstützen. </p>
+<h3>But why should I do this? Is this future proof? Does the effort make sense?</h3>
+<p>At first I need to know that DNX projects (that's the name of the .NET Core libraries) are a kind of portable libraries. The only difference is that portable class libraries building a single assembly and DNX projects creating a NuGet package. All the other stuff is equal. This means the the libraries are compatible to many different platforms and frameworks. If I build a DNX library, I can use this library in .NET Core, .NET Framework, UWP and Mono. This should answer the questions above. </p>
 </blockquote>
-<p>Aktueller Stand</p>
-<p>Im Moment besteht die Solution des SOS aus mehreren Framework-Versionsspezifischen Projekten. Diese möchte ich ersetzen durch ein DNX Projekt. Dabei möchte ich alles unter .NET 4.0 eigentlich nicht mehr unterstützen. (Euer Feedback wird mich eventuell eines besseren belehren.) Die Testprojekte werde ich ggf. belassen aber durch .NET-Core basierte Tests mit XUnit ergänzen.</p>
+<h2>The current state of the Simple Object Store</h2>
+<p>Currently the solution includes many framework specific projects with linked source files to build against different Framework versions. This needs to be replaced with one single DNX project. I don't want to support frameworks lower than .NET 4.0 (Please tell me if you need a build for a lower version than 4.0.) </p>
+<p>That means I have four projects for the SimpleObjectStore and the same number of projects for the AzureStorageProviders. And I have two test projects, one for the main library and one for the providers library.</p>
+<p>The goal is to have four different libraries instead of 10.</p>
+<h2>Step 1: Convert the main library</h2>
+<p>In the Solution I remove the main library and create a new DNX library with the same name. I need to rename old the project folder before. I Add all the existing code files into the new DNX project After that I need to add the frameworks I want to support and to update the dependencies in the project.json to get the project building.</p>
+<h2>Step 2: Convert the providers library</h2>
+<p>To get the AzureStorageProviders library running on .NET Core I have to do exactly the same for as for the main library. Additionally I need to add a reference to the main library. To get the right reference I have to add a dependency to the main project without a version number. (If I would add a version number, the build look for an existing NuGet package on nuget.org)</p>
+<h2>Step 3: Converting the unit test projects</h2>
+<p>Currently I'm using NUnit to test the SimpleObjectStore. I need to decide whether to change to Xunit or to use the new NUnit 3.0.0 portable build.</p>
+<p>I'll give the new NUnit a try. In the tutorial about using the portable build, they show the way to use a DNX console application to create a test project. I disagree with that. I would like to have a separate DNX console application as a NUnit runner. This should work in the same way as the Xunit runner. I just created it in a separate project.</p>
+<p>Because I have the separate runner I can use the same way as in Step 1 to create DNX libraries for the test projects. Additionally I add a reference to the NUnit runner and add a command called test, which runs the Runner and passes the current test library.</p>
+<pre><code>&quot;commands&quot;: {
+    &quot;test&quot;: &quot;nunit.runner.dnx&quot;
+}
+</code></pre>
+
+<p>(I use the NUnit namespace because I want to contribute this runner to the NUnit project. I use it here as a kind of dog-fooding to test the runner.)</p>
+<p>If this is done, we need to get this projects compiled. I did this, by try and error, building, fixing, building, fixing, and so in... The old NUnit API is almost equal to the new NUnit 3.0.0 API and there is less to do than expected.</p>
+<h2>Step 4: Add a CI server</h2>
+<p>To get this compiled and published I also use AppVeyor as a favorite CI server i the same way as written in the <a href="/2015/11/17/build-lightcore-with-appveyor.html">last post about Building LightCore 2.0</a></p>
+<h2>Final words</h2>
+<p>Hopefully this post will help you to make your libraries running on .NET Core and any other  platform and framework. As you can see this isn't really a big deal. You need to know some small things about DNX libraries to create packages which are targeting as many platforms as possible. From my point of view, with the new possibilities given by .NET Core it is really important to get ready to go the same way as Microsoft. Prepare your .NET libraries to get also used on Linux and Mac. That's pretty awesome. Have you really thought about that a few years ago? ;)</p>
 
 	</div>
 </div>
