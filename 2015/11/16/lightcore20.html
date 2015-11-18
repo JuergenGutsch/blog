@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta content="en-us" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<title>LightCore 2.0</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+	</head>
+	<body>
+		<div id="container">
+			<div id="side">
+				<a href="/" id="home" title="home" alt="home"><img src="/img/logo.png" alt="Site Name" /></a>
+				<div id="hometext"><a href="/" >ASP.NET and more...</a></div>
+				<div class="section">
+					<ul>
+						<li><a href="/about.html">about</a></li>
+						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div class="entry-container">
+	<div class='entry'>
+		<h1> LightCore 2.0 </h1>
+		<span class="postdate">Jürgen Gutsch - 16 November, 2015
+			
+		</span>
+		<p>At the MVP Summit 2015 we had a Hackthon with the guys from the ASP.NET product group to support ASP.NET 5. There were Ideas to improve the documentation, to upgrade samples to the newest beta version or to upgrade older libraries to .NET Core.</p>
+<p>It was Albert Weinert who asked me to upgrade LightCore to .NET Core. The more I thought about this idea, the more I liked it. So I decided to move LightCore to .Net Core :)</p>
+<p>To change the main library wasn't a big deal. I simply created a new DNX library and added the existing code files to the new libraries. I had to solve only three small issues, which is explaned a little later. </p>
+<p>The biggest effort was to change all the unit tests from NUnit to Xunit, because NUnit is unfortunatly not yet compatible to .NET Core. Whyle changing the test framewor I also changed the assertions to FluentAssertion to be save in the future, if we need to change the the test framework again.</p>
+<h2>Current status</h2>
+<p>In the new version I did a hard cut with Silverlight and the Compact Framework. I don't want to support this old versions. If the .NET core libraries are compatible with that two frameworks, this will only be by accident ;)</p>
+<p>This version will support .NET Core 5, UWP10, .NET Framework and Mono. ASP.NET 4.6 and ASP.NET 5 is also supported. </p>
+<p>The XAML-Reader is not available in .NET Core, which means the XAML configuration will only work in with .NET Framework. In .NET Core a JSON configuration should be used instead, which is additionally available for all other Frameworks. The configuration by code is still possible and is the recommended way to configure the IoC container.</p>
+<p>The old web integration will not be changed, to stay compatible to MVC 3 and 4. This library only uses the new .NET Framework version of the LightCore main library. Additionally we will add a ASP.NET 5 integration to replace the build in IoC with LightCore.</p>
+<p>The ThreadSingeltonLifecycle is currently not working in the .NET Core version, because System.Threading.Thread is not available in .NET Core. We need to find another solution to identify the current thread. This livecycle only works in .NET Framework.</p>
+<p>In case of reflection to get the properties to inject, the BindingFlags.SetProperty is not availyble in .NET Core. This means there are possibly some performance issues, while fetching and validating the property setter.</p>
+<p>Another issue ist the CommonServiceLocator, because the ServiceLocatorImplBase of the Microsoft.Practices.ServiceLocation is also not yet available in .NET Core. So the CommonServiceLocator is only working with .NET Framework. Maybe it is needed to build an own ServiceLocator.</p>
+<p>With the unit tests of LightCore.Configuration we had problems with three tests which were failing, if they are not running individually. This is because the Xunit tests where run in parallel and the RegistrationLoader in LightCore is not ThreadSave. Thsi guy mus not be thread save, but we needed to wrapp all tests with an lock statement which are using RegistrationLoader.Instance.Register() to solve that problem.</p>
+<p>A public build server is set up with AppVeyor, but we also need to integrate the other libraries into this build.</p>
+<h2>More ideas</h2>
+<ul>
+<li>Property injection should only work with an marker attribute to improve the performance</li>
+<li>Some users want to have the named instances back in LightCore. I beleave we should add this feature again. It is  definetly not a nice pattern to use named instances, but as always in the real world we can't use all the nice patterns every time</li>
+</ul>
+<h2>Call for contributions</h2>
+<p>A salready writtern, we need to change the Web Integrations and the samples, documentations and the performance tests, thogh. You are able to follow the current development process on the related feature branch: <a href="https://github.com/juergengutsch/lightcore/tree/jg/portable">https://github.com/juergengutsch/lightcore/tree/jg/portable</a></p>
+<p>It would be pretty cool, if you would contribute some ideas, suggestions and issues directly on GitHub. Please also feel free to send us code contributions via pull requests :)</p>
+<p>We would like to make LightCore one of the best IoC containers for .NET Core :)</p>
+
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'NAME'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+			</div>
+
+		</div>
+	</body>
+</html>
