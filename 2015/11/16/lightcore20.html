@@ -8,29 +8,33 @@
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
 		<title>LightCore 2.0</title>
-		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+		<link href="/css/prism.css" rel="stylesheet" type="text/css" />
+		<link href="/css/style.css" rel="stylesheet" type="text/css" />
 		<link rel="shortcut icon" href="/img/favicon.ico" />
+		
 	</head>
-	<body>
+	<body class="language-batch">
 		<div id="container">
-			<div id="side">
-				<a href="/" id="home" title="home" alt="home"><img src="/img/logo.png" alt="Site Name" /></a>
-				<div id="hometext"><a href="/" >ASP.NET Hacker</a></div>
-				<div class="section">
+			<div id="header">
+				<a href="/" id="home" title="Home" alt="Home"><img src="/img/logo-dark.png" alt="ASP.NET Hacker" /></a>
+				<!--<div class="section">
 					<ul>
 						<li><a href="/about.html">about</a></li>
 						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
 					</ul>
-				</div>
+				</div>-->
 			</div>
 			<div id="content">
-				<div class="entry-container">
-	<div class='entry'>
+				<article>
+	<header>
 		<h1> LightCore 2.0 </h1>
-		<span class="postdate">Jürgen Gutsch - 16 November, 2015
+		<p>Jürgen Gutsch - 16 November, 2015
 			
-		</span>
-		<p>At the MVP Summit 2015 we had a Hackthon with the guys from the ASP.NET product group to support ASP.NET 5. There were Ideas to improve the documentation, to upgrade samples to the newest beta version or to upgrade older libraries to .NET Core.</p>
+		</p>
+	</header>
+	
+	<p>At the MVP Summit 2015 we had a Hackthon with the guys from the ASP.NET product group to support ASP.NET 5. There were Ideas to improve the documentation, to upgrade samples to the newest beta version or to upgrade older libraries to .NET Core.</p>
 <p>It was Albert Weinert who asked me to upgrade LightCore to .NET Core. The more I thought about this idea, the more I liked it. So I decided to move LightCore to .Net Core :)</p>
 <p>To change the main library wasn't a big deal. I simply created a new DNX library and added the existing code files to the new libraries. I had to solve only three small issues, which is explained a little later. </p>
 <p>The biggest effort was to change all the unit tests from NUnit to Xunit, because NUnit is unfortunately not yet compatible to .NET Core. While changing the test framework I also changed the assertions to FluentAssertion to be save in the future, if we need to change the the test framework again.</p>
@@ -54,41 +58,51 @@
 <p>It would be pretty cool, if you would contribute some ideas, suggestions and issues directly on GitHub. Please also feel free to send us code contributions via pull requests :)</p>
 <p>We would like to make LightCore one of the best IoC containers for .NET Core :)</p>
 
-	</div>
+		
+	<footer>
+		<div>
+			<p>
+				<img src="/img/guj.png" alt="Jürgen Gutsch" />
+				<strong>Jürgen Gutsch</strong><br>
+				<a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br>
+				<span>.NET junkie, addicted to web and software development, clean coder, MVP ASP.​NET/IIS</span>
+			</p>
+		</div>
+		<div id="page-navigation clear"> 
+			<div class="left">  </div> 
+			<div class="right">  </div> 
+			<div class="clear">&nbsp;</div>
+		</div> 
+				
+		
+		<div id="disqus_thread"></div>
+		<script>
+		/**
+		* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+		*/
+		
+		var disqus_config = function () {
+			this.page.url = location.href; // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = location.pathname; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		};
+		
+		(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		
+		s.src = '//aspnethacker.disqus.com/embed.js';
+		
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+		})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+		
+	</footer>
 </div>
-<div id="page-navigation"> 
-	<div class="left">  </div> 
-	<div class="right">  </div> 
-	<div class="clear">&nbsp;</div>
-</div> 
-
-
-
-<div id="disqus_thread"></div>
-<script>
-/**
-* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-*/
-
-var disqus_config = function () {
-	this.page.url = location.href; // Replace PAGE_URL with your page's canonical URL variable
-	this.page.identifier = location.pathname; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-
-s.src = '//aspnethacker.disqus.com/embed.js';
-
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
 			</div>
 
 		</div>
+		<script src="/js/prism.js"></script>
 	</body>
 </html>

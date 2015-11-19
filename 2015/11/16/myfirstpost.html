@@ -8,70 +8,84 @@
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
 		<title>My First Post</title>
-		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+		<link href="/css/prism.css" rel="stylesheet" type="text/css" />
+		<link href="/css/style.css" rel="stylesheet" type="text/css" />
 		<link rel="shortcut icon" href="/img/favicon.ico" />
+		
 	</head>
-	<body>
+	<body class="language-batch">
 		<div id="container">
-			<div id="side">
-				<a href="/" id="home" title="home" alt="home"><img src="/img/logo.png" alt="Site Name" /></a>
-				<div id="hometext"><a href="/" >ASP.NET Hacker</a></div>
-				<div class="section">
+			<div id="header">
+				<a href="/" id="home" title="Home" alt="Home"><img src="/img/logo-dark.png" alt="ASP.NET Hacker" /></a>
+				<!--<div class="section">
 					<ul>
 						<li><a href="/about.html">about</a></li>
 						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
 					</ul>
-				</div>
+				</div>-->
 			</div>
 			<div id="content">
-				<div class="entry-container">
-	<div class='entry'>
+				<article>
+	<header>
 		<h1> My First Post </h1>
-		<span class="postdate">Jürgen Gutsch - 16 November, 2015
+		<p>Jürgen Gutsch - 16 November, 2015
 			
-		</span>
-		<h2>Hello world...</h2>
+		</p>
+	</header>
+	
+	<h2>Hello world...</h2>
 <p>I stopped writing on http://www.aspnetzone.de/blogs/juergengutsch/ and changed the blog to a more flexible and agile system based on Pretzel. Pretzel is a Jekyll clone written in .NET using a funny API. You need to 'bake' and to 'taste' your Pretzel blog to view your latest changes in your browser locally. At least you need to 'bake' your Pretzel blog before you are able to deliver your changes to the server.</p>
 <p>For me it is pretty useful to write the contents offline in a Markdown editor while sitting in the train.</p>
 <p>I also switched to English because I used to speak and to write English almost every day. And this is also a way to get more experience in writing and speaking English. Please feel free to send me notes about spelling errors :)</p>
 <p>Hopefully this is also fine for the most of the German speaking guys who are reading my blog. Currently I have around 1000 activities per day via the FeedBurner feed and around 400 views per day directly on the articles. If you are not happy about the English posts, please drop me a note. Maybe it is possible to share the contents in German too.</p>
 <p>From time to time I will translate the most important blog posts of the old system to use it in the new system. I will select the specific posts by the number of reads.</p>
 
-	</div>
+		
+	<footer>
+		<div>
+			<p>
+				<img src="/img/guj.png" alt="Jürgen Gutsch" />
+				<strong>Jürgen Gutsch</strong><br>
+				<a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br>
+				<span>.NET junkie, addicted to web and software development, clean coder, MVP ASP.​NET/IIS</span>
+			</p>
+		</div>
+		<div id="page-navigation clear"> 
+			<div class="left">  </div> 
+			<div class="right">  </div> 
+			<div class="clear">&nbsp;</div>
+		</div> 
+				
+		
+		<div id="disqus_thread"></div>
+		<script>
+		/**
+		* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+		*/
+		
+		var disqus_config = function () {
+			this.page.url = location.href; // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = location.pathname; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		};
+		
+		(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		
+		s.src = '//aspnethacker.disqus.com/embed.js';
+		
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+		})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+		
+	</footer>
 </div>
-<div id="page-navigation"> 
-	<div class="left">  </div> 
-	<div class="right">  </div> 
-	<div class="clear">&nbsp;</div>
-</div> 
-
-
-
-<div id="disqus_thread"></div>
-<script>
-/**
-* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-*/
-
-var disqus_config = function () {
-	this.page.url = location.href; // Replace PAGE_URL with your page's canonical URL variable
-	this.page.identifier = location.pathname; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-
-s.src = '//aspnethacker.disqus.com/embed.js';
-
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
 			</div>
 
 		</div>
+		<script src="/js/prism.js"></script>
 	</body>
 </html>

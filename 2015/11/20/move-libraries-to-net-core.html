@@ -8,29 +8,33 @@
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
 		<title>Moving .NET libraries to .NET Core</title>
-		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+		<link href="/css/prism.css" rel="stylesheet" type="text/css" />
+		<link href="/css/style.css" rel="stylesheet" type="text/css" />
 		<link rel="shortcut icon" href="/img/favicon.ico" />
+		
 	</head>
-	<body>
+	<body class="language-batch">
 		<div id="container">
-			<div id="side">
-				<a href="/" id="home" title="home" alt="home"><img src="/img/logo.png" alt="Site Name" /></a>
-				<div id="hometext"><a href="/" >ASP.NET Hacker</a></div>
-				<div class="section">
+			<div id="header">
+				<a href="/" id="home" title="Home" alt="Home"><img src="/img/logo-dark.png" alt="ASP.NET Hacker" /></a>
+				<!--<div class="section">
 					<ul>
 						<li><a href="/about.html">about</a></li>
 						<li><a href="/rss.xml"><img src="/img/25.png" /> feed</a></li>
 					</ul>
-				</div>
+				</div>-->
 			</div>
 			<div id="content">
-				<div class="entry-container">
-	<div class='entry'>
+				<article>
+	<header>
 		<h1> Moving .NET libraries to .NET Core </h1>
-		<span class="postdate">Jürgen Gutsch - 20 November, 2015
+		<p>Jürgen Gutsch - 20 November, 2015
 			
-		</span>
-		<p>Albert Weinert told us at the MVP Summit 2015 that ASP.NET has a huge problem: Almost all of our favorite tools ar not usable with .NET Core. Many unit test frameworks, IoC containers,  almost all mocking frameworks will not work with .NET Core and needs to be moved to be portable. Additionally almost all mocking frameworks are based on the Castle.Core library, which also needs to be moved to be portable.</p>
+		</p>
+	</header>
+	
+	<p>Albert Weinert told us at the MVP Summit 2015 that ASP.NET has a huge problem: Almost all of our favorite tools ar not usable with .NET Core. Many unit test frameworks, IoC containers,  almost all mocking frameworks will not work with .NET Core and needs to be moved to be portable. Additionally almost all mocking frameworks are based on the Castle.Core library, which also needs to be moved to be portable.</p>
 <p>Currently I'm working at LightCore to make it compatible to .NET Core, to make the world a little better ;) This needs some steps to do. More details are in a separate blog post about LightCore 2.0. Because the unit tests of LightCore don't use mocking tools this was easier than expected.</p>
 <p>With this post I want to tell you, what you need to do to move your library to .NET Core. I will use the 'Simple Object Store' to make a step by step tutorial. At the end my open source library will be compatible with .NET Core :)</p>
 <blockquote>
@@ -61,41 +65,51 @@
 <h2>Final words</h2>
 <p>Hopefully this post will help you to make your libraries running on .NET Core and any other  platform and framework. As you can see this isn't really a big deal. You need to know some small things about DNX libraries to create packages which are targeting as many platforms as possible. From my point of view, with the new possibilities given by .NET Core it is really important to get ready to go the same way as Microsoft. Prepare your .NET libraries to get also used on Linux and Mac. That's pretty awesome. Have you really thought about that a few years ago? ;)</p>
 
-	</div>
+		
+	<footer>
+		<div>
+			<p>
+				<img src="/img/guj.png" alt="Jürgen Gutsch" />
+				<strong>Jürgen Gutsch</strong><br>
+				<a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br>
+				<span>.NET junkie, addicted to web and software development, clean coder, MVP ASP.​NET/IIS</span>
+			</p>
+		</div>
+		<div id="page-navigation clear"> 
+			<div class="left">  </div> 
+			<div class="right">  </div> 
+			<div class="clear">&nbsp;</div>
+		</div> 
+				
+		
+		<div id="disqus_thread"></div>
+		<script>
+		/**
+		* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+		*/
+		
+		var disqus_config = function () {
+			this.page.url = location.href; // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = location.pathname; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		};
+		
+		(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		
+		s.src = '//aspnethacker.disqus.com/embed.js';
+		
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+		})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+		
+	</footer>
 </div>
-<div id="page-navigation"> 
-	<div class="left">  </div> 
-	<div class="right">  </div> 
-	<div class="clear">&nbsp;</div>
-</div> 
-
-
-
-<div id="disqus_thread"></div>
-<script>
-/**
-* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-*/
-
-var disqus_config = function () {
-	this.page.url = location.href; // Replace PAGE_URL with your page's canonical URL variable
-	this.page.identifier = location.pathname; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-
-s.src = '//aspnethacker.disqus.com/embed.js';
-
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
 			</div>
 
 		</div>
+		<script src="/js/prism.js"></script>
 	</body>
 </html>
