@@ -76,7 +76,7 @@ li
 }
 #footer{
 	background-color: #3B3D4A;
-	height: 300px;
+	min-height: 300px;
 	margin: 0 -90px;
 	margin-top: 40px;
 	padding: 30px 90px;
@@ -89,6 +89,21 @@ li
 #footer .right{
 	width: 50%;
 	float: right;
+}
+#footer ul
+{
+	margin-left:10px; 
+}
+#footer li
+{
+	font-size: 1.2em;
+	margin-bottom: 0.25em;
+	margin-left:10px; 
+	list-style-type:disc;
+}
+
+.clear{
+	clear: both;
 }
 
 article header{
