@@ -9,20 +9,32 @@ body
 	font-family: Segoe UI, sans-serif; 
 	background-color: #F2F2F2;
 }
-p, div, h1,h2,h3,h4,h5,h6 
+p, div, h1, h2, h3, h4, h5, h6 
 { 
 	font-family: 'Open Sans', sans-serif;
 	
 }
-p{
+div, p, img{
+	box-sizing: border-box;
+}
+p
+{
 	line-height: 1.5em;
 	font-size: 1.2em;
 	margin-bottom: 0.75em;
 }
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
 	color:#4ECDA2;
 	font-weight: lighter; 
-	line-height: 1em;
+	line-height: 1.35em;
+}
+h1 
+{ 
+	font-size: 4em;
+}
+h2 
+{ 
+	font-size: 2em;
 }
 a, a:visited 
 { 
@@ -33,18 +45,6 @@ a:hover
 {
 	color:white; 
 	background: #4ECDA2;
-}
-
-div, p, img{
-	box-sizing: border-box;
-}
-h1 
-{ 
-	font-size: 4em;
-}
-h2 
-{ 
-	font-size: 2em;
 }
 ul 
 {
@@ -73,6 +73,22 @@ li
 	height: 130px;
 	padding-top:50px;
 	padding-bottom: 10x;
+}
+#footer{
+	background-color: #3B3D4A;
+	height: 300px;
+	margin: 0 -90px;
+	margin-top: 40px;
+	padding: 30px 90px;
+	color: white;
+}
+#footer .left{
+	width: 50%;
+	float: left;
+}
+#footer .right{
+	width: 50%;
+	float: right;
 }
 
 article header{
@@ -107,28 +123,30 @@ article footer img
 	margin: 0 40px;
 }
 
-article pre[class*="language-"]{
+article pre code{
+	color: #f8f8f2;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;	
+}
+article pre, article pre[class*="language-"]{
 	background-color: #3B3D4A !important;
 	border: none !important;
 	margin: 40px -90px !important;
-	padding-left: 90px !important;
-	padding-right: 90px !important;
+	padding: 10px 90px !important;
 	border-radius: 0px !important;
 	box-shadow:none !important;
 }
-
-
-
-.entry ul, .idea ul 
+article ul
 {
 	margin-left:10px; 
-	margin-top:1em;
 }
-.entry li, .idea li , .latest li
+article li
 {
+	font-size: 1.2em;
+	margin-bottom: 0.75em;
 	margin-left:10px; 
 	list-style-type:disc;
 }
+
 #home:hover 
 { 
 	background:none; 
@@ -138,7 +156,9 @@ article pre[class*="language-"]{
 .postdate 
 { 
 	font-size: 0.8em; 
-	font-weight: bold; 
+	color: #9C9EAB;
+	font-weight: bold;
+	padding-top: 1em;
 }
 
 .olderpostdate 
@@ -166,6 +186,6 @@ article pre[class*="language-"]{
 
 @media screen and (max-width:400px){
 	#header img{
-		width: 100%		width: 100;;
+		width: 100%;
 	}
 }

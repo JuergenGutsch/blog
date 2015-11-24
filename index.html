@@ -9,7 +9,7 @@
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
 		<title>SiteName</title>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-		<link href="/css/prism.css" rel="stylesheet" type="text/css" />
+		<!--<link href="/css/prism.css" rel="stylesheet" type="text/css" />-->
 		<link href="/css/style.css" rel="stylesheet" type="text/css" />
 		<link rel="shortcut icon" href="/img/favicon.ico" />
 		
@@ -29,7 +29,7 @@
 		<meta name="twitter:description" content="" />
 		<meta name="twitter:image" content="http://asp.net-hacker.rocks" />
 	</head>
-	<body class="language-batch">
+	<body>
 		<div id="container">
 			<div id="header">
 				<a href="/" id="home" title="Home" alt="Home"><img src="/img/logo-dark.png" alt="ASP.NET Hacker" /></a>
@@ -47,14 +47,28 @@
 		<li>
 			<div class="idea">
 				
-					<h1><a href="/2015/11/20/move-libraries-to-net-core.html">Moving .NET libraries to .NET Core</a></h1>
+					<h1><a href="/2015/11/23/viewcomponents-aspnet5.html">View Components in ASP.NET 5</a></h1>
 				
-				<div class="postdate">Jürgen Gutsch - 20 November, 2015
+				<p class="postdate">Jürgen Gutsch - 23 November, 2015
 					<ul>
 					
 					</ul>
-				</div>
+				</p>				
+				<p>One of the nicest new features in ASP.NET 5 are the ViewComponents. These are a kind of mini MVC inside the MVC application..</p>
+				<p><a href="/2015/11/23/viewcomponents-aspnet5.html#disqus_thread">Comments</a></p>
+			</div>
+		</li>
+    
+		<li>
+			<div class="idea">
 				
+					<h2><a class="postlink" href="/2015/11/20/move-libraries-to-net-core.html">Moving .NET libraries to .NET Core</a></h2>
+				
+				<p class="postdate">Jürgen Gutsch - 20 November, 2015
+					<ul>
+					
+					</ul>
+				</p>				
 				<p>Moving .NET libraries to .NET Core is a bit tricky and you need to know .NET Core and portable libraries. In this post I'll tell you how to move your .NET libary to .NET Core using my own open source project 'Simple Object Store' as an example.</p>
 				<p><a href="/2015/11/20/move-libraries-to-net-core.html#disqus_thread">Comments</a></p>
 			</div>
@@ -65,12 +79,11 @@
 				
 					<h2><a class="postlink" href="/2015/11/17/build-lightcore-with-appveyor.html">AppVeyor: A simple build server for open source projects</a></h2>
 				
-				<div class="postdate">Jürgen Gutsch - 17 November, 2015
+				<p class="postdate">Jürgen Gutsch - 17 November, 2015
 					<ul>
 					
 					</ul>
-				</div>
-				
+				</p>				
 				<p>Learn how I used AppVeyor to automate .NET Core builds and Xunit test runs for LightCore</p>
 				<p><a href="/2015/11/17/build-lightcore-with-appveyor.html#disqus_thread">Comments</a></p>
 			</div>
@@ -81,12 +94,11 @@
 				
 					<h2><a class="postlink" href="/2015/11/16/lightcore20.html">LightCore 2.0</a></h2>
 				
-				<div class="postdate">Jürgen Gutsch - 16 November, 2015
+				<p class="postdate">Jürgen Gutsch - 16 November, 2015
 					<ul>
 					
 					</ul>
-				</div>
-				
+				</p>				
 				<p>To use LightCore on .NET Core applications I started to move all the LightCore libraries to DNX Libraries.</p>
 				<p><a href="/2015/11/16/lightcore20.html#disqus_thread">Comments</a></p>
 			</div>
@@ -97,12 +109,11 @@
 				
 					<h2><a class="postlink" href="/2015/11/16/myfirstpost.html">My First Post</a></h2>
 				
-				<div class="postdate">Jürgen Gutsch - 16 November, 2015
+				<p class="postdate">Jürgen Gutsch - 16 November, 2015
 					<ul>
 					
 					</ul>
-				</div>
-				
+				</p>				
 				<p>This is the 'hello world' post with the new Pretzel based blog. This post explains why I switched to English and why I want to switch to a completely new blog system.</p>
 				<p><a href="/2015/11/16/myfirstpost.html#disqus_thread">Comments</a></p>
 			</div>
@@ -116,8 +127,25 @@
 <p><script id="dsq-count-scr" src="//aspnethacker.disqus.com/count.js" async></script></p>
 
 			</div>
-
+			<div id="footer">
+				<div class="left">
+					Hallo Welt
+				</div>
+				<div class="right">
+					Hallo Welt
+				</div>				
+			</div>
 		</div>
-		<script src="/js/prism.js"></script>
+		<!--<script src="/js/prism.js"></script>-->
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			
+			ga('create', 'UA-390207-7', 'auto');
+			ga('send', 'pageview');
+			
+		</script>
 	</body>
 </html>
