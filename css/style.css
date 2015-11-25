@@ -65,14 +65,27 @@ li
 	margin: 0 auto;
 	padding: 0 90px;	
 }
-#header img{
-	border:none;
-}
 
 #header{
 	height: 130px;
 	padding-top:50px;
 	padding-bottom: 10x;
+	position: relative;
+}
+#header img{
+	border:none;
+}
+#header .section{
+	position: absolute;
+	top:0;
+	right: 0;
+}
+#header .section li {
+	display: inline-block;	
+	padding: 5px 0px 5px 6px;
+}
+#header .section li a {	
+	padding: 0px 4px;
 }
 #footer{
 	background-color: #3B3D4A;
