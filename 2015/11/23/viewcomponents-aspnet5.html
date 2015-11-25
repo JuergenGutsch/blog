@@ -50,16 +50,17 @@
 		</p>
 	</header>
 	
-	<p>One of the nicest new features in ASP.NET 5 are the ViewComponents. These are a kind of mini MVC inside the MVC application which can be used like partial Views. They are like partial Views with an own controller, almost comparable with user controls in ASP.NET Webforms. Use cases are continually reused components of a web site or blogs which are not part of the main content. That means all things that must not be passed with the current controller action. Let's use a Blog as an example, which has some more elements like menus, tag lists, link lists, archive overviews, etc. The data of these elements can be passed via the current actions to the view, but this needs to be done in every single action. </p>
-<p>It would be nice if the controller actions only have to do one single task: fetching and passing blog posts to the view. All other things should be done on other locations, to not mess up the controller actions.</p>
+	<p>One of the nicest new features in ASP.NET 5 is the ViewComponent. This is a kind of a 'mini MVC' inside the MVC application which can be used like partial Views. ViewComponents are like partial Views with an own controller, almost comparable with a UserControl in ASP.NET Webforms. </p>
+<p>Use cases are multiple reused components of a web application. That means all things that must not be managed by the current controller action. Let's use a Blog as an example, which has some more elements like menus, tag lists, link lists, archive overviews, etc. The data of these elements can be passed via the current actions to the view, but this needs to be done in every single action and produces a lot of duplicate code.</p>
+<p>It would be nice if the controller actions only have to do one single task: fetching and passing blog posts to the view. All the other things should be done on other locations, to not mess up the controller actions.</p>
 <p>That's where The ViewComponents entering the stage.</p>
-<p>Let me show you how ViewCompnents look like:</p>
+<h2>Let me show you how ViewCompnents look like</h2>
 <p>First we need to create a simple class which derives from ViewComponent and which needs to have &quot;ViewCompoennt&quot; as a sufix. E. g. &quot;Top20TagsViewComponent&quot;:	</p>
 <pre><code>public class Top20TagsViewComponent : ViewComponent 
 { 
     private readonly ITagService _tagService; 
 
-    public RecommendedProductsViewComponent(ITagService tagService) 
+    public Top20TagsViewComponent(ITagService tagService) 
     { 
         _tagService = tagService; 
     } 
@@ -78,10 +79,11 @@
 }
 </code></pre>
 
-<p>Die Methode Invoke entspricht der Action in einem regulären Controller, an deren Ende eine View erzeugt und zurückgegeben wird. Der TagService der hier genutzt wird kann per IoC in die ViewComponent hineingegeben werden. Da IoC wirklich überall zur Verfügung steht, kann auf jede Quelle zugegriffen werden, auf die eine regulärer Controller zugreift.</p>
-<p>Die View ist eine ganz normale Razor View:</p>
-<p>@model IEnumerable&lt;DotNetFn.ViewComponents.TagViewModel&gt;</p>
-<pre><code>@if (Model.Any()) 
+<p>The method Invoke almost looks like a Action in a usual Controller, which creates and returns a View. The used TagService is injected with the default IoC. Because is available everywhere in ASP.NET 5, you can access everything what accessible with a usual Controller.</p>
+<p>The View is pretty common:</p>
+<pre><code>@model IEnumerable&lt;DotNetFn.ViewComponents.TagViewModel&gt;
+
+@if (Model.Any()) 
 { 
     &lt;ul&gt; 
         @foreach (var tag in Tags) 
@@ -94,19 +96,19 @@
 }
 </code></pre>
 
-<p>Einzig der Ort an dem diese View abgelegt werden muss ist ein wenig speziell. Die Views werden unter Shared in einem Ordner Components abgelegt. Dort wiederum in einem Unterordner, der dem Namen der ViewComponent ohne dessen Präfix entspricht. Unsere ViewComponent View liegt also unter /Shared/Components/Top20Tags/Default.aspx</p>
-<p>Der Standardname ist Default.aspx. Es kann aber auch jeder beliebige andere Name verwendet werden, wenn dieser in der Methode Invoke angegeben wird: </p>
+<p>Only the location where the View needs to be saved is a bit special. You need to save the default View with the name <code>Default.cshtml</code> in a folder, which is named like the ViewComponent without the suffix inside <code>/Views/Shared/Components/</code> Our ViewComponent is stored in <code>/Shared/Components/Top20Tags/Default.cshtml</code></p>
+<p>The default name is Default.cshtml, but you can use any other name, if you pass that name to the View: </p>
 <pre><code>return View(&quot;TheNicerName&quot;, models);
 </code></pre>
 
-<p>Auf die Art könnte man auch innerhalb der ViewComponent das Template wechseln, wenn es erforderlich sein sollte.</p>
-<p>Die oben beschriebene Componente wird dann ganz einfach, fast ähnlich wie eine PartialView eingebunden:</p>
-<pre><code>@Component.Invoke(&quot;ToTags&quot;);
+<p>With this you are able to switch the Templates inside the ViewComponent, if it is needed.</p>
+<p>The described Component will be used almost as a partial View:</p>
+<pre><code>@Component.Invoke(&quot;TopTags&quot;);
 </code></pre>
 
-<p>Argumente übergeben</p>
-<p>Interessant werden ViewComponents auch, wenn man Argumente übergibt. Angenommen wir möchten die Zahl der Tags anpassen, je nachdem, wo wir die Liste einsetzen wollen.</p>
-<p>Wir erweitern die Methode Invoke einfach um ein Argument:</p>
+<h2>Passing arguments</h2>
+<p>A very interesting thing is to pass arguments to a ViewComponent. Maybe you want to change the number of Tags to display, depending on where we want to use this Component.</p>
+<p>We only need to extend the Invoke method with one ore more arguments:</p>
 <pre><code>public IViewComponentResult Invoke(int count)     
 { 
     var tags = _tagService.LoadTopTags().Take(count);     
@@ -120,12 +122,12 @@
 } 
 </code></pre>
 
-<p>Und rufen die Methode Invoke auch einfach mit diesem zusätzlichen Argument auf:</p>
-<pre><code>@Component.Invoke(&quot;ToTags&quot;, 10);
+<p>Now we able to call the ViewComponent with that additional argument:</p>
+<pre><code>@Component.Invoke(&quot;TopTags&quot;, 10);
 </code></pre>
 
-<p>Asynchrone ViewComponents</p>
-<p>Um Asynchrone Views besser zu unterstützen, kann statt der synchronen Methode Invoke auch eine asynchrone Methode geschrieben werden:</p>
+<h2>Asynchronous ViewComponents</h2>
+<p>To support asynchronous Views, we can also use a asynchronous Invoke method instead:</p>
 <pre><code>public async Task&lt;IViewComponentResult&gt; InvokeAsync(int count)     
 { 
     var tags = await _tagService.LoadTopTags();     
@@ -139,8 +141,8 @@
 } 
 </code></pre>
 
-<p>Bei der Nutzung muss dann await genutzt werden:</p>
-<pre><code>@await Component.InvokeAsync(&quot;ToTags&quot;, 10);
+<p>We only need to use await in the View to use this InvokeAsync:</p>
+<pre><code>@await Component.InvokeAsync(&quot;TopTags&quot;, 10);
 </code></pre>
 
 
