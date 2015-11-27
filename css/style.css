@@ -121,6 +121,7 @@ li
 
 article header{
 	padding-bottom: 40px;
+	padding-top: 14px;
 }
 article header p{
 	color: #9C9EAB;
@@ -235,5 +236,7 @@ article li
 	#footer .right{
 		width: 100%;
 		float: none;
+	}
+	article header{
 	}
 }
