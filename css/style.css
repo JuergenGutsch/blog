@@ -67,7 +67,7 @@ li
 }
 
 #header{
-	height: 130px;
+	min-height: 130px;
 	padding-top:50px;
 	padding-bottom: 10x;
 	position: relative;
@@ -215,5 +215,25 @@ article li
 @media screen and (max-width:400px){
 	#header img{
 		width: 100%;
+		height: auto;
+	}
+	h1 
+	{ 
+		font-size: 3em;
+		line-height: 1em;
+	}
+	h1 a:hover,
+	h2 a:hover 
+	{
+		color: #4ECDA2; 
+		background: transparent;
+	}
+	#footer .left{
+		width: 100%;
+		float: none;
+	}
+	#footer .right{
+		width: 100%;
+		float: none;
 	}
 }
