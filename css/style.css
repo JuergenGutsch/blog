@@ -150,6 +150,7 @@ article footer img
 	width: 105px;
 	float: left;
 	margin: 0 40px;
+	margin-bottom: 20px;
 }
 
 article pre code{
@@ -236,7 +237,11 @@ article li
 	#footer .right{
 		width: 100%;
 		float: none;
-	}
-	article header{
+	}	
+	article footer img
+	{
+		float: none;
+		width: 80%;
+		height: auto;
 	}
 }
