@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-    <title>About ASP.NET and more...</title>
+    <title>ASP.NET Hacker</title>
     <link>http://asp.net-hacker.rocks/</link>
     <atom:link href="http://asp.net-hacker.rocks/rss.xml" rel="self" type="application/rss+xml" />
     <description>This feed containes technical articles about web development with ASP.NET and some more things about .NET and related technologies</description>
     <language>en-us</language>
-    <pubDate>Mo, 30 Nov 2015 21:57:04 %z</pubDate>
-    <lastBuildDate>Mo, 30 Nov 2015 21:57:04 %z</lastBuildDate>
+    <pubDate>Mo, 30 Nov 2015 22:02:18 %z</pubDate>
+    <lastBuildDate>Mo, 30 Nov 2015 22:02:18 %z</lastBuildDate>
 
     
     <item>

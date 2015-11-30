@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>About ASP.NET and more...</title>
+  <title>ASP.NET Hacker</title>
   <link href="http://asp.net-hacker.rocks/"/>
   <link type="application/atom+xml" rel="self" href="http://asp.net-hacker.rocks/atom.xml"/>
-  <updated>2015-11-30T21:57:04.7207085+01:00</updated>
+  <updated>2015-11-30T22:02:18.7119296+01:00</updated>
   <id>http://asp.net-hacker.rocks/</id>
   <author>
     <name>Jürgen Gutsch</name>
