@@ -3,7 +3,7 @@
   <title>About ASP.NET and more...</title>
   <link href="http://blog.gutsch-online.de/"/>
   <link type="application/atom+xml" rel="self" href="http://blog.gutsch-online.de/atom.xml"/>
-  <updated>2015-11-30T06:56:13.6877449+01:00</updated>
+  <updated>2015-11-30T07:46:35.3629835+01:00</updated>
   <id>http://blog.gutsch-online.de/</id>
   <author>
     <name>Jürgen Gutsch</name>
@@ -12,10 +12,10 @@
 
   
   <entry>
-    <id>http://blog.gutsch-online.de//2015/11/23/viewcomponents-aspnet5.html</id>
-    <link type="text/html" rel="alternate" href="http://blog.gutsch-online.de//2015/11/23/viewcomponents-aspnet5.html"/>
+    <id>http://blog.gutsch-online.de//2015/11/25/viewcomponents-aspnet5.html</id>
+    <link type="text/html" rel="alternate" href="http://blog.gutsch-online.de//2015/11/25/viewcomponents-aspnet5.html"/>
     <title>View Components in ASP.NET 5</title>
-    <updated>2015-11-23T00:00:00+01:00</updated>
+    <updated>2015-11-25T00:00:00+01:00</updated>
     <author>
       <name>Jürgen Gutsch</name>
       <uri>http://blog.gutsch-online.de/</uri>

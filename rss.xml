@@ -6,16 +6,16 @@
     <atom:link href="http://blog.gutsch-online.de/rss.xml" rel="self" type="application/rss+xml" />
     <description>This feed containes technical articles about web development with ASP.NET and some more things about .NET and related technologies</description>
     <language>en-us</language>
-    <pubDate>Mo, 30 Nov 2015 06:56:13 %z</pubDate>
-    <lastBuildDate>Mo, 30 Nov 2015 06:56:13 %z</lastBuildDate>
+    <pubDate>Mo, 30 Nov 2015 07:46:35 %z</pubDate>
+    <lastBuildDate>Mo, 30 Nov 2015 07:46:35 %z</lastBuildDate>
 
     
     <item>
       <title>View Components in ASP.NET 5</title>
-      <link>http://blog.gutsch-online.de//2015/11/23/viewcomponents-aspnet5.html</link>
-      <pubDate>Mo, 23 Nov 2015 00:00:00 %z</pubDate>
+      <link>http://blog.gutsch-online.de//2015/11/25/viewcomponents-aspnet5.html</link>
+      <pubDate>Mi, 25 Nov 2015 00:00:00 %z</pubDate>
       <author>Jürgen Gutsch</author>
-      <guid>http://blog.gutsch-online.de//2015/11/23/viewcomponents-aspnet5.html</guid>
+      <guid>http://blog.gutsch-online.de//2015/11/25/viewcomponents-aspnet5.html</guid>
       <description>&lt;p&gt;One of the nicest new features in ASP.NET 5 is the ViewComponent. This is a kind of a &apos;mini MVC&apos; inside the MVC application which can be used like partial Views. ViewComponents are like partial Views with an own controller, almost comparable with a UserControl in ASP.NET WebForms. &lt;/p&gt;
 &lt;p&gt;Use cases are multiple reused components of a web application. That means all things that must not be managed by the current controller action. Let&apos;s use a Blog as an example, which has some more elements like menus, tag lists, link lists, archive overviews, etc. The data of these elements can be passed via the current actions to the view, but this needs to be done in every single action and produces a lot of duplicate code.&lt;/p&gt;
 &lt;p&gt;It would be nice if the controller actions only have to do one single task: fetching and passing blog posts to the view. All the other things should be done on other locations, to not mess up the controller actions.&lt;/p&gt;
