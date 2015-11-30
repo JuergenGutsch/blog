@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>About ASP.NET and more...</title>
+  <link href="http://blog.gutsch-online.de/"/>
+  <link type="application/atom+xml" rel="self" href="http://blog.gutsch-online.de/atom.xml"/>
+  <updated>2015-11-30T06:56:13.6877449+01:00</updated>
+  <id>http://blog.gutsch-online.de/</id>
+  <author>
+    <name>Jürgen Gutsch</name>
+    <email>juergen@gutsch-online.de</email>
+  </author>
+
+  
+  <entry>
+    <id>http://blog.gutsch-online.de//2015/11/23/viewcomponents-aspnet5.html</id>
+    <link type="text/html" rel="alternate" href="http://blog.gutsch-online.de//2015/11/23/viewcomponents-aspnet5.html"/>
+    <title>View Components in ASP.NET 5</title>
+    <updated>2015-11-23T00:00:00+01:00</updated>
+    <author>
+      <name>Jürgen Gutsch</name>
+      <uri>http://blog.gutsch-online.de/</uri>
+    </author>
+    <content type="html">&lt;p&gt;One of the nicest new features in ASP.NET 5 is the ViewComponent. This is a kind of a &apos;mini MVC&apos; inside the MVC application which can be used like partial Views. ViewComponents are like partial Views with an own controller, almost comparable with a UserControl in ASP.NET WebForms. &lt;/p&gt;
+&lt;p&gt;Use cases are multiple reused components of a web application. That means all things that must not be managed by the current controller action. Let&apos;s use a Blog as an example, which has some more elements like menus, tag lists, link lists, archive overviews, etc. The data of these elements can be passed via the current actions to the view, but this needs to be done in every single action and produces a lot of duplicate code.&lt;/p&gt;
+&lt;p&gt;It would be nice if the controller actions only have to do one single task: fetching and passing blog posts to the view. All the other things should be done on other locations, to not mess up the controller actions.&lt;/p&gt;
+&lt;p&gt;That&apos;s where the ViewComponents entering the stage.&lt;/p&gt;
+&lt;h2&gt;Let me show you how ViewCompnents look like&lt;/h2&gt;
+&lt;p&gt;First we need to create a simple class which derives from ViewComponent and which needs to have &amp;quot;ViewCompoennt&amp;quot; as a sufix. E. g. &amp;quot;Top20TagsViewComponent&amp;quot;:	&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class Top20TagsViewComponent : ViewComponent 
+{ 
+    private readonly ITagService _tagService; 
+
+    public Top20TagsViewComponent(ITagService tagService) 
+    { 
+        _tagService = tagService; 
+    } 
+
+    public IViewComponentResult Invoke() 
+    { 
+         var tags = _tagService.LoadTop20Tags(); 
+         var models = tags.Select( 
+            new TagViewModel 
+            { 
+                Id = tag.Id, 
+                Name = tag.Name 
+            }); 
+        return View(models); 
+    } 
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The method Invoke almost looks like a Action in a usual Controller, which creates and returns a View. The used TagService is injected with the default IoC. Because is available everywhere in ASP.NET 5, you can access everything what accessible with a usual Controller.&lt;/p&gt;
+&lt;p&gt;The View is pretty common:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@model IEnumerable&amp;lt;DotNetFn.ViewComponents.TagViewModel&amp;gt;
+
+@if (Model.Any()) 
+{ 
+    &amp;lt;ul&amp;gt; 
+        @foreach (var tag in Tags) 
+        { 
+            &amp;lt;li&amp;gt; 
+                [@tag.Id] @tag.Name 
+            &amp;lt;/li&amp;gt; 
+        } 
+    &amp;lt;/ul&amp;gt; 
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Only the location where the View needs to be saved is a bit special. You need to save the default View with the name &lt;code&gt;Default.cshtml&lt;/code&gt; in a folder, which is named like the ViewComponent without the suffix inside &lt;code&gt;/Views/Shared/Components/&lt;/code&gt; Our ViewComponent is stored in &lt;code&gt;/Shared/Components/Top20Tags/Default.cshtml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The default name is Default.cshtml, but you can use any other name, if you pass that name to the View: &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;return View(&amp;quot;TheNicerName&amp;quot;, models);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With this you are able to switch the Templates inside the ViewComponent, if it is needed.&lt;/p&gt;
+&lt;p&gt;The described Component will be used almost as a partial View:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@Component.Invoke(&amp;quot;TopTags&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Passing arguments&lt;/h2&gt;
+&lt;p&gt;A very interesting thing is to pass arguments to a ViewComponent. Maybe you want to change the number of Tags to display, depending on where we want to use this Component.&lt;/p&gt;
+&lt;p&gt;We only need to extend the Invoke method with one ore more arguments:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public IViewComponentResult Invoke(int count)     
+{ 
+    var tags = _tagService.LoadTopTags().Take(count);     
+    var models = tags.Select(tag =&amp;gt; 
+        new TagViewModel 
+        { 
+            Id = tag.Id, 
+            Name = tag.Name 
+        }); 
+     return View(models); 
+} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we able to call the ViewComponent with that additional argument:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@Component.Invoke(&amp;quot;TopTags&amp;quot;, 10);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;Asynchronous ViewComponents&lt;/h2&gt;
+&lt;p&gt;To support asynchronous Views, we can also use a asynchronous Invoke method instead:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public async Task&amp;lt;IViewComponentResult&amp;gt; InvokeAsync(int count)     
+{ 
+    var tags = await _tagService.LoadTopTags();     
+    var models = tags.Select(=&amp;gt; 
+        new TagViewModel 
+        { 
+            Id = tag.Id, 
+            Name = tag.Name 
+        }).Take(count); 
+     return View(models); 
+} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We only need to use await in the View to use this InvokeAsync:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@await Component.InvokeAsync(&amp;quot;TopTags&amp;quot;, 10);
+&lt;/code&gt;&lt;/pre&gt;
+
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://blog.gutsch-online.de//2015/11/20/move-libraries-to-net-core.html</id>
+    <link type="text/html" rel="alternate" href="http://blog.gutsch-online.de//2015/11/20/move-libraries-to-net-core.html"/>
+    <title>Moving .NET libraries to .NET Core</title>
+    <updated>2015-11-20T00:00:00+01:00</updated>
+    <author>
+      <name>Jürgen Gutsch</name>
+      <uri>http://blog.gutsch-online.de/</uri>
+    </author>
+    <content type="html">&lt;p&gt;Albert Weinert told us at the MVP Summit 2015 that ASP.NET has a huge problem: Almost all of our favorite tools ar not usable with .NET Core. Many unit test frameworks, IoC containers,  almost all mocking frameworks will not work with .NET Core and needs to be moved to be portable. Additionally almost all mocking frameworks are based on the Castle.Core library, which also needs to be moved to be portable.&lt;/p&gt;
+&lt;p&gt;Currently I&apos;m working at LightCore to make it compatible to .NET Core, to make the world a little better ;) This needs some steps to do. More details are in a separate blog post about LightCore 2.0. Because the unit tests of LightCore don&apos;t use mocking tools this was easier than expected.&lt;/p&gt;
+&lt;p&gt;With this post I want to tell you, what you need to do to move your library to .NET Core. I will use the &apos;Simple Object Store&apos; to make a step by step tutorial. At the end my open source library will be compatible with .NET Core :)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h3&gt;But why should I do this? Is this future proof? Does the effort make sense?&lt;/h3&gt;
+&lt;p&gt;At first I need to know that DNX projects (that&apos;s the name of the .NET Core libraries) are a kind of portable libraries. The only difference is that portable class libraries building a single assembly and DNX projects creating a NuGet package. All the other stuff is equal. This means the the libraries are compatible to many different platforms and frameworks. If I build a DNX library, I can use this library in .NET Core, .NET Framework, UWP and Mono. This should answer the questions above. &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;The current state of the Simple Object Store&lt;/h2&gt;
+&lt;p&gt;Currently the solution includes many framework specific projects with linked source files to build against different Framework versions. This needs to be replaced with one single DNX project. I don&apos;t want to support frameworks lower than .NET 4.0 (Please tell me if you need a build for a lower version than 4.0.) &lt;/p&gt;
+&lt;p&gt;That means I have four projects for the SimpleObjectStore and the same number of projects for the AzureStorageProviders. And I have two test projects, one for the main library and one for the providers library.&lt;/p&gt;
+&lt;p&gt;The goal is to have four different libraries instead of 10.&lt;/p&gt;
+&lt;h2&gt;Step 1: Convert the main library&lt;/h2&gt;
+&lt;p&gt;In the Solution I remove the main library and create a new DNX library with the same name. I need to rename old the project folder before. I Add all the existing code files into the new DNX project After that I need to add the frameworks I want to support and to update the dependencies in the project.json to get the project building.&lt;/p&gt;
+&lt;h2&gt;Step 2: Convert the providers library&lt;/h2&gt;
+&lt;p&gt;To get the AzureStorageProviders library running on .NET Core I have to do exactly the same for as for the main library. Additionally I need to add a reference to the main library. To get the right reference I have to add a dependency to the main project without a version number. (If I would add a version number, the build look for an existing NuGet package on nuget.org)&lt;/p&gt;
+&lt;h2&gt;Step 3: Converting the unit test projects&lt;/h2&gt;
+&lt;p&gt;Currently I&apos;m using NUnit to test the SimpleObjectStore. I need to decide whether to change to Xunit or to use the new NUnit 3.0.0 portable build.&lt;/p&gt;
+&lt;p&gt;I&apos;ll give the new NUnit a try. In the tutorial about using the portable build, they show the way to use a DNX console application to create a test project. I disagree with that. I would like to have a separate DNX console application as a NUnit runner. This should work in the same way as the Xunit runner. I just created it in a separate project.&lt;/p&gt;
+&lt;p&gt;Because I have the separate runner I can use the same way as in Step 1 to create DNX libraries for the test projects. Additionally I add a reference to the NUnit runner and add a command called test, which runs the Runner and passes the current test library.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;commands&amp;quot;: {
+    &amp;quot;test&amp;quot;: &amp;quot;nunit.runner.dnx&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(I use the NUnit namespace because I want to contribute this runner to the NUnit project. I use it here as a kind of dog-fooding to test the runner.)&lt;/p&gt;
+&lt;p&gt;If this is done, we need to get this projects compiled. I did this, by try and error, building, fixing, building, fixing, and so on... The old NUnit API is almost equal to the new NUnit 3.0.0 API and there is less to do than expected.&lt;/p&gt;
+&lt;h2&gt;Step 4: Add a CI server&lt;/h2&gt;
+&lt;p&gt;To get this compiled and published I also use AppVeyor as a favorite CI server i the same way as written in the &lt;a href=&quot;/2015/11/17/build-lightcore-with-appveyor.html&quot;&gt;last post about Building LightCore 2.0&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Final words&lt;/h2&gt;
+&lt;p&gt;Hopefully this post will help you to make your libraries running on .NET Core and any other  platform and framework. As you can see this isn&apos;t really a big deal. You need to know some small things about DNX libraries to create packages which are targeting as many platforms as possible. From my point of view, with the new possibilities given by .NET Core it is really important to get ready to go the same way as Microsoft. Prepare your .NET libraries to get also used on Linux and Mac. That&apos;s pretty awesome. Have you really thought about that a few years ago? ;)&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://blog.gutsch-online.de//2015/11/17/build-lightcore-with-appveyor.html</id>
+    <link type="text/html" rel="alternate" href="http://blog.gutsch-online.de//2015/11/17/build-lightcore-with-appveyor.html"/>
+    <title>AppVeyor: A simple build server for open source projects</title>
+    <updated>2015-11-17T00:00:00+01:00</updated>
+    <author>
+      <name>Jürgen Gutsch</name>
+      <uri>http://blog.gutsch-online.de/</uri>
+    </author>
+    <content type="html">&lt;p&gt;For LightCore 2.0 I would like to show the build state inside the GitHub repository. I could use my personal Jenkins build server on a Azure VM, because Jenkins also provides the build state, with a plug-in.&lt;/p&gt;
+&lt;p&gt;But this seems to be the right moment to play around with AppVeyor:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://ci.appveyor.com/project/JuergenGutsch/lightcore&quot;&gt;https://ci.appveyor.com/project/JuergenGutsch/lightcore&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;AppVeyor is a browser based SaaS (Software as a Service) application in the cloud. AppVeyor provides many useful features within a pretty simple, intuitive and clean UI. GitHub is completely integrated and it is really easy to create a build job for a GitHub project:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/AppVeyor-General.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;The .NET Version Manager (DNVM) is already installed and you only need to figure out which run-time is used by default. I used the build output to see the results of the &amp;quot;dnvm&amp;quot; commands. Finally I choosed the way to install the needed beta-8 with the batch scripts, every time the build starts:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/AppVeyor-Environment.png&quot; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dnvm update-self
+dnvm install 1.0.0-beta8 -a x86 -r coreclr -OS win 
+dnvm alias lccoreclr 1.0.0-beta8 -a x86 -r coreclr -OS win 
+dnvm install 1.0.0-beta8 -a x86 -r clr -OS win
+dnvm alias lcclr 1.0.0-beta8 -a x86 -r clr -OS win
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For the builds and the tests I also used the batch command mode with the following lines:&lt;/p&gt;
+&lt;p&gt;Build:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/AppVeyor-Build.png&quot; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd LightCore 
+dnvm use lccoreclr 
+dnu restore 
+dnu build
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Test:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/AppVeyor-Tests.png&quot; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd ..\LightCore.Tests 
+dnvm use lccoreclr 
+dnu restore 
+dnx test 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Show the build state&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Finally I&apos;m able to copy a small piece of MarkDown code, which I can use in the readme.md file in the GitHub repository to show the current build state:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/AppVeyor-Badge.png&quot; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[![Build status](https://ci.appveyor.com/api/projects/status/et1fpjlmnsrkw3mv?svg=true)](https://ci.appveyor.com/project/JuergenGutsch/lightcore)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ci.appveyor.com/api/projects/status/et1fpjlmnsrkw3mv?svg=true&quot; alt=&quot;Build Status&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;As you can see, it is pretty simple to use and handle AppVeyor. I&apos;m sure I&apos;ll also use AppVeyor for my other open source project, the &amp;quot;SimpleObjectStore&amp;quot;. But I need to move that library to .NET Core first. ;)&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://blog.gutsch-online.de//2015/11/16/lightcore20.html</id>
+    <link type="text/html" rel="alternate" href="http://blog.gutsch-online.de//2015/11/16/lightcore20.html"/>
+    <title>LightCore 2.0</title>
+    <updated>2015-11-16T00:00:00+01:00</updated>
+    <author>
+      <name>Jürgen Gutsch</name>
+      <uri>http://blog.gutsch-online.de/</uri>
+    </author>
+    <content type="html">&lt;p&gt;At the MVP Summit 2015 we had a Hackthon with the guys from the ASP.NET product group to support ASP.NET 5. There were Ideas to improve the documentation, to upgrade samples to the newest beta version or to upgrade older libraries to .NET Core.&lt;/p&gt;
+&lt;p&gt;It was Albert Weinert who asked me to upgrade LightCore to .NET Core. The more I thought about this idea, the more I liked it. So I decided to move LightCore to .Net Core :)&lt;/p&gt;
+&lt;p&gt;To change the main library wasn&apos;t a big deal. I simply created a new DNX library and added the existing code files to the new libraries. I had to solve only three small issues, which is explained a little later. &lt;/p&gt;
+&lt;p&gt;The biggest effort was to change all the unit tests from NUnit to Xunit, because NUnit is unfortunately not yet compatible to .NET Core. While changing the test framework I also changed the assertions to FluentAssertion to be save in the future, if we need to change the the test framework again.&lt;/p&gt;
+&lt;h2&gt;Current status&lt;/h2&gt;
+&lt;p&gt;In the new version I did a hard cut with Silverlight and the Compact Framework. I don&apos;t want to support this old versions. If the .NET core libraries are compatible with that two frameworks, this will only be by accident ;)&lt;/p&gt;
+&lt;p&gt;This version will support .NET Core 5, UWP10, .NET Framework and Mono. ASP.NET 4.6 and ASP.NET 5 is also supported. &lt;/p&gt;
+&lt;p&gt;The XAML-Reader is not available in .NET Core, which means the XAML configuration will only work in with .NET Framework. In .NET Core a JSON configuration should be used instead, which is additionally available for all other Frameworks. The configuration by code is still possible and is the recommended way to configure the IoC container.&lt;/p&gt;
+&lt;p&gt;The old web integration will not be changed, to stay compatible to MVC 3 and 4. This library only uses the new .NET Framework version of the LightCore main library. Additionally we will add a ASP.NET 5 integration to replace the build in IoC with LightCore.&lt;/p&gt;
+&lt;p&gt;The ThreadSingeltonLifecycle is currently not working in the .NET Core version, because System.Threading.Thread is not available in .NET Core. We need to find another solution to identify the current thread. This live-cycle only works in .NET Framework.&lt;/p&gt;
+&lt;p&gt;In case of reflection to get the properties to inject, the BindingFlags.SetProperty is not available in .NET Core. This means there are possibly some performance issues, while fetching and validating the property setter.&lt;/p&gt;
+&lt;p&gt;Another issue is the CommonServiceLocator, because the ServiceLocatorImplBase of the Microsoft.Practices.ServiceLocation is also not yet available in .NET Core. So the CommonServiceLocator is only working with .NET Framework. Maybe it is needed to build an own ServiceLocator.&lt;/p&gt;
+&lt;p&gt;With the unit tests of LightCore.Configuration we had problems with three tests which were failing, if they are not running individually. This is because the Xunit tests where run in parallel and the RegistrationLoader in LightCore is not ThreadSave. This guy mus not be thread save, but we needed to wrap all tests with an lock statement which are using RegistrationLoader.Instance.Register() to solve that problem.&lt;/p&gt;
+&lt;p&gt;A public build server is set up with AppVeyor, but we also need to integrate the other libraries into this build.&lt;/p&gt;
+&lt;h2&gt;More ideas&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Property injection should only work with an marker attribute to improve the performance&lt;/li&gt;
+&lt;li&gt;Some users want to have the named instances back in LightCore. I believe we should add this feature again. It is  definitely not a nice pattern to use named instances, but as always in the real world we can&apos;t use all the nice patterns every time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Call for contributions&lt;/h2&gt;
+&lt;p&gt;As already written, we need to change the web integrations and the samples, documentations and the performance tests, though. You are able to follow the current development process on the related feature branch: &lt;a href=&quot;https://github.com/juergengutsch/lightcore/tree/jg/portable&quot;&gt;https://github.com/juergengutsch/lightcore/tree/jg/portable&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It would be pretty cool, if you would contribute some ideas, suggestions and issues directly on GitHub. Please also feel free to send us code contributions via pull requests :)&lt;/p&gt;
+&lt;p&gt;We would like to make LightCore one of the best IoC containers for .NET Core :)&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://blog.gutsch-online.de//2015/11/16/myfirstpost.html</id>
+    <link type="text/html" rel="alternate" href="http://blog.gutsch-online.de//2015/11/16/myfirstpost.html"/>
+    <title>My First Post</title>
+    <updated>2015-11-16T00:00:00+01:00</updated>
+    <author>
+      <name>Jürgen Gutsch</name>
+      <uri>http://blog.gutsch-online.de/</uri>
+    </author>
+    <content type="html">&lt;h2&gt;Hello world...&lt;/h2&gt;
+&lt;p&gt;I stopped writing on http://www.aspnetzone.de/blogs/juergengutsch/ and changed the blog to a more flexible and agile system based on Pretzel. Pretzel is a Jekyll clone written in .NET using a funny API. You need to &apos;bake&apos; and to &apos;taste&apos; your Pretzel blog to view your latest changes in your browser locally. At least you need to &apos;bake&apos; your Pretzel blog before you are able to deliver your changes to the server.&lt;/p&gt;
+&lt;p&gt;For me it is pretty useful to write the contents offline in a Markdown editor while sitting in the train.&lt;/p&gt;
+&lt;p&gt;I also switched to English because I used to speak and to write English almost every day. And this is also a way to get more experience in writing and speaking English. Please feel free to send me notes about spelling errors :)&lt;/p&gt;
+&lt;p&gt;Hopefully this is also fine for the most of the German speaking guys who are reading my blog. Currently I have around 1000 activities per day via the FeedBurner feed and around 400 views per day directly on the articles. If you are not happy about the English posts, please drop me a note. Maybe it is possible to share the contents in German too.&lt;/p&gt;
+&lt;p&gt;From time to time I will translate the most important blog posts of the old system to use it in the new system. I will select the specific posts by the number of reads.&lt;/p&gt;
+</content>
+  </entry>
+  
+</feed>
