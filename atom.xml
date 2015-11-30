@@ -3,7 +3,7 @@
   <title>ASP.NET Hacker</title>
   <link href="http://asp.net-hacker.rocks/"/>
   <link type="application/atom+xml" rel="self" href="http://asp.net-hacker.rocks/atom.xml"/>
-  <updated>2015-11-30T22:02:18.7119296+01:00</updated>
+  <updated>2015-11-30T22:04:13.8158473+01:00</updated>
   <id>http://asp.net-hacker.rocks/</id>
   <author>
     <name>Jürgen Gutsch</name>
@@ -12,8 +12,8 @@
 
   
   <entry>
-    <id>http://asp.net-hacker.rocks//2015/11/25/viewcomponents-aspnet5.html</id>
-    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks//2015/11/25/viewcomponents-aspnet5.html"/>
+    <id>http://asp.net-hacker.rocks/2015/11/25/viewcomponents-aspnet5.html</id>
+    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks/2015/11/25/viewcomponents-aspnet5.html"/>
     <title>View Components in ASP.NET 5</title>
     <updated>2015-11-25T00:00:00+01:00</updated>
     <author>
@@ -110,8 +110,8 @@
   </entry>
   
   <entry>
-    <id>http://asp.net-hacker.rocks//2015/11/20/move-libraries-to-net-core.html</id>
-    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks//2015/11/20/move-libraries-to-net-core.html"/>
+    <id>http://asp.net-hacker.rocks/2015/11/20/move-libraries-to-net-core.html</id>
+    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks/2015/11/20/move-libraries-to-net-core.html"/>
     <title>Moving .NET libraries to .NET Core</title>
     <updated>2015-11-20T00:00:00+01:00</updated>
     <author>
@@ -151,8 +151,8 @@
   </entry>
   
   <entry>
-    <id>http://asp.net-hacker.rocks//2015/11/19/build-lightcore-with-appveyor.html</id>
-    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks//2015/11/19/build-lightcore-with-appveyor.html"/>
+    <id>http://asp.net-hacker.rocks/2015/11/19/build-lightcore-with-appveyor.html</id>
+    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks/2015/11/19/build-lightcore-with-appveyor.html"/>
     <title>AppVeyor: A simple build server for open source projects</title>
     <updated>2015-11-19T00:00:00+01:00</updated>
     <author>
@@ -197,8 +197,8 @@ dnx test
   </entry>
   
   <entry>
-    <id>http://asp.net-hacker.rocks//2015/11/17/lightcore20.html</id>
-    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks//2015/11/17/lightcore20.html"/>
+    <id>http://asp.net-hacker.rocks/2015/11/17/lightcore20.html</id>
+    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks/2015/11/17/lightcore20.html"/>
     <title>LightCore 2.0</title>
     <updated>2015-11-17T00:00:00+01:00</updated>
     <author>
@@ -234,8 +234,8 @@ dnx test
   </entry>
   
   <entry>
-    <id>http://asp.net-hacker.rocks//2015/11/15/myfirstpost.html</id>
-    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks//2015/11/15/myfirstpost.html"/>
+    <id>http://asp.net-hacker.rocks/2015/11/15/myfirstpost.html</id>
+    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks/2015/11/15/myfirstpost.html"/>
     <title>My First Post with Pretzel</title>
     <updated>2015-11-15T00:00:00+01:00</updated>
     <author>
