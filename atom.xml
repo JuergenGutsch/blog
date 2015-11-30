@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>About ASP.NET and more...</title>
-  <link href="http://blog.gutsch-online.de/"/>
-  <link type="application/atom+xml" rel="self" href="http://blog.gutsch-online.de/atom.xml"/>
-  <updated>2015-11-30T21:51:43.7561197+01:00</updated>
-  <id>http://blog.gutsch-online.de/</id>
+  <link href="http://asp.net-hacker.rocks/"/>
+  <link type="application/atom+xml" rel="self" href="http://asp.net-hacker.rocks/atom.xml"/>
+  <updated>2015-11-30T21:57:04.7207085+01:00</updated>
+  <id>http://asp.net-hacker.rocks/</id>
   <author>
     <name>Jürgen Gutsch</name>
     <email>juergen@gutsch-online.de</email>
@@ -12,13 +12,13 @@
 
   
   <entry>
-    <id>http://blog.gutsch-online.de//2015/11/25/viewcomponents-aspnet5.html</id>
-    <link type="text/html" rel="alternate" href="http://blog.gutsch-online.de//2015/11/25/viewcomponents-aspnet5.html"/>
+    <id>http://asp.net-hacker.rocks//2015/11/25/viewcomponents-aspnet5.html</id>
+    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks//2015/11/25/viewcomponents-aspnet5.html"/>
     <title>View Components in ASP.NET 5</title>
     <updated>2015-11-25T00:00:00+01:00</updated>
     <author>
       <name>Jürgen Gutsch</name>
-      <uri>http://blog.gutsch-online.de/</uri>
+      <uri>http://asp.net-hacker.rocks/</uri>
     </author>
     <content type="html">&lt;p&gt;One of the nicest new features in ASP.NET 5 is the ViewComponent. This is a kind of a &apos;mini MVC&apos; inside the MVC application which can be used like partial Views. ViewComponents are like partial Views with an own controller, almost comparable with a UserControl in ASP.NET WebForms.&lt;/p&gt;
 &lt;p&gt;Use cases are multiple reused components of a web application. That means all things that must not be managed by the current controller action. Let&apos;s use a Blog as an example, which has some more elements like menus, tag lists, link lists, archive overviews, etc. The data of these elements can be passed via the current actions to the view, but this needs to be done in every single action and produces a lot of duplicate code.&lt;/p&gt;
@@ -110,13 +110,13 @@
   </entry>
   
   <entry>
-    <id>http://blog.gutsch-online.de//2015/11/20/move-libraries-to-net-core.html</id>
-    <link type="text/html" rel="alternate" href="http://blog.gutsch-online.de//2015/11/20/move-libraries-to-net-core.html"/>
+    <id>http://asp.net-hacker.rocks//2015/11/20/move-libraries-to-net-core.html</id>
+    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks//2015/11/20/move-libraries-to-net-core.html"/>
     <title>Moving .NET libraries to .NET Core</title>
     <updated>2015-11-20T00:00:00+01:00</updated>
     <author>
       <name>Jürgen Gutsch</name>
-      <uri>http://blog.gutsch-online.de/</uri>
+      <uri>http://asp.net-hacker.rocks/</uri>
     </author>
     <content type="html">&lt;p&gt;At the MVP Summit 2015 &lt;a href=&quot;http://blog.der-albert.com/&quot;&gt;Albert Weinert&lt;/a&gt; told us that ASP.NET has a huge problem: Almost all of our favorite tools are not usable with .NET Core. Many unit test frameworks, IoC containers,  almost all mocking frameworks will not work with .NET Core and needs to be moved to DNX libraries to get portable. Additionally almost all mocking frameworks are based on the Castle.Core library, which also needs to be moved to be portable.&lt;/p&gt;
 &lt;p&gt;Currently I&apos;m working at &lt;a href=&quot;http://lightcore.ch&quot;&gt;LightCore&lt;/a&gt; to make it compatible to .NET Core, to make the world a little better ;) Hopefully. This needs some steps to do. More details are in a separate blog post about &lt;a href=&quot;/2015/11/17/lightcore20.html&quot;&gt;LightCore 2.0&lt;/a&gt;. Because the unit tests of LightCore don&apos;t use mocking tools this was easier than expected.&lt;/p&gt;
@@ -151,13 +151,13 @@
   </entry>
   
   <entry>
-    <id>http://blog.gutsch-online.de//2015/11/19/build-lightcore-with-appveyor.html</id>
-    <link type="text/html" rel="alternate" href="http://blog.gutsch-online.de//2015/11/19/build-lightcore-with-appveyor.html"/>
+    <id>http://asp.net-hacker.rocks//2015/11/19/build-lightcore-with-appveyor.html</id>
+    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks//2015/11/19/build-lightcore-with-appveyor.html"/>
     <title>AppVeyor: A simple build server for open source projects</title>
     <updated>2015-11-19T00:00:00+01:00</updated>
     <author>
       <name>Jürgen Gutsch</name>
-      <uri>http://blog.gutsch-online.de/</uri>
+      <uri>http://asp.net-hacker.rocks/</uri>
     </author>
     <content type="html">&lt;p&gt;For LightCore 2.0 I would like to show the build state inside the GitHub repository. I could use my personal Jenkins build server on a Azure VM, because Jenkins also provides the build state, with a plug-in.&lt;/p&gt;
 &lt;p&gt;But this seems to be the right moment to play around with AppVeyor:&lt;/p&gt;
@@ -197,13 +197,13 @@ dnx test
   </entry>
   
   <entry>
-    <id>http://blog.gutsch-online.de//2015/11/17/lightcore20.html</id>
-    <link type="text/html" rel="alternate" href="http://blog.gutsch-online.de//2015/11/17/lightcore20.html"/>
+    <id>http://asp.net-hacker.rocks//2015/11/17/lightcore20.html</id>
+    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks//2015/11/17/lightcore20.html"/>
     <title>LightCore 2.0</title>
     <updated>2015-11-17T00:00:00+01:00</updated>
     <author>
       <name>Jürgen Gutsch</name>
-      <uri>http://blog.gutsch-online.de/</uri>
+      <uri>http://asp.net-hacker.rocks/</uri>
     </author>
     <content type="html">&lt;p&gt;At the MVP Summit 2015 we had a Hackthon with the guys from the ASP.NET product group to support ASP.NET 5. There were Ideas to improve the documentation, to upgrade samples to the newest beta version or to upgrade older libraries to .NET Core.&lt;/p&gt;
 &lt;p&gt;It was &lt;a href=&quot;http://blog.der-albert.com/&quot;&gt;Albert Weinert&lt;/a&gt; who asked me to move &lt;a href=&quot;http://lightcore.ch&quot;&gt;LightCore&lt;/a&gt; to .NET Core. The more I thought about this idea, the more I liked it. So I decided to move LightCore to .Net Core :)&lt;/p&gt;
@@ -234,13 +234,13 @@ dnx test
   </entry>
   
   <entry>
-    <id>http://blog.gutsch-online.de//2015/11/15/myfirstpost.html</id>
-    <link type="text/html" rel="alternate" href="http://blog.gutsch-online.de//2015/11/15/myfirstpost.html"/>
+    <id>http://asp.net-hacker.rocks//2015/11/15/myfirstpost.html</id>
+    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks//2015/11/15/myfirstpost.html"/>
     <title>My First Post with Pretzel</title>
     <updated>2015-11-15T00:00:00+01:00</updated>
     <author>
       <name>Jürgen Gutsch</name>
-      <uri>http://blog.gutsch-online.de/</uri>
+      <uri>http://asp.net-hacker.rocks/</uri>
     </author>
     <content type="html">&lt;h2&gt;Bye Community Server, Hello Pretzel&lt;/h2&gt;
 &lt;p&gt;I stop writing on &lt;a href=&quot;http://www.aspnetzone.de/blogs/juergengutsch/&quot;&gt;http://www.aspnetzone.de/blogs/juergengutsch/&lt;/a&gt; and changed the blog software to a more flexible and agile system based on &lt;a href=&quot;https://github.com/Code52/pretzel&quot;&gt;Pretzel&lt;/a&gt;. Pretzel is a Jekyll clone written in .NET using a funny API. You need to &apos;taste&apos; your blog to view your latest changes in your browser locally and you need to &apos;bake&apos; your Pretzel blog before delivering your changes to the server.&lt;/p&gt;
