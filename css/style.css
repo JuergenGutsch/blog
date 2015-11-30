@@ -115,6 +115,23 @@ li
 	list-style-type:disc;
 }
 
+#footer ul.social-icons{
+	text-align: center;
+    margin: 0;
+	margin-top:30px;
+    list-style: none;
+}
+#footer ul.social-icons li{
+	display: inline-block;
+    line-height: 1em;
+    margin: 0;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+}
+#footer ul.social-icons li a{	
+    font-size: 2.5em;
+}
+
 .postdate 
 { 
 	font-size: 0.8em; 
@@ -251,5 +268,8 @@ article li
 		float: none;
 		width: 80%;
 		height: auto;
+	}
+	#header .section li#feedlink{
+		display:none;
 	}
 }
