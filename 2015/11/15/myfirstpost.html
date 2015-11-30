@@ -7,7 +7,7 @@
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
-		<title>AppVeyor: A simple build server for open source projects</title>
+		<title>My First Post with Pretzel</title>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link href="/css/prism.css" rel="stylesheet" type="text/css" />
@@ -15,10 +15,10 @@
 		<link href="/css/jquery.cookiebar.css" rel="stylesheet" type="text/css"/>
 		<link rel="shortcut icon" href="/img/favicon.ico" />
 		
-		<meta property="og:title" content="AppVeyor: A simple build server for open source projects" />
+		<meta property="og:title" content="My First Post with Pretzel" />
 		<meta property="og:site_name" content="ASP.NET Hacker">
-		<meta property="og:url" content="http://asp.net-hacker.rocks/2015/11/17/build-lightcore-with-appveyor.html" />
-		<meta property="og:description" content="Learn how I used AppVeyor to automate .NET Core builds and Xunit test runs for LightCore" />
+		<meta property="og:url" content="http://asp.net-hacker.rocks/2015/11/15/myfirstpost.html" />
+		<meta property="og:description" content="This is the 'hello world' post with the new Pretzel based blog. This post explains why I switched to English and why I want to switch to a completely new blog system." />
 		<meta property="fb:app_id" content="126274111070499" />
 		<meta property="og:type" content="article" />
 		<meta property="og:locale" content="en_US" />		
@@ -27,8 +27,8 @@
 
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="@sharpcms" />
-		<meta name="twitter:title" content="AppVeyor: A simple build server for open source projects" />
-		<meta name="twitter:description" content="Learn how I used AppVeyor to automate .NET Core builds and Xunit test runs for LightCore" />
+		<meta name="twitter:title" content="My First Post with Pretzel" />
+		<meta name="twitter:description" content="This is the 'hello world' post with the new Pretzel based blog. This post explains why I switched to English and why I want to switch to a completely new blog system." />
 		<meta name="twitter:image" content="http://asp.net-hacker.rocks/img/cardlogo-dark.png" />
 	</head>
 	<body>
@@ -45,58 +45,32 @@
 			<div id="content">
 				<article>
 	<header>
-		<h1> AppVeyor: A simple build server for open source projects </h1>
-		<p class="postdate">Jürgen Gutsch - 17 November, 2015</p>
+		<h1> My First Post with Pretzel </h1>
+		<p class="postdate">Jürgen Gutsch - 15 November, 2015</p>
 		<ul class="postdate">
 		
-			<li><a href="/tag/LightCore/index.html">LightCore</a></li>
+			<li><a href="#">Me</a></li>
 		
-			<li><a href="/tag/Continuous Deployment/index.html">Continuous Deployment</a></li>
+			<li><a href="#">Blog</a></li>
 		
-			<li><a href="/tag/Continuous Integration/index.html">Continuous Integration</a></li>
-		
-			<li><a href="/tag/Build/index.html">Build</a></li>
-		
-			<li><a href="/tag/AppVeyor/index.html">AppVeyor</a></li>
+			<li><a href="#">News</a></li>
 		
 		</ul>
 	</header>
 	
-	<p>For LightCore 2.0 I would like to show the build state inside the GitHub repository. I could use my personal Jenkins build server on a Azure VM, because Jenkins also provides the build state, with a plug-in.</p>
-<p>But this seems to be the right moment to play around with AppVeyor:</p>
-<p><a href="https://ci.appveyor.com/project/JuergenGutsch/lightcore">https://ci.appveyor.com/project/JuergenGutsch/lightcore</a></p>
-<p>AppVeyor is a browser based SaaS (Software as a Service) application in the cloud. AppVeyor provides many useful features within a pretty simple, intuitive and clean UI. GitHub is completely integrated and it is really easy to create a build job for a GitHub project:</p>
-<p><img src="/img/AppVeyor-General.png" alt="" /></p>
-<p>The .NET Version Manager (DNVM) is already installed and you only need to figure out which run-time is used by default. I used the build output to see the results of the &quot;dnvm&quot; commands. Finally I choosed the way to install the needed beta-8 with the batch scripts, every time the build starts:</p>
-<p><img src="/img/AppVeyor-Environment.png" alt="" /></p>
-<pre><code class="language-batch">dnvm update-self
-dnvm install 1.0.0-beta8 -a x86 -r coreclr -OS win 
-dnvm alias lccoreclr 1.0.0-beta8 -a x86 -r coreclr -OS win 
-dnvm install 1.0.0-beta8 -a x86 -r clr -OS win
-dnvm alias lcclr 1.0.0-beta8 -a x86 -r clr -OS win
-</code></pre>
-<p>For the builds and the tests I also used the batch command mode with the following lines:</p>
-<p>Build:</p>
-<p><img src="/img/AppVeyor-Build.png" alt="" /></p>
-<pre><code class="language-batch">cd LightCore 
-dnvm use lccoreclr 
-dnu restore 
-dnu build
-</code></pre>
-<p>Test:</p>
-<p><img src="/img/AppVeyor-Tests.png" alt="" /></p>
-<pre><code class="language-batch">cd ..\LightCore.Tests 
-dnvm use lccoreclr 
-dnu restore 
-dnx test 
-</code></pre>
-<p><strong>Show the build state</strong></p>
-<p>Finally I'm able to copy a small piece of MarkDown code, which I can use in the readme.md file in the GitHub repository to show the current build state:</p>
-<p><img src="/img/AppVeyor-Badge.png" alt="" /></p>
-<pre><code class="language-markdown">[![Build status](https://ci.appveyor.com/api/projects/status/et1fpjlmnsrkw3mv?svg=true)](https://ci.appveyor.com/project/JuergenGutsch/lightcore)
-</code></pre>
-<p><img src="https://ci.appveyor.com/api/projects/status/et1fpjlmnsrkw3mv?svg=true" alt="Build Status" /></p>
-<p>As you can see, it is pretty simple to use and handle AppVeyor. I'm sure I'll also use AppVeyor for my other open source project, the &quot;SimpleObjectStore&quot;. But I need to move that library to .NET Core first. ;)</p>
+	<h2>Bye Community Server, Hello Pretzel</h2>
+<p>I stop writing on <a href="http://www.aspnetzone.de/blogs/juergengutsch/">http://www.aspnetzone.de/blogs/juergengutsch/</a> and changed the blog software to a more flexible and agile system based on <a href="https://github.com/Code52/pretzel">Pretzel</a>. Pretzel is a Jekyll clone written in .NET using a funny API. You need to 'taste' your blog to view your latest changes in your browser locally and you need to 'bake' your Pretzel blog before delivering your changes to the server.</p>
+<h2>Markdown instead of Markup</h2>
+<p>Like Jekyll, you need to use <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> to write your blog posts for Pretzel. So, I also changed the offline editor to <a href="http://markdownpad.com/">MarkdownPad 2</a>. Markdown helps me to focus on content, instead of formatting. E. g. with the old blog system I had to format the code blocks online in the system after publishing, because the Windows Live Writer didn't support the code formats of the system in the right way.</p>
+<p>In general, writing offline is one of the most important requirements I have to a blog system. Because I travel a lot with the train and the &quot;Deutsche Bahn&quot; (the German railway company) seems to be pretty incompatible with the internet ;)</p>
+<h2>Switching to English</h2>
+<p>I also switched to English, because I used to speak and to write English almost every day. And this is also a way to get more experience in writing and speaking English. Please feel free to send me notes and hints about spelling errors :)</p>
+<p>Hopefully this is also fine for the most of the German speaking readers of my blog. Currently I have around 1000 activities per day via the FeedBurner feed and around 400 views per day directly on the articles. If you are not happy about the English posts, please drop me a note. Maybe it is possible to share the contents also in German.</p>
+<p>From time to time I will translate the most important blog posts of the old system, to use it in the new system. I will select the specific posts by the number of reads.</p>
+<h2>This blog ...</h2>
+<p>... is still is not completely configured and there are some features I need to implement. Especially the Tags are currently disabled, because I need to hack around Pretzel a little bit to create tag overviews. Maybe I will arrange some things around the layout, colors and so on...</p>
+<h2>A very huge &quot;Thank You&quot; ...</h2>
+<p>... goes to <strong>Marian Gieseler</strong>, a colleague of mine at the <a href="http://yooapps.com">YooApplications AG</a> who creates the initial design of this blog. I'm pretty happy with this layout and proud to present it to the world :)</p>
 		
 	<footer>
 		<div>
@@ -108,8 +82,8 @@ dnx test
 			</p>
 		</div>
 		<div id="page-navigation clear"> 
-			<div class="left">  <a href="/2015/11/16/lightcore20.html" title="Previous Post: LightCore 2.0">&larr; LightCore 2.0</a>  </div> 
-			<div class="right">  <a href="/2015/11/20/move-libraries-to-net-core.html" title="next Post: Moving .NET libraries to .NET Core">Moving .NET libraries to .NET Core &rarr; </a>  </div> 
+			<div class="left">  </div> 
+			<div class="right">  <a href="/2015/11/17/lightcore20.html" title="next Post: LightCore 2.0">LightCore 2.0 &rarr; </a>  </div> 
 			<div class="clear">&nbsp;</div>
 		</div> 
 				
