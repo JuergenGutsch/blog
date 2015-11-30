@@ -193,11 +193,7 @@ article footer img
 	margin-bottom: 20px;
 }
 
-article pre code{
-	color: #f8f8f2;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;	
-}
-article pre, article pre[class*="language-"]{
+article pre[class*="language-"]{
 	background-color: #3B3D4A !important;
 	border: none !important;
 	margin: 40px -90px !important;

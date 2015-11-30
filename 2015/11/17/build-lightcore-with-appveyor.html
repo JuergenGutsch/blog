@@ -10,7 +10,7 @@
 		<title>AppVeyor: A simple build server for open source projects</title>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<!--<link href="/css/prism.css" rel="stylesheet" type="text/css" />-->
+		<link href="/css/prism.css" rel="stylesheet" type="text/css" />
 		<link href="/css/style.css" rel="stylesheet" type="text/css" />
 		<link href="/css/jquery.cookiebar.css" rel="stylesheet" type="text/css"/>
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -66,42 +66,37 @@
 <p>But this seems to be the right moment to play around with AppVeyor:</p>
 <p><a href="https://ci.appveyor.com/project/JuergenGutsch/lightcore">https://ci.appveyor.com/project/JuergenGutsch/lightcore</a></p>
 <p>AppVeyor is a browser based SaaS (Software as a Service) application in the cloud. AppVeyor provides many useful features within a pretty simple, intuitive and clean UI. GitHub is completely integrated and it is really easy to create a build job for a GitHub project:</p>
-<p><img src="/img/AppVeyor-General.png" /></p>
+<p><img src="/img/AppVeyor-General.png" alt="" /></p>
 <p>The .NET Version Manager (DNVM) is already installed and you only need to figure out which run-time is used by default. I used the build output to see the results of the &quot;dnvm&quot; commands. Finally I choosed the way to install the needed beta-8 with the batch scripts, every time the build starts:</p>
-<p><img src="/img/AppVeyor-Environment.png" /></p>
-<pre><code>dnvm update-self
+<p><img src="/img/AppVeyor-Environment.png" alt="" /></p>
+<pre><code class="language-batch">dnvm update-self
 dnvm install 1.0.0-beta8 -a x86 -r coreclr -OS win 
 dnvm alias lccoreclr 1.0.0-beta8 -a x86 -r coreclr -OS win 
 dnvm install 1.0.0-beta8 -a x86 -r clr -OS win
 dnvm alias lcclr 1.0.0-beta8 -a x86 -r clr -OS win
 </code></pre>
-
 <p>For the builds and the tests I also used the batch command mode with the following lines:</p>
 <p>Build:</p>
-<p><img src="/img/AppVeyor-Build.png" /></p>
-<pre><code>cd LightCore 
+<p><img src="/img/AppVeyor-Build.png" alt="" /></p>
+<pre><code class="language-batch">cd LightCore 
 dnvm use lccoreclr 
 dnu restore 
 dnu build
 </code></pre>
-
 <p>Test:</p>
-<p><img src="/img/AppVeyor-Tests.png" /></p>
-<pre><code>cd ..\LightCore.Tests 
+<p><img src="/img/AppVeyor-Tests.png" alt="" /></p>
+<pre><code class="language-batch">cd ..\LightCore.Tests 
 dnvm use lccoreclr 
 dnu restore 
 dnx test 
 </code></pre>
-
 <p><strong>Show the build state</strong></p>
 <p>Finally I'm able to copy a small piece of MarkDown code, which I can use in the readme.md file in the GitHub repository to show the current build state:</p>
-<p><img src="/img/AppVeyor-Badge.png" /></p>
-<pre><code>[![Build status](https://ci.appveyor.com/api/projects/status/et1fpjlmnsrkw3mv?svg=true)](https://ci.appveyor.com/project/JuergenGutsch/lightcore)
+<p><img src="/img/AppVeyor-Badge.png" alt="" /></p>
+<pre><code class="language-markdown">[![Build status](https://ci.appveyor.com/api/projects/status/et1fpjlmnsrkw3mv?svg=true)](https://ci.appveyor.com/project/JuergenGutsch/lightcore)
 </code></pre>
-
 <p><img src="https://ci.appveyor.com/api/projects/status/et1fpjlmnsrkw3mv?svg=true" alt="Build Status" /></p>
 <p>As you can see, it is pretty simple to use and handle AppVeyor. I'm sure I'll also use AppVeyor for my other open source project, the &quot;SimpleObjectStore&quot;. But I need to move that library to .NET Core first. ;)</p>
-
 		
 	<footer>
 		<div>
@@ -113,8 +108,8 @@ dnx test
 			</p>
 		</div>
 		<div id="page-navigation clear"> 
-			<div class="left">  </div> 
-			<div class="right">  </div> 
+			<div class="left">  <a href="/2015/11/16/lightcore20.html" title="Previous Post: LightCore 2.0">&larr; LightCore 2.0</a>  </div> 
+			<div class="right">  <a href="/2015/11/20/move-libraries-to-net-core.html" title="next Post: Moving .NET libraries to .NET Core">Moving .NET libraries to .NET Core &rarr; </a>  </div> 
 			<div class="clear">&nbsp;</div>
 		</div> 
 				
@@ -192,7 +187,7 @@ dnx test
 				</div>
 			</div>
 		</div>
-		<!--<script src="/js/prism.js"></script>-->
+		<script src="/js/prism.js"></script>
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

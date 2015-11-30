@@ -10,7 +10,7 @@
 		<title>LightCore 2.0</title>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<!--<link href="/css/prism.css" rel="stylesheet" type="text/css" />-->
+		<link href="/css/prism.css" rel="stylesheet" type="text/css" />
 		<link href="/css/style.css" rel="stylesheet" type="text/css" />
 		<link href="/css/jquery.cookiebar.css" rel="stylesheet" type="text/css"/>
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -62,11 +62,11 @@
 	
 	<p>At the MVP Summit 2015 we had a Hackthon with the guys from the ASP.NET product group to support ASP.NET 5. There were Ideas to improve the documentation, to upgrade samples to the newest beta version or to upgrade older libraries to .NET Core.</p>
 <p>It was Albert Weinert who asked me to upgrade LightCore to .NET Core. The more I thought about this idea, the more I liked it. So I decided to move LightCore to .Net Core :)</p>
-<p>To change the main library wasn't a big deal. I simply created a new DNX library and added the existing code files to the new libraries. I had to solve only three small issues, which is explained a little later. </p>
+<p>To change the main library wasn't a big deal. I simply created a new DNX library and added the existing code files to the new libraries. I had to solve only three small issues, which is explained a little later.</p>
 <p>The biggest effort was to change all the unit tests from NUnit to Xunit, because NUnit is unfortunately not yet compatible to .NET Core. While changing the test framework I also changed the assertions to FluentAssertion to be save in the future, if we need to change the the test framework again.</p>
 <h2>Current status</h2>
 <p>In the new version I did a hard cut with Silverlight and the Compact Framework. I don't want to support this old versions. If the .NET core libraries are compatible with that two frameworks, this will only be by accident ;)</p>
-<p>This version will support .NET Core 5, UWP10, .NET Framework and Mono. ASP.NET 4.6 and ASP.NET 5 is also supported. </p>
+<p>This version will support .NET Core 5, UWP10, .NET Framework and Mono. ASP.NET 4.6 and ASP.NET 5 is also supported.</p>
 <p>The XAML-Reader is not available in .NET Core, which means the XAML configuration will only work in with .NET Framework. In .NET Core a JSON configuration should be used instead, which is additionally available for all other Frameworks. The configuration by code is still possible and is the recommended way to configure the IoC container.</p>
 <p>The old web integration will not be changed, to stay compatible to MVC 3 and 4. This library only uses the new .NET Framework version of the LightCore main library. Additionally we will add a ASP.NET 5 integration to replace the build in IoC with LightCore.</p>
 <p>The ThreadSingeltonLifecycle is currently not working in the .NET Core version, because System.Threading.Thread is not available in .NET Core. We need to find another solution to identify the current thread. This live-cycle only works in .NET Framework.</p>
@@ -83,7 +83,6 @@
 <p>As already written, we need to change the web integrations and the samples, documentations and the performance tests, though. You are able to follow the current development process on the related feature branch: <a href="https://github.com/juergengutsch/lightcore/tree/jg/portable">https://github.com/juergengutsch/lightcore/tree/jg/portable</a></p>
 <p>It would be pretty cool, if you would contribute some ideas, suggestions and issues directly on GitHub. Please also feel free to send us code contributions via pull requests :)</p>
 <p>We would like to make LightCore one of the best IoC containers for .NET Core :)</p>
-
 		
 	<footer>
 		<div>
@@ -95,8 +94,8 @@
 			</p>
 		</div>
 		<div id="page-navigation clear"> 
-			<div class="left">  </div> 
-			<div class="right">  </div> 
+			<div class="left">  <a href="/2015/11/16/myfirstpost.html" title="Previous Post: My First Post">&larr; My First Post</a>  </div> 
+			<div class="right">  <a href="/2015/11/17/build-lightcore-with-appveyor.html" title="next Post: AppVeyor: A simple build server for open source projects">AppVeyor: A simple build server for open source projects &rarr; </a>  </div> 
 			<div class="clear">&nbsp;</div>
 		</div> 
 				
@@ -174,7 +173,7 @@
 				</div>
 			</div>
 		</div>
-		<!--<script src="/js/prism.js"></script>-->
+		<script src="/js/prism.js"></script>
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
