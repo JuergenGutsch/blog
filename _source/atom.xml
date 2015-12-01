@@ -1,0 +1,29 @@
+---
+layout: nil
+---
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ASP.NET Hacker</title>
+  <link href="http://asp.net-hacker.rocks/"/>
+  <link type="application/atom+xml" rel="self" href="http://asp.net-hacker.rocks/atom.xml"/>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>http://asp.net-hacker.rocks/</id>
+  <author>
+    <name>Jürgen Gutsch</name>
+    <email>juergen@gutsch-online.de</email>
+  </author>
+
+  {% for post in site.posts %}
+  <entry>
+    <id>http://asp.net-hacker.rocks{{ post.url }}</id>
+    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks{{ post.url }}"/>
+    <title>{{ post.title | xml_escape }}</title>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <author>
+      <name>Jürgen Gutsch</name>
+      <uri>http://asp.net-hacker.rocks/</uri>
+    </author>
+    <content type="html">{{ post.content | xml_escape }}</content>
+  </entry>
+  {% endfor %}
+</feed>

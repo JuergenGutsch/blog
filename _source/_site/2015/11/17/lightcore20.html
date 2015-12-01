@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta content="en-us" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<title>LightCore 2.0</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link href="/css/prism.css" rel="stylesheet" type="text/css" />
+		<link href="/css/style.css" rel="stylesheet" type="text/css" />
+		<link href="/css/jquery.cookiebar.css" rel="stylesheet" type="text/css"/>
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		
+		<meta property="og:title" content="LightCore 2.0" />
+		<meta property="og:site_name" content="ASP.NET Hacker">
+		<meta property="og:url" content="http://asp.net-hacker.rocks/2015/11/17/lightcore20.html" />
+		<meta property="og:description" content="To use LightCore on .NET Core applications I started to move all the LightCore libraries to DNX Libraries." />
+		<meta property="fb:app_id" content="126274111070499" />
+		<meta property="og:type" content="article" />
+		<meta property="og:locale" content="en_US" />		
+		<meta property="article:author" content="https://www.facebook.com/juergen.gutsch" />
+		<meta property="article:publisher" content="https://www.facebook.com/juergen.gutsch" />
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@sharpcms" />
+		<meta name="twitter:title" content="LightCore 2.0" />
+		<meta name="twitter:description" content="To use LightCore on .NET Core applications I started to move all the LightCore libraries to DNX Libraries." />
+		<meta name="twitter:image" content="http://asp.net-hacker.rocks/img/cardlogo-dark.png" />
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<a href="/" id="home" title="Home" alt="Home"><img src="/img/logo-dark.png" alt="ASP.NET Hacker" /></a>
+				<div class="section">
+					<ul>
+						<li><a href="/about.html">about</a></li>
+						<li id="feedlink"><a href="http://feeds.feedburner.com/jgutsch"><span class="fa fa-rss">&nbsp;</span> feed</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<article>
+	<header>
+		<h1> LightCore 2.0 </h1>
+		<p class="postdate">Jürgen Gutsch - 17 November, 2015</p>
+		<ul class="postdate">
+		
+			<li><a href="#">LightCore</a></li>
+		
+			<li><a href="#">IoC</a></li>
+		
+			<li><a href="#">Dependency Injection</a></li>
+		
+			<li><a href="#">Open Source</a></li>
+		
+		</ul>
+	</header>
+	
+	<p>At the MVP Summit 2015 we had a Hackthon with the guys from the ASP.NET product group to support ASP.NET 5. There were Ideas to improve the documentation, to upgrade samples to the newest beta version or to upgrade older libraries to .NET Core.</p>
+<p>It was <a href="http://blog.der-albert.com/">Albert Weinert</a> who asked me to move <a href="http://lightcore.ch">LightCore</a> to .NET Core. The more I thought about this idea, the more I liked it. So I decided to move LightCore to .Net Core :)</p>
+<p>To change the main library wasn't a big deal. I simply created a new DNX library and added the existing code files to the new libraries. I had to solve only three small issues, which is explained a little later.</p>
+<p>The biggest effort was to change all the unit tests from NUnit to Xunit, because NUnit was unfortunately not compatible to .NET Core. While changing the test framework I also changed the assertions to FluentAssertion to be save in the future, if we need to change the the test framework again.</p>
+<blockquote>
+<p>Now, with the version 3.0.0 NUnit supports .NET Core (Universal Windows Apps 10+, DNX Core 5+) <a href="https://www.nuget.org/packages/NUnit/">https://www.nuget.org/packages/NUnit/</a></p>
+</blockquote>
+<h2>Current status</h2>
+<p>In the new version I did a hard cut with Silverlight and the Compact Framework. I don't want to support this old frameworks. If the .NET core libraries are compatible with that two frameworks, this will only be by accident ;)</p>
+<p>This version will support .NET Core 5, UWP10, .NET Framework and Mono. ASP.NET 4.6 and ASP.NET 5 is also supported.</p>
+<p>The XAML-Reader is not available in .NET Core, which means the XAML configuration will only work in with .NET Framework. In .NET Core a JSON configuration should be used instead, which is additionally available for all other Frameworks. The configuration by code is still possible and is the recommended way to configure the IoC container.</p>
+<p>The old web integration will not be changed, to stay compatible to MVC 3 and 4. This library only uses the new .NET Framework version of the LightCore main library. Additionally we will add a ASP.NET 5 integration to replace the build in IoC with LightCore.</p>
+<p>The ThreadSingeltonLifecycle is currently not working in the .NET Core version, because System.Threading.Thread is not available in .NET Core. We need to find another solution to identify the current thread. This live-cycle only works in .NET Framework.</p>
+<p>In case of reflection to get the properties to inject, the BindingFlags.SetProperty is not available in .NET Core. This means there are possibly some performance issues, while fetching and validating the property setter.</p>
+<p>Another issue is the CommonServiceLocator, because the ServiceLocatorImplBase of the Microsoft.Practices.ServiceLocation is also not yet available in .NET Core. So the CommonServiceLocator is only working with .NET Framework. Maybe it is needed to build an own ServiceLocator.</p>
+<p>With the unit tests of LightCore.Configuration we had problems with three tests which were failing, if they are not running individually. This is because the Xunit tests where run in parallel and the RegistrationLoader in LightCore is not ThreadSave. This guy mus not be thread save, but we needed to wrap all tests with an lock statement which are using RegistrationLoader.Instance.Register() to solve that problem.</p>
+<p>A public build server is set up with AppVeyor, but we also need to integrate the other libraries into this build.</p>
+<h2>More ideas</h2>
+<ul>
+<li>Property injection should only work with an marker attribute to improve the performance</li>
+<li>Some users want to have the named instances back in LightCore. I believe we should add this feature again. It is  definitely not a nice pattern to use named instances, but as always in the real world we can't use all the nice patterns every time</li>
+</ul>
+<h2>Call for contributions</h2>
+<p>As already written, we need to change the web integrations and the samples, documentations and the performance tests, though. You are able to follow the current development process on the related feature branch: <a href="https://github.com/juergengutsch/lightcore/tree/jg/portable">https://github.com/juergengutsch/lightcore/tree/jg/portable</a></p>
+<p>It would be pretty cool, if you would contribute some ideas, suggestions and issues directly on GitHub. Please also feel free to send us code contributions via pull requests :)</p>
+<p>We would like to make LightCore one of the best IoC containers for .NET Core :)</p>
+		
+	<footer>
+		<div>
+			<p>
+				<img src="/img/guj.png" alt="Jürgen Gutsch" />
+				<strong>Jürgen Gutsch</strong><br>
+				<a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br>
+				<span>.NET junkie, addicted to web and software development, clean coder, MVP for Visual Studio and Development Technologies</span>
+			</p>
+		</div>
+		<div id="page-navigation clear"> 
+			<div class="left">  <a href="/2015/11/15/myfirstpost.html" title="Previous Post: My First Post with Pretzel">&larr; My First Post with Pretzel</a>  </div> 
+			<div class="right">  <a href="/2015/11/19/build-lightcore-with-appveyor.html" title="next Post: AppVeyor: A simple build server for open source projects">AppVeyor: A simple build server for open source projects &rarr; </a>  </div> 
+			<div class="clear">&nbsp;</div>
+		</div> 
+				
+		
+		<div id="disqus_thread"></div>
+		<script>
+		/**
+		* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+		*/
+		
+		var disqus_config = function () {
+			this.page.url = location.href; // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = location.pathname; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		};
+		
+		(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		
+		s.src = '//aspnethacker.disqus.com/embed.js';
+		
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+		})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+		
+	</footer>
+</article>
+			</div>
+			<div id="footer">
+				<div class="left">
+					<p>Friends blogs</p>
+					<ul>
+						<li><a target="_blank" href="http://www.aspnetzone.de/blogs/stefanfalz/">Stefan Falz</a></li>
+						<li><a target="_blank" href="http://blogs.dotnetgerman.com/">DotNetGerman Bloggers</a></li>
+						<li><a target="_blank" href="https://www.norberteder.com/">Norbert Eder</a></li>
+						<li><a target="_blank" href="https://thomasbandt.com/">Thomas goes .NET</a></li>
+						<li><a target="_blank" href="http://blog.alexonasp.net/">Alexander Zeitler</a></li>
+						<li><a target="_blank" href="http://www.karsan.de/">Karsten Samaschke</a></li>
+						<li><a target="_blank" href="http://weblogs.asp.net/scottgu/default.aspx">ScottGu's Blog</a></li>
+						<li><a target="_blank" href="http://blog.codeinside.eu/">Robert Mühsig & Oliver Guhr</a></li>
+						<li><a target="_blank" href="http://blog.ppedv.de/author/hannesp.aspx">Hannes Preishuber</a></li>
+						<li><a target="_blank" href="http://www.hanselman.com/blog/">Scott Hanselman</a></li>
+						<li><a target="_blank" href="http://weblog.west-wind.com/">Rick Strahl's Web Log</a></li>
+						<li><a target="_blank" href="http://odetocode.com/blogs/all">K. Scott Allen</a></li>
+						<li><a target="_blank" href="http://davidfowl.com/">David Fowler</a></li>
+					</ul>
+				</div>
+				<div class="right">
+					<p>My favorite Books</p>
+					<ul>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/3955619869/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=3955619869&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=CGQXKRBPO6Q6JKWY">Entwurfsmuster von Kopf bis Fuß (ger)</a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/0321545613/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=0321545613&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=MBAMTH7U7RZNQBIM">Framework Design Guidelines</a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/3826655486/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=3826655486&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=F7G5QTOC3DAESHR3">Clean Code: A Handbook of Agile Software Craftsmanship </a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/3826690214/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=3826690214&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=SVR5IU6AKYZUJ5BG">Effektives Arbeiten mit Legacy Code. Refactoring und Testen bestehender Software (ger)</a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/B00L6K4SQU/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=B00L6K4SQU&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=35KMIAWR6SRLG3LX">Why Software Sucks...and What You Can Do about It</a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/3446223096/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=3446223096&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=SRL355UJYMSA4XYY">Der Pragmatische Programmierer (ger)</a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/382669712X/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=382669712X&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=YV7II2PJAALC4VOW">The Art Of Unit Testing</a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/B00MEYK0SC/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=B00MEYK0SC&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=ZBLKLEPAR2RVWZB2">Test Driven Development: By Example</a></li>
+		            </ul>
+				</div>
+				<div class="clear"></div>
+				<div>					
+                    <ul class="social-icons">
+                        <li><a href="https://twitter.com/sharpcms" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/juergen.gutsch" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://github.com/JuergenGutsch" target="_blank"><i class="fa fa-github"></i></a></li>
+                        <li><a href="https://bitbucket.org/JuergenGutsch" target="_blank"><i class="fa fa-bitbucket"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/juergengutsch" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://www.xing.com/profiles/Juergen_Gutsch2" target="_blank"><i class="fa fa-xing"></i></a></li>
+                        <li><a href="http://feeds.feedburner.com/jgutsch" target="_blank"><i class="fa fa-rss"></i></a></li>
+                    </ul>
+
+				</div>
+			</div>
+		</div>
+		<script src="/js/prism.js"></script>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			
+			ga('create', 'UA-390207-7', 'auto');
+			ga('send', 'pageview');
+			
+		</script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>		
+		<script type="text/javascript" src="/js/jquery.cookiebar.js"></script>		
+		<script>
+			if($){
+				$(document).ready(function(){
+					$.cookieBar({
+					});
+				});
+			}
+		</script>
+	</body>
+</html>

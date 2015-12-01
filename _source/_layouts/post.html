@@ -1,0 +1,59 @@
+---
+layout: layout
+---
+
+<article>
+	<header>
+		<h1> {{page.title}} </h1>
+		<p class="postdate">{{ page.author }} - {{ page.date | date: "%e %B, %Y"  }}</p>
+		<ul class="postdate">
+		{% for tag in page.tags %}
+			<li><a href="#">{{ tag }}</a></li>
+		{% endfor %}
+		</ul>
+	</header>
+	
+	{{ content }}
+		
+	<footer>
+		<div>
+			<p>
+				<img src="/img/guj.png" alt="Jürgen Gutsch" />
+				<strong>Jürgen Gutsch</strong><br>
+				<a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br>
+				<span>.NET junkie, addicted to web and software development, clean coder, MVP for Visual Studio and Development Technologies</span>
+			</p>
+		</div>
+		<div id="page-navigation clear"> 
+			<div class="left"> {% if page.previous.url %} <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}">&larr; {{page.previous.title}}</a> {% endif %} </div> 
+			<div class="right"> {% if page.next.url %} <a href="{{page.next.url}}" title="next Post: {{page.next.title}}">{{page.next.title}} &rarr; </a> {% endif %} </div> 
+			<div class="clear">&nbsp;</div>
+		</div> 
+				
+		{% if page.comments == true %}
+		<div id="disqus_thread"></div>
+		<script>
+		/**
+		* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+		*/
+		
+		var disqus_config = function () {
+			this.page.url = location.href; // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = location.pathname; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		};
+		
+		(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		
+		s.src = '//aspnethacker.disqus.com/embed.js';
+		
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+		})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+		{% endif %}
+	</footer>
+</article>
+

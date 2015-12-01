@@ -1,0 +1,28 @@
+pretzel: 
+    engine: liquid
+    
+exclude:
+- .vscode
+    
+categories: 
+- cat 1
+- cat 2
+
+
+tags: 
+- Me
+- News
+- LightCore
+- IoC
+- Dependency Injection
+- Open Source
+- ASP.NET 5
+- MVC 6
+- View Components
+- Continuous Deployment
+- Continuous integration
+- Build
+- AppVeyor
+- .NET Core
+- Libraries
+- DNX

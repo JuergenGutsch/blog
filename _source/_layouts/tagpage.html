@@ -1,0 +1,28 @@
+---
+layout: layout
+---
+
+<article>
+	<header>
+		<h1> {{page.title}} </h1>		
+	</header>
+
+	<ul>
+	{% for post in site.tags[page.tag] %}
+		<li>
+			{{ post.date | date: "%B %d, %Y" }}: <a href="{{ post.url }}">{{ post.title }}</a>
+		</li>
+	{% endfor %}
+	</ul>
+	
+	<footer>
+		<div>
+			<p>
+				<img src="/img/guj.png" alt="Jürgen Gutsch" />
+				<strong>Jürgen Gutsch</strong><br>
+				<a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br>
+				<span>.NET junkie, addicted to web and software development, clean coder, MVP for Visual Studio and Development Technologies</span>
+			</p>
+		</div>
+	</footer>
+</article>

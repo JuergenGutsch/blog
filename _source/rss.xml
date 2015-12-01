@@ -1,0 +1,27 @@
+---
+layout: nil
+---
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>ASP.NET Hacker</title>
+    <link>http://asp.net-hacker.rocks/</link>
+    <atom:link href="http://asp.net-hacker.rocks/rss.xml" rel="self" type="application/rss+xml" />
+    <description>This feed containes technical articles about web development with ASP.NET and some more things about .NET and related technologies</description>
+    <language>en-us</language>
+    <pubDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+    <lastBuildDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %z" }}</lastBuildDate>
+
+    {% for post in site.posts %}
+    <item>
+      <title>{{ post.title | xml_escape }}</title>
+      <link>http://asp.net-hacker.rocks{{ post.url }}</link>
+      <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+      <author>Jürgen Gutsch</author>
+      <guid>http://asp.net-hacker.rocks{{ post.url }}</guid>
+      <description>{{ post.content | xml_escape }}</description>
+    </item>
+    {% endfor %}
+
+  </channel> 
+</rss>

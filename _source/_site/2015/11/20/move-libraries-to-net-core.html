@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta content="en-us" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
+		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
+		<title>Moving .NET libraries to .NET Core</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link href="/css/prism.css" rel="stylesheet" type="text/css" />
+		<link href="/css/style.css" rel="stylesheet" type="text/css" />
+		<link href="/css/jquery.cookiebar.css" rel="stylesheet" type="text/css"/>
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		
+		<meta property="og:title" content="Moving .NET libraries to .NET Core" />
+		<meta property="og:site_name" content="ASP.NET Hacker">
+		<meta property="og:url" content="http://asp.net-hacker.rocks/2015/11/20/move-libraries-to-net-core.html" />
+		<meta property="og:description" content="Moving .NET libraries to .NET Core is a bit tricky and you need to know .NET Core and portable libraries. In this post I'll tell you how to move your .NET libary to .NET Core using my own open source project 'Simple Object Store' as an example." />
+		<meta property="fb:app_id" content="126274111070499" />
+		<meta property="og:type" content="article" />
+		<meta property="og:locale" content="en_US" />		
+		<meta property="article:author" content="https://www.facebook.com/juergen.gutsch" />
+		<meta property="article:publisher" content="https://www.facebook.com/juergen.gutsch" />
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@sharpcms" />
+		<meta name="twitter:title" content="Moving .NET libraries to .NET Core" />
+		<meta name="twitter:description" content="Moving .NET libraries to .NET Core is a bit tricky and you need to know .NET Core and portable libraries. In this post I'll tell you how to move your .NET libary to .NET Core using my own open source project 'Simple Object Store' as an example." />
+		<meta name="twitter:image" content="http://asp.net-hacker.rocks/img/cardlogo-dark.png" />
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<a href="/" id="home" title="Home" alt="Home"><img src="/img/logo-dark.png" alt="ASP.NET Hacker" /></a>
+				<div class="section">
+					<ul>
+						<li><a href="/about.html">about</a></li>
+						<li id="feedlink"><a href="http://feeds.feedburner.com/jgutsch"><span class="fa fa-rss">&nbsp;</span> feed</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<article>
+	<header>
+		<h1> Moving .NET libraries to .NET Core </h1>
+		<p class="postdate">Jürgen Gutsch - 20 November, 2015</p>
+		<ul class="postdate">
+		
+			<li><a href="#">.NET Core</a></li>
+		
+			<li><a href="#">Libraries</a></li>
+		
+			<li><a href="#">DNX</a></li>
+		
+		</ul>
+	</header>
+	
+	<p>At the MVP Summit 2015 <a href="http://blog.der-albert.com/">Albert Weinert</a> told us that ASP.NET has a huge problem: Almost all of our favorite tools are not usable with .NET Core. Many unit test frameworks, IoC containers,  almost all mocking frameworks will not work with .NET Core and needs to be moved to DNX libraries to get portable. Additionally almost all mocking frameworks are based on the Castle.Core library, which also needs to be moved to be portable.</p>
+<p>Currently I'm working at <a href="http://lightcore.ch">LightCore</a> to make it compatible to .NET Core, to make the world a little better ;) Hopefully. This needs some steps to do. More details are in a separate blog post about <a href="/2015/11/17/lightcore20.html">LightCore 2.0</a>. Because the unit tests of LightCore don't use mocking tools this was easier than expected.</p>
+<p>With this post I want to tell you, what you need to do to move your library to .NET Core. I will use the 'Simple Object Store' to make a step by step tutorial. At the end my open source library will be compatible with .NET Core :)</p>
+<blockquote>
+<h3>But why should I do this? Is this future proof? Does the effort make sense?</h3>
+<p>At first I need to know that DNX projects (that's the name of the .NET Core libraries) are a kind of portable libraries. The only difference is that portable class libraries building a single assembly and DNX projects creating a NuGet package. All the other stuff is equal. This means the the libraries are compatible to many different platforms and frameworks. If I build a DNX library, I can use this library in .NET Core, .NET Framework, UWP and Mono. This should answer the questions above.</p>
+</blockquote>
+<h2>The current state of the Simple Object Store</h2>
+<p>Currently the solution includes many framework specific projects with linked source files to build against different Framework versions. This needs to be replaced with one single DNX project. I don't want to support frameworks lower than .NET 4.0 (Please tell me if you need a build for a lower version than 4.0.)</p>
+<p>That means I have four projects for the SimpleObjectStore and the same number of projects for the AzureStorageProviders. And I have two test projects, one for the main library and one for the providers library.</p>
+<p>The goal is to have four different libraries instead of 10.</p>
+<h2>Step 1: Convert the main library</h2>
+<p>In the Solution I remove the main library and create a new DNX library with the same name. I need to rename old the project folder before. I Add all the existing code files into the new DNX project After that I need to add the frameworks I want to support and to update the dependencies in the project.json to get the project building.</p>
+<h2>Step 2: Convert the providers library</h2>
+<p>To get the AzureStorageProviders library running on .NET Core I have to do exactly the same for as for the main library. Additionally I need to add a reference to the main library. To get the right reference I have to add a dependency to the main project without a version number. (If I would add a version number, the build look for an existing NuGet package on nuget.org)</p>
+<h2>Step 3: Converting the unit test projects</h2>
+<p>Currently I'm using NUnit to test the SimpleObjectStore. I need to decide whether to change to Xunit or to use the new NUnit 3.0.0 portable build.</p>
+<p>I'll give the new NUnit a try. In the tutorial about using the portable build, they show the way to use a DNX console application to create a test project. I disagree with that. I would like to have a separate DNX console application as a NUnit runner. This should work in the same way as the Xunit runner. I just created it in a separate project.</p>
+<p>Because I have the separate runner I can use the same way as in Step 1 to create DNX libraries for the test projects. Additionally I add a reference to the NUnit runner and add a command called test, which runs the Runner and passes the current test library.</p>
+<pre><code class="language-json">&quot;commands&quot;: {
+	&quot;test&quot;: &quot;nunit.runner.dnx&quot;
+}
+</code></pre>
+<p>(I use the NUnit namespace because I want to contribute this runner to the NUnit project. I use it here as a kind of dog-fooding to test the runner.)</p>
+<p>If this is done, we need to get this projects compiled. I did this, by try and error, building, fixing, building, fixing, and so on... The old NUnit API is almost equal to the new NUnit 3.0.0 API and there is less to do than expected.</p>
+<h2>Step 4: Add a CI server</h2>
+<p>To get this compiled and published I also use AppVeyor as a favorite CI server i the same way as written in the <a href="/2015/11/17/build-lightcore-with-appveyor.html">last post about Building LightCore 2.0</a></p>
+<h2>Final words</h2>
+<p>Hopefully this post will help you to make your libraries running on .NET Core and any other  platform and framework. As you can see this isn't really a big deal. You need to know some small things about DNX libraries to create packages which are targeting as many platforms as possible. From my point of view, with the new possibilities given by .NET Core it is really important to get ready to go the same way as Microsoft. Prepare your .NET libraries to get also used on Linux and Mac. That's pretty awesome. Have you really thought about that a few years ago? ;)</p>
+<p>A pretty detailed tutorial about how to move libraries to DNX was written by Marc Gravell: <a href="http://blog.marcgravell.com/2015/11/the-road-to-dnx-part-1.html">http://blog.marcgravell.com/2015/11/the-road-to-dnx-part-1.html</a></p>
+		
+	<footer>
+		<div>
+			<p>
+				<img src="/img/guj.png" alt="Jürgen Gutsch" />
+				<strong>Jürgen Gutsch</strong><br>
+				<a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br>
+				<span>.NET junkie, addicted to web and software development, clean coder, MVP for Visual Studio and Development Technologies</span>
+			</p>
+		</div>
+		<div id="page-navigation clear"> 
+			<div class="left">  <a href="/2015/11/19/build-lightcore-with-appveyor.html" title="Previous Post: AppVeyor: A simple build server for open source projects">&larr; AppVeyor: A simple build server for open source projects</a>  </div> 
+			<div class="right">  <a href="/2015/11/25/viewcomponents-aspnet5.html" title="next Post: View Components in ASP.NET 5">View Components in ASP.NET 5 &rarr; </a>  </div> 
+			<div class="clear">&nbsp;</div>
+		</div> 
+				
+		
+		<div id="disqus_thread"></div>
+		<script>
+		/**
+		* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+		*/
+		
+		var disqus_config = function () {
+			this.page.url = location.href; // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = location.pathname; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		};
+		
+		(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		
+		s.src = '//aspnethacker.disqus.com/embed.js';
+		
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+		})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+		
+	</footer>
+</article>
+			</div>
+			<div id="footer">
+				<div class="left">
+					<p>Friends blogs</p>
+					<ul>
+						<li><a target="_blank" href="http://www.aspnetzone.de/blogs/stefanfalz/">Stefan Falz</a></li>
+						<li><a target="_blank" href="http://blogs.dotnetgerman.com/">DotNetGerman Bloggers</a></li>
+						<li><a target="_blank" href="https://www.norberteder.com/">Norbert Eder</a></li>
+						<li><a target="_blank" href="https://thomasbandt.com/">Thomas goes .NET</a></li>
+						<li><a target="_blank" href="http://blog.alexonasp.net/">Alexander Zeitler</a></li>
+						<li><a target="_blank" href="http://www.karsan.de/">Karsten Samaschke</a></li>
+						<li><a target="_blank" href="http://weblogs.asp.net/scottgu/default.aspx">ScottGu's Blog</a></li>
+						<li><a target="_blank" href="http://blog.codeinside.eu/">Robert Mühsig & Oliver Guhr</a></li>
+						<li><a target="_blank" href="http://blog.ppedv.de/author/hannesp.aspx">Hannes Preishuber</a></li>
+						<li><a target="_blank" href="http://www.hanselman.com/blog/">Scott Hanselman</a></li>
+						<li><a target="_blank" href="http://weblog.west-wind.com/">Rick Strahl's Web Log</a></li>
+						<li><a target="_blank" href="http://odetocode.com/blogs/all">K. Scott Allen</a></li>
+						<li><a target="_blank" href="http://davidfowl.com/">David Fowler</a></li>
+					</ul>
+				</div>
+				<div class="right">
+					<p>My favorite Books</p>
+					<ul>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/3955619869/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=3955619869&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=CGQXKRBPO6Q6JKWY">Entwurfsmuster von Kopf bis Fuß (ger)</a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/0321545613/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=0321545613&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=MBAMTH7U7RZNQBIM">Framework Design Guidelines</a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/3826655486/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=3826655486&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=F7G5QTOC3DAESHR3">Clean Code: A Handbook of Agile Software Craftsmanship </a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/3826690214/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=3826690214&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=SVR5IU6AKYZUJ5BG">Effektives Arbeiten mit Legacy Code. Refactoring und Testen bestehender Software (ger)</a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/B00L6K4SQU/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=B00L6K4SQU&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=35KMIAWR6SRLG3LX">Why Software Sucks...and What You Can Do about It</a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/3446223096/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=3446223096&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=SRL355UJYMSA4XYY">Der Pragmatische Programmierer (ger)</a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/382669712X/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=382669712X&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=YV7II2PJAALC4VOW">The Art Of Unit Testing</a></li>
+						<li><a target="_blank" href="http://www.amazon.de/gp/product/B00MEYK0SC/ref=as_li_tl?ie=UTF8&amp;camp=1638&amp;creative=6742&amp;creativeASIN=B00MEYK0SC&amp;linkCode=as2&amp;tag=gutschonline-21&amp;linkId=ZBLKLEPAR2RVWZB2">Test Driven Development: By Example</a></li>
+		            </ul>
+				</div>
+				<div class="clear"></div>
+				<div>					
+                    <ul class="social-icons">
+                        <li><a href="https://twitter.com/sharpcms" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.facebook.com/juergen.gutsch" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://github.com/JuergenGutsch" target="_blank"><i class="fa fa-github"></i></a></li>
+                        <li><a href="https://bitbucket.org/JuergenGutsch" target="_blank"><i class="fa fa-bitbucket"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/juergengutsch" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://www.xing.com/profiles/Juergen_Gutsch2" target="_blank"><i class="fa fa-xing"></i></a></li>
+                        <li><a href="http://feeds.feedburner.com/jgutsch" target="_blank"><i class="fa fa-rss"></i></a></li>
+                    </ul>
+
+				</div>
+			</div>
+		</div>
+		<script src="/js/prism.js"></script>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			
+			ga('create', 'UA-390207-7', 'auto');
+			ga('send', 'pageview');
+			
+		</script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>		
+		<script type="text/javascript" src="/js/jquery.cookiebar.js"></script>		
+		<script>
+			if($){
+				$(document).ready(function(){
+					$.cookieBar({
+					});
+				});
+			}
+		</script>
+	</body>
+</html>
