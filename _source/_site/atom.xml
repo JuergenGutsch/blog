@@ -3,13 +3,44 @@
   <title>ASP.NET Hacker</title>
   <link href="http://asp.net-hacker.rocks/"/>
   <link type="application/atom+xml" rel="self" href="http://asp.net-hacker.rocks/atom.xml"/>
-  <updated>2015-12-01T16:12:29.3175613+01:00</updated>
+  <updated>2015-12-01T18:56:01.8959292+01:00</updated>
   <id>http://asp.net-hacker.rocks/</id>
   <author>
     <name>Jürgen Gutsch</name>
     <email>juergen@gutsch-online.de</email>
   </author>
 
+  
+  <entry>
+    <id>http://asp.net-hacker.rocks/2015/12/02/NuGet-3-3.html</id>
+    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks/2015/12/02/NuGet-3-3.html"/>
+    <title>Microsoft Fixed the NuGet Package Explorer with the Version 3.3</title>
+    <updated>2015-12-02T00:00:00+01:00</updated>
+    <author>
+      <name>Jürgen Gutsch</name>
+      <uri>http://asp.net-hacker.rocks/</uri>
+    </author>
+    <content type="html">&lt;p&gt;in the summer this year the NuGet Package Explorer got an update, which changes the UI completely. This new UI wasn&apos;t really intuitive to use and confuses many users.&lt;/p&gt;
+&lt;p&gt;With the Update 1 of Visual Studio 2015 MIcrosoft also delivers an update of the NuGet Package Explorer. Now the UI is pretty much cleaner and easier to understand. There are still some things to do, but if you compare to the previews UI this is much better.&lt;/p&gt;
+&lt;p&gt;The first thing you will see are the new tabs in the left upper area. Here you can change the list to browse all or all found packages, you can view the installed packages and now you have a clean list of the packages which have new versions available:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/nuget33/tabs.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;As you can see, there are the number of updates shown in the third tab. Also the selection of the package source is easily done in the right upper area, where you also able to access the NuGet option:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/nuget33/sources.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;If you take a look at the package list, there is another pretty cool feature. If there is a package found which delivers exactly the same thing as an Bower package does, you will see a small message with a link in it. This message tells you that you should use Bower to install this package. The link opens up the new Bower package manager. Bower is the cool package manager which should be used to add client side libraries to web projects:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/nuget33/usebower.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;If you go the updates by clicking the Updates tab, you&apos;ll see another nice thing. Now you can update as many packages as you want. You can use a checkbox on the left side of each package to select the packages you want to install. In the past it only was possible to update one or all packages:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/nuget33/update.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;On the right side of each package in that list, Microsoft added one to two action buttons to quick do something with that package. Depending on which tab you are. You can quick install in the &amp;quot;Browse&amp;quot; tab, quick uninstall on the &amp;quot;Installed&amp;quot; tab or both uninstall or update on the &amp;quot;Updates&amp;quot; tab:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/nuget33/actionbuttons.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;The NuGet Package Explorer is divided into three areas: The heading area with the tabs, the search, the package sources, a list area on the left with the list of packages and its action buttons and a kind of a summary area on the right where you will see actions and summary information about the currently selected package. The actions are completely are more detailed as with the action buttons in the list. E. g. you are able to update to a specific version, instead of the latest version only. You will see the dependencies, project and license links, descriptions and so on.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/nuget33/overview.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;The only thing what is not really on the right place are the options in the summary area. This is wrong because this options are not specific to the selected package, but some more global. From my perspective this options should be moved to the options dialog:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/nuget33/options.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;What do you thing? Update your Visual Studio to Update 1 and tell me your opinion about the new UI of the NuGet Package Explorer.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/nuget33/packagexplorer.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;I&apos;m very happy about this changes, even if I use this tool less than before, because to project.json files in DNX libraries are more comfortable from my point of view. ;)&lt;/p&gt;
+&lt;p&gt;By the way: There is a much more detailed blog post about the new Package Explorer and many more new features available on &lt;a href=&quot;http://blog.nuget.org/20151118/nuget-3-3.html&quot;&gt;http://blog.nuget.org/20151118/nuget-3-3.html&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   
   <entry>
     <id>http://asp.net-hacker.rocks/2015/12/01/vs2015u1-typescript17.html</id>

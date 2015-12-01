@@ -7,7 +7,7 @@
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 		<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
 		<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
-		<title>VS 2015 Update 1, TypeScript 1.7 and some more</title>
+		<title>DNX libraries vs. UWP libraries</title>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link href="/css/prism.css" rel="stylesheet" type="text/css" />
@@ -15,10 +15,10 @@
 		<link href="/css/jquery.cookiebar.css" rel="stylesheet" type="text/css"/>
 		<link rel="shortcut icon" href="/img/favicon.ico" />
 		
-		<meta property="og:title" content="VS 2015 Update 1, TypeScript 1.7 and some more" />
+		<meta property="og:title" content="DNX libraries vs. UWP libraries" />
 		<meta property="og:site_name" content="ASP.NET Hacker">
-		<meta property="og:url" content="http://asp.net-hacker.rocks/2015/12/01/vs2015u1-typescript17.html" />
-		<meta property="og:description" content="Yesterday there are a few great announcements by Microsoft. Let's see what are the news from Redmond" />
+		<meta property="og:url" content="http://asp.net-hacker.rocks/_drafts/2015/12/01/dnx-vs-uwp.html" />
+		<meta property="og:description" content="in this blog post I wanted to write about the differences of DNX libraries and UWP  libraries. Are there any? How do we support UWP in DNX libraries and it is possible to support .NET Core in WP libraries? Let's have a look." />
 		<meta property="fb:app_id" content="126274111070499" />
 		<meta property="og:type" content="article" />
 		<meta property="og:locale" content="en_US" />		
@@ -27,8 +27,8 @@
 
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="@sharpcms" />
-		<meta name="twitter:title" content="VS 2015 Update 1, TypeScript 1.7 and some more" />
-		<meta name="twitter:description" content="Yesterday there are a few great announcements by Microsoft. Let's see what are the news from Redmond" />
+		<meta name="twitter:title" content="DNX libraries vs. UWP libraries" />
+		<meta name="twitter:description" content="in this blog post I wanted to write about the differences of DNX libraries and UWP  libraries. Are there any? How do we support UWP in DNX libraries and it is possible to support .NET Core in WP libraries? Let's have a look." />
 		<meta name="twitter:image" content="http://asp.net-hacker.rocks/img/cardlogo-dark.png" />
 	</head>
 	<body>
@@ -45,47 +45,137 @@
 			<div id="content">
 				<article>
 	<header>
-		<h1> VS 2015 Update 1, TypeScript 1.7 and some more </h1>
+		<h1> DNX libraries vs. UWP libraries </h1>
 		<p class="postdate">Jürgen Gutsch -  1 Dezember, 2015</p>
 		<ul class="postdate">
 		
 			<li><a href="#">ASP.NET 5</a></li>
 		
-			<li><a href="#">MVC 6</a></li>
+			<li><a href="#">.NET Core</a></li>
 		
-			<li><a href="#">View Components</a></li>
+			<li><a href="#">Portable Libraries</a></li>
+		
+			<li><a href="#">Universal Windows Platform</a></li>
 		
 		</ul>
 	</header>
 	
-	<p>Yesterday, it was something like an announcement day. Let's have a look to the news from Redmond:</p>
-<h2>Visual Studio 2015 Update 1</h2>
-<p>This is what the most of us are waiting for: Microsoft released the Update 1 of Visual Studio 2015. There many improvements added to the IDE, with the debugging and navigation. See the detailed description in this blog posts:</p>
-<ul>
-<li><a href="http://blogs.msdn.com/b/visualstudio/archive/2015/11/30/visual-studio-update-1-rtm.aspx">http://blogs.msdn.com/b/visualstudio/archive/2015/11/30/visual-studio-update-1-rtm.aspx</a></li>
-<li><a href="http://blogs.msdn.com/b/dotnet/archive/2015/11/30/what-s-new-in-visual-studio-update-1-for-net-managed-languages.aspx">http://blogs.msdn.com/b/dotnet/archive/2015/11/30/what-s-new-in-visual-studio-update-1-for-net-managed-languages.aspx</a></li>
-</ul>
-<h2>TFS 2015 Update 1</h2>
-<p>Brian Harry announced the availability of TFS 2015 Update 1, which includes a lot of new things and a few bug fixes:</p>
-<ul>
-<li><a href="http://blogs.msdn.com/b/bharry/archive/2015/11/30/vs-2015-update-1-and-tfs-2015-update-1-are-available.aspx">http://blogs.msdn.com/b/bharry/archive/2015/11/30/vs-2015-update-1-and-tfs-2015-update-1-are-available.aspx</a></li>
-</ul>
-<p>This update is also available for TFS 2015 Express.</p>
-<h2>.NET Framework 4.6.1</h2>
-<p>Along with the Update 1 of Visual Studio 2015, Microsoft released .NET 4.6.1 with some improvements and big fixes in WPF and SQL Server connectivity, RyuJIT, GC and WCF:</p>
-<ul>
-<li><a href="http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx">http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx</a></li>
-</ul>
-<h2>TypeScript 1.7</h2>
-<p>Also the TypeSript team announced a new version. They highlighted to support for async and aweit in the new version 1.7:</p>
-<ul>
-<li><a href="http://blogs.msdn.com/b/typescript/archive/2015/11/30/announcing-typescript-1-7.aspx">http://blogs.msdn.com/b/typescript/archive/2015/11/30/announcing-typescript-1-7.aspx</a></li>
-</ul>
-<h2>Azure SDK 2.8.1 for .NET</h2>
-<p>Another thing what was released yesterday, is the Azure SDK 2.8.1 for .NET. See Brady Gasters blog post for more details about it:</p>
-<ul>
-<li><a href="https://azure.microsoft.com/en-us/blog/announcing-azure-sdk-2-8-1-for-net/">https://azure.microsoft.com/en-us/blog/announcing-azure-sdk-2-8-1-for-net/</a></li>
-</ul>
+	<p>Universal Windows Platform (UWP) libraries and DNX libraries are almost equal, they use the same new project type based on a project.json configuration file. Both project types are using NuGet to reference libraries. In fact these libraries are equal, except one small thing. DNX Libraries are creating NuGet Packages on build/publish and UWP libraries are creating unpacked DLLs.</p>
+<p>If you want to migrate your library to .NET Core, you can one of those project types. You only need to decide whether to create only the DLLs or to create NuGet Packages. In Both cases you are able to be compatible to .NET Core, UWP, or any other Platform or framework.</p>
+<h2>Really?</h2>
+<p>Yes, it is like this. :) In Visual Studio 2015 I created a solution with two projects. One of them is a UWP library and the other one is a DNX library:
+<img src="/img/core-vs-uwp/projects.png" alt="" /></p>
+<p>They look almost similar, but let's have a look at the project.json files. This is the project.json of the DNX library:</p>
+<pre><code class="language-jsonp">{
+  &quot;version&quot;: &quot;1.0.0-*&quot;,
+  &quot;description&quot;: &quot;ClassLibrary5 Class Library&quot;,
+  &quot;authors&quot;: [ &quot;Juergen&quot; ],
+  &quot;tags&quot;: [ &quot;&quot; ],
+  &quot;projectUrl&quot;: &quot;&quot;,
+  &quot;licenseUrl&quot;: &quot;&quot;,
+
+  &quot;frameworks&quot;: {
+    &quot;net451&quot;: { },
+    &quot;dotnet5.4&quot;: {
+      &quot;dependencies&quot;: {
+        &quot;Microsoft.CSharp&quot;: &quot;4.0.1-beta-23516&quot;,
+        &quot;System.Collections&quot;: &quot;4.0.11-beta-23516&quot;,
+        &quot;System.Linq&quot;: &quot;4.0.1-beta-23516&quot;,
+        &quot;System.Runtime&quot;: &quot;4.0.21-beta-23516&quot;,
+        &quot;System.Threading&quot;: &quot;4.0.11-beta-23516&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>And this is the project.json of the UWP library:</p>
+<pre><code class="language-jsonp">{
+  &quot;dependencies&quot;: {
+    &quot;Microsoft.NETCore.UniversalWindowsPlatform&quot;: &quot;5.0.0&quot;
+  },
+  &quot;frameworks&quot;: {
+    &quot;uap10.0&quot;: {}
+  },
+  &quot;runtimes&quot;: {
+    &quot;win10-arm&quot;: {},
+    &quot;win10-arm-aot&quot;: {},
+    &quot;win10-x86&quot;: {},
+    &quot;win10-x86-aot&quot;: {},
+    &quot;win10-x64&quot;: {},
+    &quot;win10-x64-aot&quot;: {}
+  }
+}
+</code></pre>
+<p>In the DNX libaries, you can also have a &quot;dependency&quot; item in the root to specify dependencies which can be used in both frameworks. Let's create a DNX library which supports UWP:</p>
+<pre><code class="language-jsonp">
+&quot;frameworks&quot;: {
+  &quot;net451&quot;: { },
+  &quot;dotnet5.4&quot;: {
+    &quot;dependencies&quot;: {
+      &quot;Microsoft.CSharp&quot;: &quot;4.0.1-beta-23516&quot;,
+      &quot;System.Collections&quot;: &quot;4.0.11-beta-23516&quot;,
+      &quot;System.Linq&quot;: &quot;4.0.1-beta-23516&quot;,
+      &quot;System.Runtime&quot;: &quot;4.0.21-beta-23516&quot;,
+      &quot;System.Threading&quot;: &quot;4.0.11-beta-23516&quot;
+    }
+  },
+  &quot;uap10.0&quot;: {
+    &quot;dependencies&quot;: {
+      &quot;Microsoft.NETCore.UniversalWindowsPlatform&quot;: &quot;5.0.0&quot;
+    }
+  }
+}
+</code></pre>
+<p>I added the dependency directly to the specific framework, because this guy will not be compatible with the other frameworks. This library will restore the missing packages when you save the project.json</p>
+<p>I'm also able to add .NET Core support to the UWP library:</p>
+<pre><code class="language-jsonp">&quot;frameworks&quot;: {
+  &quot;uap10.0&quot;: {
+    &quot;dependencies&quot;: {
+      &quot;Microsoft.NETCore.UniversalWindowsPlatform&quot;: &quot;5.0.0&quot;
+    }
+  },
+  &quot;dotnet5.4&quot;: {
+    &quot;dependencies&quot;: {
+      &quot;Microsoft.CSharp&quot;: &quot;4.0.1-beta-23516&quot;,
+      &quot;System.Collections&quot;: &quot;4.0.11-beta-23516&quot;,
+      &quot;System.Linq&quot;: &quot;4.0.1-beta-23516&quot;,
+      &quot;System.Runtime&quot;: &quot;4.0.21-beta-23516&quot;,
+      &quot;System.Threading&quot;: &quot;4.0.11-beta-23516&quot;
+    }
+  }
+}
+</code></pre>
+<p>The missing NuGet Packages will be restored, if you build this library. By the way: There already are conditional compiler symbols defined in the Build options to switch between .NET Core and UWP specific implementations:
+<img src="/img/core-vs-uwp/uwp-build-options.png" alt="" /></p>
+<pre><code class="language-csharp">#if NETFX_CORE
+        // access .NET Core specific APIs here
+#endif
+
+#if WINDOWS_UWP
+        // access UWP specific APIs here
+#endif
+</code></pre>
+<p>While migrating LightCore to DNX Projects I used this to differ between .NET Framework and .NET Core specific implementations:</p>
+<pre><code class="language-csharp">        public void InjectProperties(object instance)
+        {
+#if !DNXCORE50
+            instance
+                .GetType()
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty)
+                .Where(this._validPropertiesSelector)
+                .ForEach(p =&gt; p.SetValue(instance, this.Resolve(p.PropertyType), null));
+#else
+            instance
+                .GetType()
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(_validPropertiesSelector)
+                .ForEach(p =&gt; p.SetValue(instance, Resolve(p.PropertyType), null));
+#endif
+        }
+</code></pre>
+<h2>Conclusion</h2>
+<p>With this knowledge in mind it makes much more sense to migrate your library projects to DNX projects or to UWP projects to make your library compatible to many more platforms. Using this project types it is pretty simple to provide your features to much more platforms with a single code base.</p>
+<p>In the past I used multiple project files with shared code files to create libraries for more than one .NET Framework. Now I only need to add the additional framework to the project.json.</p>
 		
 	<footer>
 		<div>
@@ -98,7 +188,7 @@
 		</div>
 		<div id="page-navigation clear"> 
 			<div class="left">  <a href="/2015/11/25/viewcomponents-aspnet5.html" title="Previous Post: View Components in ASP.NET 5">&larr; View Components in ASP.NET 5</a>  </div> 
-			<div class="right">  <a href="/2015/12/02/NuGet-3-3.html" title="next Post: Microsoft Fixed the NuGet Package Explorer with the Version 3.3">Microsoft Fixed the NuGet Package Explorer with the Version 3.3 &rarr; </a>  </div> 
+			<div class="right">  <a href="/2015/12/01/vs2015u1-typescript17.html" title="next Post: VS 2015 Update 1, TypeScript 1.7 and some more">VS 2015 Update 1, TypeScript 1.7 and some more &rarr; </a>  </div> 
 			<div class="clear">&nbsp;</div>
 		</div> 
 				
