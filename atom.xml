@@ -3,13 +3,47 @@
   <title>ASP.NET Hacker</title>
   <link href="http://asp.net-hacker.rocks/"/>
   <link type="application/atom+xml" rel="self" href="http://asp.net-hacker.rocks/atom.xml"/>
-  <updated>2015-11-30T22:04:13.8158473+01:00</updated>
+  <updated>2015-12-01T07:48:26.5858231+01:00</updated>
   <id>http://asp.net-hacker.rocks/</id>
   <author>
     <name>Jürgen Gutsch</name>
     <email>juergen@gutsch-online.de</email>
   </author>
 
+  
+  <entry>
+    <id>http://asp.net-hacker.rocks/2015/12/01/vs2015u1-typescript17.html</id>
+    <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks/2015/12/01/vs2015u1-typescript17.html"/>
+    <title>VS 2015 Update 1, TypeScript 1.7 and some more</title>
+    <updated>2015-12-01T00:00:00+01:00</updated>
+    <author>
+      <name>Jürgen Gutsch</name>
+      <uri>http://asp.net-hacker.rocks/</uri>
+    </author>
+    <content type="html">&lt;p&gt;Yesterday, it was something like an announcement day. Let&apos;s have a look to the news from Redmond:&lt;/p&gt;
+&lt;h2&gt;Visual Studio 2015 Update 1&lt;/h2&gt;
+&lt;p&gt;This is what the most of us are waiting for: Microsoft released the Update 1 of Visual Studio 2015. There many improvements added to the IDE, with the debugging and navigation. See the detailed description in this blog posts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blogs.msdn.com/b/visualstudio/archive/2015/11/30/visual-studio-update-1-rtm.aspx&quot;&gt;http://blogs.msdn.com/b/visualstudio/archive/2015/11/30/visual-studio-update-1-rtm.aspx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blogs.msdn.com/b/visualstudio/archive/2015/11/30/whats-s-new-in-visual-studio-update-1-for-net-managed-languages.aspx&quot;&gt;http://blogs.msdn.com/b/visualstudio/archive/2015/11/30/whats-s-new-in-visual-studio-update-1-for-net-managed-languages.aspx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;TFS 2015 Update 1&lt;/h2&gt;
+&lt;p&gt;Brian Harry announced the availability of TFS 2015 Update 1, which includes a lot of new things and a few bug fixes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blogs.msdn.com/b/bharry/2015/11/30/vs-2015-update-1-and-tfs-2015-update-1-are-available.aspx&quot;&gt;http://blogs.msdn.com/b/bharry/2015/11/30/vs-2015-update-1-and-tfs-2015-update-1-are-available.aspx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This update is also available for TFS 2015 Express.&lt;/p&gt;
+&lt;h2&gt;.NET Framework 4.6.1&lt;/h2&gt;
+&lt;p&gt;Along with the Update 1 of Visual Studio 2015, Microsoft released .NET 4.6.1 with some improvements and big fixes in WPF and SQL Server connectivity, RyuJIT, GC and WCF:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx&quot;&gt;http://blogs.msdn.com/b/dotnet/archive/2015/11/30/net-framework-4-6-1-is-now-available.aspx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;TypeScript 1.7&lt;/h2&gt;
+&lt;p&gt;Also the TypeSript team announced a new version. They highlighted to support for async and aweit in the new version 1.7:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blogs.msdn.com/b/typescript/archive/2015/11/30/announcing-typescript-1-7.aspx&quot;&gt;http://blogs.msdn.com/b/typescript/archive/2015/11/30/announcing-typescript-1-7.aspx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   
   <entry>
     <id>http://asp.net-hacker.rocks/2015/11/25/viewcomponents-aspnet5.html</id>
