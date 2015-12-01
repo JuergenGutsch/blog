@@ -3,7 +3,7 @@
   <title>ASP.NET Hacker</title>
   <link href="http://asp.net-hacker.rocks/"/>
   <link type="application/atom+xml" rel="self" href="http://asp.net-hacker.rocks/atom.xml"/>
-  <updated>2015-12-01T07:58:32.5628059+01:00</updated>
+  <updated>2015-12-01T08:02:39.8579029+01:00</updated>
   <id>http://asp.net-hacker.rocks/</id>
   <author>
     <name>Jürgen Gutsch</name>
@@ -42,6 +42,11 @@
 &lt;p&gt;Also the TypeSript team announced a new version. They highlighted to support for async and aweit in the new version 1.7:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://blogs.msdn.com/b/typescript/archive/2015/11/30/announcing-typescript-1-7.aspx&quot;&gt;http://blogs.msdn.com/b/typescript/archive/2015/11/30/announcing-typescript-1-7.aspx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Azure SDK 2.8.1 for .NET&lt;/h2&gt;
+&lt;p&gt;Another thing what was released yesterday, is the Azure SDK 2.8.1 for .NET. See Brady Gasters blog post for more details about it:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/en-us/blog/announcing-azure-sdk-2-8-1-for-net/&quot;&gt;https://azure.microsoft.com/en-us/blog/announcing-azure-sdk-2-8-1-for-net/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
   </entry>
   
