@@ -6,9 +6,85 @@
     <atom:link href="http://asp.net-hacker.rocks/rss.xml" rel="self" type="application/rss+xml" />
     <description>This feed containes technical articles about web development with ASP.NET and some more things about .NET and related technologies</description>
     <language>en-us</language>
-    <pubDate>Di, 01 Dez 2015 18:56:01 %z</pubDate>
-    <lastBuildDate>Di, 01 Dez 2015 18:56:01 %z</lastBuildDate>
+    <pubDate>Mi, 02 Dez 2015 07:10:44 %z</pubDate>
+    <lastBuildDate>Mi, 02 Dez 2015 07:10:44 %z</lastBuildDate>
 
+    
+    <item>
+      <title>INETA Germany</title>
+      <link>http://asp.net-hacker.rocks/_drafts/2015/12/03/ineta-germany.html</link>
+      <pubDate>Do, 03 Dez 2015 00:00:00 %z</pubDate>
+      <author>Jürgen Gutsch</author>
+      <guid>http://asp.net-hacker.rocks/_drafts/2015/12/03/ineta-germany.html</guid>
+      <description>&lt;p&gt;&lt;img src=&quot;/img/ineta-deutschland-logo.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;After many years being the heads of the &lt;a href=&quot;http://ineta-deutschland.de/&quot;&gt;INETA Germany&lt;/a&gt;, Lars Keller and Karim El-Jed, will leave the INETA Germany. The reason is, that Lars is working for Microsoft Germany since November 1st and he wants to ensure that the INETA will stay independent from Microsoft. Also the co-lead Karim will focus more on supporting his own .NET user group.&lt;/p&gt;
+&lt;p&gt;This means the INETA needed two new heads and Lars found some new.&lt;/p&gt;
+&lt;p&gt;Ulrike Stirnweiss will be the new co-lead of INETA Germany. And I write this post because I have one more reason than to only write about the news: I will be the new lead and I&apos;m pretty proud to work with Uli to support the German .NET user groups with the speaker bureau and with budget to pay travel costs of the registered speakers.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Maybe you read about that INETA North America will quit until the end of 2015. At the beginning of November this Year, I talked to their lead. The main reason why they will shut down is, that there seems to be no need to support the user groups in this way. It seems the North American user groups and the available speakers are well connected and they are managing all that stuff by their own. This in general is pretty cool, but the INETA North America is not longer needed if it is like this.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We will keep the INETA Germany alive and hopefully do a little more to support the German user groups and the German .NET community in general. Also INETA Europe will stay alive to provide the European speaker bureau.&lt;/p&gt;
+&lt;p&gt;Currently I have some Ideas I will discuss with Uli and I got a few pretty cool ideas by Lars, to improve the support for the German user groups and make the INETA Germany a little more viewable in the .NET Community.&lt;/p&gt;
+&lt;p&gt;For now we will keep the current jobs as defined by Lars and Karim. That means Uli will be responsible for all things around the website, marketing, and so on and I will continue with Lars Tasks: Being responsive for the Speakers Bureau, the user groups and the sponsoring.&lt;/p&gt;
+&lt;p&gt;At the End of this post I have to say Thank You to some guys.&lt;/p&gt;
+&lt;p&gt;Thanks to Lars and Karim, who will support us in the first few months being a INETA lead. :)&lt;/p&gt;
+&lt;p&gt;Thanks to Torsten Weber who supports us in the back-end, hosting the website, mail servers, and so on. This makes this job a lot easier. :)&lt;/p&gt;
+&lt;p&gt;Thanks to our current sponsor Microsoft, which is also keeping the speaker bureau alive with the annual sponsoring. :)&lt;/p&gt;
+&lt;p&gt;If you want to be a sponsor of the INETA Germany to support the German user groups and the German .NET community please drop me an note. I&apos;ll send you detailed information about the benefits of being a sponsor.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using Pretzel</title>
+      <link>http://asp.net-hacker.rocks/_drafts/2015/12/03/using-pretzel.html</link>
+      <pubDate>Do, 03 Dez 2015 00:00:00 %z</pubDate>
+      <author>Jürgen Gutsch</author>
+      <guid>http://asp.net-hacker.rocks/_drafts/2015/12/03/using-pretzel.html</guid>
+      <description>&lt;p&gt;The first time I played around with pretzel was more than a year ago. Since than I tried to find a new blog system what is flexible, lightweight, what supports offline editing and runs on my favorite hosing platform: On Microsoft Azure.&lt;/p&gt;
+&lt;p&gt;Pretzel is a Jekyll like blogging system, which uses the same template engine and the same Markdown syntax. Pretzel adds some additional features like Azure support and a Razor template engine. I use the liquid engine which is also used in Jekyll. Almost like Jekyll it is creating a static website based on that template engine and the Markdown contents.&lt;/p&gt;
+&lt;p&gt;To install Pretzel locally, you just need to use Chocolatey:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-batch&quot;&gt;choco install pretzel -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Just a view days ago they released a new version 0.3.0, which is not yet deployed to Chocolatey. I downloaded the latest release and copied the bits to the Chocolatey install folder, which is &lt;code&gt;C:\tools\pretzel\&lt;/code&gt; in my case. This versions contains important big fixes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After Pretzel is installed you can easily start baking a pretzel blog. Just create a working folder somewhere on your machine and type&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-batch&quot;&gt;pretzel create --azure
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This command creates a new pretzel blog. That argument &lt;code&gt;--azure&lt;/code&gt; adds support to bake/compile pretzel blogs directly on a Azure Webiste.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/pretzel/create.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;The contents of your folder should look like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/pretzel/createfolder.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;That&apos;s all to create a new blog. The blog sources, the posts and the templates are inside the _source folder:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/pretzel/insidesource.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Now lets show you how it looks like in the browser. To start the blog locally you need to &lt;strong&gt;taste&lt;/strong&gt; the Pretzel blog:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-batch&quot;&gt;pretzel taste --drafts
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Add the argument &lt;code&gt;--drafts&lt;/code&gt; to also see the drafted posts. The command &lt;code&gt;taste&lt;/code&gt; starts a small web server listening to &lt;code&gt;localhost:8080&lt;/code&gt; and opens the default browser where you can start using the blog.&lt;/p&gt;
+&lt;p&gt;If it&apos;s all fine you can &lt;strong&gt;bake&lt;/strong&gt; your Pretzel blog&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-batch&quot;&gt;pretzel bake
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This command creates a folder called &lt;code&gt;_site&lt;/code&gt; inside the inside the &lt;code&gt;_source&lt;/code&gt; folder with the compiled blog inside. This is the baked Pretzel blog which is a static website, build with the templates and the posts and pages written in markdown. You can put the contents of this folder to any web server.&lt;/p&gt;
+&lt;h2&gt;Installation&lt;/h2&gt;
+&lt;p&gt;The idea was to have the blog under Git source control and automatic deploy it to the Azure website. I use GitHub to host the repository and I linked that repository to the Azure website to automatic deploy it every time I push changes to the repository. I didn&apos;t use the argument &lt;code&gt;--azure&lt;/code&gt; to create my blog, because the idea was to just push the compiled blog every time I change something or every time I create a new blog post. This means I only had the folder &lt;code&gt;_site&lt;/code&gt; under source control. This works really great, because there is nothing special. Only the compiled static web was pushed and deployed.&lt;/p&gt;
+&lt;p&gt;But this wasn&apos;t a good idea and I had some problems with this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The Markdown contents and the templates are not under source control&lt;/li&gt;
+&lt;li&gt;I need to bake the Pretzel blog before I can push.&lt;/li&gt;
+&lt;li&gt;Because the Markdown is not on GitHub pull requests are made on the compiled web and I need to merge on GitHub AND locally in the Markdown contents.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Using the argument &lt;code&gt;--azure&lt;/code&gt; while creating the Pretzel blog adds solution and a dummy project to the blog folder. The Solution also contains a website project which points to the &lt;code&gt;_site&lt;/code&gt; folder. The dummy project contains an empty class and a post build command which just bakes the Pretzel blog:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;lt;Target Name=&amp;quot;AfterBuild&amp;quot;&amp;gt;
+	&amp;lt;Exec Command=&amp;quot;pretzel.exe bake -d _source&amp;quot; /&amp;gt;
+&amp;lt;/Target&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Every time I push changes to the repository the Azure website pulls the changes, compiles the dummy project, executes that command and than some Azure-Kudu-magic happens: Kudu copies the contents of the website project to the wwwroot folder of the Azure website. It does exactly what I wan to have. If I call the Azure website within the browser I get the expected result.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;BTW: In the current version 0.3.0 the argument &lt;code&gt;--azure&lt;/code&gt; doesn&apos;t work completely correct, because it only copies the pretzel.exe to the blog folder. Since they changed the output to deploy also some additional libraries, all the depended libraries also need to be copied to the root&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/pretzel/shimcomplete.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;This looks a bit messy, but it works. They need to ILMerge all the libraries or they need to fix the &lt;code&gt;--azure&lt;/code&gt; argument&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The next step to do is to git ignore the contents of the folder _site and the contents of the folder _drafts if you don&apos;t want to publish drafts to a public repository.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Microsoft Fixed the NuGet Package Explorer with the Version 3.3</title>
@@ -72,6 +148,130 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://azure.microsoft.com/en-us/blog/announcing-azure-sdk-2-8-1-for-net/&quot;&gt;https://azure.microsoft.com/en-us/blog/announcing-azure-sdk-2-8-1-for-net/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>DNX libraries vs. UWP libraries</title>
+      <link>http://asp.net-hacker.rocks/_drafts/2015/12/01/dnx-vs-uwp.html</link>
+      <pubDate>Di, 01 Dez 2015 00:00:00 %z</pubDate>
+      <author>Jürgen Gutsch</author>
+      <guid>http://asp.net-hacker.rocks/_drafts/2015/12/01/dnx-vs-uwp.html</guid>
+      <description>&lt;p&gt;Universal Windows Platform (UWP) libraries and DNX libraries are almost equal, they use the same new project type based on a project.json configuration file. Both project types are using NuGet to reference libraries. In fact these libraries are equal, except one small thing. DNX Libraries are creating NuGet Packages on build/publish and UWP libraries are creating unpacked DLLs.&lt;/p&gt;
+&lt;p&gt;If you want to migrate your library to .NET Core, you can one of those project types. You only need to decide whether to create only the DLLs or to create NuGet Packages. In Both cases you are able to be compatible to .NET Core, UWP, or any other Platform or framework.&lt;/p&gt;
+&lt;h2&gt;Really?&lt;/h2&gt;
+&lt;p&gt;Yes, it is like this. :) In Visual Studio 2015 I created a solution with two projects. One of them is a UWP library and the other one is a DNX library:
+&lt;img src=&quot;/img/core-vs-uwp/projects.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;They look almost similar, but let&apos;s have a look at the project.json files. This is the project.json of the DNX library:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-jsonp&quot;&gt;{
+  &amp;quot;version&amp;quot;: &amp;quot;1.0.0-*&amp;quot;,
+  &amp;quot;description&amp;quot;: &amp;quot;ClassLibrary5 Class Library&amp;quot;,
+  &amp;quot;authors&amp;quot;: [ &amp;quot;Juergen&amp;quot; ],
+  &amp;quot;tags&amp;quot;: [ &amp;quot;&amp;quot; ],
+  &amp;quot;projectUrl&amp;quot;: &amp;quot;&amp;quot;,
+  &amp;quot;licenseUrl&amp;quot;: &amp;quot;&amp;quot;,
+
+  &amp;quot;frameworks&amp;quot;: {
+    &amp;quot;net451&amp;quot;: { },
+    &amp;quot;dotnet5.4&amp;quot;: {
+      &amp;quot;dependencies&amp;quot;: {
+        &amp;quot;Microsoft.CSharp&amp;quot;: &amp;quot;4.0.1-beta-23516&amp;quot;,
+        &amp;quot;System.Collections&amp;quot;: &amp;quot;4.0.11-beta-23516&amp;quot;,
+        &amp;quot;System.Linq&amp;quot;: &amp;quot;4.0.1-beta-23516&amp;quot;,
+        &amp;quot;System.Runtime&amp;quot;: &amp;quot;4.0.21-beta-23516&amp;quot;,
+        &amp;quot;System.Threading&amp;quot;: &amp;quot;4.0.11-beta-23516&amp;quot;
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And this is the project.json of the UWP library:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-jsonp&quot;&gt;{
+  &amp;quot;dependencies&amp;quot;: {
+    &amp;quot;Microsoft.NETCore.UniversalWindowsPlatform&amp;quot;: &amp;quot;5.0.0&amp;quot;
+  },
+  &amp;quot;frameworks&amp;quot;: {
+    &amp;quot;uap10.0&amp;quot;: {}
+  },
+  &amp;quot;runtimes&amp;quot;: {
+    &amp;quot;win10-arm&amp;quot;: {},
+    &amp;quot;win10-arm-aot&amp;quot;: {},
+    &amp;quot;win10-x86&amp;quot;: {},
+    &amp;quot;win10-x86-aot&amp;quot;: {},
+    &amp;quot;win10-x64&amp;quot;: {},
+    &amp;quot;win10-x64-aot&amp;quot;: {}
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the DNX libaries, you can also have a &amp;quot;dependency&amp;quot; item in the root to specify dependencies which can be used in both frameworks. Let&apos;s create a DNX library which supports UWP:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-jsonp&quot;&gt;
+&amp;quot;frameworks&amp;quot;: {
+  &amp;quot;net451&amp;quot;: { },
+  &amp;quot;dotnet5.4&amp;quot;: {
+    &amp;quot;dependencies&amp;quot;: {
+      &amp;quot;Microsoft.CSharp&amp;quot;: &amp;quot;4.0.1-beta-23516&amp;quot;,
+      &amp;quot;System.Collections&amp;quot;: &amp;quot;4.0.11-beta-23516&amp;quot;,
+      &amp;quot;System.Linq&amp;quot;: &amp;quot;4.0.1-beta-23516&amp;quot;,
+      &amp;quot;System.Runtime&amp;quot;: &amp;quot;4.0.21-beta-23516&amp;quot;,
+      &amp;quot;System.Threading&amp;quot;: &amp;quot;4.0.11-beta-23516&amp;quot;
+    }
+  },
+  &amp;quot;uap10.0&amp;quot;: {
+    &amp;quot;dependencies&amp;quot;: {
+      &amp;quot;Microsoft.NETCore.UniversalWindowsPlatform&amp;quot;: &amp;quot;5.0.0&amp;quot;
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I added the dependency directly to the specific framework, because this guy will not be compatible with the other frameworks. This library will restore the missing packages when you save the project.json&lt;/p&gt;
+&lt;p&gt;I&apos;m also able to add .NET Core support to the UWP library:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-jsonp&quot;&gt;&amp;quot;frameworks&amp;quot;: {
+  &amp;quot;uap10.0&amp;quot;: {
+    &amp;quot;dependencies&amp;quot;: {
+      &amp;quot;Microsoft.NETCore.UniversalWindowsPlatform&amp;quot;: &amp;quot;5.0.0&amp;quot;
+    }
+  },
+  &amp;quot;dotnet5.4&amp;quot;: {
+    &amp;quot;dependencies&amp;quot;: {
+      &amp;quot;Microsoft.CSharp&amp;quot;: &amp;quot;4.0.1-beta-23516&amp;quot;,
+      &amp;quot;System.Collections&amp;quot;: &amp;quot;4.0.11-beta-23516&amp;quot;,
+      &amp;quot;System.Linq&amp;quot;: &amp;quot;4.0.1-beta-23516&amp;quot;,
+      &amp;quot;System.Runtime&amp;quot;: &amp;quot;4.0.21-beta-23516&amp;quot;,
+      &amp;quot;System.Threading&amp;quot;: &amp;quot;4.0.11-beta-23516&amp;quot;
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The missing NuGet Packages will be restored, if you build this library. By the way: There already are conditional compiler symbols defined in the Build options to switch between .NET Core and UWP specific implementations:
+&lt;img src=&quot;/img/core-vs-uwp/uwp-build-options.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-csharp&quot;&gt;#if NETFX_CORE
+        // access .NET Core specific APIs here
+#endif
+
+#if WINDOWS_UWP
+        // access UWP specific APIs here
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;While migrating LightCore to DNX Projects I used this to differ between .NET Framework and .NET Core specific implementations:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-csharp&quot;&gt;        public void InjectProperties(object instance)
+        {
+#if !DNXCORE50
+            instance
+                .GetType()
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty)
+                .Where(this._validPropertiesSelector)
+                .ForEach(p =&amp;gt; p.SetValue(instance, this.Resolve(p.PropertyType), null));
+#else
+            instance
+                .GetType()
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(_validPropertiesSelector)
+                .ForEach(p =&amp;gt; p.SetValue(instance, Resolve(p.PropertyType), null));
+#endif
+        }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;With this knowledge in mind it makes much more sense to migrate your library projects to DNX projects or to UWP projects to make your library compatible to many more platforms. Using this project types it is pretty simple to provide your features to much more platforms with a single code base.&lt;/p&gt;
+&lt;p&gt;In the past I used multiple project files with shared code files to create libraries for more than one .NET Framework. Now I only need to add the additional framework to the project.json.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -303,6 +503,15 @@ dnx test
 &lt;p&gt;... is still is not completely configured and there are some features I need to implement. Especially the Tags are currently disabled, because I need to hack around Pretzel a little bit to create tag overviews. Maybe I will arrange some things around the layout, colors and so on...&lt;/p&gt;
 &lt;h2&gt;A very huge &amp;quot;Thank You&amp;quot; ...&lt;/h2&gt;
 &lt;p&gt;... goes to &lt;strong&gt;Marian Gieseler&lt;/strong&gt;, a colleague of mine at the &lt;a href=&quot;http://yooapps.com&quot;&gt;YooApplications AG&lt;/a&gt; who creates the initial design of this blog. I&apos;m pretty happy with this layout and proud to present it to the world :)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>template</title>
+      <link>http://asp.net-hacker.rocks/_drafts/2001/01/01/template.html</link>
+      <pubDate>Mo, 01 Jan 2001 00:00:00 %z</pubDate>
+      <author>Jürgen Gutsch</author>
+      <guid>http://asp.net-hacker.rocks/_drafts/2001/01/01/template.html</guid>
+      <description></description>
     </item>
     
 
