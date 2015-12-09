@@ -19,6 +19,7 @@ layout: nil
     <link type="text/html" rel="alternate" href="http://asp.net-hacker.rocks{{ post.url }}"/>
     <title>{{ post.title | xml_escape }}</title>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
+      <pubDate>{{ post.date | date_to_xmlschema }}</pubDate>
     <author>
       <name>Jürgen Gutsch</name>
       <uri>http://asp.net-hacker.rocks/</uri>
