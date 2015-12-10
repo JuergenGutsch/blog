@@ -21,11 +21,11 @@ But this seems to be the right moment to play around with AppVeyor:
 
 AppVeyor is a browser based SaaS (Software as a Service) application in the cloud. AppVeyor provides many useful features within a pretty simple, intuitive and clean UI. GitHub is completely integrated and it is really easy to create a build job for a GitHub project:
 
-![](/img/AppVeyor-General.png)
+![]({{ site.baseurl }}/img/AppVeyor-General.png)
 
 The .NET Version Manager (DNVM) is already installed and you only need to figure out which run-time is used by default. I used the build output to see the results of the "dnvm" commands. Finally I choosed the way to install the needed beta-8 with the batch scripts, every time the build starts:
 
-![](/img/AppVeyor-Environment.png)
+![]({{ site.baseurl }}/img/AppVeyor-Environment.png)
 
 ~~~ batch
 dnvm update-self
@@ -39,7 +39,7 @@ For the builds and the tests I also used the batch command mode with the followi
 
 Build:
 
-![](/img/AppVeyor-Build.png)
+![]({{ site.baseurl }}/img/AppVeyor-Build.png)
 
 ~~~ batch
 cd LightCore 
@@ -50,7 +50,7 @@ dnu build
 
 Test:
 
-![](/img/AppVeyor-Tests.png)
+![]({{ site.baseurl }}/img/AppVeyor-Tests.png)
 
 ~~~ batch
 cd ..\LightCore.Tests 
@@ -63,7 +63,7 @@ dnx test
 
 Finally I'm able to copy a small piece of MarkDown code, which I can use in the readme.md file in the GitHub repository to show the current build state:
 
-![](/img/AppVeyor-Badge.png)
+![]({{ site.baseurl }}/img/AppVeyor-Badge.png)
 	
 ~~~ markdown
 [![Build status](https://ci.appveyor.com/api/projects/status/et1fpjlmnsrkw3mv?svg=true)](https://ci.appveyor.com/project/JuergenGutsch/lightcore)

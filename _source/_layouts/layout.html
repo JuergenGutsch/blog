@@ -17,8 +17,8 @@
 		
 		<meta property="og:title" content="{{ page.title }}" />
 		<meta property="og:site_name" content="ASP.NET Hacker">
-		<meta property="og:url" content="http://asp.net-hacker.rocks{{ page.url }}" />
-		<meta property="og:image" content="http://asp.net-hacker.rocks{{ page.image }}">
+		<meta property="og:url" content="{{ site.baseurl }}{{ page.url }}" />
+		<meta property="og:image" content="{{ site.baseurl }}{{ page.image }}">
 		<meta property="og:image:type" content="image/png">
 		<meta property="og:description" content="{{ page.Teaser }}" />
 		<meta property="fb:app_id" content="126274111070499" />
@@ -31,12 +31,12 @@
 		<meta name="twitter:site" content="@sharpcms" />
 		<meta name="twitter:title" content="{{ page.title }}" />
 		<meta name="twitter:description" content="{{ page.Teaser }}" />
-		<meta name="twitter:image" content="http://asp.net-hacker.rocks{{ page.image }}" />
+		<meta name="twitter:image" content="{{ site.baseurl }}{{ page.image }}" />
 	</head>
 	<body>
 		<div id="container">
 			<div id="header">
-				<a href="/" id="home" title="Home" alt="Home"><img src="/img/logo-dark.png" alt="ASP.NET Hacker" /></a>
+				<a href="/" id="home" title="Home" alt="Home"><img src="{{ site.baseurl }}/img/logo-dark.png" alt="ASP.NET Hacker" /></a>
 				<div class="section">
 					<ul>
 						<li><a href="/about.html">about</a></li>
@@ -45,6 +45,7 @@
 				</div>
 			</div>
 			<div id="content">
+				{{ site.baseurl }}
 				{{content}}
 			</div>
 			<div id="footer">

@@ -34,7 +34,7 @@ yo aspnet
 
 Use the argument --grunt to use Grunt instead of Gulp. Yeoman is welcome you to the ASP.NET generator wizard:
 
-![](/img/yeoman/starting.png)
+![]({{ site.baseurl }}/img/yeoman/starting.png)
 
 To select one of the shown templates, you can easily use the arrow keys. For the demos I prefer to use the "Web Application Basic" template out the following:
 
@@ -66,11 +66,11 @@ I already wrote about setting up Docker on Windows on my German speaking blog. I
 
 After you select a template, Yeoman will ask you for a application name:
 
-![](/img/yeoman/naming.png)
+![]({{ site.baseurl }}/img/yeoman/naming.png)
 
 This name will used as the application folder name and the default namespace. It will also be used in the title tag in the layout page. Yeoman will show you what files are created and what to do next to start the application:
 
-![](/img/yeoman/ending.png)
+![]({{ site.baseurl }}/img/yeoman/ending.png)
 
 That's pretty much it. :)
 

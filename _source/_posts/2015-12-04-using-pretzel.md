@@ -34,15 +34,15 @@ pretzel create --azure
 
 This command creates a new pretzel blog. That argument `--azure` adds support to bake/compile pretzel blogs directly on a Azure Webiste.
 
-![](/img/pretzel/create.png)
+![]({{ site.baseurl }}/img/pretzel/create.png)
 
 The contents of your folder should look like this:
 
-![](/img/pretzel/createfolder.png)
+![]({{ site.baseurl }}/img/pretzel/createfolder.png)
 
 That's all to create a new blog. The blog sources, the posts and the templates are inside the `_source` folder:
 
-![](/img/pretzel/insidesource.png)
+![]({{ site.baseurl }}/img/pretzel/insidesource.png)
 
 Now lets show you how it looks like in the browser. To start the blog locally you need to cd into the `_source` folder **taste** the Pretzel blog:
 
@@ -83,7 +83,7 @@ Every time I push changes to the repository the Azure website pulls the changes,
 
 In the current version 0.3.0 the argument `--azure` doesn't work completely correct, because it only copies the pretzel.exe to the working folder. Since they changed the output to deploy also some additional libraries, all the depended libraries also need to be copied to the root:
  
-![](/img/pretzel/shimcomplete.png)
+![]({{ site.baseurl }}/img/pretzel/shimcomplete.png)
  
 This looks a bit messy, but it works. They need to ILMerge all the libraries or they need to fix the `--azure` argument
 

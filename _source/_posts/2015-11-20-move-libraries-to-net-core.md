@@ -56,7 +56,7 @@ If this is done, we need to get this projects compiled. I did this, by try and e
 
 ## Step 4: Add a CI server
 
-To get this compiled and published I also use AppVeyor as a favorite CI server i the same way as written in the [last post about Building LightCore 2.0](/2015/11/17/build-lightcore-with-appveyor.html)
+To get this compiled and published I also use AppVeyor as a favorite CI server i the same way as written in the [last post about Building LightCore 2.0]({{ site.baseurl }}/2015/11/17/build-lightcore-with-appveyor.html)
 
 ## Final words
 

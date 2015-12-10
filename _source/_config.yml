@@ -1,6 +1,8 @@
 pretzel: 
     engine: liquid
     
+baseurl: http://asp.net-hacker.rocks
+    
 exclude:
 - .vscode
     
