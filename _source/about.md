@@ -17,8 +17,6 @@ I'm working as a software developer, consultant and trainer at the [YooApplicati
 
 ![](/img/yoologo.png)
 
-Along with family and job, I'm writing articles in .NET Magazines and posts in this blog about ASP.NET, .NET, web technologies and the .NET community. I'm also leading a [.NET user group in Basel](http://www.dotnet-nordwest.ch/)  (From January 2007 until November 2015 I was also leading the .NET user group Konstanz-Kreuzlingen) and I'm supporting the German .NET user groups as the lead of [INETA Germany](http://ineta-deutschland.de/)
-
-![](/img/ineta-deutschland-logo.jpg)
+Along with family and job, I'm writing articles in .NET Magazines and posts in this blog about ASP.NET, .NET, web technologies and the .NET community. I'm also leading a [.NET user group in Basel](http://www.dotnet-nordwest.ch/)  (From January 2007 until November 2015 I was also leading the .NET user group Konstanz-Kreuzlingen)
 
 You can find more about me and my activities on [about.me/juergengutsch](http://about.me/juergengutsch)
