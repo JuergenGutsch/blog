@@ -35,7 +35,7 @@ dnx web
 
 ![]({{ site.baseurl }}/img/mac/terminal.png)
 
-That works completely without any errors. You know that bad feeling, if something works unexpectedly fine on the first try? That's how I felt after I called the web on localhost:5000 in Safari:
+That works completely without any errors. Do you know that bad feeling, if something works unexpectedly fine on the first try? That's how I felt after I called the web on localhost:5000 in Safari:
 
 ![]({{ site.baseurl }}/img/mac/safari.png)
 
