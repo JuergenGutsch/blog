@@ -208,12 +208,20 @@ article ul
 {
 	margin-left:10px; 
 }
-article li
-{
+article > ul > li{
+    
 	font-size: 1.2em;
 	margin-bottom: 0.75em;
+}
+article li
+{
+	margin-top: 0.75em;
 	margin-left:10px; 
-	list-style-type:disc;
+	list-style-type: disc;
+}
+article li li
+{
+	list-style-type: circle;
 }
 
 #home:hover 
