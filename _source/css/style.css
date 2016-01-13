@@ -204,24 +204,31 @@ article pre[class*="language-"]{
 	border-radius: 0px !important;
 	box-shadow:none !important;
 }
-article ul
+article ul, 
+article ol
 {
 	margin-left:10px; 
 }
-article > ul > li{
+article > ul > li,
+article > ol > li{
     
 	font-size: 1.2em;
 	margin-bottom: 0.75em;
 }
-article li
+article li,
 {
 	margin-top: 0.75em;
 	margin-left:10px; 
+}
+article > ul li{
 	list-style-type: disc;
 }
-article li li
+article > ul > li li
 {
 	list-style-type: circle;
+}
+article > ol li{
+    list-style-type: decimal;
 }
 
 #home:hover 
