@@ -15,7 +15,7 @@ There are many discussions out there about to write 'var' or the concrete type, 
 
 In the last months I worked a lot with legacy applications and had a lot of effort on refactoring some of the codes because of the concrete type was uses instead of 'var'.
 
-Many people don't like 'var'. Some of them because of the variant type in the VB languages. These guys are using C# but they still don't now C# well, because 'var' is not a variant type but a kind of a placeholder for the concrete type.
+Many people don't like 'var'. Some of them because of the variant type in the VB languages. These guys are using C# but they still don't know C# well, because 'var' is not a variant type but a kind of a placeholder for the concrete type.
 
 ~~~ csharp
 var age = 37;
