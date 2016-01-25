@@ -10,7 +10,7 @@ tags:
 - Blog
 ---
 
-The first time I played around with pretzel was more than a year ago. Since than I tried to find a new blog system what is flexible, lightweight, what supports offline editing and runs on my favorite hosing platform: On Microsoft Azure. I tried a lot of blog systems and CMS, like Ghost, Wordpress, Umbraco. I also tried to write an own Markdown based blog system. But at the end Pretzel is the system which matches my requirements at most.
+The first time I played around with pretzel was more than a year ago. Since than I tried to find a new blog system what is flexible, lightweight, what supports offline editing and runs on my favorite hosting platform: On Microsoft Azure. I tried a lot of blog systems and CMS, like Ghost, Wordpress, Umbraco. I also tried to write an own Markdown based blog system. But at the end Pretzel is the system which matches my requirements at most.
 
 Pretzel is a Jekyll like blogging system, which uses the same template engine and the same Markdown syntax. Pretzel adds some additional features like Azure support and a Razor template engine. I use the liquid engine which is also used in Jekyll. Almost like Jekyll it is creating a static website based on that template engine and the Markdown contents.
 
