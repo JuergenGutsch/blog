@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: "XML parsing problem while trying to query SharePoint Online"
-teaser: "A view days ago I lost more than 5 hours, because I couldn't query user information from SharePoint Online. The reason was a pretty awful problem caused by my ISP."
+teaser: "A few days ago I lost more than 5 hours, because I couldn't query user information from SharePoint Online. The reason was a pretty awful problem caused by my ISP."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
