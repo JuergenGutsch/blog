@@ -10,7 +10,7 @@ tags:
 - Dependency Injection
 ---
 
-Wich ASP.NET Core Dependency Injection is now a first class citizen in ASP.NET. All parts of the ASP.NET Stack are using the same DI container. In this post I'm going to show you, how to configure the DI container and how to use it.
+With ASP.NET Core Dependency Injection is now a first class citizen in ASP.NET. All parts of the ASP.NET Stack are using the same DI container. In this post I'm going to show you, how to configure the DI container and how to use it.
 
 Let's first create a new and pretty simple service to use in the examples. As always in my examples it is a `CountryService` which provides a list of countries. We also need an interface for this service, let's create it too:
 
