@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: "Dependency Injection in ASP.NET Core - a quick overview"
-teaser: "Dependency Injection is now a global pattern in ASP.NET Core. All parts of the ASP.NET Stack are using the same DI container. In this post I will try to show, how you configure the DI container and where you can use it."
+teaser: "Dependency Injection is now a global pattern in ASP.NET Core. All parts of the ASP.NET Stack are using the same DI container. In this post I will try to show how to configure the DI container and where you can use it."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
