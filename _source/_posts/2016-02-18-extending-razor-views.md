@@ -19,7 +19,7 @@ A very basic View without any dynamic stuff  is not very common. Even in Visual 
 
 To use typed date in your view, you need to define a model to use in your view.
 
-~~~ razor
+~~~ aspnet
 @model ExtendViews.ViewModels.AboutModel
 
 <!-- usage: --->
@@ -34,7 +34,7 @@ Almost equal to the MasterPages in ASP.NET WebForms, there is a central way to d
 
 You can also nest layout views to have a basic layout and different per area on your web site. To use a Layout you need to call it by its name without the file extension:
 
-~~~ razor
+~~~ aspnet
 @{
     Layout = "_Layout";
 } 
@@ -44,7 +44,7 @@ This call needs to be in the first lines of your views. But you don't need to de
 
 Inside the _Layout.cshtml there is a mothod call` RenderBody()`, which calls the rendering ov the current view at this location:
  
-~~~ razor
+~~~ aspnet
 @RenderBody()
 ~~~
 
@@ -56,13 +56,13 @@ Sometimes you need to create HTML code in your view, which should be rendered on
 
 To define a section for some JavaScripts just call the Section you want to render somewhere in the _Layout.cshtml:
 
-~~~ razor
+~~~ aspnet
 @RenderSection("scripts", required: false)
 ~~~
 
 With the flag required you are able to define whether the sections is needed or optional. Now you can use the section in your view:
 
-~~~ razor
+~~~ aspnet
 @section scripts
 {
     <script>
@@ -75,7 +75,7 @@ With the flag required you are able to define whether the sections is needed or 
 
 If you use nested layouts, you probably  need to nest this areas. This means you need to call the `RenderSection()` inside a Section:
 
-~~~ razor
+~~~ aspnet
 @section scripts
 {
 	@RenderSection("scripts", required: false)
@@ -88,7 +88,7 @@ To reuse parts of your views you can extract this parts and put it into a new Ra
 
 A PartialView can also be a typed view (but don't have to) to get data from the parent View:
 
-~~~ razor
+~~~ aspnet
 @model IEnumerable<UserModel>
 @if (Model.Any())
 {
@@ -103,7 +103,7 @@ A PartialView can also be a typed view (but don't have to) to get data from the 
 
 This PartialView needs a list of users from the parent view
 
-~~~ razor
+~~~ aspnet
 @{ await Html.RenderPartialAsync("Users", Model.Users);}
 ~~~
 
@@ -117,7 +117,7 @@ Sometimes you need to have something like PartialView, but with some more logic 
 
 To render a ViewComponent you need to call it like this:
 
-~~~ razor
+~~~ aspnet
 @Component.Invoke("Top10Articles");
 ~~~
 
@@ -127,7 +127,7 @@ Please have a look at my previews post about ViewComponent to learn how to creat
 
 You can extend the Razor syntax by creating your own extension methods on the HtmlHelper class:
 
-~~~ csharp
+~~~ aspnet
 public static class HtmlHelperExtensions
 {
     public static HtmlString MyOwnHtmlHelper(this HtmlHelper helper, string message)
@@ -147,7 +147,7 @@ This little helpers are extensions of your view, which are looking like real HTM
 
 A pretty simple example on how a TagHelper could look like:
 
-~~~ csharp
+~~~ aspnet
 [TargetElement("hi")] 
 public class HelloTagHelper : TagHelper 
 { 
@@ -179,7 +179,7 @@ Result:
 
 ASP.NET Core MVC provides many built in TagHelpers to replace the most used HtmlHelpers. E. g. the ActionLink can now replaced with an Anchor TagHelper:
 
-~~~ razor
+~~~ aspnet
 @Html.ActionLink(“About me”, “About”, “Home”)
 ~~~
 
@@ -207,7 +207,7 @@ I think, no. Sure, you need be careful and you should only use it, if it is real
 
 Just register your specific service in the method `ConfigureServices` in the `Startup.cs` and use one line of code to inject it into your view:
 
-~~~ razor
+~~~ aspnet
 @inject DiViews.Services.ICountryService CountryService;
 ~~~
 
@@ -219,7 +219,7 @@ I wrote more about Dependency Injection in ASP.NET Core [this posts]({% post_url
 
 I never used functions in real ASP.NET MVC projects. I only used it with a the razor engine in an Umbraco web. Anyway, this is another possibility to extend your views a little bit. Maybe you have some a more complex view logic, in this case you can write C# methods in an functions area inside your view:
 
-~~~ razor
+~~~ aspnet
 @functions
 {
     public string ReverseString(string input)
