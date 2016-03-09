@@ -7,14 +7,14 @@
 	.st2{clip-path:url(#SVGID_4_);}
 
 	.st0 .st1 {
-		fill:#FFFFFF;
+		fill:#3B3C4A;
 		transform: translate(25px, 0px);
   		animation: moveLeft 1.5s;
   		animation-fill-mode: both;
 	}
 
 	.st2 .st1 {
-		fill:#FFFFFF;
+		fill:#3B3C4A;
 		transform: translate(-25px, 0px);
   		animation: moveRight 1.7s;
   		animation-fill-mode: both;

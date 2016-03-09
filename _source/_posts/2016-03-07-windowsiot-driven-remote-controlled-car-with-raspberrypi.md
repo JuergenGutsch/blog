@@ -388,9 +388,9 @@ If the app is deployed and running on the RPI I can use the browser on my smartp
 http://192.168.2.58:5000/index.html
 ~~~
 
-To get the right IP address of yuor RPI, you should use the Windows IoT Core Whatcher. This guy shows the Windows 10 IoT devices in your network and it displays the addresses, the online states and so on:
+To get the right IP address of yuor RPI, you should use the Windows IoT Core Watcher. This guy shows the Windows 10 IoT devices in your network and it displays the addresses, the online states and so on:
 
-![](/img/winiotcar/windoesiotcorewhatcher.png)
+![](/img/winiotcar/windoesiotcorewatcher.png)
 
 You also need to now the IP to deploy the app to your RPI with Visual Studio 2015.
 
@@ -398,11 +398,11 @@ You also need to now the IP to deploy the app to your RPI with Visual Studio 201
 
 I used Visual Studio 2015 to deploy to the Raspberry PI. This is pretty easy if you know the way to do it ;-)
 
-Choose "ARM" as solution plattform and Remote Machine as the target. The first time you choose the Remote Machine, the Remote Connections dialog will open. Type in the IP address of your PI and choose the authentication mode `Universal`. Click select and you are now able to deploy via F5 or via right click and `deploy` in the context menu of the current project.
+Choose "ARM" as solution platform and Remote Machine as the target. The first time you choose the Remote Machine, the Remote Connections dialog will open. Type in the IP address of your PI and choose the authentication mode `Universal`. Click select and you are now able to deploy via F5 or via right click and `deploy` in the context menu of the current project.
 
 ![](/img/winiotcar/remoteconnections.png)
 
-To change the Remote Machine settings, just go to the debug settings and reconfigure the settigns. I had to change the configuration because I choosed the wrong authentication at the first time I tried to deploy:
+To change the Remote Machine settings, just go to the debug settings and reconfigure the settings. I had to change the configuration because I chose the wrong authentication at the first time I tried to deploy:
 
 ![](/img/winiotcar/debugsettings.png)
 
