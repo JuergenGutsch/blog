@@ -1,0 +1,27 @@
+---
+layout : layout
+title : ASP.NET Hacker
+---
+
+<h1>Blog archive</h1>
+<ul class="postArchive">
+{% for post in site.posts %}
+    <li>
+        <span class="olderpostdate"> {{ post.date | date: "%d %b %Y"  }} </span> <a class="postlink" href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+{% endfor %}
+</ul>
+
+
+<article>
+	<footer>
+		<div>
+			<p>
+				<img src="/img/guj.png" alt="Jürgen Gutsch" />
+				<strong>Jürgen Gutsch</strong><br>
+				<a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br>
+				<span>.NET junkie, addicted to web and software development, clean coder, MVP for Visual Studio and Development Technologies</span>
+			</p>
+		</div>
+	</footer>
+</article>
