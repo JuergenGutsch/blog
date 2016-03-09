@@ -16,7 +16,7 @@ We bought a [2 wheel drive robot car chassis kit](http://www.amazon.com/Makerfir
 
 I already had a [L293D stepper motor driver](http://www.amazon.com/NDRTJM-MSTL2930-L293D-Stepper-Driver/dp/B008XCGLNM), some jumper cables and a prototyping board to connect all that stuff. The good thing about the L293D is, that I can control two servos separately.
 
-![](/img/winiotcar/L293D.jpg)
+![]({{ site.baseurl }}/img/winiotcar/L293D.jpg)
 
 The L293D is pretty cool, because each side can control one servo. The outer pins connects to the power for the servos. In our case the battery pack with 6V. The two inner pins are going to the ground. The pins left and right from the inner pins need to be connected to the servos and the other two pins (RA0 to RA3) are connected to the Raspberry PI. This pins are used to control the servos. 
 - sending a high to RA0 (on GPIO 23) moves the right wheel forward
@@ -25,13 +25,13 @@ The L293D is pretty cool, because each side can control one servo. The outer pin
 - sending a high to RA3 (on GPIO 17) moves the left wheel forward
 
 Setting all the jumpers, connecting all to the RPI and the battery pack and it looks like this:
-![](/img/winiotcar/L293D-connected.jpg)
+![]({{ site.baseurl }}/img/winiotcar/L293D-connected.jpg)
 
 I use a small power pack to get the right power (5V) for the Raspberry PI. I use the battery pack for the servos and the power pack for the RPI.
 
 ## Let me introduce Rollie :)
 
-![](/img/winiotcar/rollie.jpg)
+![]({{ site.baseurl }}/img/winiotcar/rollie.jpg)
 
 To control the servos and to provide the remote control, we decided to use Windows 10 IoT, because it was simpler to setup the Wifi connection in the RPI. To setup Windows 10 IoT on a SDCard please follow the getting started guide on [https://ms-iot.github.io/content/en-US/GetStarted.htm](https://ms-iot.github.io/content/en-US/GetStarted.htm)
 
@@ -41,7 +41,7 @@ To setup Windows 10 IoT on the PI, we needed to connect the PI on a screen and t
 
 My idea was to provide a simple web page with the UI on it. This website should send commands to the PI via a simple Web API. Also the web page should be hosted on the RPI
 
-![](/img/winiotcar/rollie-ui.png)
+![]({{ site.baseurl }}/img/winiotcar/rollie-ui.png)
 
 Pressing a button should start the servo and releasing the button should stop the servo. The red "Stop"-button is something like a emergency stop while developing and will be removed later on.
 
@@ -390,7 +390,7 @@ http://192.168.2.58:5000/index.html
 
 To get the right IP address of yuor RPI, you should use the Windows IoT Core Watcher. This guy shows the Windows 10 IoT devices in your network and it displays the addresses, the online states and so on:
 
-![](/img/winiotcar/windoesiotcorewatcher.png)
+![]({{ site.baseurl }}/img/winiotcar/windoesiotcorewatcher.png)
 
 You also need to now the IP to deploy the app to your RPI with Visual Studio 2015.
 
@@ -400,11 +400,11 @@ I used Visual Studio 2015 to deploy to the Raspberry PI. This is pretty easy if 
 
 Choose "ARM" as solution platform and Remote Machine as the target. The first time you choose the Remote Machine, the Remote Connections dialog will open. Type in the IP address of your PI and choose the authentication mode `Universal`. Click select and you are now able to deploy via F5 or via right click and `deploy` in the context menu of the current project.
 
-![](/img/winiotcar/remoteconnections.png)
+![]({{ site.baseurl }}/img/winiotcar/remoteconnections.png)
 
 To change the Remote Machine settings, just go to the debug settings and reconfigure the settings. I had to change the configuration because I chose the wrong authentication at the first time I tried to deploy:
 
-![](/img/winiotcar/debugsettings.png)
+![]({{ site.baseurl }}/img/winiotcar/debugsettings.png)
 
 ## Conclusion
 
