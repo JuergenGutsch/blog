@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "Using Yeoman to create ASP.NET 5 projects"
+title: "Using Yeoman to create ASP.​NET 5 projects"
 teaser: "To quick start a new ASP.NET 5 project, we know the wizards in Visual Studio 2015. But how can you quickly setup a new project on Linux or Mac? This blog post is about Yeoman, a cross platform command line tool to scaffold a new project"
 author: "Jürgen Gutsch"
 comments: true

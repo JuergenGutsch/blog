@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "ASP.NET Core and Angular2 - Part 2"
+title: "ASP.​NET Core and Angular2 - Part 2"
 teaser: "In the last post, I prepared a ASP.NET Core project to use and build TypeScript and to host a Angular2 single page application. Now, in this second part of the ASP.NET Core and Angular2 series, I want to prepare the ASP.NET Core Web API to provide some data to Angular2."
 author: "Jürgen Gutsch"
 comments: true

@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "Configure your ASP.NET Core 1.0 Application"
+title: "Configure your ASP.​NET Core 1.0 Application"
 teaser: "The Web.Config is gone and the AppSettings are gone with ASP.NET Core 1.0. How do we configure our ASP.NET Core Application now? With the Web.Config, also the config transform feature is gone. How do we configure a ASP.NET Core Application for specific deployment environments?"
 author: "Jürgen Gutsch"
 comments: true

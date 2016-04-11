@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "ASP.NET Core and Angular2 - Part 1"
+title: "ASP.​NET Core and Angular2 - Part 1"
 teaser: "The last weeks I played around with Angular2 in a ASP.NET Core application. To start writing Angular2 components, it needs some preparation. In the first part of this small Angular2 series I'm going to show you, how to prepare your project to start working with Angular2."
 author: "Jürgen Gutsch"
 comments: true

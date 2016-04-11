@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "ASP.NET 5 is now ASP.NET Core 1"
+title: "ASP.​NET 5 is now ASP.NET Core 1"
 teaser: "Naming seems to be the hardest thing, even for Microsoft. Now they found the right names for completely new things. Yesterday Microsoft reintroduced ASP.NET Core 1.0 and .NET Core 1.0"
 author: "Jürgen Gutsch"
 comments: true

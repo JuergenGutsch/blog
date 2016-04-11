@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "View Components in ASP.NET 5"
+title: "View Components in ASP.​NET 5"
 teaser: "One of the nicest new features in ASP.NET 5 are the ViewComponents. These are a kind of mini MVC inside the MVC application.."
 author: "Jürgen Gutsch"
 comments: true

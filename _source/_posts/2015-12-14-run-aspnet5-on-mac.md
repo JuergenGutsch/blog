@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "ASP.NET 5 on a Mac"
+title: "ASP.​NET 5 on a Mac"
 teaser: "Just because I got my Mac running again, I tried to run ASP.NET 5 rc1 on that machine. Yes we already know it should work on a Mac, but I wanted to see this by myself :)"
 author: "Jürgen Gutsch"
 comments: true

@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "The right way to deploy a ASP.NET application to Windows Azure"
+title: "The right way to deploy a ASP.​NET application to Windows Azure"
 teaser: "There is a pretty simple solution built in on Azure to continuously deploy a website. But is this the right way to to deploy a more complex web application? I think no."
 author: "Jürgen Gutsch"
 comments: true

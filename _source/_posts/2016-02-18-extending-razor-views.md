@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "10 ways to extend your Razor views in ASP.NET core - the complete overview"
+title: "10 ways to extend your Razor views in ASP.​NET core - the complete overview"
 teaser: "Currently there are many ways to extend or to organize your Razor views in ASP.NET Core MVC. This post is about the different ways and how to use it"
 author: "Jürgen Gutsch"
 comments: true
