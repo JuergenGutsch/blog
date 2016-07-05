@@ -20,7 +20,7 @@ We started the first real world project with ASP.NET Core RC2 a month ago and we
 - Entity Framework Core setup and initial database seeding
 
 
-In this post, I'm going to show you how we setup a continuous deployment stuff for a ASP.NET Core 1.0 project, without tackling TypeScript and Angular2. Please Remember: The tooling around .NET Core and ASP.NET Core is still in "preview" and will definitely change until RTM. I'll try to keep this post up-to-date. I wont use the direct deployment to an Azure Web App from a git repository because of some reasons, I [mentioned in a previous post]({% post_url continuous-deployment-to-azure.md %}).
+In this post, I'm going to show you how we setup a continuous deployment stuff for a ASP.NET Core 1.0 project, without tackling TypeScript and Angular2. Please Remember: The tooling around .NET Core and ASP.NET Core is still in "preview" and will definitely change until RTM. I'll try to keep this post up-to-date. I wont use the direct deployment to an Azure Web App from a git repository because of some reasons, I [mentioned in a previous post] .
 
 I will write some more lines about the other learned stuff in one of the next posts. 
 
