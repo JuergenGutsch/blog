@@ -6,8 +6,8 @@ author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
-- Tag1
-- Tag2
+- ASP.NET Core
+- Configuration
 ---
 
 The `Web.Config` is gone and the `AppSettings` are gone with ASP.NET Core 1.0. How do we configure our ASP.NET Core Application now? With the `Web.Config`, also the config transform feature is gone. How do we configure a ASP.NET Core Application for specific deployment environments?
