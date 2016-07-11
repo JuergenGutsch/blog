@@ -14,7 +14,7 @@ Until yet I wrote more than 30 blog posts with Pretzel and it works pretty well.
 
 I'm using [MarkdownPad 2](http://markdownpad.com/) to write the posts. Writing goes much easier. The process is now simplified and publishing is almost automated. I also added my blog CSS to that editor to have a nice preview.
 
-![](/img/pretzel2/markdownpad.png)
+![]({{ site.baseurl }}/img/pretzel2/markdownpad.png)
 
 The process of writing and publishing new posts goes like this:
 1. Creating a new draft article and save it in the `_drafts` folder
