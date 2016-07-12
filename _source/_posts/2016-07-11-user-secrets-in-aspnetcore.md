@@ -14,7 +14,7 @@ tags:
 
 In the past there was a study about critical data in GitHub projects. They wrote a crawler to find passwords, user names and other secret stuff in projects on GitHub. And they found a lot of such data in public projects, even in projects of huge companies, which should pretty much care about security. 
 
-the most of this credentials are stored in config files. For sure, you need to configure the access to a database somewhere, you also need to configure the credentials to storages, mail servers, ftp, what ever. In many cases this credentials are used for development, with lot more rights than the production credentials.
+The most of this credentials are stored in .config files. For sure, you need to configure the access to a database somewhere, you also need to configure the credentials to storages, mail servers, ftp, what ever. In many cases this credentials are used for development, with lot more rights than the production credentials.
 
 Fact is: Secret information shouldn't be pushed to any public source code repository. Even better: not pushed to any source code repository.
 
