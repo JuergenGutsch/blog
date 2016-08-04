@@ -11,6 +11,8 @@ tags:
 - TypeScript
 ---
 
+> **Important Note:** This blog series is pretty much out of date. It uses an older beta version of Angular2 and the RC2 release of ASP.NET Core. I'll provide an update to this series as soon as possible.
+
 In the second part of this ASP.NET Core and Angular2 series, I wrote about the back-end to provide the data to the Angular2 Application. In this third part, I'm going to show you how the app is structured and how I used routing to navigate between the different components.
 
 ## The components

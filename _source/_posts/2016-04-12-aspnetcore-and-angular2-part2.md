@@ -12,6 +12,8 @@ tags:
 - TypeScript
 ---
 
+> **Important Note:** This blog series is pretty much out of date. It uses an older beta version of Angular2 and the RC2 release of ASP.NET Core. I'll provide an update to this series as soon as possible.
+
 In the last post, I prepared a ASP.NET Core project to use and build TypeScript and to host a Angular2 single page application. Now, in this second part of the ASP.NET Core and Angular2 series, I'm going to prepare the ASP.NET Core Web API to provide some data to Angular2.
 
 I really like to separate the read and the write logic, to optimize the read and the write stuff in different ways and to keep the code clean and simple. To do this I use the "Command & Query Segregation" pattern and a small library I wrote, to support this pattern. This library provides some interfaces, a `QueryProcessor` to delegate the queries to the right `QueryHandler` and a `CommandDispatcher` to get the right `CommandHandler` for the specific command.

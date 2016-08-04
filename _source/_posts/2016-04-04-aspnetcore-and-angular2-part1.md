@@ -11,6 +11,8 @@ tags:
 - TypeScript
 ---
 
+> **Important Note:** This blog series is pretty much out of date. It uses an older beta version of Angular2 and the RC2 release of ASP.NET Core. I'll provide an update to this series as soon as possible.
+
 The last weeks I played around with Angular2 in a ASP.NET Core application. To start writing Angular 2 components, it needs some preparation. In the first part of this small Angular2 series I'm going to show you how to prepare your project to start working with Angular2.
 
 Since I'm one of the leads of INETA Germany and responsible for the speakers and the user groups, I need a small tool to manage the speakers, the groups and the events where the speakers are talking. I also want to manage and send some newsletters to the speakers and the groups.
