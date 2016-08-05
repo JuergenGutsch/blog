@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "Add HTTP header to static files in ASP.​NET Core"
+title: "Add HTTP headers to static files in ASP.​NET Core"
 teaser: "Usually, static files like JavaScript, CSS, images and so on, are cached on the client after the first request. But sometimes, you need to disable the cache or to add a special cache handling."
 author: "Jürgen Gutsch"
 comments: true
@@ -19,7 +19,7 @@ To provide static files in a ASP.NET Core application, you use the `StaticFileMi
 app.UseStaticFiles();
 ~~~
 
-This extension method has to overloads. One of them needs a `StaticFileOptions` instance, which is our friend in this case. This options has a property called `OnPrepareResponse` of type `Action<StaticFileResponseContext>`. Inside this Action, you have access to the `HttpContext` and many more. Let's see how it looks like to set the cache life time to 12 hours:
+This extension method has two overloads. One of them needs a `StaticFileOptions` instance, which is our friend in this case. This options has a property called `OnPrepareResponse` of type `Action<StaticFileResponseContext>`. Inside this Action, you have access to the `HttpContext` and many more. Let's see how it looks like to set the cache life time to 12 hours:
 
 ~~~ csharp
 app.UseStaticFiles(new StaticFileOptions()
