@@ -116,20 +116,20 @@ You need to have Node.JS installed on your machine, To get all the tools working
     "@angular/router": "3.0.0",
     "@angular/upgrade": "2.0.0",
 
-    "core-js": "^2.4.1",
-    "reflect-metadata": "^0.1.3",
+    "core-js": "2.4.1",
+    "reflect-metadata": "0.1.3",
     "rxjs": "5.0.0-beta.12",
     "systemjs": "0.19.27",
-    "zone.js": "^0.6.21",
+    "zone.js": "0.6.21",
     
-    "bootstrap": "^3.3.6"
+    "bootstrap": "3.3.6"
   },
   "devDependencies": {
-    "ts-loader": "^0.8.2",
+    "ts-loader": "0.8.2",
     "ts-node": "0.5.5",
-    "typescript": "^1.8.10",
-    "typings": "^1.3.2",
-    "webpack": "^1.13.2"
+    "typescript": "1.8.10",
+    "typings": "1.3.2",
+    "webpack": "1.13.2"
   }
 }
 ~~~
