@@ -151,3 +151,5 @@ This code will not work, if you copy and past it in your application, but shows 
 ## Conclusion
 
 This is jsut a small overview. If you want to learn more and detailed information about how ASP.NET Identity works, you should definetly subscribe to the blogs of [Dominick Baier](https://leastprivilege.com/) and [Brock Allen](https://brockallen.com/). Even the [ASP.NET Docs](https://docs.asp.net/) are good resources to [learn more about the ASP.NET Security](https://docs.asp.net/en/latest/security/index.html).
+
+**Update:** Just a few hours ago [Scott Brady](https://www.scottbrady91.com/) wrote an blog post about [getting Started with IdentityServer 4](https://www.scottbrady91.com/Identity-Server/Getting-Started-with-IdentityServer-4)
