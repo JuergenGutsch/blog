@@ -19,7 +19,7 @@ Authentication in a single page application is a bit more special, if you just k
 
 As written in my last posts about Angular2 and ASP.NET Core, I reduced ASP.NET Core to just a HTTP Service, to provide JSON based data to an Angular2 client. Some of my readers, asked me about how the Authentication is done in that case. I don't use any server generated log-in page, registration page or something like this. So the ASP.NET Core part only provides the web API and the static files for the client application.
 
-There are many ways to protect your application out there. The simplest one is using an [Azure Active Directory](https://azure.microsoft.com/en-us/documentation/services/active-directory/). You could also setup a separate authentication server, using [IdentityServer2](https://identityserver4.readthedocs.io/en/dev/), to manage the users, roles and to provide a token based authentication.
+There are many ways to protect your application out there. The simplest one is using an [Azure Active Directory](https://azure.microsoft.com/en-us/documentation/services/active-directory/). You could also setup a separate authentication server, using [IdentityServer4](https://identityserver4.readthedocs.io/en/dev/), to manage the users, roles and to provide a token based authentication.
 
 And that's the key word: A Token Based Authentication is the solution for that case.
 
