@@ -12,7 +12,9 @@ tags:
 - TypeScript
 ---
 
-> **Important Note:** This blog series is pretty much out of date. It uses an older beta version of Angular2 and the RC2 release of ASP.NET Core. I'll provide an update to this series as soon as possible.
+> **Important Note:** This blog series is pretty much out of date. It uses an older beta version of Angular2 and the RC2 release of ASP.NET Core. Please have a look int the new posts about Angular2 and ASP.NET Core using the latest versions:
+> * [ASP.​NET Core and Angular2 using dotnet CLI and Visual Studio Code](http://asp.net-hacker.rocks/2016/09/19/aspnetcore-and-angular2-using-dotnetcli-and-vscode.html)
+> * [Setup Angular2 & TypeScript in a ASP.​NET Core project using Visual Studio](http://asp.net-hacker.rocks/2016/08/08/setup-angular2-typescript-aspnetcore-in-visualstudio.html)
 
 In the last post, I prepared a ASP.NET Core project to use and build TypeScript and to host a Angular2 single page application. Now, in this second part of the ASP.NET Core and Angular2 series, I'm going to prepare the ASP.NET Core Web API to provide some data to Angular2.
 

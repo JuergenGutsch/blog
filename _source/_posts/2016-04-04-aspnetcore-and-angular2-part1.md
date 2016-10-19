@@ -11,7 +11,9 @@ tags:
 - TypeScript
 ---
 
-> **Important Note:** This blog series is pretty much out of date. It uses an older beta version of Angular2 and the RC2 release of ASP.NET Core. I'll provide an update to this series as soon as possible.
+> **Important Note:** This blog series is pretty much out of date. It uses an older beta version of Angular2 and the RC2 release of ASP.NET Core. Please have a look int the new posts about Angular2 and ASP.NET Core using the latest versions:
+> * [ASP.​NET Core and Angular2 using dotnet CLI and Visual Studio Code](http://asp.net-hacker.rocks/2016/09/19/aspnetcore-and-angular2-using-dotnetcli-and-vscode.html)
+> * [Setup Angular2 & TypeScript in a ASP.​NET Core project using Visual Studio](http://asp.net-hacker.rocks/2016/08/08/setup-angular2-typescript-aspnetcore-in-visualstudio.html)
 
 The last weeks I played around with Angular2 in a ASP.NET Core application. To start writing Angular 2 components, it needs some preparation. In the first part of this small Angular2 series I'm going to show you how to prepare your project to start working with Angular2.
 

@@ -11,7 +11,9 @@ tags:
 - TypeScript
 ---
 
-> **Important Note:** This blog series is pretty much out of date. It uses an older beta version of Angular2 and the RC2 release of ASP.NET Core. I'll provide an update to this series as soon as possible.
+> **Important Note:** This blog series is pretty much out of date. It uses an older beta version of Angular2 and the RC2 release of ASP.NET Core. Please have a look int the new posts about Angular2 and ASP.NET Core using the latest versions:
+> * [ASP.​NET Core and Angular2 using dotnet CLI and Visual Studio Code](http://asp.net-hacker.rocks/2016/09/19/aspnetcore-and-angular2-using-dotnetcli-and-vscode.html)
+> * [Setup Angular2 & TypeScript in a ASP.​NET Core project using Visual Studio](http://asp.net-hacker.rocks/2016/08/08/setup-angular2-typescript-aspnetcore-in-visualstudio.html)
 
 In the second part of this ASP.NET Core and Angular2 series, I wrote about the back-end to provide the data to the Angular2 Application. In this third part, I'm going to show you how the app is structured and how I used routing to navigate between the different components.
 
