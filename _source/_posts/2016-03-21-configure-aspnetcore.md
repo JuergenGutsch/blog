@@ -91,7 +91,7 @@ var topItmes = configurationSection.Get<int>("TopItemsOnStart", 15);
 
 To use it everywhere we need to register the `IConfigurationRoot` to the dependency injection container:
 
-~~~ csharp
+~~~ csharpw
 services.AddInstance<IConfigurationRoot>(Configuration);
 ~~~
 
