@@ -281,5 +281,5 @@ The whole speaker database application is built like this: Using handlers to cre
 
 What do you think? Does it make sense to you? Would it be useful for your projects? Please drop some lines and tell me about your opinion :)
 
-This library is [hosted on GitHub](https://github.com/JuergenGutsch/Gos.Tools). I would be happy about any type contribution on GitHub. Feel free to try id out and let me know about issues, tips and improvements :)
+This library is [hosted on GitHub](https://github.com/JuergenGutsch/gos.tools/tree/develop) in the "develop" branch. I would be happy about any type contribution on GitHub. Feel free to try id out and let me know about issues, tips and improvements :)
 
