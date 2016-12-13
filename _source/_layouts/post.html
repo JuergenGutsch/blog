@@ -31,15 +31,6 @@ layout: layout
 		</div> 
 
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- Footer -->
-		<ins class="adsbygoogle"
-			style="display:inline-block;width:728px;height:90px"
-			data-ad-client="ca-pub-2112692016899285"
-			data-ad-slot="1626311050"></ins>
-		<script>
-		(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
-		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<script>
 		(adsbygoogle = window.adsbygoogle || []).push({
 			google_ad_client: "ca-pub-2112692016899285",
@@ -47,11 +38,11 @@ layout: layout
 		});
 		</script>
 				
-		{% if page.comments == true %}
+		{% if page.comments == true  %}
 		<div id="disqus_thread"></div>
 		<script>				
 		var disqus_config = function () {
-			this.page.url = location.href;
+			this.page.url = location.protocol + '//asp.net-hacker.rocks' + location.pathname;
 			this.page.identifier = location.pathname; 
 		};
 		
