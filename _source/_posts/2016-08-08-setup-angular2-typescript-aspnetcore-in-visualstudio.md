@@ -1,4 +1,4 @@
---- 
+---
 layout: post
 title: "Setup Angular2 & TypeScript in a ASP.​NET Core project using Visual Studio"
 teaser: "In this post I try to explain, how to setup a ASP.NET Core project with Angular2 and typescript in Visual Studio 2015."
@@ -68,7 +68,7 @@ Let's start with the NodeJS packages. Using Visual Studio we can create a new "n
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "lite": "lite-server",
-    "postinstall": "typings install",
+    "postinstall": "typings install && gulp restore",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings"
@@ -181,7 +181,7 @@ gulp.task('restore', [
 
 The task restore, copies all the needed files to the Folder ./wwwroot/libs
 
-TypeScript needs some type definitions to get the types and API definitions of the libraries, which are not written in TypeScript or not available in TypeScript. To load this, we use another tool, called "typings". This is already installed with NPM. This tool is a package manager for type definition files. We need to configure this tool with a `typings.config`
+TypeScript needs some type definitions to get the types and API definitions of the libraries, which are not written in TypeScript or not available in TypeScript. To load this, we use another tool, called "typings". This is already installed with NPM. This tool is a package manager for type definition files. We need to configure this tool with a `typings.json`
 
 ~~~ json
 {
@@ -348,5 +348,5 @@ Checkout the working project on GitHub: [https://github.com/JuergenGutsch/angula
 
 ## Conclusion
 I propose to use VisualStudio just for small single page applications, because it gets slower the more dynamic files need to be handled. ASP.NET Core is pretty cool to handle dynamically generated files, but Visual Studio still is not. VS tries to track and manage all the files inside the project, which slows down a lot. One solution is to disable source control in Visual Studio and use an external tool to manage the sources. 
- 
+
 Another - even better - solution is not to use Visual Studio for front-end development. In a new project, I propose to separate front-end and back-end development and to use Visual Studio Code for the front-end development or even both. You need to learn a few things about NPM, Gulp and you need to use a console in this case, but web development will be a lot faster and a lot more lightweight with this approach. In one of the next posts, I'll show how I currently work with Angular2.
