@@ -36,7 +36,7 @@ We now have four projects like this:
   * .NET Standard library
   * includes a CsvDataService
 
-> BTW: Since one of the latest updates the "Class Libraries (.NET Standard)" project diapered from the ".NET Core" node in the "Add New Project" dialogue and the "Class Library (.NET Core)" is back again. The "Class Libraries (.NET Standard)" is now in the ".NET Standard" node under the "Visual C#" node.
+> BTW: Since one of the latest updates the "Class Libraries (.NET Standard)" project disappeared from the ".NET Core" node in the "Add New Project" dialogue and the "Class Library (.NET Core)" is back again. The "Class Libraries (.NET Standard)" is now in the ".NET Standard" node under the "Visual C#" node.
 >
 > In the most cases it doesn't really makes sense to create a .NET Core class library. The difference here is, that the Class Library (.NET Core) has some .NET Core related references. They targeting the netcoreapp1.x instead of the netstandard1.x. This means they have a lot of references, which are not needed in a class library in the most cases, e. g. the Libuv and the .NET Core runtime.
 
