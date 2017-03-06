@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Using dependency injection in multiple projects"
+title: "Using dependency injection in multiple .NET Core projects"
 teaser: "One of my last post was about Dependency Injection (DI) in .NET Core Console Applications. After that I got a question about how to use the IServiceCollection in multiple projects. In this post I'm going to try to explain, how to use the IServiceCollection in a Solution with more projects."
 author: "Jürgen Gutsch"
 comments: true
