@@ -72,7 +72,7 @@ After that call, we are getting the data from the Meetup API which can be used w
 
 As you can see everything is One-Way bound because the data is never changed. The “ng-bind-html” binds HTML content from the meetup event description.
 
-The Angular controller is simple, it is uses the "sce” service to ensure that the provided HTML content from the meetup API is marked as secure. When we change a model outside of angular, we must notify our changes with “vm.scope.$apply()”. 
+The Angular controller is simple, it is uses the "\$sce” service to ensure that the provided HTML content from the meetup API is marked as secure. When we change a model outside of angular, we must notify our changes with “vm.scope.$apply()”. 
 
 ~~~ javascript
 (function () {
