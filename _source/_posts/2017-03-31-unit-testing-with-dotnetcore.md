@@ -18,7 +18,7 @@ In this post I'm going to use the dotnet CLI and Visual Studio Code completely. 
 
 ## Setup the system under test
 
-Out SUT is a pretty complex class, that helps us a lot to do some basic math operation. This class will be a part of a super awesome library:
+Our SUT is a pretty complex class, that helps us a lot to do some basic math operation. This class will be a part of a super awesome library:
 
 ~~~ csharp
 namespace SuperAwesomeLibrary
