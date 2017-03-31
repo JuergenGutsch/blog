@@ -1,18 +1,18 @@
 ---
 layout: post
 title: "Blogging with Git Flow"
-teaser: "Description"
+teaser: "Since a while we use Git Flow in our projects at the YooApps. Git Flow is a add-in for Git, that helps us to follow the feature branch process in a standard way. What if I would use Git Flow to to optimize my process to write and publish blog posts?"
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
-- .NET Core
-- Unit Test
-- XUnit
-- MSTest
+- Pretzel
+- Blogging
 ---
 
 Since a while we use [Git Flow](http://danielkummer.github.io/git-flow-cheatsheet/) in our projects at the [YooApps](http://yooapps.com). Git Flow is a add-in for Git, that helps us to follow the feature branch process in a standard way. We usually use our Jira ticket number as names for features, bugs or hotfix and we use the Jira Version as a Release name. This makes absolutely sense to us and makes the flow pretty transparent. We also use BitBucket to host our Git repositories, which is directly linked to Jira. That means on every Pull Request we have the direct link to the Jira ticket.
+
+## Using Git Flow to release new posts
 
 My idea is to also use Git Flow with my blog. 
 
@@ -28,16 +28,21 @@ Maybe the release step is a bit too much. But currently I need to push explicitl
 
 ## Let's see how it works :-)
 
-This blog post is created as draft by using the following commands in the console:![]()
+This blog post feature branch is created by using the following commands in the console:
 
 ~~~ shell
 git flow feature start blogging-with-git-flow
+~~~
+
+Now I'm in the draft mode and will create the blog post file, writing, adding images, linking between existing posts and so on. If this is done I do a first commit and publish the feature branch to GitHub:
+
+~~~ shell
 git add _posts/*
 git commit -m "new post about blogging with pretzel"
 git flow feature publish
 ~~~
 
-Now I can write, change and commit as much as I want to. If I'm done, I'm going to use:
+At this state I can change and commit as much as I want to. If I finish the blog post, I'm going to finish the post and push the current develop branch to GitHub:
 
 ~~~ shell
 git flow feature finish
@@ -47,7 +52,7 @@ git push
 The last step is publishing the posts. I currently not sure, but I could probably use the number of posts as the minor version number, which will also be used as tag for the release:
 
 ~~~ shell
-git flow release start 1.30.0
+git flow release start 1.48.0
 git flow release finish
 git push --all
 git push --tags
@@ -55,10 +60,28 @@ git push --tags
 
 (I possibly should create a batch command to execute the four lines to release new posts)
 
-After that Pretzel will start "baking" the Blog.
+After that push, Pretzel will start "baking" the blog including the new blog post.
 
 If I want to see the current drafts, I just need to display the existing branches:
 
 ![]({{ site.baseurl }}/img/blog-gitflow/blog-gitflow.png)
 
 I'm sure this will be a clean way to publish and to handle the drafts and finished posts.
+
+## Versioning
+
+While publishing the [latest post]({% post_url unit-testing-with-dotnetcore.md %}) like this, I realized that GitHub actually will display a release in the GitHub repository, this is quite nice. This is not really needed but a funny fact and a reason why I wanna think a little more about the version numbers, if I release a new article.
+
+My idea is to change the Major version, if I do a huge change on the layout of the blog or if I add a new feature. Because the layout is still the first version and I only did some really small changes, I'll keep it as version 1. For the minor version I will use the number of published articles. 
+
+It doesn't really makes sense from the [semver](http://semver.org/) perspective, but blogging should be fun and it really is fun.
+
+This means, with the [latest post]({% post_url unit-testing-with-dotnetcore.md %}) I published release 1.47.0 and this post will be in release 1.48.0 ;-)
+
+## Authoring
+
+In the last post about [writing blog posts using Pretzel]({% post_url posting-with-pretzel.md %}) I wrote that I use [MarkdownPad 2](http://markdownpad.com/). Unfortunately it seems that this editor is not longer maintained, now new version was published for a while. I paid for it, to have some more extended feature to use. Anyway, a few months ago it crashes every time I opened it and there was no way to get an updated or fixed version. This is why I now use [Typora](https://typora.io/), which is pretty minimalistic and lightweight. It works completely different in a pretty cool way. It doesn't use a splitted screen to edit and preview the content. With typora you write markdown code directly and it immediately translated it to the preview in the same view. It is real WYSIWYG. It also supports custom CSS and different Markdown styles.
+
+
+
+![]({{ site.baseurl }}/img/blog-gitflow/blog-typora.png)
