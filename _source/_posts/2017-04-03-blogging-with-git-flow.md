@@ -28,7 +28,7 @@ Maybe the release step is a bit too much. But currently I need to push explicitl
 
 ## Let's see how it works :-)
 
-This blog post is created as draft by using the following commands in the console:
+This blog post is created as draft by using the following commands in the console:![]()
 
 ~~~ shell
 git flow feature start blogging-with-git-flow
@@ -56,5 +56,9 @@ git push --tags
 (I possibly should create a batch command to execute the four lines to release new posts)
 
 After that Pretzel will start "baking" the Blog.
+
+If I want to see the current drafts, I just need to display the existing branches:
+
+![]({{ site.baseurl }}/img/blog-gitflow/blog-gitflow.png)
 
 I'm sure this will be a clean way to publish and to handle the drafts and finished posts.
