@@ -124,3 +124,4 @@ Like this it is still the wrong direction but more condensed to a few lines of c
 
 Anyway. I think CAKE gets pretty much faster accepted by the fellow devs than FAKE. Some things will work a little easier in CAKE than in FAKE. So it seems it makes sense to switch to use CAKE at the YooApps. 
 
+From my personal perspective, it does the same thing as FAKE and it doesn't really matter. So let's use it.
