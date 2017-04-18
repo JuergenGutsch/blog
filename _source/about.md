@@ -9,7 +9,7 @@ Why ASP.NET Hacker? It doesn't really have a deeper sense. I chose this name bec
 
 I am a .NET addicted web developer, working with ASP.NET since 2002. (I started playing around in 2001 with the beta versions of .NET 1.0)
 
-Since July 2015 I am awarded as a [Microsoft MVP for Visual Studio and Development Technologies (former ASP.NET/IIS)]((https://mvp.microsoft.com/en-us/PublicProfile/5001508?fullName=J%C3%BCrgen%20Gutsch))
+Since July 2015 I am awarded as a [Microsoft MVP for Visual Studio and Development Technologies (former ASP.NET/IIS)](https://mvp.microsoft.com/en-us/PublicProfile/5001508?fullName=J%C3%BCrgen%20Gutsch)
 
 ![]({{ site.baseurl }}/img/MVP_Logo_Horizontal_Preferred_Cyan300_CMYK_72ppi.png)
 
