@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Using a password manager"
-teaser: "Since years, I'm using a password manager to store and manage all my credentials for all the accounts I use. The usage of such a tool is pretty common for me and it is a normal flow for me to create a new entry in the password manager first before I create the actual account. But there are still people out there, who don't use any tool to store and manage their credentials."
+title: "Please use a password manager"
+teaser: "Since years, I'm using a password manager to store and manage all my credentials for all the accounts I use. The usage of such a tool is pretty common for me and it is a normal flow for me to create a new entry in the password manager first before I create the actual account. I'm always amazed, if I meet people, who don't use any tool to store and manage their credentials."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -12,7 +12,7 @@ tags:
 
 Since years, I'm using a password manager to store and manage all my credentials for all the accounts I use. The usage of such a tool is pretty common for me and it is a normal flow for me to create a new entry in the password manager first before I create the actual account.
 
-I am always amazed that there are still people, who don't use any tool to store and manage their credentials.  They use the same password or the same bunch of passwords everywhere. This is dangerous and most of them already know about that. Maybe they are to lazy to spend one or two ours to think about the benefits and to search for the right tool or they simply don't know about such tools
+I'm always amazed, if I meet people, who don't use any tool to store and manage their credentials. They use the same password or the same bunch of passwords everywhere. This is dangerous and most of them already know about that. Maybe they are to lazy to spend one or two ours to think about the benefits and to search for the right tool or they simply don't know about such tools
 
 For me the key benefits are pretty clear: 
 
