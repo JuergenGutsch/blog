@@ -136,11 +136,11 @@ RunTarget(target);
 
 ## Running the build
 
-To run the build, just call ./build.ps1 in a PowerShell console:
+To run the build, just call .\build.ps1 in a PowerShell console:
 
 ![]({{ site.baseurl }}/img/cake/start-build.png)
 
-If you know FAKE the results looks pretty familiar:
+If you know FAKE, the results look pretty familiar:
 
 ![]({{ site.baseurl }}/img/cake/build-result.png)
 
