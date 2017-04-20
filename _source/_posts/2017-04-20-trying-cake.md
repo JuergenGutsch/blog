@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A first glimpse into CAKE"
-teaser: "Since a few years I use FAKE to configure my builds. Also at the YooApps we have two projects running using FAKE. One of the projects uses it since more than two years. FAKE is really great and I love to use it, but there is one problem with it: The most C# devs don't really like to use new things. The worst case for the most devs - it seems - is a new tool, that uses an exotic language like F#."
+teaser: "Since a couple of years I use FAKE to configure my builds. Also at the YooApps we use FAKE in some projects. One of the projects uses it since more than two years. FAKE is really great and I love to use it, but there is one problem with it: The most C# devs don't really like to use new things. The worst case for the most devs - it seems - is a new tool, that uses an exotic language like F#."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -11,11 +11,11 @@ tags:
 - Build
 ---
 
-Since a few years I use FAKE to configure my builds. Also at the YooApps we have two projects running using FAKE. One of the projects uses it since more than two years. FAKE is really great and I love to use it, but there is one problem with it: The most C# devs don't really like to use new things. The worst case for the most devs - it seems - is a new tool, that uses an exotic language like F#. 
+Since a couple of years I use [FAKE](fsharp.github.io/FAKE/) (C# Make) to configure my builds. Also at the [YooApps](http://yooapps.com) we use FAKE in some projects. One of the projects uses it since more than two years. FAKE is really great and I love to use it, but there is one problem with it: The most C# developers don't really like to use new things. The worst case for the most C# developers - it seems - is a new tool, that uses an exotic language like F#. 
 
-> This is why I have to maintain the build scripts, since I introduced FAKE to the team.
+This is why I have to maintain the FAKE build scripts, since I introduced FAKE to the team.
 
-For the most common scenarios, nobody really needs to learn F# to use FAKE. It is the tool and the F# that must be scary for them. That's why I asked the fellow devs to use CAKE. 
+It is that new tool and the F# language that must be scary for them, even if they don't really need to learn F# for the most common scenarios. That's why I asked the fellow developers to use [CAKE](http://cakebuild.net/) (C# Make). 
 
 * It is C# make instead of F# make
 * It looks pretty similar
@@ -25,19 +25,21 @@ For the most common scenarios, nobody really needs to learn F# to use FAKE. It i
 
 They really liked the idea to use CAKE. Why? just because of C#? It seems so...
 
-It doesn't really makes sense to me, but anyway. The devs need to use and to maintain there own build configurations. 
+It doesn't really makes sense to me, but anyway, it makes absolutely sense that the developers need to use and to maintain there own build configurations. 
+
+![]({{ site.baseurl }}/img/cake/cake.png)
 
 ## How does CAKE work?
 
-CAKE is build using a C# scripting language. It uses the Roslyn compiler to compile the scripts. Instead of using batch files, as fake does, it uses a PowerShell script to bootstrap itself and to run the build script. The bootstrapping step loads CAKE and some dependencies using NuGet. The last step is to call the cake.exe and to execute the build script.
+CAKE is built using a C# scripting language. It uses the Roslyn compiler to compile the scripts. Instead of using batch files, as FAKE does, it uses a PowerShell script (build.ps1) to bootstrap itself and to run the build script. The bootstrapping step loads CAKE and some dependencies using NuGet. The last step the PowerShell script does, is to call the cake.exe and to execute the build script.
 
-The bootstrapping needs network access, to load all the stuff and NuGet needs to be available. If you don't like this, you can also commit the loaded dependencies to the source code repository.
+The bootstrapping needs network access, to load all the stuff. It also loads the nuget.exe, if it's not available. If you don't like this, you can also commit the loaded dependencies to the source code repository.
 
 The documentation is great. Just follow the [getting-started guide](http://cakebuild.net/docs/tutorials/getting-started) to get a working example. There's also a nice documentation about [setting up a new project](http://cakebuild.net/docs/tutorials/setting-up-a-new-project) available.
 
 ## Configuring the build
 
-If you know FAKE or even MSBuild it will looks pretty familiar to you. Let's have a look into the first simple example of the getting started guide:
+If you know FAKE or even MSBuild it will look pretty familiar to you. Let's have a quick look into the first simple example of the getting started guide:
 
 ~~~ csharp
 var target = Argument("target", "Default");
@@ -51,11 +53,11 @@ Task("Default")
 RunTarget(target);
 ~~~
 
-The first line retrieves the build target to execute from the command lines. Starting from line 3 we see a definition of a build target. This target just prints a "Hello World!" as a information message.
+The first line retrieves the build target to execute from the command line arguments. Starting from line 3 we see a definition of a build target. This target just prints a "Hello World!" as a information message.
 
-The last line starts the "Default" target by its name.
+The last line starts the initial target by its name.
 
-A more concrete code sample is the build scripts from the CAKE example (I removed some lines to get a shorter example):
+A more concrete code sample is the build script from the CAKE example (I removed some lines in this listing to get a shorter example):
 
 ~~~ csharp
 #tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
@@ -102,26 +104,48 @@ Task("Default")
 RunTarget(target);
 ~~~
 
-This script uses another NuGet package to run the NUnit3 tests and references it. This build contains four targets. The method IsDependentOn("") wires the targets together in the right execution order.
+This script uses another NuGet package to run the NUnit3 tests and references it. A nice feature is to configure the NuGet dependency at the beginning of the script. 
 
-This way is a bit different to FAKE and maybe a little bit confusing. It needs to write the targets in the right execution order. If you don't write the script like this, you need to find the initial target and to follow the way back to the very first target. You will read the execution order from the last to the first target.
+This build script contains five targets. The method IsDependentOn("") wires the targets together in the right execution order. This way is a bit different to FAKE and maybe a little bit confusing. It needs to write the targets in the right execution order. If you don't write the script like this, you need to find the initial target and to follow the way back to the very first target. You will read the execution order from the last to the first target. 
 
-FAKE does this a little easier. and wires the targets up in a single statement at the end of the file. This should more look like this in CAKE
+FAKE does this a little easier and wires the targets up in a single statement at the end of the file:
+
+~~~ fsharp
+// Dependencies
+"Clean"
+  ==> "Restore-NuGet-Packages"
+  ==> "Build"
+  ==> "Run-Unit-Tests"
+  ==> "Default"
+ 
+RunTargetOrDefault "Default"
+~~~
+
+This could possibly look like this dummy code in CAKE:
 
 ~~~ csharp
-Task("Default")
-  .IsDependentOn("Run-Unit-Tests")
-  .IsDependentOn("Build")
-  .IsDependentOn("Restore-NuGet-Packages")
-  .IsDependentOn("Clean");
+// Dependencies
+WireUp("Clean")
+  .Calls("Restore-NuGet-Packages")
+  .Calls("Build")
+  .Calls("Run-Unit-Tests")
+  .Calls("Default");
 
 RunTarget(target);
 ~~~
 
-Like this it is still the wrong direction but more condensed to a few lines of code.
+## Running the build
+
+To run the build, just call ./build.ps1 in a PowerShell console:
+
+![]({{ site.baseurl }}/img/cake/start-build.png)
+
+If you know FAKE the results looks pretty familiar:
+
+![]({{ site.baseurl }}/img/cake/build-result.png)
 
 ## Conclusion
 
-Anyway. I think CAKE gets pretty much faster accepted by the fellow devs than FAKE. Some things will work a little easier in CAKE than in FAKE. So it seems it makes sense to switch to use CAKE at the YooApps. 
+Anyway. I think CAKE gets pretty much faster accepted by the fellow developers at the YooApps than FAKE did. Some things will work a little easier in CAKE than in FAKE and some a little different, but the most stuff will work the same way. So it seems it makes sense to switch to use CAKE at the YooApps. So let's use it. :)
 
-From my personal perspective, it does the same thing as FAKE and it doesn't really matter. So let's use it.
+I'm sure, I will write down a comparison of FAKE and CAKE later, if I have used it for a few months.
