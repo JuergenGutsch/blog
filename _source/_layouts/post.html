@@ -1,66 +1,73 @@
----
-layout: layoutpage
+--- 
+layout: layoutpage 
 ---
 
 <article>
-	<header>
-		<h1> {{page.title}} </h1>
-		<p class="postdate">{{ page.author }} - {{ page.date | date: "%d %B, %Y"  }}</p>
-		<!--<ul class="postdate">
-		{% for tag in page.tags %}
-			<li><a href="#">{{ tag }}</a></li>
-		{% endfor %}
-		</ul>-->
-	</header>
-	
-	{{ content }}
-		
-	<footer>
-		<div>
-			<p>
-				<img src="/img/guj.png" alt="Jürgen Gutsch" />
-				<strong>Jürgen Gutsch</strong><br>
-				<a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br>
-				<span>.NET junkie, addicted to web and software development, clean coder, MVP for Visual Studio and Development Technologies</span>
-			</p>
-		</div>
-		<div id="page-navigation clear"> 
-			<div class="left"> {% if page.previous.url %} <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}">&larr; {{page.previous.title}}</a> {% endif %} </div> 
-			<div class="right"> {% if page.next.url %} <a href="{{page.next.url}}" title="next Post: {{page.next.title}}">{{page.next.title}} &rarr; </a> {% endif %} </div> 
-			<div class="clear">&nbsp;</div>
-		</div> 
+    <header>
+        <h1> {{page.title}} </h1>
+        <p class="postdate">{{ page.author }} - {{ page.date | date: "%d %B, %Y" }}</p>       
+    </header>
 
-		
-		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- Page Bottom -->
-		<ins class="adsbygoogle"
-			style="display:block"
-			data-ad-client="ca-pub-2112692016899285"
-			data-ad-slot="9378927858"
-			data-ad-format="auto"></ins>
-		<script>
-		(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
-				
-		{% if page.comments == true  %}
-		<div id="disqus_thread"></div>
-		<script>				
-		var disqus_config = function () {
-			this.page.url = location.protocol + '//asp.net-hacker.rocks' + location.pathname;
-			this.page.identifier = location.pathname; 
-		};
-		
-		(function() { 
-		var d = document, s = d.createElement('script');
-		
-		s.src = '//aspnethacker.disqus.com/embed.js';
-		
-		s.setAttribute('data-timestamp', +new Date());
-		(d.head || d.body).appendChild(s);
-		})();
-		</script>
-		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-		{% endif %}
-	</footer>
+    {{ content }}
+
+    <footer>
+        <div>
+            <p>Do you like this post? Feel free to buy me a beer/coffee
+                <script id='fbibv7i'>
+                    (function(i) {
+                        var f, s = document.getElementById(i);
+                        f = document.createElement('iframe');
+                        f.src = '//button.flattr.com/view/?fid=22j7rr&button=compact&url=' + encodeURIComponent(document.URL);
+                        f.title = 'Flattr';
+                        f.height = 20;
+                        f.width = 110;
+                        f.style.borderWidth = 0;
+                        s.parentNode.insertBefore(f, s);
+                    })('fbibv7i');
+                </script> or click the banner below :)
+            </p>
+            <p>
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2112692016899285" data-ad-slot="9378927858" data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </p>
+        </div>
+        <div>
+            <p>
+                <img src="/img/guj.png" alt="Jürgen Gutsch" />
+                <strong>Jürgen Gutsch</strong><br>
+                <a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br>
+                <span>.NET junkie, addicted to web and software development, clean coder, MVP for Visual Studio and Development Technologies</span>
+            </p>
+        </div>
+        <div id="page-navigation clear">
+            <div class="left"> {% if page.previous.url %} <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}">&larr; {{page.previous.title}}</a> {% endif %} </div>
+            <div class="right"> {% if page.next.url %} <a href="{{page.next.url}}" title="next Post: {{page.next.title}}">{{page.next.title}} &rarr; </a> {% endif %} </div>
+            <div class="clear">&nbsp;</div>
+        </div>
+
+
+
+        {% if page.comments == true %}
+        <div id="disqus_thread"></div>
+        <script>
+            var disqus_config = function() {
+                this.page.url = location.protocol + '//asp.net-hacker.rocks' + location.pathname;
+                this.page.identifier = location.pathname;
+            };
+
+            (function() {
+                var d = document,
+                    s = d.createElement('script');
+
+                s.src = '//aspnethacker.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript> {% endif %}
+    </footer>
 </article>
-
