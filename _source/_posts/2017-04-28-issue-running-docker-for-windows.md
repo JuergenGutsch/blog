@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Error on starting Docker for Windows"
+title: "Error while starting Docker for Windows"
 teaser: "The last couple of months I wanted to play around with Docker for Windows. It worked just twice. Once at the first try for just one or two weeks. Then I got an error, when Docker tries to initialize right after Windows starts."
 author: "Jürgen Gutsch"
 comments: true

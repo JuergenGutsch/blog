@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to add custom logging in ASP.NET Core"
-teaser: "ASP.NET Core is pretty flexible and extendible. If you don't like the built-in logging, you are able to plug in your own logger or an existing logger like log4net, NLog, Elmah. In this post I'm going to show you how to add a custom logger."
+teaser: "ASP.NET Core is pretty flexible, customizable and extendible. You are able to change almost everything. Even the logging. If you don't like the built-in logging, you are able to plug in your own logger or an existing logger like log4net, NLog, Elmah. In this post I'm going to show you how to add a custom logger."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -191,6 +191,10 @@ loggerFactory.AddColoredConsoleLogger(c =>
 ~~~
 
 ## Conclusion
+
+This is how the output of that nonsense logger looks:
+
+![]({{ site.baseurl }}/img/custom-logger/logger-output.png)
 
 Now it's up to you to create a logger that writes the entries to a database, log file or whatever or just add an existing logger to your ASP.NET Core application.
 
