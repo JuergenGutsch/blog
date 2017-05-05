@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to add custom logging in ASP.NET Core"
-teaser: "ASP.NET Core is pretty flexible, customizable and extendible. You are able to change almost everything. Even the logging. If you don't like the built-in logging, you are able to plug in your own logger or an existing logger like log4net, NLog, Elmah. In this post I'm going to show you how to add a custom logger."
+teaser: "ASP.NET Core is pretty flexible, customizable and extendable. You are able to change almost everything. Even the logging. If you don't like the built-in logging, you are able to plug in your own logger or an existing logger like log4net, NLog, Elmah. In this post I'm going to show you how to add a custom logger."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -10,7 +10,7 @@ tags:
 - Logging
 ---
 
-ASP.NET Core is pretty flexible, customizable and extendible. You are able to change almost everything. Even the logging. If you don't like the built-in logging, you are able to plug in your own logger or an existing logger like log4net, NLog, Elmah. In this post I'm going to show you how to add a custom logger.
+ASP.NET Core is pretty flexible, customizable and extendable. You are able to change almost everything. Even the logging. If you don't like the built-in logging, you are able to plug in your own logger or an existing logger like log4net, NLog, Elmah. In this post I'm going to show you how to add a custom logger.
 
 The logger I show you, just writes out to the console, but just for one single log level. The feature is to configure different font colors per LogLevel. So this logger is called `ColoredConsoleLogger`.
 
