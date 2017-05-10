@@ -76,7 +76,7 @@ ASP.NET Core and .NET Core shouldn't be shipped as one product, as David said. B
 * The .NET Standard 2.0 libraries will have the same set of features as the .NET Framework
 * ASP.NET Core 2.0 uses NET Standard 2.0 libraries as a framework.
 
-With this facts, Microsoft's decision to run ASP.NET Core 2.0 on .NET Core 2.0 only doesn't sound that evel anymore. 
+With this facts, Microsoft's decision to run ASP.NET Core 2.0 on .NET Core 2.0 only doesn't sound that evil anymore. 
 
 What do you think? Do you agree?
 
