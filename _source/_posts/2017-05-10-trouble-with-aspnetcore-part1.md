@@ -34,49 +34,51 @@ I followed the discussion and thought a lot about it. And yes, it starts to make
 
 What many people don't recognize or just forget about, is the .NET Standard. The .NET Standard is a API definition that tries to unify the APIs of .NET Core, .NET Framework and Xamarin. But it actually does a little more, it provides the API as a set of Assemblies, which forwards the types to the right Framework.
 
-Does it make sense to you? (Read more about the .NET Standard in this documentation)
+Does it make sense to you? (Read more about the .NET Standard [in this documentation)](https://github.com/dotnet/standard/blob/master/docs/netstandard-20/README.md)
 
-Currently ASP.NET Core runs on top of .NET Core and .NET Framework, but actually uses a framework that is based on .NET Standard 1.4 and higher. All the referenced libraries, which are used in ASP.NET Core are based on .NET Standard 1.4 or higher. Let's call them ".NET Standard libraries". This libraries contain all the needed features, but doesn't reference a specific platform, but the .NET Standard API.
+Currently ASP.NET Core runs on top of .NET Core and .NET Framework, but actually uses a framework that is based on .NET Standard 1.4 and higher. All the referenced libraries, which are used in ASP.NET Core are based on .NET Standard 1.4 or higher. Let's call them ".NET Standard libraries" ;) This libraries contain all the needed features, but doesn't reference a specific platform, but the .NET Standard API.
 
-You are able to create those libraries with Visual Studio 2017 too.
+You are also able to create those kind of libraries with Visual Studio 2017.
 
-By creating such libraries you provide your functionality to multiple platforms like Xamarin, .NET Framework and .NET Core (depending on the .NET Standard Version you choose).
+By creating such libraries you provide your functionality to multiple platforms like Xamarin, .NET Framework and .NET Core (depending on the .NET Standard Version you choose). Isn't that good?
 
-In .NET Framework apps you are able to reference .NET Standard based libraries.
+And in .NET Framework apps you are able to reference .NET Standard based libraries.
 
 ## About runtimes
 
 .NET Core is just a runtime to run Apps on Linux, Mac and Windows. Let's see the full .NET Framework as a runtime to run WPF apps, Winforms apps and classic ASP.NET apps on Windows. Let's also see Xamarin as a runtime to run apps on iOS and Android.
 
-Let's also assume that the .NET Standard 2.0 will provide the full API of the .NET Framework to your Application if it is finished.
+Let's also assume, that the .NET Standard 2.0 will provide the almost full API of the .NET Framework to your Application, if it is finished.
 
-Do we really need the full .NET Framework in this case?
+Do we really need the full .NET Framework for ASP.NET Core, in this case? No, we don't really need it.
 
 ## What if ...
 
 * ... .NET Framework, .NET Core and Xamarin are just runtimes?
 * ... .NET Standard 2.0 is as complete as the .NET Framework?
 * .. .NET Standard 2.0 libraries will have the same features as the .NET Framework?
-* .. ASP.NET 2.0 uses the .NET Standard 2.0 libraries?
-
-Does it also makes sense to use the full .NET Framework as a runtime for Xamarin Apps?
-
-I think, no.
+* .. ASP.NET 2.0 Core uses the .NET Standard 2.0 libraries?
 
 Do we really need the full .NET Framework as a runtime for ASP.NET Core?
+
+I think, no!
+
+Does it also makes sense to use the full .NET Framework as a runtime for Xamarin Apps?
 
 I also think, no.
 
 ## Conclusion
 
-ASP.NET Core and .NET Core shouldn't be shipped as one product, as David said. Because it is on top of .NET Core and maybe another technology could also be on top of .NET Core in the future.
+ASP.NET Core and .NET Core shouldn't be really shipped as one product, as David said. Because it is on top of .NET Core and maybe another technology could also be on top of .NET Core in the future. But maybe it makes sense to ship it as one product, to tell the people that ASP.NET Core 2.0 is based on top of .NET Core 2.0 and needs the .NET Core runtime. (The classic ASP.NET is also shipped with the full .NET Framework.)
 
 * .NET Core, Xamarin and the full .NET Framework are just a runtimes.
 * The .NET Standard 2.0 will almost have the same API as the .NET Framework.
 * The .NET Standard 2.0 libraries will have the same set of features as the .NET Framework
 * ASP.NET Core 2.0 uses NET Standard 2.0 libraries as a framework.
 
-With this facts, Microsoft's decision to run ASP.NET Core 2.0 on .NET Core 2.0 only doesn't sound that evil anymore. 
+With this facts, Microsoft's decision to run ASP.NET Core 2.0 on .NET Core 2.0 only, doesn't sound that evil anymore. 
+
+From my perspective, ASP.NET is **not in trouble** and it's all fine and **it makes absolutely sense**. The troubles are only in the discussion about that on GitHub and on Twitter :)
 
 What do you think? Do you agree?
 
