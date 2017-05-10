@@ -17,9 +17,16 @@ Actually it could be better. Let's see why:
 
 ## What is the issue?
 
-Microsoft silently [announced within this Github Issue thread](https://github.com/aspnet/Home/issues/2022), that ASP.NET Core will not run on the full .NET Framework anymore. It will just run on .NET Core 2.0. This announcement results in a hot discussion within that GitHub issue.
+Microsoft removed the support of the full .NET Framework for ASP.NET Core 2.0 and some developers are not really happy about that. See [this Github Issue thread](https://github.com/aspnet/Home/issues/2022). ASP.NET Core 2.0 will just run on .NET Core 2.0. This fact results in a hot discussion within that GitHub issue.
 
-While the discussion was running, David Fowler said on Twitter that it's the best to thnk of [ASP.NET Core 2.0 and .NET Core 2.0 as the same product](https://twitter.com/davidfowl/status/861809298611073024). Does this makes sense?
+It also results in some misleading and confusing headlines and contents on some German IT news publishers:
+
+* [Microsoft will ASP.NET Core nicht mehr auf dem klassischen .NET anbieten](https://www.heise.de/newsticker/meldung/Microsoft-will-ASP-NET-Core-nicht-mehr-auf-dem-klassischen-NET-anbieten-3708715.html)
+* [Microsoft verärgert .Net-Entwickler mit Support-Entscheidung](https://www.golem.de/news/asp-net-core-2-0-microsoft-veraergert-net-entwickler-mit-support-entscheidung-1705-127712.html)
+
+While the discussion was running, David Fowler said on Twitter that it's the best to think of [ASP.NET Core 2.0 and .NET Core 2.0 as the same product](https://twitter.com/davidfowl/status/861809298611073024). 
+
+Does this makes sense?
 
 I followed the discussion and thought a lot about it. And yes, it starts to make sense to me. 
 
