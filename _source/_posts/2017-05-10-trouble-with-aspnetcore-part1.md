@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ASP.NET Core in trouble"
-teaser: "Microsoft announced on GitHub, that ASP.NET Core 2.0 will not run on the full .NET Framework anymore. It will just run on .NET Core 2.0. This announcement results in a hot discussion in that GitHub issue. In this post I tried to analyze that announcement and it doesn't sound that evil..."
+teaser: "Microsoft removed the support of the full .NET Framework for ASP.NET Core 2.0 and some developers are not really happy about that. ASP.NET Core 2.0 will just run on .NET Core 2.0. In this post I tried to analyze that and it doesn't sound that evil..."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
