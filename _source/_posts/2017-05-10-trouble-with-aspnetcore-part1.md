@@ -84,6 +84,6 @@ What do you think? Do you agree?
 
 Let's see what [Microsoft will tell us about it](https://channel9.msdn.com/events/Build/2017/C9L18) at the Microsoft Build conference in the next days. Follow the live stream: [https://channel9.msdn.com/Events/Build/2017](https://channel9.msdn.com/Events/Build/2017)
 
-#### [Update 2017-05-11]
+### [Update 2017-05-11]
 
 Yesterday in an official blog post of announcing ASP.NET Core 2.0 preview1, (Announcing ASP.NET 2.0.0-Preview1 and Updates for .NET Web Developers) Jeff Fritz wrote, that the preview 1 is limited to .NET Core 2.0 only. The overall goal is to put ASP.NET Core 2.0 on top of .NET Standard 2.0. This means it will be possible to run ASP.NET Core 2.0 apps on .NET Core, Mono and the full .NET Framework.
