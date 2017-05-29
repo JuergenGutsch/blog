@@ -23,21 +23,21 @@ After the Visual Studio you need to install the new .NET Core SDK which also ins
 
 ## The .NET CLI
 
-After the new version of .NET Core is installed type dotnet --version in a command prompt. It will show you the version of the currently used .NET SDK:
+After the new version of .NET Core is installed type `dotnet --version` in a command prompt. It will show you the version of the currently used .NET SDK:
 
-![{{ site.baseurl }}/netcore2/01-dotnetversion.PNG]()
+![]({{ site.baseurl }}/img/netcore2/01-dotnetversion.png)
 
 Wait. I installed a preview 1 version and this is now the default on the entire machine? Yes.
 
-The CLI uses the latest installed SDK on the machine by default. But anyway you are able to run different .NET Core SDKs side by side. To see what versions are instaled on our machine type dotnet --info in a command prompt and copy the first part of the base path and past it to a new explorer window:
+The CLI uses the latest installed SDK on the machine by default. But anyway you are able to run different .NET Core SDKs side by side. To see what versions are installed on our machine type `dotnet --info` in a command prompt and copy the first part of the base path and past it to a new explorer window:
 
-![{{ site.baseurl }}/netcore2/02-dotnetinfo.PNG]()
+![]({{ site.baseurl }}/img/netcore2/02-dotnetinfo.png)
 
-![{{ site.baseurl }}/netcore2/03-dotnetsdks.PNG]()
+![]({{ site.baseurl }}/img/netcore2/03-dotnetsdks.png)
 
 You are able to use all of them if you want to.
 
-This is possible by adding a global.json to your solution folder. This is a pretty small file which defines the SDK version you want to use:
+This is possible by adding a "global.json" to your solution folder. This is a pretty small file which defines the SDK version you want to use:
 
 ~~~ json
 {
@@ -48,23 +48,23 @@ This is possible by adding a global.json to your solution folder. This is a pret
 }
 ~~~
 
-Inside the folder C:\git\dotnetcore\, I added two different folders: the v104 should use the current final version 1.0.4 and the v200 should use the preview 1 of 2.0.0. to get it working I just need to put the global.json into the v104 folder:
+Inside the folder "C:\git\dotnetcore\", I added two different folders: the "v104" should use the current final version 1.0.4 and the "v200" should use the preview 1 of 2.0.0. to get it working I just need to put the "global.json" into the "v104" folder:
 
-![{{ site.baseurl }}/netcore2/04-global-json.PNG]()
+![]({{ site.baseurl }}/img/netcore2/04-global-json.PNG)
 
 ## The SDK
 
-Now I want to have a look into the new SDK. The first thing I do after installing a new version is to type dotnet --help in a command prompt. The first level help doesn't contain any surprises, just the version number differs. The most interesting difference is visible by typing dotnet new --help. We get a new template to add an ASP.NET Core Web App based on Razor pages. We also get the possibility to just add single files, like a razor page, Nuget.config or a Web.Config. This is pretty nice.
+Now I want to have a look into the new SDK. The first thing I do after installing a new version is to type `dotnet --help` in a command prompt. The first level help doesn't contain any surprises, just the version number differs. The most interesting difference is visible by typing `dotnet new --help`. We get a new template to add an ASP.NET Core Web App based on Razor pages. We also get the possibility to just add single files, like a razor page, "NuGet.config" or a "Web.Config". This is pretty nice.
 
-![{{ site.baseurl }}/netcore2/05-dotnetnew.PNG]()
+![]({{ site.baseurl }}/img/netcore2/05-dotnetnew.PNG)
 
-I also played around with the SDK by creating a new console app. I typed dotnet new console -consoleapp
+I also played around with the SDK by creating a new console app. I typed `dotnet new console -n consoleapp`:
 
-![{{ site.baseurl }}/netcore2/06-dotnetnewconsole.PNG]()
+![]({{ site.baseurl }}/img/netcore2/06-dotnetnewconsole.PNG)
 
 As you can see in the screenshot dotnet new will directly download the NuGet packages from the package source. It runs dotnet restore for you. It is not a super cool feature but good to know if you get some NuGet restore errors while creating a new app.
 
-When I opened the consoleapp.csproj, I saw the expected TargetFramework "netcoreapp2.0"
+When I opened the "consoleapp.csproj", I saw the expected TargetFramework "netcoreapp2.0"
 
 ~~~ xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -83,5 +83,79 @@ In ASP.NET Core are a lot more changes done. Let's have a quick look here too:
 
 ## ASP.NET Core 2.0
 
+To create a new ASP.NET Web App, I need to type `dotnet new mvc -n webapp` in a command prompt window. This command imidietly creates the webapp and starts to download the needed packages:
 
+TODO: images
 
+Let's see what changed and start with the Program.cs:
+
+~~~ csharp
+public class Program
+{
+  public static void Main(string[] args)
+  {
+    BuildWebHost(args).Run();
+  }
+
+  public static IWebHost BuildWebHost(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+      .UseStartup<Startup>()
+      .Build();
+}
+~~~
+
+The first thing I mentioned is the encapsulation of the code that creates and configures the WebHostBuilder. In the previews versions it was all in the static void main. But there's no instanciation of the WebHostBuilder anymore. This is hidden in the .CreateDefaultBuilder() method. This look a little cleaner now, but hides the configuration from the developer. It is anyway possible to use the old way to onfigure the WebHostBuilder, but this wrapper does a little more than the old configuration. This Method also wraps the configuration of the ConfigurationBuilder and the LoggerFactory. The default configurations were moved from the Startup.cs to the CreateDefaultBuilder(). Lat's have a look into the Startup.cs:
+
+~~~ csharp
+public class Startup
+{
+  public Startup(IConfiguration configuration)
+  {
+    Configuration = configuration;
+  }
+
+  public IConfiguration Configuration { get; }
+
+  // This method gets called by the runtime. Use this method to add services to the container.
+  public void ConfigureServices(IServiceCollection services)
+  {
+    services.AddMvc();
+  }
+
+  // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+  public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+  {
+    if (env.IsDevelopment())
+    {
+      app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+      app.UseExceptionHandler("/Home/Error");
+    }
+
+    app.UseStaticFiles();
+
+    app.UseMvc(routes =>
+               {
+                 routes.MapRoute(
+                   name: "default",
+                   template: "{controller=Home}/{action=Index}/{id?}");
+               });
+  }
+}
+~~~
+
+Even this file is much cleaner now. 
+
+But if you now want to customize the Configuration, the Logging and the other stuff, you need to replace the .CreateDefaultBuilder() with the previous style of bootstrapping the application. You could have a look into the sources of the ASP.NET repository on GitHub to see how this is done inside the .CreateDefaultBuilder()
+
+BTW: BrowserLink was removed in the templates of this preview version. Which is good from my perspective, because it causes an error while starting up the applications. 
+
+## Result
+
+This is just a first short glimpse into the .NET Core 2.0 Preview 1. I need some more time to play around with it and learn a little more about the upcoming changes. For sure I need to rewrite my post about the custom logging a little bit :)
+
+Last week, I created [a 45 min video about it in German](https://www.youtube.com/watch?v=6WZ3UIAVUxU). This is not a video with a good quality. It is quite bad. I just wanted to test a new microphone and Camtasia Studio and I chose ".NET Core 2.0 Preview 1" as the topic to present. Even if it has a awful quality, maybe it is anyway useful to some of my German speaking readers. :)
+
+I'll come with some more .NET 2.o topics in the next months.
