@@ -12,7 +12,7 @@ tags:
 
 At the Build 2017 conference Microsoft announced the preview 1 versions of .NET Core 2.0, of the .NET Standard 2.0 and ASP.NET Core 2.0. I recently had a quick look into it and want to show you a little bit about it with this post.
 
-# .NET Core 2.0 Preview 1
+## .NET Core 2.0 Preview 1
 
 Rich Lander (Program Manager at Microsoft) wrote about the release of the preview 1, .NET Standard 2.0, tools support in this post: [Announcing .NET Core 2.0 Preview 1](https://blogs.msdn.microsoft.com/dotnet/2017/05/10/announcing-net-core-2-0-preview-1/). It is important to read the first part about the requirements carefully. Especially the requirement of Visual Studio 2017 15.3 Preview. At the first quick look I was wondering about the requirement of installing a preview version of Visual Studio 2017, because I have already installed the final version since a few months. But the details is in the numbers. The final version of Visual Studio 2017 is the 15.2. The new tooling for .NET Core 2.0 preview is in the 15.3 which is in preview currently. 
 
