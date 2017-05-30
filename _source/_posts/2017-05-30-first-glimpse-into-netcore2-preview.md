@@ -1,21 +1,22 @@
 ---
 layout: post
-title: "A first glimpse into .NET Core 2.0 Preview 1"
-teaser: "Description"
+title: "A first glimpse into .NET Core 2.0 Preview 1 and ASP.​NET Core 2.0.0 Preview 1"
+teaser: "At the Build 2017 conference Microsoft announced the preview 1 versions of .NET Core 2.0, of the .NET Standard 2.0 and ASP.NET Core 2.0. I recently had a quick look into it and want to show you a little bit about it with this post."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
-- .NET Core 2
+- .NET Core 2.0
+- ASP.NET Core 2.0
 ---
 
-At the Build 2017 conference Microsoft announced the preview 1 version of .NET Core 2. I recently had a quick look into it and want to show you a little bit about it.
+At the Build 2017 conference Microsoft announced the preview 1 versions of .NET Core 2.0, of the .NET Standard 2.0 and ASP.NET Core 2.0. I recently had a quick look into it and want to show you a little bit about it with this post.
 
-## The announcement
+# .NET Core 2.0 Preview 1
 
-Microsoft wrote about the release of the preview 1 in this post: [https://blogs.msdn.microsoft.com/dotnet/2017/05/10/announcing-net-core-2-0-preview-1/](https://blogs.msdn.microsoft.com/dotnet/2017/05/10/announcing-net-core-2-0-preview-1/) It is important to read the first part about the requirements carefully. Especially the requirement of Visual Studio 2017 15.3 Preview. At the first quick look I was wondering about the requirement of installing a preview version of Visual Studio 2017, because I have already installed the final version since a few months. But the details is in the numbers. The final version of Visual Studio 2017 is the 15.2. The new tooling for .NET Core 2.0 preview is in the 15.3 which is in preview currently. 
+Rich Lander (Program Manager at Microsoft) wrote about the release of the preview 1, .NET Standard 2.0, tools support in this post: [Announcing .NET Core 2.0 Preview 1](https://blogs.msdn.microsoft.com/dotnet/2017/05/10/announcing-net-core-2-0-preview-1/). It is important to read the first part about the requirements carefully. Especially the requirement of Visual Studio 2017 15.3 Preview. At the first quick look I was wondering about the requirement of installing a preview version of Visual Studio 2017, because I have already installed the final version since a few months. But the details is in the numbers. The final version of Visual Studio 2017 is the 15.2. The new tooling for .NET Core 2.0 preview is in the 15.3 which is in preview currently. 
 
-So if you wanna use .NET Core 2. preview 1 with Visual Studio 2017 you need to install the preview of 15.3
+So if you want to use .NET Core 2. preview 1 with Visual Studio 2017 you need to install the preview of 15.3
 
 The good thing is, the preview can be installed side by side with the current final of Visual Studio 2017. It doesn't double the usage of disk space, because both versions are able share some SDKs, e.g. the Windows SDK. But you need to install the add-ins you want to use for this version separately.
 
@@ -81,13 +82,15 @@ This is the only difference between the 2.0.0 preview 1 and the 1.0.4
 
 In ASP.NET Core are a lot more changes done. Let's have a quick look here too:
 
-## ASP.NET Core 2.0
+## ASP.NET Core 2.0 Preview 1
 
-To create a new ASP.NET Web App, I need to type `dotnet new mvc -n webapp` in a command prompt window. This command imidietly creates the webapp and starts to download the needed packages:
+Also for the ASP.NET 2.0 Preview 1, Jeffrey T. Fritz (Program Manager for ASP.NET) wrote a pretty detailed announcement post in the webdev blog: [Announcing ASP.NET Core 2.0.0-Preview1 and Updates for .NET Web Developers](https://blogs.msdn.microsoft.com/webdev/2017/05/10/aspnet-2-preview-1/).
 
-TODO: images
+To create a new ASP.NET Web App, I need to type `dotnet new mvc -n webapp` in a command prompt window. This command immediately creates the web app and starts to download the needed packages:
 
-Let's see what changed and start with the Program.cs:
+![]({{ site.baseurl }}/img/netcore2/07-dotnetnewmvc.PNG)
+
+Let's see what changed, starting with the "Program.cs":
 
 ~~~ csharp
 public class Program
@@ -104,7 +107,7 @@ public class Program
 }
 ~~~
 
-The first thing I mentioned is the encapsulation of the code that creates and configures the WebHostBuilder. In the previews versions it was all in the static void main. But there's no instanciation of the WebHostBuilder anymore. This is hidden in the .CreateDefaultBuilder() method. This look a little cleaner now, but hides the configuration from the developer. It is anyway possible to use the old way to onfigure the WebHostBuilder, but this wrapper does a little more than the old configuration. This Method also wraps the configuration of the ConfigurationBuilder and the LoggerFactory. The default configurations were moved from the Startup.cs to the CreateDefaultBuilder(). Lat's have a look into the Startup.cs:
+The first thing I mentioned is the encapsulation of the code that creates and configures the `WebHostBuilder`. In the previous versions it was all in the static void main. But there's no instantiation of the `WebHostBuilder` anymore. This is hidden in the `.CreateDefaultBuilder()` method. This look a little cleaner now, but also hides the configuration from the developer. It is anyway possible to use the old way to configure the `WebHostBuilder`, but this wrapper does a little more than the old configuration. This Method also wraps the configuration of the `ConfigurationBuilder` and the `LoggerFactory`. The default configurations were moved from the "Startup.cs" to the `.CreateDefaultBuilder()`. Let's have a look into the "Startup.cs":
 
 ~~~ csharp
 public class Startup
@@ -148,14 +151,14 @@ public class Startup
 
 Even this file is much cleaner now. 
 
-But if you now want to customize the Configuration, the Logging and the other stuff, you need to replace the .CreateDefaultBuilder() with the previous style of bootstrapping the application. You could have a look into the sources of the ASP.NET repository on GitHub to see how this is done inside the .CreateDefaultBuilder()
+But if you now want to customize the Configuration, the Logging and the other stuff, you need to replace the `.CreateDefaultBuilder()` with the previous style of bootstrapping the application or you need to extend the `WebHostBuilder` returned by this method. You could have a look into the [sources of the WebHost class in the ASP.NET repository on GitHub](https://github.com/aspnet/MetaPackages/blob/4b18cf52ae3c22c7124fd9cb35ae0253b390b28e/src/Microsoft.AspNetCore/WebHost.cs) (around line 150) to see how this is done inside the `.CreateDefaultBuilder().` The code of that method looks pretty familiar for someone who already used the previous version.
 
-BTW: BrowserLink was removed in the templates of this preview version. Which is good from my perspective, because it causes an error while starting up the applications. 
+BTW: BrowserLink was removed from the templates of this preview version. Which is good from my perspective, because it causes an error while starting up the applications. 
 
 ## Result
 
 This is just a first short glimpse into the .NET Core 2.0 Preview 1. I need some more time to play around with it and learn a little more about the upcoming changes. For sure I need to rewrite my post about the custom logging a little bit :)
 
-Last week, I created [a 45 min video about it in German](https://www.youtube.com/watch?v=6WZ3UIAVUxU). This is not a video with a good quality. It is quite bad. I just wanted to test a new microphone and Camtasia Studio and I chose ".NET Core 2.0 Preview 1" as the topic to present. Even if it has a awful quality, maybe it is anyway useful to some of my German speaking readers. :)
+> BTW: Last week, I created [a 45 min video about it in German](https://www.youtube.com/watch?v=6WZ3UIAVUxU). This is not a video with a good quality. It is quite bad. I just wanted to test a new microphone and Camtasia Studio and I chose ".NET Core 2.0 Preview 1" as the topic to present. Even if it has a awful quality, maybe it is anyway useful to some of my German speaking readers. :)
 
-I'll come with some more .NET 2.o topics in the next months.
+I'll come with some more .NET 2.0 topics within the next months.
