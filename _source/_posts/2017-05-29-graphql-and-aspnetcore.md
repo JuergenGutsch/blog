@@ -10,7 +10,7 @@ tags:
 - GraphQL
 ---
 
-A few weeks ago, I found some time to have a look at GraphQL and even at the .NET implementation of GraphQL. It is pretty amazing to see it in actions and it is easier than expected to get it running in ASP.NET Core. In this post I'm going to show you how it works.
+A few weeks ago, I found some time to have a look at GraphQL and even at the .NET implementation of GraphQL. It is pretty amazing to see it in actions and it is easier than expected to create a GraphQL endpoint in ASP.NET Core. In this post I'm going to show you how it works.
 
 ## The Graph Query Language
 
