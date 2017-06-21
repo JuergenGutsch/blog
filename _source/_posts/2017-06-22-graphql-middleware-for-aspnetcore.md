@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "GraphQL end-point Middleware for ASP.​NET Core"
-teaser: "Description"
+title: "GraphQL end-point Middleware for ASP.NET Core"
+teaser: "The feedback about my last blog post about the GraphQL end-point in ASP.NET Core was amazing. Because of that and because GraphQL is really awesome, I decided to make the GraphQL MiddleWare available as a NuGet package. I did some small improvements to make this MiddleWare more configurable and more easy to use in the Startup.cs"
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
