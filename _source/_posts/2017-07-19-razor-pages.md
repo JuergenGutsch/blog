@@ -16,11 +16,11 @@ I think, everyone who followed the last couple of ASP.NET Community Standup sess
 
 Using Visual Studio 2017, I used "File... New Project" to create a new project. I navigate to ".NET Core", chose the "ASP.NET Core Web Application (.NET Core)" project  and I chose a name and a location for that project.
 
-![]()
+![]({{ site.baseurl }}/img/razor-pages/new-project.PNG)
 
 In the next dialogue, I needed to switch to ASP.NET Core 2.0 to see all the new available project types. (I will write about the other one in the next posts.) I selected the "Web Application (Razor Pages)" and pressed "OK".
 
-![]()
+![]({{ site.baseurl }}/img/razor-pages/new-razor-pages.PNG)
 
 ## Program.cs and Startup.cs
 
@@ -73,7 +73,7 @@ That means the Razor Pages are part of the MVC framework, as Damien Edwards alwa
 
 But the solution looks a little different. Instead of a MVC, Views and Controller folders, there is only a pages folder with the razor files in it. Even there are known files: the _layout.cshtml, _ViewImports.cshtml, _ViewStart.cshtml.
 
-![]()
+![]({{ site.baseurl }}/img/razor-pages/razor-solution.PNG)
 
 Within the _ViewImports.cshtml awe also have the import of the default TagHelpers
 
@@ -86,7 +86,7 @@ This makes sense, since the Razor Pages are part of the MVC Framework.
 
 We also have the standard pages of every new ASP.NET project. As every new web project in Visual Studio, also this is ready to run. Pressing F5 starts the web application and opens the browser
 
-![]()
+![]({{ site.baseurl }}/img/razor-pages/ready-to-run.PNG)
 
 ## Frontend
 
