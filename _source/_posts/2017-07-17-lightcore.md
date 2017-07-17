@@ -36,11 +36,15 @@ Some weeks ago the preview version of .NET Standard 2.0 was announced and I trie
 
 I don't really want to release the new version until the .NET Standard 2.0 is released. I don't want to have the preview versions of the .NET Standard libraries referenced in a final version of LightCore. That means, there is still some time to get the open issues done.
 
-| Version        | Date               | Comment                                  |
-| -------------- | ------------------ | ---------------------------------------- |
-| 2.0.0-preview1 | End of July 2017   | Uses the preview versions of .NET Standard 2.0 and .NET Core 2.0 |
-| 2.0.0-preview2 | End of August 2017 | Uses the preview versions of .NET Standard 2.0 and .NET Core 2.0. Maybe the finals, if they are released until that. |
-| 2.0.0          | September 2017     | depends on the release of .NET Standard 2.0 and .NET Core 2.0 |
+* 2.0.0-preview1
+  * End of July 2017
+  * Uses the preview versions of .NET Standard 2.0 and .NET Core 2.0
+* 2.0.0-preview2
+  * End of August 2017
+  * Uses the preview versions of .NET Standard 2.0 and .NET Core 2.0. Maybe the finals, if they are released until that.
+* 2.0.0
+  * September 2017
+  * depends on the release of .NET Standard 2.0 and .NET Core 2.0
 
 ## Open issues
 
