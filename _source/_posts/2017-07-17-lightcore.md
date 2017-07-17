@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "News about LightCore 2.0"
+title: "LightCore is back - LightCore 2.0"
 teaser: "I recently wrote about that it is pretty hard to move an existing more complex .NET Framework library to .NET Core or .NET Standard 1.x. More complex in this case just means, that this library uses reflection a little more than maybe some others. I'm talking about the LightCore IoC container. Some weeks ago the preview version of .NET Standard 2.0 was announced and I tried it again."
 author: "Jürgen Gutsch"
 comments: true
@@ -12,15 +12,17 @@ tags:
 - MSTest
 ---
 
-I recently wrote about that it is pretty hard to move an existing more complex .NET Framework library to .NET Core or .NET Standard 1.x. More complex in this case just means, e. g. that this library uses reflection a little more than maybe some others. I'm talking about the LightCore DI container. 
+Until now it is pretty hard to move an existing more complex .NET Framework library to .NET Core or .NET Standard 1.x. More complex in my case just means, e. g. that this specific library uses reflection a little more than maybe some others. I'm talking about the LightCore DI container. 
 
 I started to move it to .NET Core in November 2015, but gave up halve a year later. Because it needs much more time to port it to NET Core and because it makes much more sense to port it to the .NET Standard than to .NET Core. And the announcement of .NET Standard 2.0 makes me much more optimistic to get it done with pretty less effort. So I stopped moving it to .NET Core and .NET Standard 1.x and was waiting for .NET standard 2.0.
 
+## LightCore is back
+
 Some weeks ago the preview version of .NET Standard 2.0 was announced and I tried it again. It works as expected. The API of .NET Standard 2.0 is big enough to get the old source of LightCore running. Also Rick Strahl did some pretty cool and detailed post about it:
 
-* post 1
-* post 2
-* post 3
+* [Upgrading to .NET Core 2.0 Preview](https://weblog.west-wind.com/posts/2017/May/15/Upgrading-to-NET-Core-20-Preview)
+
+* [Multi-Targeting and Porting a .NET Library to .NET Core 2.0](https://weblog.west-wind.com/posts/2017/Jun/22/MultiTargeting-and-Porting-a-NET-Library-to-NET-Core-20)
 
 ## The current status
 
@@ -36,8 +38,8 @@ I don't really want to release the new version until the .NET Standard 2.0 is re
 
 | Version        | Date               | Comment                                  |
 | -------------- | ------------------ | ---------------------------------------- |
-| 2.0.0-preview1 | End of July 2017   | uses the preview versions of .NET Standard 2.0 and .NET Core 2.0 |
-| 2.0.0-preview2 | End of August 2017 | uses the preview versions of .NET Standard 2.0 and .NET Core 2.0. Maybe the finals, if they are released until that. |
+| 2.0.0-preview1 | End of July 2017   | Uses the preview versions of .NET Standard 2.0 and .NET Core 2.0 |
+| 2.0.0-preview2 | End of August 2017 | Uses the preview versions of .NET Standard 2.0 and .NET Core 2.0. Maybe the finals, if they are released until that. |
 | 2.0.0          | September 2017     | depends on the release of .NET Standard 2.0 and .NET Core 2.0 |
 
 ## Open issues
