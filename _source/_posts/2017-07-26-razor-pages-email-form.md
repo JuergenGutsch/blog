@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Creating an email form with ASP.NET Core Razor Pages"
-teaser: "Description"
+teaser: "In the comments of my last post, I got asked to write about, how to create a email form using ASP.NET Core Razor Pages. Here it is :)"
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
