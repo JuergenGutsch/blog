@@ -24,6 +24,23 @@ Also the last twelve months was busy, because almost every month I wrote an arti
 
 
 
+* dotnetpro 10/2017: [Abhängigkeiten dynamisch auflösen](https://www.dotnetpro.de/core/asp-net/abhaengigkeiten-dynamisch-aufloesen-1383623.html)
+* dotnetpro 08/2017: [ASP.NET Core: Kann fast alles](https://www.dotnetpro.de/core/asp-net/asp.net-core-1232694.html)
+* dotnetpro 08/2017: [ASP.NET Core Hosting: Allzeit und überall bereit](https://www.dotnetpro.de/planung/asp.net-core-hosting-allzeit-ueberall-bereit-1233357.html)
+* dotnetpro 07/2017: [Die Qual der Wahl](https://www.dotnetpro.de/frontend/qual-wahl-1226135.html)
+* dotnetpro 06/2017: [Microsoft räumt auf](https://www.dotnetpro.de/workout/net/microsoft-raeumt-1222828.html)
+* dotnetpro 05/2017: [Gewohnt einfach](https://www.dotnetpro.de/core/api/gewohnt-einfach-1212676.html)
+* dotnetpro 04/2017: [Alles in einem Paket](https://www.dotnetpro.de/core/net/in-paket-1199672.html)
+* dotnetpro 04/2017: [Unit Tests mit .NET Core](https://www.dotnetpro.de/core/net/unit-tests-.net-core-1199677.html)
+* dotnetpro 03/2017: [Zum Leben erwecken](https://www.dotnetpro.de/frontend/asp-net/leben-erwecken-1191001.html)
+* dotnetpro 02/2017: [Muskeln und Organe](https://www.dotnetpro.de/frontend/asp-net/muskeln-organe-1184434.html)
+* dotnetpro 01/2017: [Skelett und Haut](https://www.dotnetpro.de/frontend/asp-net/skelett-haut-1177771.html)
+* and many more...
+
+And there will be some more in the next months.
+
+
+
 ## Technical Review of a book
 
 For the first time I do a technical review for a book about "ASP.NET Core 2.0 and Angular 4". I'm a little bit proud of getting asked doing it. The author is one of the famous European authors and this book is awesome and great for Angular and ASP.NET Core beginners. Unfortunately I cannot yet mention the Authors name and link to the book title, but I will definitely if it is finished. 
