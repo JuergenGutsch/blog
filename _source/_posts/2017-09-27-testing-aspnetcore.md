@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Unit Testing an ASP.NET Core Application"
+title: "Unit Testing an ASP.​NET Core Application"
 teaser: "ASP.NET Core 2.0 is out and it is great. Testing worked well in the previous versions, but in 2.0 it is much more easier. In this post I'm going to show you how to unit test your controllers and how to write integration tests for your controllers."
 author: "Jürgen Gutsch"
 comments: true
