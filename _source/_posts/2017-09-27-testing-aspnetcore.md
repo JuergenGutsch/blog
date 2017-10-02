@@ -275,7 +275,7 @@ public class PersonsControllerUnitTests
     var result = await controller.Post(newPerson);
 
     // Assert
-    var okResult = result.Should().BeOfType<CreatedAtAction>().Subject;
+    var okResult = result.Should().BeOfType<CreatedAtActionResult>().Subject;
     var person = okResult.Value.Should().BeAssignableTo<Person>().Subject;
     person.Id.Should().Be(51);
   }
