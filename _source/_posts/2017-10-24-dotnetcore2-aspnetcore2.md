@@ -67,5 +67,5 @@ I would use ASP.NET Core for every new web project and .NET Standard for every l
 BTW: Rick Strahl also just wrote an article about that. Please read it. It's great, as almost all of his posts:
 [https://weblog.west-wind.com/posts/2017/Oct/22/NET-Core-20-and-ASPNET-20-Core-are-finally-here](https://weblog.west-wind.com/posts/2017/Oct/22/NET-Core-20-and-ASPNET-20-Core-are-finally-here)
 
-BTW: The slides off that talk are on slide share. If you want me to do that talk in your meetup or in your user group, just ping me on [twitter](https://twitter.com/sarpcms) or drop me an [email](mailto:juergen@gutsch-online.de)
+BTW: The slides off that talk are on [SlideShare](https://www.slideshare.net/secret/dHqPnTjsYyyklY). If you want me to do that talk in your meetup or in your user group, just ping me on [twitter](https://twitter.com/sarpcms) or drop me an [email](mailto:juergen@gutsch-online.de)
 
