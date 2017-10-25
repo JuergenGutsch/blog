@@ -50,11 +50,12 @@ There are a lot blog posts out there about migrating web applications to ASP.NET
 
 * You want to go x-plat to host on Linux
 * You want to host on small devices
-* You want to host in Docker containers
+* You want to host in linux based Docker containers
 * You want to use a faster framework
   * A faster framework is useless, if your code or your dependencies are slow ;-)
 * You want to use a modern framework
   * Note: ASP.NET 4.x is not outdated, still supported and still gets new features
+* You want to run your web on a Microsoft Nano Server
 
 Depending on the level of customizing you did in your existing application, the migration could be a lot of effort. Someone needs to pay for the effort, that's why I would propose not to migrate to ASP.NET Core, if you don't have any problems or a real need to do it.
 
