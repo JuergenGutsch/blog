@@ -17,7 +17,7 @@ tags:
 
 BitBucket provides a continuous integration tool called Pipelines. This is based on Docker containers which are running on a Linux based Docker machine. Within this post I wanna try to use BitBucket Pipelines with an ASP.NET Core application.
 
-In the past I preferred BitBucket over GitHub, because I used Mercurial more than Git. But that changed five years ago. Since than I use GitHub for every new personal project. But at the [YooApps](http://yooapps.com) we use the entire Atlassian ALM Stack including Jira, Confluence and BitBucket. (We don't use Bamboo yet, because we also use Azure a lot and we didn't get Bamboo running on Azure). BitBucket is a good choice, if you anyway use the other Atlassian tools, because the integration to Jira and Confluence is awesome. 
+In the past I preferred BitBucket over GitHub, because I used Mercurial more than Git. But that changed five years ago. Since than I use GitHub for almost every new personal project that doesn't need to be a private project. But at the [YooApps](http://yooapps.com) we use the entire Atlassian ALM Stack including Jira, Confluence and BitBucket. (We don't use Bamboo yet, because we also use Azure a lot and we didn't get Bamboo running on Azure). BitBucket is a good choice, if you anyway use the other Atlassian tools, because the integration to Jira and Confluence is awesome. 
 
 Since a while, Atlassian provides Pipelines as a simple continuous integration tool directly on BitBucket. You don't need to setup Bamboo to build and test just a simple application. At the [YooApps](http://yooapps.com) we actually use Pipelines in various projects which are not using .NET. For .NET Projects we are currently using CAKE or FAKE on Jenkins, hosted on an Azure VM. 
 
@@ -25,16 +25,16 @@ Pipelines can also used to build and test branches and pull request, which is aw
 
 ## The project to build
 
-As usual, I just setup a simple ASP.NET Core project and add a XUnit test project to it. In this case I use the same project as shown in the [Unit testing ASP.NET Core]({% post_url testing-aspnetcore.md %}) post. I just import that project to BitBucket. Feel free to use the same way or just download the solution and commit it into your repository on BitBucket. Once the sources are in the repository, you can start to setup Pipelines.
+As usual, I just setup a simple ASP.NET Core project and add a XUnit test project to it. In this case I use the same project as shown in the [Unit testing ASP.NET Core]({% post_url testing-aspnetcore.md %}) post. I imported that project from GitHub to BitBucket. if you also wanna try Pipelines, feel free to use the same way or just download my solution and commit it into your repository on BitBucket. Once the sources are in the repository, you can start to setup Pipelines.
 
-* GitHub https://github.com/JuergenGutsch/unittesting-aspnetcore
-* BitBucket: https://bitbucket.org/JuergenGutsch/unittesting-aspnetcore/
+* GitHub [https://github.com/JuergenGutsch/unittesting-aspnetcore/](https://github.com/JuergenGutsch/unittesting-aspnetcore/)
+* BitBucket: [https://bitbucket.org/JuergenGutsch/unittesting-aspnetcore/](https://bitbucket.org/JuergenGutsch/unittesting-aspnetcore/)
 
 ## Setup Pipelines
 
-Setting up Pipelines actually is pretty easy. In your repository on BitBucket.com is a menu item called Pipelines. After pressing it you'll see the setup page, where you are able to select a technology specific configuration. .NET Core is not the first choice for BitBucket, because the .NET Core configuration is placed under "more". It is available anyway, which is really nice. After selecting the configuration, you'll see the configuration in an editor inside the browser. It is actually a YAML configuration, called `bitbucket-pipelines.yml`, which is pretty easy to read. This configuration is prepared to use the `microsoft/dotnet:onbuild` Docker image and already prepared the most common commands to use with ASP.NET Core projects. You just need to configure the projects names for the build and test commands. 
+Setting up Pipelines actually is pretty easy. In your repository on BitBucket.com is a menu item called Pipelines. After pressing it you'll see the setup page, where you are able to select a technology specific configuration. .NET Core is not the first choice for BitBucket, because the .NET Core configuration is placed under "More". It is available anyway, which is really nice. After selecting the configuration type, you'll see the configuration in an editor inside the browser. It is actually a YAML configuration, called `bitbucket-pipelines.yml`, which is pretty easy to read. This configuration is prepared to use the `microsoft/dotnet:onbuild` Docker image and it already has the most common .NET CLI commands prepared, that will be used with that ASP.NET Core projects. You just need to configure the projects names for the build and test commands. 
 
-![](../img/bitbucket-pipeline/bitbucket-pipelines.PNG)
+![]({{site.baseurl}}/img/bitbucket-pipeline/bitbucket-pipelines.PNG)
 
 The completed configuration for my current project looks like this:
 
@@ -61,45 +61,45 @@ pipelines:
 
 If you don't have tests yet, comment the last line out by adding a `#`-sign in front of that line.
 
-After pressing "commit file" this configuration file gets stored in the root of your repository, which makes it available for all the developers of that project.
+After pressing "Commit file", this configuration file gets stored in the root of your repository, which makes it available for all the developers of that project.
 
 ## Let's try it
 
 After that config was saved, the build started immediately... and failed!
 
-![](../img/bitbucket-pipeline/failing-build.PNG)
+![]({{site.baseurl}}/img/bitbucket-pipeline/failing-build.PNG)
 
-Why? Because that Docker image was pretty much outdated. It contains an older version with an SDK that still uses the the project.json for .NET Core projects.
+Why? Because that Docker image was pretty much outdated. It contains an older version with an SDK that still uses the the `project.json` for .NET Core projects.
 
 Changing the name of the Docker image from `microsoft/dotnet:onbuild` to `microsoft/dotnet:sdk` helps. You now need to change the bitbucket-pipelines.yml in your local Git workspace or using the editor on BitBucket directly. After committing the changes, again the build starts immediately and is green now
 
-![](../img/bitbucket-pipeline/successing-build.PNG)
+![]({{site.baseurl}}/img/bitbucket-pipeline/successing-build.PNG)
 
-Even the tests are passed. As expected I get a pretty detailed output about every step configured in the "script" node of the bitbucket-pipelines.yml
+Even the tests are passed. As expected, I got a pretty detailed output about every step configured in the "script" node of the bitbucket-pipelines.yml
 
-![](../img/bitbucket-pipeline/successing-build-tests.PNG)
+![]({{site.baseurl}}/img/bitbucket-pipeline/successing-build-tests.PNG)
 
 You don't need to know how to configure Docker using the pipelines. This is awesome.
 
-##Let's try the PR build
+## Let's try the PR build
 
 To create a PR, I need to create a feature branch first. I created it locally using the name "feature/build-test" and pushed that branch to the origin. You now can see that this branch got built by Pipelines:
 
-![](../img/bitbucket-pipeline/build-state-on-commits-feature.PNG)
+![]({{site.baseurl}}/img/bitbucket-pipeline/build-state-on-commits-feature.PNG)
 
 Now let's create the PR using the BitBucket web UI. It automatically assigns my latest feature branch and the main branch, which is develop in my case:
 
-![](../img/bitbucket-pipeline/create-pr.PNG)
+![]({{site.baseurl}}/img/bitbucket-pipeline/create-pr.PNG)
 
 Here we see that both branches are successfully built and tested previously. After pressing save we see the build state in the PRs overview:
 
-![](../img/bitbucket-pipeline/created-pr.PNG)
+![]({{site.baseurl}}/img/bitbucket-pipeline/created-pr.PNG)
 
-This is actually not a specific built for that PR, but the build of the feature branch. So in this case, it doesn't really build the PR. (Maybe it does, if the PR comes from a fork. I didn't test it yet.) 
+This is actually not a specific built for that PR, but the build of the feature branch. So in this case, it doesn't really build the PR. (Maybe it does, if the PR comes from a fork and the branch wasn't tested previously. I didn't test it yet.) 
 
 After merging that PR back to the `develop` (in that case), we will see that this merge commit was successfully built too: 
 
-![](../img/bitbucket-pipeline/merged-pr.PNG)
+![]({{site.baseurl}}/img/bitbucket-pipeline/merged-pr.PNG)
 
 We have four builds done here: The failing one, the one 11 hours ago and two builds 52 minutes ago in two different branches.
 
@@ -119,11 +119,11 @@ I'll now create a new feature branch called "feature/failing-test" and push it t
 
 The build starts immediately and fails as expected:
 
-![](../img/bitbucket-pipeline/failing-test.PNG)
+![]({{site.baseurl}}/img/bitbucket-pipeline/failing-test.PNG)
 
 But what about the deployment? Let's have a look at the deployments on Azure. We should only see the initial successful deployment. Unfortunately there is another successful deployment with the same commit message as the failing build on BitBucket:
 
-![](../img/bitbucket-pipeline/failing-eployed.PNG)
+![]({{site.baseurl}}/img/bitbucket-pipeline/failing-eployed.PNG)
 
 This is bad. We now have an unstable application running on azure. Unfortunately there is no option on BitBucket to trigger the WebHook on a successful build. We are able trigger the Hook on a build state change, but it is not possible to define on what state we want to trigger the build. 
 
