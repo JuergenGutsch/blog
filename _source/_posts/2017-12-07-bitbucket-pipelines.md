@@ -119,7 +119,9 @@ The Azure Web App is created and running on http://build-with-bitbucket-pipeline
 
 It is configured to listen on changes on the develop branch. That means, every time we push changes to that branch, the deployment to Azure will start.
 
-I'll now create a new feature branch called "feature/failing-test" and push it to the BitBucket. I follow the same steps as described in the previous section about the PRs, if if the builds are failing. I merge the feature branch to develop and push all the changes to BitBucket.
+I'll now create a new feature branch called "feature/failing-test" and push it to the BitBucket. I don't follow the same steps as described in the previous section about the PRs, to keep the test simple. I merge the feature branch directly and without an PR to develop and push all the changes to BitBucket. Yes, I'm a rebel... ;-)
+
+The build starts immediately and fails, but what about the deployment? Let's have a look at the deployments on Azure. We should only see the initial successful deployment.
 
 [!TODO TEST]
 
