@@ -81,9 +81,27 @@ Even the tests are passed. As expected I get a pretty detailed output about ever
 
 You don't need to know how to configure Docker using the pipelines. This is awesome.
 
-##Lets test the PR build
+##Let's try the PR build
 
-TODO: 
+To create a PR, I need to create a feature branch first. I created it locally using the name "feature/build-test" and pushed that branch to the origin. You now can see that this branch got built by Pipelines:
+
+![](../img/bitbucket-pipeline/build-state-on-commits-feature.PNG)
+
+Now let's create the PR using the BitBucket web UI. It automatically assigns my latest feature branch and the main branch, which is develop in my case:
+
+![](../img/bitbucket-pipeline/create-pr.PNG)
+
+Here we see that both branches are successfully built and tested previously. After pressing save we see the build state in the PRs overview:
+
+![](../img/bitbucket-pipeline/created-pr.PNG)
+
+This is actually not a specific built for that PR, but the build of the feature branch. So in this case, it doesn't really build the PR. (Maybe it does, if the PR comes from a fork. I didn't test it yet.) 
+
+After merging that PR back to the `develop` (in that case), we will see that this merge commit was successfully built too: 
+
+![](../img/bitbucket-pipeline/merged-pr.PNG)
+
+We have four builds done here: The failing one, the one 11 hours ago and two builds 52 minutes ago in two different branches.
 
 ## The Continuous Deployment pipeline
 
@@ -91,7 +109,19 @@ With this I'm save to trigger a direct deployment on every push to the main bran
 
 We just need to ensure that the deployment is only be triggered, if the build is successfully done.
 
-To do that... TODO
+To do that, I created a new Web App on Azure and connect this app to the Git repository on BitBucket. I'll now add a failing test and commit it to the Git repository. What now should happen is, that the build starts before the code gets pushed to Azure and the failing build should disable the push to Azure.
+
+I'm skeptical whether this is working or not. Let's see.
+
+The Azure Web App is created and running on http://build-with-bitbucket-pipelines.azurewebsites.net/. The Deployment settings are configured like this:
+
+[!TODO IMAGE]
+
+It is configured to listen on changes on the develop branch. That means, every time we push changes to that branch, the deployment to Azure will start.
+
+I'll now create a new feature branch called "feature/failing-test" and push it to the BitBucket. I follow the same steps as described in the previous section about the PRs, if if the builds are failing. I merge the feature branch to develop and push all the changes to BitBucket.
+
+[!TODO TEST]
 
 ## Conclusion
 
