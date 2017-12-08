@@ -129,9 +129,51 @@ This is bad. We now have an unstable application running on azure. Unfortunately
 
 Too bad, this doesn't seem to be the right way to configure the continuous deployment pipeline in the same easy way than the continuous integration process. Sure there are many other, but more complex ways to do that. 
 
+### Update 12/8/2017
+
+There is anyway a simple option to setup an deployment after successful build. This could be done by triggering the Azure webhook inside the Pipelines. An sample bash script to do that can be found here: [https://bitbucket.org/mojall/bitbucket-pipelines-deploy-to-azure/](https://bitbucket.org/mojall/bitbucket-pipelines-deploy-to-azure/src/ac127659113e/artifacts/Kudu/?at=master.) Without the comments it looks like this:
+
+~~~shell
+curl -X POST "https://\$$SITE_NAME:$FTP_PASSWORD@$SITE_NAME.scm.azurewebsites.net/deploy" \
+  --header "Content-Type: application/json" \
+  --header "Accept: application/json" \
+  --header "X-SITE-DEPLOYMENT-ID: $SITE_NAME" \
+  --header "Transfer-encoding: chunked" \
+  --data "{\"format\":\"basic\", \"url\":\"https://$BITBUCKET_USERNAME:$BITBUCKET_PASSWORD@bitbucket.org/$BITBUCKET_USERNAME/$REPOSITORY_NAME.git\"}"
+
+echo Finished uploading files to site $SITE_NAME.
+~~~
+
+I now need to set the environment variables in the Pipelines configuration:
+
+![]({{site.baseurl}}/img/bitbucket-pipeline/pipelines-envvars.PNG)
+
+Be sure to check the "Secured" checkbox for every password variable, to hide the password in this UI and in the log output of Pipelines.
+
+And we need to add two script commands to the bitbucket-pipelines.yml:
+
+~~~yaml
+- chmod +x ./deploy-to-azure.bash
+- ./deploy-to-azure.bash
+~~~
+
+The last step is to remove the Azure web hook from the web hook configuration in BitBucket and to remove the failing test. I now add the failing test again to test again and it worked as expected. The test fails and the next commands don't get executed. The web hook will never triggered and the unstable app will not be deployed.
+
+Now there is a failing build on Pipelines:
+
+![]({{site.baseurl}}/img/bitbucket-pipeline/trigger-deployments.PNG)
+
+(See the commit messages)
+
+And that failing commit is not deployed to azure:
+
+![]({{site.baseurl}}/img/bitbucket-pipeline/trigger-deployments-azure.PNG)
+
+The Continuous Deployment is successfully done. 
+
 ## Conclusion
 
-Isn't it super easy to setup a continuous integration? Unfortunately we are not able to complete the deployment using this. But anyway, we now have a build on any branch and on any pull-request. That helps a lot.
+Isn't it super easy to setup a continuous integration? ~~Unfortunately we are not able to complete the deployment using this.~~ But anyway, we now have a build on any branch and on any pull-request. That helps a lot.
 
 **Pros:**
 
