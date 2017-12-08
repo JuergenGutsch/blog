@@ -157,7 +157,9 @@ And we need to add two script commands to the bitbucket-pipelines.yml:
 - ./deploy-to-azure.bash
 ~~~
 
-The last step is to remove the Azure web hook from the web hook configuration in BitBucket and to remove the failing test. I now add the failing test again to test again and it worked as expected. The test fails and the next commands don't get executed. The web hook will never triggered and the unstable app will not be deployed.
+The last step is to remove the Azure web hook from the web hook configuration in BitBucket and to remove the failing test. After pushing the changes to BitBucket the build and the first successfull deployment starts immediately.
+
+I now add the failing test again to test the failing deployment again and it worked as expected. The test fails and the next commands don't get executed. The web hook will never triggered and the unstable app will not be deployed.
 
 Now there is a failing build on Pipelines:
 
