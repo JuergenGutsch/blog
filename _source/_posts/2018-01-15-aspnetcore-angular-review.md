@@ -4,7 +4,7 @@ title: "Book Review: ASP.​NET Core 2 and Angular 5"
 teaser: "Last fall, I did my first technical review of a book written by Valerio De Sanctis, called 'ASP.NET Core 2 and Angular 5'. This book is about to use Visual Studio 2017 to create a Single Page Application using ASP.NET Core and Angular."
 author: "Jürgen Gutsch"
 comments: true
-image: {{site.baseurl}}/img/bookreview/aspnetcoreangular.jpg
+image: /img/bookreview/aspnetcoreangular.jpg
 tags: 
 - ASP.NET Core
 - Angular
