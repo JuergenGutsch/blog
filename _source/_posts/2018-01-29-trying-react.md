@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Trying React the first time"
-teaser: "The last two years I worked a lot with Angular. I learned a lot and I also wrote some blog posts about it. While I worked with Angular, I always had React in mind and wanted to learn about that. But I never head the time or a real reason to look at it. I still have no reason to try it, but a little bit of time left. So why no? This post is just a small overview of what I learned during the setup and in the very first tries."
+teaser: "The last two years I worked a lot with Angular. I learned a lot and I also wrote some blog posts about it. While I worked with Angular, I always had React in mind and wanted to learn about it. But I never head the time or a real reason to look at it. I still have no reason to try it, but a little bit of time left. So why not? This post is just a small overview of what I learned during the setup and in the very first tries."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -12,17 +12,17 @@ tags:
 - JavaScript
 ---
 
-The last two years I worked a lot with Angular. I learned a lot and I also wrote some blog posts about it. While I worked with Angular, I always had React in mind and wanted to learn about that. But I never head the time or a real reason to look at it. I still have no reason to try it, but a little bit of time left. So why not? :-)
+The last two years I worked a lot with Angular. I learned a lot and I also wrote some blog posts about it. While I worked with Angular, I always had [React](https://reactjs.org/) in mind and wanted to learn about that. But I never head the time or a real reason to look at it. I still have no reason to try it, but a little bit of time left. So why not? :-)
 
 This post is just a small overview of what I learned during the setup and in the very first tries.
 
 ## The Goal
 
-It is not only about developing using React, later I will also soo how React works with ASP.NET and ASP.NET Core and how it behaves in Visual Studio. I also want to try the good things (compared to Angular) I heardthe and read about React:
+It is not only about developing using React, later I will also see how React works with ASP.NET and ASP.NET Core and how it behaves in Visual Studio. I also want to try the different benefits (compared to Angular) I heard and read about React:
 
-* It is not a huge framework like Angular and can also be used to extend an existing app.
-* It is mainly used for single page application, but could also be used to integrate it into multiple pages of a web app
-* You are more free to use different libraries, since there is not all the stuff built in.
+* It is not a huge framework like Angular but just a library 
+* Because It's a library, it should be easy to extend existing web-apps.
+* You should be more free to use different libraries, since there is not all the stuff built in.
 
 ## Setup
 
@@ -34,9 +34,9 @@ What I like while working with Angular is a really transparent way of using it a
 
 This Setup uses NPM to get the packages. It uses Webpack to bundle the needed Javascript, Babel is integrated in to Webpack to transpile the JavaScripts from ES6 to more browser compatible JavaScript.
 
-I also use the Webpack-dev-server to run the React app during development. Even react-hot-loader is used to speed up the development time a little bit. The main difference to Angular development is the usage of ES6 based JavaScript and Babel instead of using Typescript. It should also work with typescript, but it doesn't really seem to matter, because they are pretty similar. I'll try using ES6 to see how it works. The only thing I possibly will miss is the type checking.
+I also use the Webpack-dev-server to run the React app during development. Also react-hot-loader is used to speed up the development time a little bit. The main difference to Angular development is the usage of ES6 based JavaScript and Babel instead of using Typescript. It should also work with typescript, but it doesn't really seem to matter, because they are pretty similar. I'll try using ES6 to see how it works. The only thing I possibly will miss is the type checking.
 
-As you can see, there is not really difference: 
+As you can see, there is not really a difference to Typescript yet, only the JSX thing takes getting used to: 
 
 ~~~ javascript
 // index.js
@@ -78,14 +78,14 @@ With this setup, I believe I can easily continue to play around with React.
 
 To support ES6, React and JSX in VSCode I installed some extensions for it:
 
-* Babel JavaScript by Michael McDermott
+* **Babel JavaScript** by Michael McDermott
   * Syntax-Highlighting for modern JavaScripts
-* ESLint by Dirk Baeumer
+* **ESLint** by Dirk Baeumer
   * To lint the modern JavaScripts
 
 
-* JavaScript (ES6) code snippets by Charalampos Karypidis
-* Reactjs code snippets by Charalampos Karypidis
+* **JavaScript (ES6) code snippets** by Charalampos Karypidis
+* **Reactjs code snippets** by Charalampos Karypidis
 
 ### Webpack
 
@@ -134,13 +134,13 @@ module.exports = {
 
 ### React Developer Tools
 
-For Chrome and Firefox there are add-ins available to inspect and debug React apps in the browser. For Chrome I installed the React Developer Tools, which is really useful to see the component hierarchy:
+For Chrome and Firefox there are add-ins available to inspect and debug React apps in the browser. For Chrome I installed the **React Developer Tools**, which is really useful to see the component hierarchy:
 
 ![]({{site.baseurl}}/img/trying-react/react-dev-tools.PNG)
 
 ## Hosting the app
 
-The react app is hosted in a index.html, which is stored inside the ./dist folder. It calls the bundle.js. The Process start in the index.js. react putts the App inside a div with the Id app (as you can see in the first code snippet in this post.)
+The react app is hosted in a `index.html`, which is stored inside the `./dist` folder. It references the `bundle.js`. The React process starts in the `index.js`. React putts the App inside a `div` with the Id `app` (as you can see in the first code snippet in this post.)
 
 ~~~ html
 <!DOCTYPE html>
@@ -155,7 +155,7 @@ The react app is hosted in a index.html, which is stored inside the ./dist folde
 </html>
 ~~~
 
-The index.js import the Layout.js. Here a basic Layout is defined, by adding a Header and a Footer component, which are also imported from other components. 
+The `index.js` import the `Layout.js`. Here a basic layout is defined, by adding a Header and a Footer component, which are also imported from other components. 
 
 ~~~ javascript
 // Header.js
@@ -223,10 +223,10 @@ The resulting HTML looks like this:
 
 ## Conclusion
 
-My current impression is that React is much more fast than Angular. This is just a kind of a Hello world app, but even for such an app Angular need some time to render this few lines of code. Maybe that changes if the App gets bigger. But I'm sure it keeps to be fast, because of less overhead in the framework.
+My current impression is that React is much more fast on startup than Angular. This is just a kind of a Hello world app, but even for such an app Angular need some time to start a few lines of code. Maybe that changes if the App gets bigger. But I'm sure it keeps to be fast, because of less overhead in the framework.
 
-The setup was easy and works on the first try. The experience in Angular helped a lot here. I already know the tools, but anyway, Robins tutorial is pretty clear, simple and easy to read: [https://www.robinwieruch.de/minimal-react-Webpack-babel-setup/](https://www.robinwieruch.de/minimal-react-Webpack-babel-setup/)
+The setup was easy and works on the first try. The experience in Angular helped a lot here. I already know the tools. Anyway, Robins tutorial is pretty clear, simple and easy to read: [https://www.robinwieruch.de/minimal-react-Webpack-babel-setup/](https://www.robinwieruch.de/minimal-react-Webpack-babel-setup/)
 
-To get started with React, the's also a nice Video series on YouTube, which tells you about the really basics and how to get started creating components and adding the dynamic stuff to the components: 
+To get started with React, there's also a nice Video series on YouTube, which tells you about the really basics and how to get started creating components and adding the dynamic stuff to the components: 
 
 https://www.youtube.com/watch?v=MhkGQAoc7bc&list=PLoYCgNOIyGABj2GQSlDRjgvXtqfDxKm5b
