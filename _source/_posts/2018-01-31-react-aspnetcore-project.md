@@ -225,3 +225,13 @@ The other changes in that project are not really related to React in general. Th
 I didn't really expect such a clearly and transparently configured project template. If I try to put the setup of the last post into a ASP.NET Core project, I would do it almost the same way. Using Webpack to transpile and bundle the files and save them somewhere in the `wwwroot` folder.
 
 From my perspective, I would use this project template as a starter for small projects to medium sized projects (whatever this means). For medium to bigger sized projects, I would - again - propose to divide the client app ad the server part into two different projects, to host them independently, to develop them independently. Hosting independently also means, scale independently. Develop independently means both, scale the teams independently and to focus only on the technology and tools, which are used for this part of the application.
+
+To learn more about React and how it works with ASP.NET Core in Visual Studio 2017, I will create a Chat-App. I will also write a small series about it: 
+
+1. React Chat Part 1: Requirements & Setup
+2. React Chat Part 2: Creating the UI & React Components
+3. React Chat Part 3: Adding Websockets using SignalR
+4. React Chat Part 4: Authentication & Storage
+5. React Chat Part 5: Deployment to Azure
+
+I'll also setup a GitHub repository where you can follow the project.
