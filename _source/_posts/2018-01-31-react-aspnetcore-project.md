@@ -12,7 +12,7 @@ tags:
 - Visual Studio 2017
 ---
 
-In the last post I had a first look into a plain, clean and lightweight React setup. I'm still impressed how easy the setup is and how fast the loading of a React app really is. Before trying to push this setup into a ASP.NET Core application, it would make sense to have a look into the ASP.NET Core React project.
+In [the last post I wrote](http://asp.net-hacker.rocks/2018/01/29/trying-react.html) I had a first look into a plain, clean and lightweight React setup. I'm still impressed how easy the setup is and how fast the loading of a React app really is. Before trying to push this setup into a ASP.NET Core application, it would make sense to have a look into the ASP.NET Core React project.
 
 ## Create the React project
 
@@ -234,4 +234,4 @@ To learn more about React and how it works with ASP.NET Core in Visual Studio 20
 4. React Chat Part 4: Authentication & Storage
 5. React Chat Part 5: Deployment to Azure
 
-I'll also setup a GitHub repository where you can follow the project.
+I also set-up a GitHub repository where you can follow the project: [https://github.com/JuergenGutsch/react-chat-demo](https://github.com/JuergenGutsch/react-chat-demo)
