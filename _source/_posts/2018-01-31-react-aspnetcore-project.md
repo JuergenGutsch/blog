@@ -234,4 +234,4 @@ To learn more about React and how it works with ASP.NET Core in Visual Studio 20
 4. React Chat Part 4: Authentication & Storage
 5. React Chat Part 5: Deployment to Azure
 
-I'll also setup a GitHub repository where you can follow the project.
+I also set-up a GitHub repository where you can follow the project: https://github.com/JuergenGutsch/react-chat-demo
