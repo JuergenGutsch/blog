@@ -227,6 +227,4 @@ My current impression is that React is much more fast on startup than Angular. T
 
 The setup was easy and works on the first try. The experience in Angular helped a lot here. I already know the tools. Anyway, Robins tutorial is pretty clear, simple and easy to read: [https://www.robinwieruch.de/minimal-react-Webpack-babel-setup/](https://www.robinwieruch.de/minimal-react-Webpack-babel-setup/)
 
-To get started with React, there's also a nice Video series on YouTube, which tells you about the really basics and how to get started creating components and adding the dynamic stuff to the components: 
-
-https://www.youtube.com/watch?v=MhkGQAoc7bc&list=PLoYCgNOIyGABj2GQSlDRjgvXtqfDxKm5b
+To get started with React, there's also a nice Video series on YouTube, which tells you about the really basics and how to get started creating components and adding the dynamic stuff to the components: [https://www.youtube.com/watch?v=MhkGQAoc7bc&list=PLoYCgNOIyGABj2GQSlDRjgvXtqfDxKm5b](https://www.youtube.com/watch?v=MhkGQAoc7bc&list=PLoYCgNOIyGABj2GQSlDRjgvXtqfDxKm5b)
