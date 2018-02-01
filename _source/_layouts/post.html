@@ -12,12 +12,19 @@ layout: layoutpage
 
     <footer>
         <div>
-            <p><strong>Do you like this post?</strong> If yes, please share this post on 
-             <a href="https://twitter.com/intent/tweet?url={{ site.baseurl }}{{ page.url }}&amp;text={{ page.title }}&amp;via=sharpcms" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter">Twitter</a>, 
-             <a href="https://facebook.com/sharer.php?u={{ site.baseurl }}{{ page.url }}&amp;t={{ page.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Facebook">Facebook</a>, 
-             <a href="https://plus.google.com/share?url={{ site.baseurl }}{{ page.url }}&amp;t={{ page.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=430');return false;" target="_blank" title="Share on Google+">Google+</a>,
-             <a href="https://www.reddit.com/submit?url={{ site.baseurl }}{{ page.url }}&amp;title={{ page.title }}" target="_blank" title="Share on Reddit">Reddit</a> or just share this 
-             <a href="{{ site.baseurl }}{{ page.url }}" class="permalink" rel="bookmark">link</a> and click on the banner below. Thanks :)
+            {% assign filename = page.url | replace_first: '/', '' | replace: '/', '-'  | replace: '.html', '.md' %}
+            <p>
+                If you found any error on this post, feel free to tell me: Add a comment below, 
+                <a href="https://github.com/JuergenGutsch/blog/issues" target="_blank">file an issue on GitHub</a> or 
+                <a href="https://github.com/JuergenGutsch/blog/tree/master/_source/_posts/{{filename}}" target="_blank">edit this page on GitHub and send me an PullRequest</a>.
+            </p>
+            <p>
+                <strong>Do you like this post?</strong> If yes, please share this post on 
+                <a href="https://twitter.com/intent/tweet?url={{ site.baseurl }}{{ page.url }}&amp;text={{ page.title }}&amp;via=sharpcms" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter">Twitter</a>, 
+                <a href="https://facebook.com/sharer.php?u={{ site.baseurl }}{{ page.url }}&amp;t={{ page.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Facebook">Facebook</a>, 
+                <a href="https://plus.google.com/share?url={{ site.baseurl }}{{ page.url }}&amp;t={{ page.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=430');return false;" target="_blank" title="Share on Google+">Google+</a>,
+                <a href="https://www.reddit.com/submit?url={{ site.baseurl }}{{ page.url }}&amp;title={{ page.title }}" target="_blank" title="Share on Reddit">Reddit</a> or just share this 
+                <a href="{{ site.baseurl }}{{ page.url }}" class="permalink" rel="bookmark">link</a> and click on the banner below. Thanks :)
             </p>
             <p>
                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
