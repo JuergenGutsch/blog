@@ -25,11 +25,11 @@ He uses different libraries, as you can see in his repository on GitHub: [https:
 
 This libraries are built by the makers of graphql-dotnet. The project is hosted in the graphql-dotnet organization on GitHub: [https://github.com/graphql-dotnet/server](https://github.com/graphql-dotnet/server). They also provide a Middleware that can be used in ASP.NET Core projects. The cool thing about that project is a WebSocket endpoint for GraphQL.
 
-## What about my GraphQL middleware? 
+## What about the GraphQL middleware I wrote? 
 
 Because my [GraphQL middleware]({% post_url graphql-middleware-for-aspnetcore.md %}), is also based on graphql-dotnet, I'm not yet sure whether to continue maintaining this middleware or to retire this project. I'm not yet sure what to do, but I'll try the other implementation to find out more.
 
-I'm pretty sure the contributors of the graphql-dotnet project know a lot more about GraphQL and there library. Both project will work the same way and will return the same result - hopefully. The only difference is the API and the configuration. The only reason to continue working on the project is to learn more about GraphQL or to maybe provide a better API ;-)
+I'm pretty sure the contributors of the graphql-dotnet project know a lot more about GraphQL and there library, than I do. Both project will work the same way and will return the same result - hopefully. The only difference is the API and the configuration. The only reason to continue working on the project is to learn more about GraphQL or to maybe provide a better API ;-)
 
 If I retire my project, I would try to contribute to the graphql-dotnet projects.
 
