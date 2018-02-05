@@ -12,7 +12,7 @@ tags:
 - Visual Studio 2017
 ---
 
-In [the last post I wrote](http://asp.net-hacker.rocks/2018/01/29/trying-react.html) I had a first look into a plain, clean and lightweight React setup. I'm still impressed how easy the setup is and how fast the loading of a React app really is. Before trying to push this setup into a ASP.NET Core application, it would make sense to have a look into the ASP.NET Core React project.
+In [the last post I wrote]({% post_url trying-react.md %}) I had a first look into a plain, clean and lightweight React setup. I'm still impressed how easy the setup is and how fast the loading of a React app really is. Before trying to push this setup into a ASP.NET Core application, it would make sense to have a look into the ASP.NET Core React project.
 
 ## Create the React project
 
@@ -228,7 +228,7 @@ From my perspective, I would use this project template as a starter for small pr
 
 To learn more about React and how it works with ASP.NET Core in Visual Studio 2017, I will create a Chat-App. I will also write a small series about it: 
 
-1. React Chat Part 1: Requirements & Setup
+1. [React Chat Part 1: Requirements & Setup]({% post_url react-chat-part1.md %})
 2. React Chat Part 2: Creating the UI & React Components
 3. React Chat Part 3: Adding Websockets using SignalR
 4. React Chat Part 4: Authentication & Storage
