@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Creating a chat application using React and ASP.NET Core - Part 1"
+title: "Creating a chat application using React and ASP.​NET Core - Part 1"
 teaser: "In this blog series I'm going to create a small chat application using React and ASP.NET Core, to learn more about React and to learn how React behaves in an ASP.NET Core project during development and deployment. This topic describes the basic requirements and the project setup."
 author: "Jürgen Gutsch"
 comments: true
@@ -11,7 +11,7 @@ tags:
 - TypeScript
 ---
 
-In this blog series I'm going to create a small chat application using React and ASP.NET Core, to learn more about React and to learn how React behaves in an ASP.NET Core project during development and deployment. This Series is divided into 5 parts, which should cover all relevant topics:
+In this blog series, I'm going to create a small chat application using React and ASP.NET Core, to learn more about React and to learn how React behaves in an ASP.NET Core project during development and deployment. This Series is divided into 5 parts, which should cover all relevant topics:
 
 1. React Chat Part 1: Requirements & Setup
 2. React Chat Part 2: Creating the UI & React Components
