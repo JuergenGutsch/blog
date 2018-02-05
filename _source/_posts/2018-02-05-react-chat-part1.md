@@ -23,9 +23,9 @@ I also set-up a GitHub repository where you can follow the project: [https://git
 
 ## Requirements
 
-I want to create a small chat application that uses React, SignalR and ASP.NET Core 2.0. The Frontend should be created using React. The backend serves a Websocket end-point using SignalR and some basic Web API end-points to fetch some initial data, some lookup data and to do the authentication (I'll use IdentityServer4 to do the authentication). The project setup should be based on the Visual Studio React Project, I [introduced in one of the last posts]({% post_url react-aspnetcore-project.md %}).
+I want to create a small chat application that uses React, SignalR and ASP.NET Core 2.0. The frontend should be created using React. The backend serves a Websocket end-point using SignalR and some basic Web API end-points to fetch some initial data, some lookup data and to do the authentication (I'll use IdentityServer4 to do the authentication). The project setup should be based on the Visual Studio React Project I [introduced in one of the last posts]({% post_url react-aspnetcore-project.md %}).
 
-The UI should be clean and easy to use. It should be possible to use the chat without a mouse. So the focus is also on usability and an a partial accessibility. We will have a large chat area to display the messages, with an input field for the messages below. I'll not use a button to send the message to save space and to keep the UI clean. The return key should send the message. There's only one button to select emojis, using the mouse. But basic emojis should also be available using text symbols.
+The UI should be clean and easy to use. It should be possible to use the chat without a mouse. So the focus is also on usability and a basic accessibility. We will have a large chat area to display the messages, with an input field for the messages below. The return key should be the primary method to send the message. There's one additional button to select emojis, using the mouse. But basic emojis should also be available using text symbols.
 
 On the left side, I'll create a list of online users. Every new logged on user should be mentioned in the chat area. The user list should be auto updated after a user logs on. We will use SignalR here too.
 
@@ -43,7 +43,9 @@ On the left side, I'll create a list of online users. Every new logged on user s
 
 ## Project setup
 
-The initial project setup is easy and [already described in one of the last post]({% post_url react-aspnetcore-project.md %}). You can either use visual studio 2017 to create a new project
+The initial project setup is easy and [already described in one of the last post]({% post_url react-aspnetcore-project.md %}). I'll just do a quick introduction here. 
+
+You can either use visual studio 2017 to create a new project
 
 ![]({{site.baseurl}}/img/react-aspnetcore/newproject.PNG)
 
@@ -53,13 +55,13 @@ or the .NET CLI
 dotnet new react -n react-chat-app
 ~~~
 
-I takes some time to fetch the dependent packages. Especially the NPM packages are a lot. The node_modules folder contains around 10k files and will require 85 MB  on disk.
+It takes some time to fetch the dependent packages. Especially the NPM packages are a lot. The node_modules folder contains around 10k files and will require 85 MB  on disk.
 
 I also added the "@aspnet/signalr-client": "1.0.0-alpha2-final" to the package.json
 
-> Don'be be confused, with the documentation. In the GitHub remo they wrote the NPM name signalr-client should not longer used and the new name is just signalr. But when I wrote this lines, the package with the new name is not yet available on NPM. So I'm still using the signalr-client package.
+> Don'be be confused, with the documentation. In the GitHub repository they wrote the NPM name signalr-client should not longer used and the new name is just signalr. But when I wrote this lines, the package with the new name is not yet available on NPM. So I'm still using the signalr-client package.
 
-After adding that package a optional dependency wasn't found and the NPM dependency node in Visual Studio will display a yellow exclamation mark. This is annoying and id seems to be an critical error, but it will work anyway:
+After adding that package, an optional dependency wasn't found and the NPM dependency node in Visual Studio will display a yellow exclamation mark. This is annoying and id seems to be an critical error, but it will work anyway:
 
 ![]({{site.baseurl}}/img/react-chat-app/npm-signalr.PNG)
 
