@@ -229,7 +229,7 @@ From my perspective, I would use this project template as a starter for small pr
 To learn more about React and how it works with ASP.NET Core in Visual Studio 2017, I will create a Chat-App. I will also write a small series about it: 
 
 1. [React Chat Part 1: Requirements & Setup]({% post_url react-chat-part1.md %})
-2. React Chat Part 2: Creating the UI & React Components
+2. [React Chat Part 2: Creating the UI & React Components]({% post_url react-chat-part2.md %})
 3. React Chat Part 3: Adding Websockets using SignalR
 4. React Chat Part 4: Authentication & Storage
 5. React Chat Part 5: Deployment to Azure
