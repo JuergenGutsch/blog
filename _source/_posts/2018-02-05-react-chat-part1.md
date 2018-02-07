@@ -13,7 +13,7 @@ tags:
 
 In this blog series, I'm going to create a small chat application using React and ASP.NET Core, to learn more about React and to learn how React behaves in an ASP.NET Core project during development and deployment. This Series is divided into 5 parts, which should cover all relevant topics:
 
-1. React Chat Part 1: Requirements & Setup
+1. **React Chat Part 1: Requirements & Setup**
 2. [React Chat Part 2: Creating the UI & React Components]({% post_url react-chat-part1.md %})
 3. React Chat Part 3: Adding Websockets using SignalR
 4. React Chat Part 4: Authentication & Storage

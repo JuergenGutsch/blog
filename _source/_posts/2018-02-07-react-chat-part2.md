@@ -14,7 +14,7 @@ tags:
 In this blog series, I'm going to create a small chat application using React and ASP.NET Core, to learn more about React and to learn how React behaves in an ASP.NET Core project during development and deployment. This Series is divided into 5 parts, which should cover all relevant topics:
 
 1. [React Chat Part 1: Requirements & Setup]({% post_url react-chat-part1.md %})
-2. React Chat Part 2: Creating the UI & React Components
+2. **React Chat Part 2: Creating the UI & React Components**
 3. React Chat Part 3: Adding Websockets using SignalR
 4. React Chat Part 4: Authentication & Storage
 5. React Chat Part 5: Deployment to Azure
@@ -23,9 +23,11 @@ I also set-up a GitHub repository where you can follow the project: [https://git
 
 ## Basic Layout
 
-First let's have a quick look into the hierarchy of the React components in the folder `ClientApp`. The app gets bootstrapped within the `boot.tsx` file. This is the first component where the `AppContainer` gets created and the router is placed. This file also contains the the call to render the react app in the relevant HTML element, which is `react-app` in this case, a div in the `Views/Home/Index.cshtml`
+First let's have a quick look into the hierarchy of the React components in the folder `ClientApp`. 
 
-This component also renders the content of the `routes.tsx`. This file contains the route definitions wrapped inside a `Layout` element. This Layout element is defined in the `layout.tsx` in the components folder. The `routes.tsx` also references three more components out of the components folder: `Home`, `Counter` and `FetchData`. So it seems the router renders the specific components, depending on the requested path inside the `Layout` element:
+The app gets bootstrapped within the `boot.tsx` file. This is the first sort of component where the `AppContainer` gets created and the router is placed. This file also contains the the call to render the react app in the relevant HTML element, which is a div with the ID `react-app` in this case. It is a div in the `Views/Home/Index.cshtml`
+
+This component also renders the content of the `routes.tsx`. This file contains the route definitions wrapped inside a `Layout` element. This Layout element is defined in the `layout.tsx` inside the components folder. The `routes.tsx` also references three more components out of the components folder: `Home`, `Counter` and `FetchData`. So it seems the router renders the specific components, depending on the requested path inside the `Layout` element:
 
 ~~~ typescript
 // routes.tsx
@@ -43,7 +45,7 @@ export const routes = <Layout>
 </Layout>;
 ~~~
 
-As expected, the `Layout` component than defines the basic layout and renders the contents into a Bootstrap grid column element. I changed that a little bit to render the contents directly into the fluid container and the menu is now outside the fluid container:
+As expected, the `Layout` component than defines the basic layout and renders the contents into a Bootstrap grid column element. I changed that a little bit to render the contents directly into the fluid container and the menu is now outside the fluid container. This component now contains less code than before.:
 
 ~~~ typescript
 import * as React from 'react';
@@ -72,6 +74,7 @@ My chat goes into the `Home` component, because this is the most important featu
 ~~~ typescript
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
+
 import { Chat } from './home/Chat';
 import { Users } from './home/Users';
 
@@ -90,11 +93,11 @@ export class Home extends React.Component<RouteComponentProps<{}>, {}> {
 
 ~~~
 
-This component uses two new components: `Users` to display the online users and `Chat` to add the main chat functionalities. It seems to be a common way in react to store sub-components inside a subfolder with the same name as the parent component. So, I created a `Home` folder inside the components folder and placed the `Users` component and the `Chat` component inside.
+This component uses two new components: `Users` to display the online users and `Chat` to add the main chat functionalities. It seems to be a common way in Rdeact to store sub-components inside a subfolder with the same name as the parent component. So, I created a `Home` folder inside the components folder and placed the `Users` component and the `Chat` component inside of that new folder.
 
 ## The Users Component 
 
-Let's first have a look into the more simple `Users` component. This component doesn't have any interaction yet. It only fetches and displays the users online. To keep the first snippet simple I removed the methods inside. This file imports all from the module 'react' as `React` object. Using this we are able to access the `Component` type we need to derive from:
+Let's have a look into the more simple `Users` component first. This component doesn't have any interaction yet. It only fetches and displays the users online. To keep the first snippet simple I removed the methods inside. This file imports all from the module 'react' as `React` object. Using this we are able to access the `Component` type we need to derive from:
 
 ~~~ typescript
 // components/Home/Users.tsx
@@ -116,7 +119,7 @@ export class Users extends React.Component<{}, UsersState> {
 
 This base class also defines a `state` property. The type of that `state` is defined in the second generic argument of the `React.Component` base class. (The first generic argument is not needed here). The `state` is a kind of a container type that contains data you want to store inside the component. In this case I just need a `UsersState` with a list of users inside. To display a user in the list we only need an identifier and a name. A unique key or id is required by React to create a list of items in the DOM
 
-I don't fetch the date from the server yet. This post is only about the UI components, so I'm going to mock the date in the constructor:
+I don't fetch the data from the server side yet. This post is only about the UI components, so I'm going to mock the data in the constructor:
 
 ~~~ typescript
 constructor() {
@@ -131,7 +134,7 @@ constructor() {
 }
 ~~~
 
-Now the list of `users` is available in the current `state` and I'm able to use this to render the users:
+Now the list of `users` is available in the current `state` and I'm able to use this list to render the users:
 
 ~~~ typescript
 public render() {
@@ -148,11 +151,11 @@ public render() {
 }
 ~~~
 
-JSX is a wired thing: HTML like XML syntax, completely mixed with JavaScript (or TypeScript in this case) but it works. It remembers a little bit like Razor. `this.state.users.map` iterates threw the `users` and renders a list item per user.
+JSX is a wired thing: HTML like XML syntax, completely mixed with JavaScript (or TypeScript in this case) but it works. It remembers a little bit like Razor. `this.state.users.map` iterates through the `users` and renders a list item per user.
 
 ## The Chat Component
 
-The Chat component is similar, but contains more details and logic. Initially we have almost the same structure:
+The Chat component is similar, but contains more details and some logic to interact with the user. Initially we have almost the same structure:
 
 ~~~ typescript
 // components/Home/chat.tsx
@@ -173,14 +176,15 @@ interface ChatMessage {
 export class Chat extends React.Component<{}, ChatState> {
     //
 }
-
 ~~~
 
-This time I also import `moment.js`, I installed using NPM:
+I also imported the module `moment`, which is `moment.js` I installed using NPM:
 
 ~~~ shell
 npm install moment --save
 ~~~
+
+> moment.js is a pretty useful library to easily work with dates and times in JavaScript. It has a ton of features, like formatting dates, displaying times, creating relative time expressions and it also provides a proper localization of dates.
 
 Now it makes sense to have a look into the `render` method first:
 
@@ -219,7 +223,7 @@ public render() {
 
 I defined a Bootstrap panel, that has the chat area in the `panel-body` and the input fields in the `panel-footer`. In the chat area we also have a unordered list ant the code to iterate through the messages. This is almost similar to the user list. We only display some more date here. Here you can see the usage of `moment.js` to easily format the massage date.
 
-The `panel-footer` contains the form to compose the message. I used a input group to add a button in front of the input field and after it. The first button is used to select an emoji. The second one is to also send the message (for people who cannot use the `enter` key to submit the message).
+The `panel-footer` contains the form to compose the message. I used a input group to add a button in front of the input field and another one after that field. The first button is used to select an emoji. The second one is to also send the message (for people who cannot use the `enter` key to submit the message).
 
 The `ref` attributes are used for a cool feature. Using this, you are able to get an instance of the element in the backing code. This is nice to work with instances of elements directly. We will see the usage later on. The code in the `ref` attributes are pointing to methods, that get's an instance of that element passed in:
 
@@ -237,7 +241,7 @@ handleMessageRef(input: HTMLInputElement) {
 }
 ~~~
 
-I save the instance globally in the class. One thing I didn't expect is a wired behavior of this. This behavior is a typical JavaScript behavior, but I expected is to be solved in TypeScript. I also didn't see this in Angular. The keyword `this` is not set. It is `nothing`. If you want to access `this` in methods used by the DOM, you need to kinda 'inject' or 'bind' an instance of the current object to get `this` set. This needs to be done in the constructor:
+I save the instance globally in the class. One thing I didn't expect is a wired behavior of this. This behavior is a typical JavaScript behavior, but I expected is to be solved in TypeScript. I also didn't see this in Angular. The keyword `this` is not set. It is `nothing`. If you want to access `this` in methods used by the DOM, you need to kinda 'inject' or 'bind' an instance of the current object to get `this` set. This is typical for JavaScript and makes absolutely sense  This needs to be done in the constructor:
 
 ~~~ typescript
 constructor() {
@@ -318,6 +322,6 @@ After pressing F5, I see the working chat UI in the browser
 
 ## Closing words
 
-By closing this post, the basic UI is working. This was easier than expected, I just stuck a little bit, by accessing the HTML elements to scroll the chat area and when I tried to access the current instance using this. React is heavily used and the React community is huge. This is why it is easy to get help.
+By closing this post, the basic UI is working. This was easier than expected, I just stuck a little bit, by accessing the HTML elements to focus the text field and to scroll the chat area and when I tried to access the current instance using `this`. React is heavily used and the React community is huge. This is why it is easy to get help pretty fast.
 
-In the next post, I'm going to integrate SignalR and to get the Websockets running. I'll also add two Web APIs to fetch the initial data. The current logged on users and the latest 50 chat messages, don't need to be pushed by the Websocket 
+In the next post, I'm going to integrate SignalR and to get the Websockets running. I'll also add two Web APIs to fetch the initial data. The current logged on users and the latest 50 chat messages, don't need to be pushed by the Websocket. Using this I need to get into the first functional component in React and to inject this into the UI components of this post. 
