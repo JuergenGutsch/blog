@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Creating a chat application using React and ASP.NET Core - Part 2"
-teaser: "In this blog series I'm going to create a small chat application using React and ASP.NET Core, to learn more about React and to learn how React behaves in an ASP.NET Core project during development and deployment. This topic describes the basic UI implementation and the react component."
+teaser: "In this blog series I'm going to create a small chat application using React and ASP.NET Core, to learn more about React and to learn how React behaves in an ASP.NET Core project during development and deployment. This post describes the basic UI implementation and the react component."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
