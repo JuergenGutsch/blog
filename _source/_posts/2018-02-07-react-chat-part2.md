@@ -15,7 +15,7 @@ In this blog series, I'm going to create a small chat application using React an
 
 1. [React Chat Part 1: Requirements & Setup]({% post_url react-chat-part1.md %})
 2. **React Chat Part 2: Creating the UI & React Components**
-3. React Chat Part 3: Adding Websockets using SignalR
+3. [React Chat Part 3: Adding Websockets using SignalR]({% post_url react-chat-part3.md %})
 4. React Chat Part 4: Authentication & Storage
 5. React Chat Part 5: Deployment to Azure
 
