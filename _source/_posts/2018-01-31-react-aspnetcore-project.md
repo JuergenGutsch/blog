@@ -230,7 +230,7 @@ To learn more about React and how it works with ASP.NET Core in Visual Studio 20
 
 1. [React Chat Part 1: Requirements & Setup]({% post_url react-chat-part1.md %})
 2. [React Chat Part 2: Creating the UI & React Components]({% post_url react-chat-part2.md %})
-3. React Chat Part 3: Adding Websockets using SignalR
+3. [React Chat Part 3: Adding Websockets using SignalR]({% post_url react-chat-part3.md %})
 4. React Chat Part 4: Authentication & Storage
 5. React Chat Part 5: Deployment to Azure
 
