@@ -25,21 +25,56 @@ I also set-up a GitHub repository where you can follow the project: [https://git
 
 SignalR for ASP.NET Core is a framework to enable Websocket communication in ASP.NET Core applications. Modern browsers already support Websocket, which is part of the HTML5 standard. For older browser SignalR provides a fallback based on standard HTTP1.1. SignalR is basically a server side implementation based on ASP.NET Core and Kestrel. It uses the same dependency injection mechanism and can be added via a NuGet package into the application. Additionally, SignalR provides various client libraries to consume Websockets in client applications. In this chat application, I use `@aspnet/signalr-client` loaded via NPM. The package also contains the TypeScript definitions, which makes it easy to use in a TypeScript application, like this.
 
-I added the React Nuget package in the first part of this blog series. To enable SignalR we need to add it to the ServiceCollection:
+I added the React Nuget package [in the first part]({% post_url react-chat-part1.md %}) of this blog series. To enable SignalR I need to add it to the ServiceCollection:
 
 ~~~ csharp
 services.AddSignalR();
 ~~~
 
-
-
 ## The server part
 
-In C#, I created a `ChatService` that will later be used to connect to the data storage. Now it is using a dictionary to store the messages and is working with this dictionary. I don't show this service here, because the implementation is not relevant here and will change later on. But I will use this Service in in the code I show here. Also in the `ChatHub`, which is the Websocket endpoint for this chat. The service gets injected via dependency injection that is configured in the `Startup.cs`:
+In C#, I created a `ChatService` that will later be used to connect to the data storage. Now it is using a dictionary to store the messages and is working with this dictionary. I don't show this service here, because the implementation is not relevant here and will change later on. But I use this Service in in the code I show here. This service is mainly used in the `ChatController`, the Web API controller to load some initial data and in the `ChatHub`, which is the Websocket endpoint for this chat. The service gets injected via dependency injection that is configured in the `Startup.cs`:
+
+```csharp
+services.AddSingleton<IChatService, ChatService>();
+```
+
+### Web API
+
+The ChatController is simple, it just contains GET methods. Do you remember the last posts? The initial data of the logged on users and the first chat messages were defined in the React components. I moved this to the ChatController on the server side:
 
 ~~~ csharp
-services.AddSingleton<IChatService, ChatService>();
+[Route("api/[controller]")]
+public class ChatController : Controller
+{
+    private readonly IChatService _chatService;
+
+    public ChatController(IChatService chatService)
+    {
+        _chatService = chatService;
+    }
+    // GET: api/<controller>
+    [HttpGet("[action]")]
+    public IEnumerable<UserDetails> LoggedOnUsers()
+    {
+        return new[]{
+            new UserDetails { Id = 1, Name = "Joe" },
+            new UserDetails { Id = 3, Name = "Mary" },
+            new UserDetails { Id = 2, Name = "Pete" },
+            new UserDetails { Id = 4, Name = "Mo" } };
+    }
+
+    [HttpGet("[action]")]
+    public IEnumerable<ChatMessage> InitialMessages()
+    {
+        return _chatService.GetAllInitially();
+    }
+}
 ~~~
+
+The method `LoggedOnUsers` simply created the users list. I will change that, if the authentication is done. The method `InitialMessages` loads the first 50 messages from the faked data storage.
+
+### SignalR
 
 The Websocket endpoints are defined in so called Hubs. One Hub is defining one single Websocket endpoint. I created a `ChatHub`, that is the endpoint for this application. The methods in the `ChatHub` are handler methods, to handle incoming messages through a specific channel. 
 
@@ -51,8 +86,6 @@ app.UseSignalR(routes =>
     routes.MapHub<ChatHub>("chat");
 });
 ~~~
-
-
 
 > A SignalR Methods in the Hub are the channel definitions and the handlers at the same time, while NodeJS socket.io is defining channels and binds an handler to this channel.
 
@@ -91,6 +124,8 @@ Than the message gets, send to the client through the Websocket channel "Message
 
 On the client side, I want to use the socket in two different components, but I want to avoid to create two different Websocket clients. The idea is to create a `WebsocketService` class, that is used in the two components. Usually I would create two instances of this `WebsocketService`, but this would create two different clients too. I need to think about dependency injection in React and a singleton instance of that service. 
 
+### SignalR Client
+
 While googling for dependency injection in React , I read a lot about the fact, that DI is not needed in React. I was kinda confused. DI is everywhere in Angular, but it is not necessarily needed in React? There are packages to load, to support DI, but I tried to find another way. And actually there is another way. In ES6 and in TypeScript it is possible to immediately create an instance of an object and to import this instance everywhere you need it.
 
 ~~~ typescript
@@ -122,13 +157,13 @@ const WebsocketService = new ChatWebsocketService();
 export default WebsocketService;
 ~~~
 
-Inside this class the Websocket client, called `HubConnection` gets created and configured. The transport type needs to be WebSockets. Also a `ConsoleLogger` gets added to the Client, to send log information the the browsers console. In the last line of the constructor, I start the connection and add an error handler, that writes to the console. The instance of the connections is stored in a private variable inside the class. Right after the class I create an instance and export the instance. This way the instance can be imported in any class:
+Inside this class the Websocket (`HubConnection`) client gets created and configured. The transport type needs to be WebSockets. Also a `ConsoleLogger` gets added to the Client, to send log information the the browsers console. In the last line of the constructor, I start the connection and add an error handler, that writes to the console. The instance of the connections is stored in a private variable inside the class. Right after the class I create an instance and export the instance. This way the instance can be imported in any class:
 
 ~~~ typescript
 import WebsocketService from './WebsocketService'
 ~~~
 
-To keep the `Chat` component and the `Users` component clean, I created additional service classes for each the components. This service classes encapsulated the calls to the Web API endpoints and the usage of the `WebsocketService`. Please [have a look into the GitHub repository](https://github.com/JuergenGutsch/react-chat-demo) to learn more about these services.
+To keep the `Chat` component and the `Users` component clean, I created additional service classes for each the components. This service classes encapsulated the calls to the Web API endpoints and the usage of the `WebsocketService`. Please [have a look into the GitHub repository](https://github.com/JuergenGutsch/react-chat-demo) to see the complete services.
 
 The `WebsocketService` contains three methods. One is to handle incoming messages, when a user logged on the chat:
 
@@ -157,6 +192,71 @@ sendMessage(message: string) {
     this._connection.invoke('AddMessage', message);
 }
 ~~~
+
+In the Chat component I pass a handler method to the ChatService and the service passes the handler to the WebsocketService. The handler than gets called every time a message comes in:
+
+~~~ typescript
+//Chat.tsx
+let that = this;
+this._chatService = new ChatService((msg: ChatMessage) => {
+    this.handleOnSocket(that, msg);
+});
+~~~
+
+In this case the passed in handler is only an anonymous method, a lambda expression, that calls the actual handler method defined in the component. I need to pass a local variable with the current instance of the chat component to the `handleOnSocket` method, because `this` is not available after when the handler is called. It is called outside of the context where it is defined.
+
+The handler than loads the existing messages from the components state, adds the new message and updates the state:
+
+~~~typescript
+//Chat.tsx
+handleOnSocket(that: Chat, message: ChatMessage) {
+    let messages = that.state.messages;
+    messages.push(message);
+    that.setState({
+        messages: messages,
+        currentMessage: ''
+    });
+    that.scrollDown(that);
+    that.focusField(that);
+}
+~~~
+
+At the end, I need to scroll to the latest message and to focus the text field again.
+
+### Web API client
+
+The `UsersService.ts` and the `ChatService.ts`, both contain a method to fetch the data from the Web API. As preconfigured in the ASP.NET Core React project, I am using `isomorphic-fetch` to call the Web API:
+
+~~~ typescript
+//ChatService.ts
+public fetchInitialMessages(fetchInitialMessagesCallback: (msg: ChatMessage[]) => void) {
+    fetch('api/Chat/InitialMessages')
+        .then(response => response.json() as Promise<ChatMessage[]>)
+        .then(data => {
+            fetchInitialMessagesCallback(data);
+        });
+}
+~~~
+
+The method `fetchLogedOnUsers` in the `UsersService` service looks almost the same. The method gets a callback method from the `Chat` component, that gets the `ChatMessages` passed in. Inside the `Chat` component this method get's called like this:
+
+~~~ typescript
+this._chatService.fetchInitialMessages(this.handleOnInitialMessagesFetched);
+~~~
+
+The handler than updates the state with the new list of `ChatMessages` and scrolls the chat area down to the latest message:
+
+~~~ typescript
+handleOnInitialMessagesFetched(messages: ChatMessage[]) {
+    this.setState({
+        messages: messages
+    });
+
+    this.scrollDown(this);
+}
+~~~
+
+## Let's try it
 
 Now it is time to try it out. F5 starts the application and opens the configured browser:
 
