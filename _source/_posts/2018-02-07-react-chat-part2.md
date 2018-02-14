@@ -16,7 +16,7 @@ In this blog series, I'm going to create a small chat application using React an
 1. [React Chat Part 1: Requirements & Setup]({% post_url react-chat-part1.md %})
 2. **React Chat Part 2: Creating the UI & React Components**
 3. [React Chat Part 3: Adding Websockets using SignalR]({% post_url react-chat-part3.md %})
-4. React Chat Part 4: Authentication & Storage
+4. [React Chat Part 4: Authentication & Storage]({% post_url react-chat-part4.md %})
 5. React Chat Part 5: Deployment to Azure
 
 I also set-up a GitHub repository where you can follow the project: [https://github.com/JuergenGutsch/react-chat-demo](https://github.com/JuergenGutsch/react-chat-demo). Feel free to share your ideas about that topic in the comments below or in issues on GitHub. Because I'm still learning React, please tell me about significant and conceptual errors, by dropping a comment or by creating an Issue on GitHub. Thanks.
