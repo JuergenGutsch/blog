@@ -25,7 +25,7 @@ I also set-up a GitHub repository where you can follow the project: [https://git
 
 ## Intro
 
-My idea for the current post is to split the storages, between a storage for flexible objects and immutable objects. The flexible objects are the users and the users metadata in this case. Immutable objects are the chat message. 
+My idea about this app is to split the storages, between a storage for flexible objects and immutable objects. The flexible objects are the users and the users metadata in this case. Immutable objects are the chat message. 
 
 The messages are just stored one by one and will never change. Storing a message doesn't need to be super fast, but reading the messages need to be as fast as possible. This is why I want to go with the Azure Table Storage. This is one of the fastest storages on Azure. In the past, at the YooApps, we also used it as an event store for CQRS based applications.
 
@@ -145,11 +145,7 @@ The clientid is calles `reactchat`. I configured both projects, the chat applica
 
 Later on we are able to replace this configuration with a custom storage for the users and the clients.
 
-We also need to setup the client, the chat application to use this identity server.
-
-[TODO: Add API Auth]
-
-
+We also need to setup the client (the chat application) to use this identity server.
 
 ## Adding authentication to the chat app
 
