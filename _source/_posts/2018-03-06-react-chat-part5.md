@@ -1,16 +1,17 @@
 ---
 layout: post
-title: "Creating a chat application using React and ASP.​NET Core - Part 4"
-teaser: "In this blog series I'm going to create a small chat application using React and ASP.NET Core, to learn more about React and to learn how React behaves in an ASP.NET Core project during development and deployment. This post describes how to add a persistence level to store the chat messages and to add the authentication to know the users."
+title: "Creating a chat application using React and ASP.NET Core - Part 5"
+teaser: "In this blog series I'm going to create a small chat application using React and ASP.NET Core, to learn more about React and to learn how React behaves in an ASP.NET Core project during development and deployment. This last post describes how to deploy the application to an Azure Website."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
 - ASP.NET Core
-- IdentiyServer
-- Authentications
+- React
+- IdentityServer
 - Azure
-- Storage
+- Deploy
+- CAKE
 ---
 
 In this blog series, I'm going to create a small chat application using React and ASP.NET Core, to learn more about React and to learn how React behaves in an ASP.NET Core project during development and deployment. This Series is divided into 5 parts, which should cover all relevant topics:
