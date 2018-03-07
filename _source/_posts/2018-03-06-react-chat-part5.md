@@ -30,7 +30,7 @@ In this post I will write about the deployment of the app to Azure App Services.
 
 Will not go deep into the AppVeyor configuration, the important topics are cake and azure and the app itself.
 
-BTW: SignalR is going into the next version. It is not longer alpha. The current version is 1.0.0-preview1-final. I updated the version in the package.json and in the ReactChatDemo.csproj. Also the NPM package name changed from "@aspnet/signalr-client" to "@aspnet/signalr". I needed to update the import statement in the WebsocketService.ts file as well. After updating SignalR I got some small breaking changes, which are easily fixed. (please see the GitHub repo, to learn about the changes.)
+>  BTW: SignalR was going into the next version the last weeks. It is not longer alpha. The current version is 1.0.0-preview1-final. I updated the version in the package.json and in the `ReactChatDemo.csproj`. Also the NPM package name changed from "@aspnet/signalr-client" to "@aspnet/signalr". I needed to update the import statement in the `WebsocketService.ts` file as well. After updating SignalR I got some small breaking changes, which are easily fixed. (please see the GitHub repo, to learn about the changes.)
 
 ## Setup CAKE
 
@@ -44,7 +44,7 @@ Invoke-WebRequest https://cakebuild.net/download/bootstrapper/windows -OutFile b
 
 Later you need to run the build.ps1 to start your build script. Now the Setup is complete and I can start the create the script. I create a new file called build.cake. To edit the file it makes sense to use Visual Studio Code, because @code also has IntelliSense. In Visual Studio 2017 you only have syntax highlighting. Currently I don't know an add-in for VS to enable IntelliSense.
 
-My starting point for every build script is, the simple example from the [quick start demo](https://cakebuild.net/docs/tutorials/setting-up-a-new-project):
+My starting point for every new build script is, the simple example from the [quick start demo](https://cakebuild.net/docs/tutorials/setting-up-a-new-project):
 
 ~~~ c#
 var target = Argument("target", "Default");
@@ -58,13 +58,154 @@ Task("Default")
 RunTarget(target);
 ~~~
 
+The script then gets started by calling the build.ps1 in a PowerShell
 
+~~~ powershell
+.\build.ps1
+~~~
 
+If this is working I'm able to start hacking the CAKE script in. Usually the build process I use looks like this.
 
+* Cleaning the workspace
+* Restoring the packages
+* Building the solution
+* Running unit tests
+* Publishing the app 
+  * In the context of non-web application this means packaging the app
+* Deploying the app
+
+To deploy the App I use the CAKE Kudu client add-in and I need to pass in some Azure App Service credentials. You get this credentials, by downloading the publish profile from the Azure App Service. You can just copy the credentials out of the file. Be careful and don't save the secrets in the file. I usually store them in environment variables and read them from there. Because I have two apps (the actual chat app and the identity server) I need to do it twice:
+
+~~~ csharp
+#addin nuget:?package=Cake.Kudu.Client
+
+string  baseUriApp     = EnvironmentVariable("KUDU_CLIENT_BASEURI_APP"),
+        userNameApp    = EnvironmentVariable("KUDU_CLIENT_USERNAME_APP"),
+        passwordApp    = EnvironmentVariable("KUDU_CLIENT_PASSWORD_APP"),
+        baseUriIdent   = EnvironmentVariable("KUDU_CLIENT_BASEURI_IDENT"),
+        userNameIdent  = EnvironmentVariable("KUDU_CLIENT_USERNAME_IDENT"),
+        passwordIdent  = EnvironmentVariable("KUDU_CLIENT_PASSWORD_IDENT");;
+
+var target = Argument("target", "Default");
+
+Task("Clean")
+  .Does(() =>
+  {	
+    DotNetCoreClean("./react-chat-demo.sln");
+    CleanDirectory("./publish/");
+  });
+
+Task("Build")
+	.IsDependentOn("Clean")
+	.Does(() => 
+	{
+		DotNetCoreBuild("./react-chat-demo.sln");
+	});
+
+Task("Test")
+	.IsDependentOn("Build")
+	.Does(() =>
+	{
+    Information("No tests yet.");
+	});
+
+Task("Publish")
+	.IsDependentOn("Test")
+	.Does(() => 
+	{
+		DotNetCorePublish("./ReactChatDemo/ReactChatDemo.csproj", 
+      new DotNetCorePublishSettings
+      {
+        Configuration = "Release",
+        OutputDirectory = "./publish/ReactChatDemo/"
+      });
+		DotNetCorePublish("./ReactChatDemoIdentities/ReactChatDemoIdentities.csproj", 
+      new DotNetCorePublishSettings
+      {
+        Configuration = "Release",
+        OutputDirectory = "./publish/ReactChatDemoIdentities/"
+      });
+	});
+
+Task("Deploy")
+	.IsDependentOn("Publish")
+	.Does(() => 
+	{
+		var kuduClient = KuduClient(
+			 baseUriApp,
+			 userNameApp,
+			 passwordApp);
+		var sourceDirectoryPath = "./publish/ReactChatDemo/";
+		var remoteDirectoryPath = "/site/wwwroot/";
+
+		kuduClient.ZipUploadDirectory(
+			sourceDirectoryPath,
+			remoteDirectoryPath);
+
+		kuduClient = KuduClient(
+			 baseUriIdent,
+			 userNameIdent,
+			 passwordIdent);
+		sourceDirectoryPath = "./publish/ReactChatDemoIdentities/";
+		remoteDirectoryPath = "/site/wwwroot/";
+
+		kuduClient.ZipUploadDirectory(
+			sourceDirectoryPath,
+			remoteDirectoryPath);
+	});
+
+Task("Default")
+  .IsDependentOn("Deploy")
+  .Does(() =>
+  {
+  	Information("Your build is done :-)");
+  });
+
+RunTarget(target);
+~~~
+
+To get this script running locally, you need to set the environment variables in the current PowerShell session:
+
+~~~ powershell
+$env:KUDU_CLIENT_PASSWORD_APP = "super secret password"
+# and so on...
+~~~
+
+If you only want to test the compile and publish stuff, just set the dependency of the default target to "Publish" instead of "Deploy". Doing this the Deploy part will not run and you don't deploy in accident and you save some time while trying this.
 
 
 
 ## Use CAKE in AppVeyor
+
+On AppVeyor the environment variables are set in the UI. Don't set them in the YAML configuration, because they are not properly save and everybody can see them.
+
+The most simplest appveyor.yaml file looks like this.
+
+~~~ yaml
+version: 1.0.0-preview1-{build}
+pull_requests:
+  do_not_increment_build_number: true
+branches:
+  only:
+  - master
+  - develop
+skip_tags: true
+image: Visual Studio 2017 Preview
+build_script:
+- ps: .\build.ps1
+test: off
+deploy: off
+~~~
+
+This configuration only builds the master and the develop branch, which makes sense if you use git flow. otherwise change it to just use the master branch.
+
+I skip tags to build and any other branches
+
+The image is Visual Studio 2017 (preview only if you want to try the latest features)
+
+I can switch off tests, because this is done in the CAKE script. The good thing is, that the XUnit test output, build by the test runs in CAKE , gets anyway published to the AppVeyor reports. Deploy is also switched off, because it's done in CAKE too.
+
+> You could also configure the CAKE script in a way that test, deploy and build calls different targets inside CAKE. But this is not really needed and makes the build a little less readable.
 
 
 
