@@ -232,6 +232,6 @@ To learn more about React and how it works with ASP.NET Core in Visual Studio 20
 2. [React Chat Part 2: Creating the UI & React Components]({% post_url react-chat-part2.md %})
 3. [React Chat Part 3: Adding Websockets using SignalR]({% post_url react-chat-part3.md %})
 4. [React Chat Part 4: Authentication & Storage]({% post_url react-chat-part4.md %})
-5. React Chat Part 5: Deployment to Azure
+5. [React Chat Part 5: Deployment to Azure]({% post_url react-chat-part5.md %})
 
 I also set-up a GitHub repository where you can follow the project: [https://github.com/JuergenGutsch/react-chat-demo](https://github.com/JuergenGutsch/react-chat-demo)
