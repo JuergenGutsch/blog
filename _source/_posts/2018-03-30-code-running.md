@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Running and Coding"
-teaser: "A little bit off-topic this time, but Scot Hanselman inspired me to write about everything, with his talk on Sunday before the MVP Global Summit 2018 starts. This post is about running and how it changes my live a little bit in a positive way."
+teaser: "A little bit off-topic this time, but Scott Hanselman inspired me to write about everything, with his talk on Sunday before the MVP Global Summit 2018 starts. This post is about running and how it changes my live a little bit in a positive way."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
