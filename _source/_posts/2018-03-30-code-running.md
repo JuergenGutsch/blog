@@ -93,3 +93,5 @@ Also some annoying work was done more easily. I really looking foreword to the n
 I'm running on almost every weather, except it is too slippery because of ice or snow. Fresh snow is fine, mud is fun, rain I don't feel anymore, sunny is even better and heat is challenging. Only the dog doesn't love warm weather. 
 
 Crazy? Yes, but I love it.
+
+Yo you want to [follow me on Strava](https://strava.com/athletes/juergengutsch)?
