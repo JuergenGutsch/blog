@@ -1,4 +1,4 @@
---- 
+---
 layout: post
 title: "Playing around with GenFu"
 teaser: "If you write unit tests or UI mock-ups you will probably need some test data. In the past I used NBuilder to build list of objects. But unfortunately NBuilder is not compatible with .NET Core and I need to find another tool, if I want to use .NET Core."
@@ -6,8 +6,8 @@ author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
-- Tag1
-- Tag2
+- .NET Core
+- GenFu
 ---
 
 In the past I used [NBuilder](http://nbuilder.org/) (by Gareth Down) to create test data for my unit tests, demos and UI mock-ups. I really liked NBuilder, I used it for many years and I wrote about it in my [old blog (ger)](http://www.aspnetzone.de/blogs/juergengutsch/) and in the dotnetpro (a German .NET magazine)
