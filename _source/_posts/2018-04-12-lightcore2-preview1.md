@@ -12,13 +12,15 @@ tags:
 - Dependency Injection
 ---
 
-It's done, Peter Bucher and I, we got LightCore 2 working on ASP.NET Core 2.x
+Finally it's done! Peter Bucher and I, we got LightCore 2 working on ASP.NET Core 2.x
 
-> LightCore is a light-weight dependency injection container inspired by Autofaq and started as a learning project back in 2009. Performance is one of the main features in LightCore, as well as the easy to use API. 
+## A little bit of history
+
+> LightCore is a light-weight dependency injection container inspired by Autofaq and started as a learning project back in 2008. Performance is one of the main features in LightCore, as well as the easy to use API. 
 
 During the MVP Global Summit 2015, I decided to create a .NET Core version of LightCore. A little later the .NET Standard was the big topic and the idea was to create a .NET Standard version of LightCore that runs on almost all platforms. Unfortunately the API set of .NET Standard smaller 2.0 wasn't enough to get it done. So we need to wait for .NET Standard 2.0 which came out last summer. I started again to move LightCore to the .NET Standard. This time it works out pretty well. 
 
-Only the ASP.NET Core integration took a bit time. Especially an issue in LightCore, where it returns null, if a generic argument of a list couldn't be returned. LightCore should return an empty list instead and it does now.
+Only the ASP.NET Core integration took a bit time. Especially an issue in LightCore, which returns null, if a generic argument of a list couldn't be returned. LightCore should return an empty list instead and it does now.
 
 ## Use LightCore2
 
@@ -28,7 +30,7 @@ In the `Program.cs` the Method `BuildWebHost` adds LightCore:
 
 ~~~ csharp
 public static IWebHost BuildWebHost(string[] args) => WebHost.CreateDefaultBuilder(args)
-    .ConfigureServices(services => services.AddLightCore()) // <== Adds LightCore
+    .ConfigureServices(services => services.AddLightCore()) // <== Add LightCore
     .UseStartup<Startup>()
     .Build();
 ~~~
@@ -36,7 +38,7 @@ public static IWebHost BuildWebHost(string[] args) => WebHost.CreateDefaultBuild
 This additional line adds the `LightCoreServiceProviderFactory` to ASP.NET Core. This enables you to add another Method to the `Startup.cs`:
 
 ~~~ csharp
-// This method gets called by the runtime. Use this method to add services to the container.
+// This method gets called by the runtime. Use this method to add services to the service collection.
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc();
@@ -64,7 +66,7 @@ The LightCore2 preview1 build goes to MyGet. To try LightCore2 you need to add t
 
 https://myget.com/juergengutsch/LightCore/
 
-Just add the package `LightCore.Integration.AspNetCore`, the `LightCore` package will be added for you automatically.
+Just add the package `LightCore.Integration.AspNetCore`, the `LightCore` package will be added for your project automatically.
 
 ## Package Summary
 
@@ -98,7 +100,9 @@ We retired the Silverlight integration and I'm not sure whether prism is still a
 
 ## Current State
 
-To get a release done we have some small open points.
+To get a release done we have some small open points to finalize.
 
 * We need to update and to cleanup the sample applications.
 * We need to finalize the new documentation. The old one is archived.
+
+We are going to do this in the next few weeks.
