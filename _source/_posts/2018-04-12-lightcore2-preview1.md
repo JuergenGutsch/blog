@@ -56,7 +56,7 @@ The method `ConfigureContainer` is a new one and gets called by LightCore. This 
 * Use the `ConfigureServices` to add Services in the common ASP.NET Core way, e.g. to add MVC, to add configuration, to add Identity, to add Entity Framework contexts and so on.
 * Use the `ConfigureContainer` to configure LightCore, e. g. to load services dynamically by configuration files, etc.
 
-At the end LightCore is used to create and manage the instances in this ASP.NET Core application.
+All the registrations done on the IServiceCollection gets moved into ContianerBuilder and registered in LightCore. At the end LightCore is used to create and manage the instances in this ASP.NET Core application.
 
 ## NuGet
 
@@ -66,17 +66,17 @@ https://myget.com/juergengutsch/LightCore/
 
 Just add the package `LightCore.Integration.AspNetCore`, the `LightCore` package will be added for you automatically.
 
-## Summary
+## Package Summary
 
 We now have this packages available:
 
 * LightCore
   * .NET Standard 2.0
-  * Contains the Dependency Injection container and the core of LightCore
+  * Contains the dependency injection container and the core of LightCore
 * LightCore.Configuration
   * .NET Standard 2.0
   * Enables the configuration via configuration files
-  * XAML configuration format under the full .NET Framework
+  * XAML configuration format was removed, because it doesn't work on .NET Core
   * JSON configuration format under .NET Core and the full .NET Framework
 * LightCore.Integration.AspNet
   * .NET Framework 4.6
@@ -96,3 +96,9 @@ We now have this packages available:
 
 We retired the Silverlight integration and I'm not sure whether prism is still a thing. If yes I will add my prism integration to the LightCore repository too. Currently it is a personal project and not supported by LightCore. Prism used the Unity DI container by default and I created an implementation for LightCore.
 
+## Current State
+
+To get a release done we have some small open points.
+
+* We need to update and to cleanup the sample applications.
+* We need to finalize the new documentation. The old one is archived.
