@@ -16,7 +16,7 @@ Finally it's done! Peter Bucher and I, we got LightCore 2.0 working on ASP.NET C
 
 ## A little bit of history
 
-> LightCore is a light-weight dependency injection container inspired by Autofaq and started as a learning project back in 2008. Performance is one of the main features in LightCore, as well as the easy to use API. 
+> LightCore is a light-weight dependency injection container inspired by Autofac and Funq. It started as a learning project back in 2008. Performance is one of the main features in LightCore, as well as the easy to use API. 
 
 During the MVP Global Summit 2015, I decided to create a .NET Core version of LightCore. A little later the .NET Standard was the big topic and the idea was to create a .NET Standard version of LightCore that runs on almost all platforms. Unfortunately the API set of .NET Standard smaller 2.0 wasn't enough to get it done. So we need to wait for .NET Standard 2.0 which came out last summer. I started again to move LightCore to the .NET Standard. This time it works out pretty well. 
 
@@ -58,11 +58,11 @@ The method `ConfigureContainer` is a new one and gets called by LightCore. This 
 * Use the `ConfigureServices` to add Services in the common ASP.NET Core way, e.g. to add MVC, to add configuration, to add Identity, to add Entity Framework contexts and so on.
 * Use the `ConfigureContainer` to configure LightCore, e. g. to load services dynamically by configuration files, etc.
 
-All the registrations done on the IServiceCollection gets moved into ContianerBuilder and registered in LightCore. At the end LightCore is used to create and manage the instances in this ASP.NET Core application.
+All the registrations done on the IServiceCollection gets moved into ContainerBuilder and registered in LightCore. At the end LightCore is used to create and manage the instances in this ASP.NET Core application.
 
 ## NuGet
 
-The LightCore2 preview1 build goes to MyGet. To try LightCore 2.0 you need to add the MyGet feed to the NuGet sources. 
+The LightCore 2.0 preview1 build goes to MyGet. To try LightCore 2.0 you need to add the MyGet feed to the NuGet sources. 
 
 https://myget.com/juergengutsch/LightCore/
 
