@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A generic logger factory façade for classic ASP.NET"
+title: "A generic logger factory facade for classic ASP.NET"
 teaser: "ASP.NET Core already has this feature. There is a ILoggerFactory to create a logger. You are able to inject the ILoggerFactory to your component (Controller, Service, etc.) and to create a named logger out of it. We recently missed that feature in a classic ASP.NET Core project, running on the full .NET Framework. This post is about to create it."
 author: "Jürgen Gutsch"
 comments: true
