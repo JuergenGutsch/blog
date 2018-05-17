@@ -23,17 +23,17 @@
 			var doReturn = false;
 		}
 		var defaults = {
-			message: 'We use cookies to track usage and preferences.', //Message displayed on bar
+			message: 'I use external tools to add more functionality and to track traffic on that blog.', //Message displayed on bar
 			acceptButton: true, //Set to true to show accept/enable button
-			acceptText: 'I Understand', //Text on accept/enable button
+			acceptText: 'I accept', //Text on accept/enable button
 			acceptFunction: function(cookieValue){if(cookieValue!='enabled' && cookieValue!='accepted') window.location = window.location.href;}, //Function to run after accept
-			declineButton: false, //Set to true to show decline/disable button
+			declineButton: true, //Set to true to show decline/disable button
 			declineText: 'Disable Cookies', //Text on decline/disable button
 			declineFunction: function(cookieValue){if(cookieValue=='enabled' || cookieValue=='accepted') window.location = window.location.href;}, //Function to run after decline
-			policyButton: false, //Set to true to show Privacy Policy button
-			policyText: 'Privacy Policy', //Text on Privacy Policy button
-			policyURL: '/privacy-policy/', //URL of Privacy Policy
-			autoEnable: true, //Set to true for cookies to be accepted automatically. Banner still shows
+			policyButton: true, //Set to true to show Privacy Policy button
+			policyText: 'Read the privacy policy', //Text on Privacy Policy button
+			policyURL: '/privacy', //URL of Privacy Policy
+			autoEnable: false, //Set to true for cookies to be accepted automatically. Banner still shows
 			acceptOnContinue: false, //Set to true to accept cookies when visitor moves to another page
 			acceptOnScroll: false, //Set to true to accept cookies when visitor scrolls X pixels up or down
 			acceptAnyClick: false, //Set to true to accept cookies when visitor clicks anywhere on the page
