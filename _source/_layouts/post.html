@@ -27,10 +27,24 @@ layout: layoutpage
                 <a href="{{ site.baseurl }}{{ page.url }}" class="permalink" rel="bookmark">link</a> and click on the banner below. Thanks :)
             </p>
             <p>
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <script>
+                    if(pp_accepted){
+                        (function() {
+                            var d = document,
+                                s = d.createElement('script');
+
+                            s.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+                            s.setAttribute('async', true);
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    }
+                </script>
                 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2112692016899285" data-ad-slot="9378927858" data-ad-format="auto"></ins>
                 <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    if(pp_accepted){
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    }
                 </script>
             </p>
         </div>
@@ -53,20 +67,21 @@ layout: layoutpage
         {% if page.comments == true %}
         <div id="disqus_thread"></div>
         <script>
-            var disqus_config = function() {
-                this.page.url = location.protocol + '//asp.net-hacker.rocks' + location.pathname;
-                this.page.identifier = location.pathname;
-            };
+            if(pp_accepted){
+                var disqus_config = function() {
+                    this.page.url = location.protocol + '//asp.net-hacker.rocks' + location.pathname;
+                    this.page.identifier = location.pathname;
+                };
+                (function() {
+                    var d = document,
+                        s = d.createElement('script');
 
-            (function() {
-                var d = document,
-                    s = d.createElement('script');
+                    s.src = '//aspnethacker.disqus.com/embed.js';
 
-                s.src = '//aspnethacker.disqus.com/embed.js';
-
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            }
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript> {% endif %}
     </footer>

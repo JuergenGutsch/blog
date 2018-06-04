@@ -28,11 +28,11 @@
 			acceptText: 'I accept', //Text on accept/enable button
 			acceptFunction: function(cookieValue){if(cookieValue!='enabled' && cookieValue!='accepted') window.location = window.location.href;}, //Function to run after accept
 			declineButton: true, //Set to true to show decline/disable button
-			declineText: 'Disable Cookies', //Text on decline/disable button
+			declineText: 'I don\'t accept', //Text on decline/disable button
 			declineFunction: function(cookieValue){if(cookieValue=='enabled' || cookieValue=='accepted') window.location = window.location.href;}, //Function to run after decline
 			policyButton: true, //Set to true to show Privacy Policy button
 			policyText: 'Read the privacy policy', //Text on Privacy Policy button
-			policyURL: '/privacy', //URL of Privacy Policy
+			policyURL: '/privacy.html', //URL of Privacy Policy
 			autoEnable: false, //Set to true for cookies to be accepted automatically. Banner still shows
 			acceptOnContinue: false, //Set to true to accept cookies when visitor moves to another page
 			acceptOnScroll: false, //Set to true to accept cookies when visitor scrolls X pixels up or down
@@ -43,9 +43,9 @@
 			effect: 'slide', //Options: slide, fade, hide
 			element: 'body', //Element to append/prepend cookieBar to. Remember "." for class or "#" for id.
 			append: false, //Set to true for cookieBar HTML to be placed at base of website. Actual position may change according to CSS
-			fixed: false, //Set to true to add the class "fixed" to the cookie bar. Default CSS should fix the position
+			fixed: true, //Set to true to add the class "fixed" to the cookie bar. Default CSS should fix the position
 			bottom: false, //Force CSS when fixed, so bar appears at bottom of website
-			zindex: '', //Can be set in CSS, although some may prefer to set here
+			zindex: 9999, //Can be set in CSS, although some may prefer to set here
 			domain: String(window.location.hostname), //Location of privacy policy
 			referrer: String(document.referrer) //Where visitor has come from
 		};
