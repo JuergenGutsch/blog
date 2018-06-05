@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Creating a signature pad using Canvas and ASP.NET Core Razor Pages"
+title: "Creating a signature pad using Canvas and ASP.​NET Core Razor Pages"
 teaser: "In one of our projects, we needed to add a possibility to add signatures to PDF documents. It was pretty clear that we need to use the HTML5 canvas element and to capture the pointer movements. Fortunately we stumbled upon a pretty cool library on GitHub."
 author: "Jürgen Gutsch"
 comments: true
