@@ -1,46 +1,44 @@
----
-layout: layoutpage
----
+--- layout: layoutpage ---
 
 <article>
-	<header>
-		<h1> {{page.title}} </h1>
-		<p class="postdate">{{ page.author }} - {{ page.date | date: "%e %B, %Y"  }}</p>
-	</header>
-	
-	{{ content }}
-	
-	<footer>
-		<div>
-			<p>
-				<script>
-					if(pp_accepted){
-						(function() {
-							var d = document,
-								s = d.createElement('script');
+    <header>
+        <h1> {{page.title}} </h1>
+        <p class="postdate">{{ page.author }} - {{ page.date | date: "%e %B, %Y" }}</p>
+    </header>
 
-							s.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+    {{ content }}
 
-							s.setAttribute('async', true);
-							(d.head || d.body).appendChild(s);
-						})();
-					}
-				</script>
-				<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2112692016899285" data-ad-slot="9378927858" data-ad-format="auto"></ins>
-				<script>
-					if(pp_accepted){
-						(adsbygoogle = window.adsbygoogle || []).push({});
-					}
-				</script>
-			</p>
-		</div>
-		<div>
-			<p>
-				<img src="/img/guj.png" alt="Jürgen Gutsch" />
-				<strong>Jürgen Gutsch</strong><br>
-				<a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br>
-				<span>.NET junkie, addicted to web and software development, clean coder, MVP for Visual Studio and Development Technologies</span>
-			</p>
-		</div>
-	</footer>
+    <footer>
+        <div>
+            <p>
+                <script>
+                    if (pp_accepted) {
+                        (function() {
+                            var d = document,
+                                s = d.createElement('script');
+
+                            s.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+
+                            s.setAttribute('async', true);
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    }
+                </script>
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2112692016899285" data-ad-slot="9378927858" data-ad-format="auto"></ins>
+                <script>
+                    if (pp_accepted) {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    }
+                </script>
+            </p>
+        </div>
+        <div>
+            <p>
+                <img src="/img/guj.png" alt="Jürgen Gutsch" />
+                <strong>Jürgen Gutsch</strong><br/>
+                <a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br/>
+                <span>.NET junkie, addicted to web and software development, clean coder, MVP for Visual Studio and Development Technologies</span>
+            </p>
+        </div>
+    </footer>
 </article>
