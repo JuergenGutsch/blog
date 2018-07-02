@@ -14,7 +14,7 @@ One year later, it is the July 1st and I got the email from the Global MVP Admin
 
 I'm pretty proud and honored about that and I'm really happy to be part of the great MVP community one year more. I'm also looking forward to the Global MVP Summit next year to meet all the other MVPs from around the world.
 
-![]({{ site.baseurl }}/img/mvp/mvp.png)
+![]({{ site.baseurl }}/img/mvp/mvp2.png)
 
 ## Still not really a fan-boy...!?
 
