@@ -31,7 +31,7 @@ This commands will create and run a new application called HttpSecureWeb. And yo
 
 There are two different URLs where Kestrel is listening on: https://localhost:5001 and http://localhost:5000
 
-If you go to the Configure method in the `Startup.cs` there are some new middlewares used to prepare this web to use https:
+If you go to the Configure method in the `Startup.cs` there are some new middlewares used to prepare this web to use HTTPS:
 
 In the Production and Staging environment mode there is this middleware:
 
@@ -39,7 +39,7 @@ In the Production and Staging environment mode there is this middleware:
 app.UseHsts();
 ~~~
 
-This enables HSTS, which is a HTTP/2 feature to avoid man-in-the-middle attacks. It tells the browser to cache the certificate for the specific host-headers for a specific time range. If the certificate changes before the time range ends, something is wrong with the page. (more about HSTS)
+This enables HSTS (HTTP Strinct Transport Protocol), which is a HTTP/2 feature to avoid man-in-the-middle attacks. It tells the browser to cache the certificate for the specific host-headers and for a specific time range. If the certificate changes before the time range ends, something is wrong with the page. ([More about HSTS](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security))
 
 The next new middleware redirects all requests without HTTPS to use the HTTPS version:
 
@@ -57,7 +57,13 @@ Using the .NET CLI tool "dev-certs" you are able to manage your development cert
 dotnet dev-certs https --help
 ~~~
 
-On my machine I trusted the development certificate to not get the ugly error screen in the browser about an untrusted certificate and an unsecure connection every time I want to debug a ASP.NET Core application. This works quite well. 
+On my machine I trusted the development certificate to not get the ugly error screen in the browser about an untrusted certificate and an unsecure connection every time I want to debug a ASP.NET Core application. This works quite well:
+
+~~~ shell
+dotnet dev-cert https --trust
+~~~
+
+This command trusts the development certificate, by adding it to the certificate store or to the keychain on Mac. 
 
 On Windows you should use the certificate store to register HTTPS certificated. This is the most secured way on Windows machines. But I also like the idea to store the password protected certificate directly in the web folder or somewhere on the web server. This makes it pretty easy to deploy the application to different platforms, because Linux and Mac use different ways to store the certificated. Fortunately there is a way in ASP.NET Core to create a HTTPS connection using a file certificate which is stored on the hard drive. ASP.NET Core is completely customizable. If you want to replace the default certification handling, feel free to do it.
 
@@ -68,7 +74,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     WebHost.CreateDefaultBuilder(args)
     .UseStartup<Startup>();
 ```
-This method creates the default WebHostBuilder. This has a lot of stuff preconfigured, which is working great in the most scenarios. But it is possible to override all of the default settings here and to replace it with some custom configurations. Wee need to tell the Kestrel webserver which host and port he need to listen on and we are able to configure ListenOptions for specific ports. In this ListenOption we can use Https and pass in the certificate file and a password for that file:
+This method creates the default WebHostBuilder. This has a lot of stuff preconfigured, which is working great in the most scenarios. But it is possible to override all of the default settings here and to replace it with some custom configurations. We need to tell the Kestrel webserver which host and port he need to listen on and we are able to configure the ListenOptions for specific ports. In this ListenOptions we can use HTTPS and pass in the certificate file and a password for that file:
 
 ~~~csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -84,9 +90,13 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         .UseStartup<Startup>();
 ~~~
 
-Usually we would use values from a configuration file or environment variables, instead of hardcoding it. 
+Usually we would use the hardcoded values from a configuration file or environment variables, instead of hardcoding it. 
 
+Be sure the certificate is password protected using a long password or even better a pass-phrase. Be sure to not store the password or the pass-phrase into a configuration file. In development mode you should use the [user secrets]({% post_url user-secrets-in-aspnetcore.md %}) to store such secret date and in production mode the [Azure Key Vault](https://docs.microsoft.com/de-de/azure/key-vault/) could be an option.
 
+## Conclusion
 
+I hope this helps to get you a rough overview over the the usage of HTTPS in ASP.NET Core. This is not really a deep dive, but tries to explain what are the new middlewares good for and how to configure HTTPS for different platforms.
 
+BTW: I just saw in the [blog post about HTTPS improvements](https://blogs.msdn.microsoft.com/webdev/2018/02/27/asp-net-core-2-1-https-improvements), about HSTS in ASP.NET Core, there is a way to store the HTTPS configuration in the launchSettings.json. This is an easy way to pass in environment variables on startup to the application. The samples also shows to add the certificate password to this settings file. Please never ever do this! Because a file is easily shared to a source code repository or any other way, so the password inside is shared as well. Please use different mechanisms to set passwords in an application, like the already mentioned  [user secrets]({% post_url user-secrets-in-aspnetcore.md %}) or the  [Azure Key Vault](https://docs.microsoft.com/de-de/azure/key-vault/).
 
