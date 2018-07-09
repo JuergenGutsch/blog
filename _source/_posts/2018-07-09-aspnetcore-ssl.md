@@ -27,7 +27,7 @@ dotnet run
 
 This commands will create and run a new application called HttpSecureWeb. And you will see HTTPS the first time in the console output by running an newly created ASP.NET Core 2.1 application:
 
-![](../img/aspnetcore-ssl/dotnet-run-ssl.png)
+![]({{ site.baseurl }}img/aspnetcore-ssl/dotnet-run-ssl.png)
 
 There are two different URLs where Kestrel is listening on: https://localhost:5001 and http://localhost:5000
 
