@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "New Blog Series: Customizing ASP.NET Core"
-teaser: "With this post I want to introduce a new blog series about things you can or maybe may customize in ASP.NET Core. Initially this series will contain ten different topics. Maybe later I'll write some more posts about that. The initial topics are based on my talk about Customizing ASP.NET Core"
+teaser: "With this post I want to introduce a new blog series about things you can or maybe may customize in ASP.NET Core. Initially this series will contain ten different topics. Maybe later I'll write some more posts about that. The initial topics are based on my talk about Customizing ASP.NET Core."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -32,8 +32,8 @@ For this series I'm going to follow the same order as in the talk, which is the 
 - Customizing ASP.NET Core Part 09: ActionFilter
 - Customizing ASP.NET Core Part 10: TagHelpers
 
-## I Still want to do the talk 
+## I still want to do the talk 
 
-If you are interested in this talk about Customizing ASP.NET Core, feel free to drop me a comment, a message via twitter or an email. I'm able to do it remotely via Skype, Skype for Business or on side, if the travel costs are covered somehow. For free at community events, like Meetups or user group meetings and fairly paid on commercial events.
+If you are interested in this talk about Customizing ASP.NET Core, feel free to drop me a comment, a message via Twitter or an email. I'm able to do it remotely via Skype, Skype for Business or on side, if the travel costs are covered somehow. For free at community events, like Meetups or user group meetings and fairly paid on commercial events.
 
 Discover more possible talks on Sessionize: https://sessionize.com/juergengutsch
