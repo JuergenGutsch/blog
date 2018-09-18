@@ -297,7 +297,7 @@ var schema = new Schema { Query = new BooksQuery(_bookRepository) };
 
 This is where we create a schema, which is used by the GraphQL engine to provide the data. The schema defines the structure of the data you wanna provide. This is all done in a root type called BooksQuery. This type gets the BookRepostory.
 
-This Query is a GryphType, provided by the GraphQL library. You need to derive from a ObjectGraphType and to configure the schema in the constructor:
+This Query is a GraphType, provided by the GraphQL library. You need to derive from a ObjectGraphType and to configure the schema in the constructor:
 
 ~~~ csharp
 public class BooksQuery : ObjectGraphType
