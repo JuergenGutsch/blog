@@ -56,7 +56,7 @@ WebHost.CreateDefaultBuilder(args)
     .UseStartup<Startup>();
 ~~~
 
-This method needs a lambda that gets a `hostingContext` and a logging object to configure the logging.
+This method needs a lambda that gets a `WebHostBuilderContext` that contains the hosting context and a `LoggingBuilder` to configure the logging.
 
 ## Create a custom logger
 
