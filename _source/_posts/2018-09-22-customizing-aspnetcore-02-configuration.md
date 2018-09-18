@@ -12,7 +12,7 @@ tags:
 - MSTest
 ---
 
-post content here
+This second part of the blog series about customizing ASP.NET Core is about the application configuration, how to use it and how to customize the configuration to use different ways to configure your app. 
 
 ## The series topics
 
