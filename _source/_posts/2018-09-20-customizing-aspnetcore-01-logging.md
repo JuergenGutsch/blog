@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Customizing ASP.​NET Core Part 01: Logging"
+title: "Customizing ASP.NET Core Part 01: Logging"
 teaser: "In this first part of the new blog series about customizing ASP.NET Core, I will show you how to customize the logging. The default logging only writes to the console or to the debug window. This is quite good for the most cases, but maybe you need to log to a sink like a file or a database. Maybe you want to extend the logger with additional information. In that cases you need to know how to change the default logging."
 author: "Jürgen Gutsch"
 comments: true
@@ -15,7 +15,7 @@ In this first part of the new blog series about customizing ASP.NET Core, I will
 ## The series topics
 
 - Customizing ASP.NET Core Part 01: Logging
-- Customizing ASP.NET Core Part 02: Configuration
+- [Customizing ASP.NET Core Part 02: Configuration]({% post_url customizing-aspnetcore-02-configuration.md %})
 - Customizing ASP.NET Core Part 03: Dependency Injection
 - Customizing ASP.NET Core Part 04: HTTPS
 - Customizing ASP.NET Core Part 05: HostedServices
@@ -25,7 +25,7 @@ In this first part of the new blog series about customizing ASP.NET Core, I will
 - Customizing ASP.NET Core Part 09: ActionFilter
 - Customizing ASP.NET Core Part 10: TagHelpers
 
-## Confiure logging
+## Configure logging
 
 In previous versions of ASP.NET Core (pre 2.0) the logging was configured in the `Startup.cs`. Since 2.0 the `Startup.cs` was simplified and a lot of configurations where moved to a default `WebHostBuilder`, which is called in the `Program.cs`. Also the logging was moved to the default `WebHostBuilder`:
 
