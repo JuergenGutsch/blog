@@ -35,9 +35,9 @@ If yes, [I would set up a GitHub repo](https://github.com/JuergenGutsch) to coll
 
 ## Live Coding via Live Stream on Google Hangouts
 
-Another idea is inspired by [Jeff Fritz](https://twitter.com/csharpfritz) live stream on Twitch called ["Fritz and Friends"](https://www.twitch.tv/csharpfritz). The recorded streams are [published to YouTube](https://www.youtube.com/user/jfritz828/videos) afterwards. I really like this live stream, even if it's a completely different kind of video to watch. Jeff is permanently in discussion with the users in the chat, while working on his projects. This is kinda wired and makes the show a little nervous, but it is also really interesting. The really cool thing is that he accepts pull request from his audience and he discuss their changes with the audience while working an his project.
+Another idea is inspired by [Jeff Fritz](https://twitter.com/csharpfritz) live stream on Twitch called ["Fritz and Friends"](https://www.twitch.tv/csharpfritz). The recorded streams are [published to YouTube](https://www.youtube.com/user/jfritz828/videos) afterwards. I really like this live stream, even if it's a completely different kind of video to watch. Jeff is permanently in discussion with the users in the chat, while working on his projects. This is kinda wired and makes the show a little nervous, but it is also really interesting. The really cool thing is that he accepts pull request from his audience and he discuss their changes with the audience while working on his project.
 
-I I would do such a live stream as well, there were a few projects I would like to work on:
+I would do such a live stream as well, there were a few projects I would like to work on:
 
 * LightCore 2.0
   * An alternative DI container for .NET and .NET Core projects
