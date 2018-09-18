@@ -51,7 +51,7 @@ If you call http://localhost:5000, you get redirected immediately to https://loc
 
 So from the ASP.NET Core perspective all is done to run the web using HTTPS. Unfortunately the Certificate is missing. For the production mode you need to buy a valid trusted certificate and to install it in the windows certificate store. For the Development mode, you are able to create a development certificate using Visual Studio 2017 or the .NET CLI. VS 2017 is creating a certificate for you automatically. 
 
-Using the .NET CLI tool "dev-certs" you are able to manage your development certificates, like exporting them, cleaning all development certificates, trusting the current one and so on. Just time the following command to get more detailed information:
+Using the .NET CLI tool "dev-certs" you are able to manage your development certificates, like exporting them, cleaning all development certificates, trusting the current one and so on. Just type the following command to get more detailed information:
 
 ~~~shell
 dotnet dev-certs https --help
