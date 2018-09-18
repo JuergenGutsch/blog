@@ -25,7 +25,7 @@ In this first part of the new blog series about customizing ASP.NET Core, I will
 - Customizing ASP.NET Core Part 09: ActionFilter
 - Customizing ASP.NET Core Part 10: TagHelpers
 
-## Confiure logging
+## Configure logging
 
 In previous versions of ASP.NET Core (pre 2.0) the logging was configured in the `Startup.cs`. Since 2.0 the `Startup.cs` was simplified and a lot of configurations where moved to a default `WebHostBuilder`, which is called in the `Program.cs`. Also the logging was moved to the default `WebHostBuilder`:
 
