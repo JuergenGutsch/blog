@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "New Blog Series: Customizing ASP.NET Core"
+title: "New Blog Series: Customizing ASP.​NET Core"
 teaser: "With this post I want to introduce a new blog series about things you can or maybe may customize in ASP.NET Core. Initially this series will contain ten different topics. Maybe later I'll write some more posts about that. The initial topics are based on my talk about Customizing ASP.NET Core."
 author: "Jürgen Gutsch"
 comments: true
