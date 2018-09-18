@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Customizing ASP.NET Core Part 01: Logging"
+title: "Customizing ASP.​NET Core Part 01: Logging"
 teaser: "In this first part of the new blog series about customizing ASP.NET Core, I will show you how to customize the logging. The default logging only writes to the console or to the debug window. This is quite good for the most cases, but maybe you need to log to a sink like a file or a database. Maybe you want to extend the logger with additional information. In that cases you need to know how to change the default logging."
 author: "Jürgen Gutsch"
 comments: true
@@ -223,4 +223,4 @@ The first line configures NLog to use the previously created `NLog.Config` and t
 
 The good thing of hiding the basic configuration is only to clean up the newly scaffolded projects and to keep the actual start as simple as possible. The developer is able to focus on the actual features. But the more the application grows the more important is logging. The default logging configuration is easy and it works like charm, but in production you need a persisted log to see errors from the past. So you need to add a custom logging or a more flexible logger like NLog or log4net.
 
-To learn more about ASP.NET Core configuration have a look into the next part of the series: Customizing ASP.NET Core Part 02: Configuration (not yet done)
+To learn more about ASP.NET Core configuration have a look into the next part of the series: [Customizing ASP.NET Core Part 02: Configuration]({% post_url customizing-aspnetcore-02-configuration.md %}).
