@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Customizing ASP.​NET Core Part 01: Logging"
+title: "Customizing ASP.NET Core Part 01: Logging"
 teaser: "In this first part of the new blog series about customizing ASP.NET Core, I will show you how to customize the logging. The default logging only writes to the console or to the debug window. This is quite good for the most cases, but maybe you need to log to a sink like a file or a database. Maybe you want to extend the logger with additional information. In that cases you need to know how to change the default logging."
 author: "Jürgen Gutsch"
 comments: true
@@ -15,7 +15,7 @@ In this first part of the new blog series about customizing ASP.NET Core, I will
 ## The series topics
 
 - Customizing ASP.NET Core Part 01: Logging
-- Customizing ASP.NET Core Part 02: Configuration
+- [Customizing ASP.NET Core Part 02: Configuration]({% post_url customizing-aspnetcore-02-configuration.md %})
 - Customizing ASP.NET Core Part 03: Dependency Injection
 - Customizing ASP.NET Core Part 04: HTTPS
 - Customizing ASP.NET Core Part 05: HostedServices
