@@ -12,7 +12,7 @@ tags:
 - MSTest
 ---
 
-post content here
+In the third part we'll take a look into the dependency injection and how to customize it
 
 
 
