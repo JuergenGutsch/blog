@@ -22,7 +22,7 @@ For this series I'm going to follow the same order as in that presentation, whic
 ## The series topics
 
 - [Customizing ASP.NET Core Part 01: Logging]({% post_url customizing-aspnetcore-01-logging.md %})
-- Customizing ASP.NET Core Part 02: Configuration
+- [Customizing ASP.NET Core Part 02: Configuration]({% post_url customizing-aspnetcore-02-configuration.md %})
 - Customizing ASP.NET Core Part 03: Dependency Injection
 - Customizing ASP.NET Core Part 04: HTTPS
 - Customizing ASP.NET Core Part 05: HostedServices
