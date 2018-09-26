@@ -15,8 +15,8 @@ This second part of the blog series about customizing ASP.NET Core is about the 
 ## The series topics
 
 - [Customizing ASP.NET Core Part 01: Logging]({% post_url customizing-aspnetcore-01-logging.md %})
-- Customizing ASP.NET Core Part 02: Configuration
-- [Customizing ASP.NET Core Part 03: Dependency Injection]({% post_url customizing-aspnetcore-03-dependency-injection.md %})
+- **Customizing ASP.NET Core Part 02: Configuration - This article**
+- Customizing ASP.NET Core Part 03: Dependency Injection
 - Customizing ASP.NET Core Part 04: HTTPS
 - Customizing ASP.NET Core Part 05: HostedServices
 - Customizing ASP.NET Core Part 06: MiddleWares
@@ -186,7 +186,7 @@ config.AddMyCustomSource("source", optional: false, reloadOnChange: true);
 
 ## Conclusion
 
-In the most cases it is not needed to add a different configuration provider or to create your own configuration provider, but it's good to know how to change it in case you need it. Also using typed configuration is a nice way to read the settings. In classic ASP.NET we used a manually created façade to to read the application settings in a typed way. Now this s automatically done by just providing a class. This class get's automatically filled and provided via dependency injection.
+In the most cases it is not needed to add a different configuration provider or to create your own configuration provider, but it's good to know how to change it in case you need it. Also using typed configuration is a nice way to read the settings. In classic ASP.NET we used a manually created façade to to read the application settings in a typed way. Now this is automatically done by just providing a class. This class get's automatically filled and provided via dependency injection.
 
-To learn more about ASP.NET Core Dependency Injection have a look into the next part of the series: [Customizing ASP.NET Core Part 03: Dependency Injection]({% post_url customizing-aspnetcore-03-dependency-injection.md %})
+To learn more about ASP.NET Core Dependency Injection have a look into the next part of the series: Customizing ASP.NET Core Part 03: Dependency Injection (not yet finished)
 
