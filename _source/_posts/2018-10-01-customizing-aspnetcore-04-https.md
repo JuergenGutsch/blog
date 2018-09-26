@@ -36,3 +36,14 @@ Personally I like the flexible way to load the certificate from a file.
 - Customizing ASP.NET Core Part 10: TagHelpers
 
 ## Setup Kestrel
+
+~~~ csharp
+.UseKestrel(options => 
+{
+	options.Listen(IPAddress.Loopback, 5000);
+	options.Listen(IPAddress.Loopback, 5001, listenOptions =>
+	{
+		listenOptions.UseHttps("certificate.pfx", "topsecret");
+	});
+})
+~~~
