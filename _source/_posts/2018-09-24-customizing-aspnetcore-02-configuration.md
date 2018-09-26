@@ -15,7 +15,7 @@ This second part of the blog series about customizing ASP.NET Core is about the 
 ## The series topics
 
 - [Customizing ASP.NET Core Part 01: Logging]({% post_url customizing-aspnetcore-01-logging.md %})
-- Customizing ASP.NET Core Part 02: Configuration
+- **Customizing ASP.NET Core Part 02: Configuration - This article**
 - [Customizing ASP.NET Core Part 03: Dependency Injection]({% post_url customizing-aspnetcore-03-dependency-injection.md %})
 - [Customizing ASP.NET Core Part 04: HTTPS]({% post_url customizing-aspnetcore-03-https.md %})
 - Customizing ASP.NET Core Part 05: HostedServices
