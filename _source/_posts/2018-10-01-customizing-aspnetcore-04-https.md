@@ -37,6 +37,28 @@ Personally I like the flexible way to load the certificate from a file.
 
 ## Setup Kestrel
 
+As well as in the first to parts of this blog series, we need override the default WebHostBuilder a little bit. With ASP.NET Core it is possible to replace the default Kestrel based hosting with an hosting based on an HttpListener. This means the Kestrel webserver is add configured somehow to the host builder. You are able to add and configure Kestrel manually by **using** it. That means by calling the UseKestrel() method on the IWebHostBuilder:
+
+~~~ csharp
+public class Program
+{
+	public static void Main(string[] args)
+	{
+		CreateWebHostBuilder(args).Build().Run();
+	}
+
+	public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+		WebHost.CreateDefaultBuilder(args)
+			.UseKestrel(options => 
+			{
+				
+			})
+			.UseStartup<Startup>();
+}
+~~~
+
+This method accepts an action to configure the Kestrel webserver. What we need to do actually is to configure the addresses and ports the webserver is listen on. For the HTTPS port we also need to configure how the certificate should be loaded.
+
 ~~~ csharp
 .UseKestrel(options => 
 {
@@ -47,3 +69,20 @@ Personally I like the flexible way to load the certificate from a file.
 	});
 })
 ~~~
+
+In this snippet we add to addresses and ports to listen on. The second one is defined as secure endpoint configured to use HTTPS. The method UseHttps() is overloaded multiple times, to load certificates from the windows certificate store as well as from files. In this case we use a file called "certificate.pfx" located in the project folder.
+
+> Reminder to myself: Actually, replacing the host would be an idea for an eleventh part of this series.
+
+To create such a certificate file to just play around with this configuration open the certificate store and export the development certificate created by visual studio.
+
+## For your safety
+
+Use the following ONLY to play around with this configuration:
+
+~~~ csharp
+listenOptions.UseHttps("certificate.pfx", "topsecret");
+~~~
+
+The problem is the hard coded password. Never ever store a password in a code file that gets pushed to any source code repository. Ensure you load the password threw the configuration API of ASP.NET Core. Use the user secrets on your local development machine and use environment variables on a server. On Azure use the Application Settings to store the passwords. They will be hidden on the Azure Portal UI if they are marked as passwords.
+
