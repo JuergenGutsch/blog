@@ -39,7 +39,7 @@ In the most projects you don't really need to use a different dependency injecti
 * Maybe you don't want to have an immutable DI container, because you want to add services at runtime.
   * This is also a common feature in some DI containers.
 
-## A look at the ConfigureServices
+## A look at the ConfigureServices Method
 
 Create a new ASP.NET Core project and open the `Startup.cs`, you will find the method to configure the services which looks like this:
 
@@ -137,6 +137,15 @@ Also Autofac works with a kind of a service collection inside the `ContainerBuil
 Our custom service `MyService` now gets registered using the Autofac way.
 
 After that, the container gets build and stored in a property of type `IContainer`. In the last line of the method `ConfigureServices` we create a `AutofacServiceProvider` and pass in the `IContainer`. This is the `IServiceProvider` we need to return to use Autofac within our application.
+
+## UPDATE:  Introducing Scrutor
+
+You don't always need to replace the existing .NET Core DI container to get and use nice features. In the beginning I mentioned the auto registration of services. This can also be done with a nice NuGet package called [Scrutor](https://www.nuget.org/packages/Scrutor/) by [Kristian Hellang](https://twitter.com/khellang) ([https://kristian.hellang.com/](https://kristian.hellang.com/)). Scrutor extends the IServiceCollection to automatically register services to the .NET Core DI container.
+
+> "Assembly scanning and decoration extensions for Microsoft.Extensions.DependencyInjection"
+> https://github.com/khellang/Scrutor
+
+[Andrew Lock](https://andrewlock.net) published a pretty detailed blog post about Scrutor. It doesn't make sense to repeat that. Read that awesome post and learn more about it: [Using Scrutor to automatically register your services with the ASP.NET Core DI container](https://andrewlock.net/using-scrutor-to-automatically-register-your-services-with-the-asp-net-core-di-container/)
 
 ## Conclusion
 
