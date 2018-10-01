@@ -19,7 +19,7 @@ In the third part we'll take a look into the ASP.NET Core dependency injection a
 - [Customizing ASP.NET Core Part 01: Logging]({% post_url customizing-aspnetcore-01-logging.md %})
 - [Customizing ASP.NET Core Part 02: Configuration]({% post_url customizing-aspnetcore-02-configuration.md %})
 - **Customizing ASP.NET Core Part 03: Dependency Injection - This article**
-- Customizing ASP.NET Core Part 04: HTTPS
+- [Customizing ASP.NET Core Part 04: HTTPS]({% post_url customizing-aspnetcore-04-https.md %})
 - Customizing ASP.NET Core Part 05: HostedServices
 - Customizing ASP.NET Core Part 06: MiddleWares
 - Customizing ASP.NET Core Part 07: OutputFormatter
@@ -155,5 +155,5 @@ Actually the last step sounds easy, but can be a hard task. Because you need to 
 
 Anyway, you have the choice to use any DI container which is compatible to the .NET Standard. You have the choice to change a lot of the default implementations in ASP.NET Core. 
 
-So you can with the default HTTPS behavior on Windows. To learn more about that please read the next post about **Customizing ASP.NET Core Part 04: HTTPS** (available in a view days).
+So you can with the default HTTPS behavior on Windows. To learn more about that please read the next post about [Customizing ASP.NET Core Part 04: HTTPS]({% post_url customizing-aspnetcore-04-https.md %}).
 
