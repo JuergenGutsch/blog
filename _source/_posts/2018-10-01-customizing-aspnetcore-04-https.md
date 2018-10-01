@@ -7,9 +7,7 @@ comments: true
 image: /img/cardlogo-dark.png
 tags: 
 - .NET Core
-- Unit Test
-- XUnit
-- MSTest
+- HTTPS
 ---
 
 HTTPS is on by default now and a first class feature. On Windows the certificate which is needed to enable HTTPS is loaded from the windows certificate store. If you create a project on Linux and Mac the certificate is loaded from a certificate file. 
@@ -26,9 +24,9 @@ Personally I like the flexible way to load the certificate from a file.
 
 - [Customizing ASP.NET Core Part 01: Logging]({% post_url customizing-aspnetcore-01-logging.md %})
 - [Customizing ASP.NET Core Part 02: Configuration]({% post_url customizing-aspnetcore-02-configuration.md %})
-- [Customizing ASP.NET Core Part 03: Dependency Injection]({% post_url customizing-aspnetcore-02-dependency-injection.md %})
+- [Customizing ASP.NET Core Part 03: Dependency Injection]({% post_url customizing-aspnetcore-03-dependency-injection.md %})
 - **Customizing ASP.NET Core Part 04: HTTPS - This article**
-- Customizing ASP.NET Core Part 05: HostedServices
+- [Customizing ASP.NET Core Part 05: HostedServices]({% post_url customizing-aspnetcore-05-hostedservices.md %})
 - Customizing ASP.NET Core Part 06: MiddleWares
 - Customizing ASP.NET Core Part 07: OutputFormatter
 - Customizing ASP.NET Core Part 08: ModelBinder
@@ -91,4 +89,4 @@ This is just a small customization. Anyway, this helps if you want to share the 
 
 Usually, if you run your application behind an web server like IIS or NGinX, you don't need to care about certificates in your ASP.NET Core application. But you need to if you host your application inside another application, on Docker or without an IIS or NGinX.
 
-ASP.NET Core has a new feature to run tasks in the background inside the application. To learn more about that, read the next post about **Customizing ASP.NET Core Part 05: HostedServices** (not yet finished).
+ASP.NET Core has a new feature to run tasks in the background inside the application. To learn more about that, read the next post about [Customizing ASP.NET Core Part 05: HostedServices]({% post_url customizing-aspnetcore-05-hostedservices.md %}).
