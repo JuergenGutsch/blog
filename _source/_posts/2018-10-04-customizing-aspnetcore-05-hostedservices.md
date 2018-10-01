@@ -15,23 +15,14 @@ This fifth part of this series doesn't really show a customization. This part is
 ## The series topics
 
 - [Customizing ASP.NET Core Part 01: Logging]({% post_url customizing-aspnetcore-01-logging.md %})
-
 - [Customizing ASP.NET Core Part 02: Configuration]({% post_url customizing-aspnetcore-02-configuration.md %})
-
 - [Customizing ASP.NET Core Part 03: Dependency Injection]({% post_url customizing-aspnetcore-03-dependency-injection.md %})
-
 - [Customizing ASP.NET Core Part 04: HTTPS]({% post_url customizing-aspnetcore-04-https.md %})
-
 - **Customizing ASP.NET Core Part 05: HostedServices - This article**
-
-- Customizing ASP.NET Core Part 06: MiddleWares
-
+- [Customizing ASP.NET Core Part 06: MiddleWares]({% post_url customizing-aspnetcore-06-middlewares.md %})
 - Customizing ASP.NET Core Part 07: OutputFormatter
-
 - Customizing ASP.NET Core Part 08: ModelBinder
-
 - Customizing ASP.NET Core Part 09: ActionFilter
-
 - Customizing ASP.NET Core Part 10: TagHelpers
 
 ## About HostedServcices 
