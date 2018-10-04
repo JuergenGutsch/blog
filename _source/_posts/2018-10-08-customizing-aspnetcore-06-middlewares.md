@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Customizing ASP.​NET Core Part 06: MiddleWares"
-teaser: "description"
+title: "Customizing ASP.NET Core Part 06: MiddleWares"
+teaser: "Wow, it is already the sixth part of this series. In this post I'm going to write about middlewares and how you can use them to customize your app a little more. I quickly go threw the basics about middlewares and than I'll write about some more specials things you can do with middlewares."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -10,7 +10,7 @@ tags:
 - Middlewares
 ---
 
-Wow, it is already the sixth part of this series. In this post I'm going to write about middlewares and how you can use them to customize your app a little more. I quickly go threw the basics about middlewares and than I'll write about some specials ...[todo]
+Wow, it is already the sixth part of this series. In this post I'm going to write about middlewares and how you can use them to customize your app a little more. I quickly go threw the basics about middlewares and than I'll write about some more specials things you can do with middlewares.
 
 ## The series topics
 
