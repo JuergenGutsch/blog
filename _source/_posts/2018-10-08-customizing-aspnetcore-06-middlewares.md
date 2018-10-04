@@ -1,15 +1,13 @@
 ---
 layout: post
-title: "Customizing ASP.NET Core Part 06: MiddleWares"
+title: "Customizing ASP.​NET Core Part 06: MiddleWares"
 teaser: "description"
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
-- .NET Core
-- Unit Test
-- XUnit
-- MSTest
+- ASP.NET Core
+- Middlewares
 ---
 
 Wow, it is already the sixth part of this series. In this post I'm going to write about middlewares and how you can use them to customize your app a little more. I quickly go threw the basics about middlewares and than I'll write about some specials ...[todo]
@@ -29,7 +27,7 @@ Wow, it is already the sixth part of this series. In this post I'm going to writ
 
 ## About MiddleWares
 
-The most of you already know what middlewares are, but some of you don't. Even if you already use ASP.NET Core for a while, you don't really need to know details about middlewares, because they are mostly hidden behind nicely named extension methods, like `UseMvc()`, `UseAuthentication()`, `UseDeveloperExceptionPage()` and so on. Every time you call a `Use`-method in the `Startup.cs` in the `Configure` method, you'll implicitly use at least one ore maybe more middlewares.
+The most of you already know what middlewares are, but some of you maybe don't. Even if you already use ASP.NET Core for a while, you don't really need to know details about middlewares, because they are mostly hidden behind nicely named extension methods like `UseMvc()`, `UseAuthentication()`, `UseDeveloperExceptionPage()` and so on. Every time you call a `Use`-method in the `Startup.cs` in the `Configure` method, you'll implicitly use at least one ore maybe more middlewares.
 
 A middleware is a peace of code that handles the request pipeline. Imagine the request pipeline as huge tube where you can call something in and where an echo comes back. The middlewares are responsible for  create this echo or to manipulate the sound, to enrich the information or to handle the source sound or to handle the echo. 
 
@@ -105,9 +103,9 @@ If you now run the application (using `dotnet run`) and open the displayed URL i
 
 Does this make sense to you? If yes, let's see how to use this concept to add some additional functionality to the request pipeline.
 
-## A custom middleware
+## Writing a custom middleware
 
-ASP.NET Core is based on middlewares. All the logic that gets executed during a request is somehow based on a middleware. So we are able to use this to add custom functionality to the web. We want to know the execution time of every request that goes through the request pipeline. I did this by creating and starting a `Stopwatch` before the next middleware is called and by stop measuring the execution time after the next middleware is called:
+ASP.NET Core is based on middlewares. All the logic that gets executed during a request is somehow based on a middleware. So we are able to use this to add custom functionality to the web. We want to know the execution time of every request that goes through the request pipeline. I do this by creating and starting a `Stopwatch` before the next middleware is called and by stop measuring the execution time after the next middleware is called:
 
 ~~~ csharp
 app.Use(async (context, next) =>
@@ -128,7 +126,7 @@ app.Use(async (context, next) =>
 
 After that I write out the elapsed milliseconds to the response stream.
 
-If you write some more middlewares the `Configure` method in the `Startup.cs` get's pretty messy. This is why the most middlewares are written as classes. This could look like this:
+If you write some more middlewares the `Configure` method in the `Startup.cs` get's pretty messy. This is why the most middlewares are written as separate classes. This could look like this:
 
 ~~~ csharp
 public class StopwatchMiddleWare
@@ -157,7 +155,11 @@ public class StopwatchMiddleWare
 }
 ~~~
 
-To use this middleware there is a generic `UseMiddleware()` method available you can use in the configure method:
+This way we get the next middleware via the constructor and the current context in the `Invoke()` method. 
+
+> Note: The Middleware is initialized on the start of the application and exists once during the application lifetime. The constructor gets called once. On the other hand the Invoke() method is called once per request.
+
+To use this middleware, there is a generic `UseMiddleware()` method available you can use in the configure method:
 
 ~~~ csharp
 app.UseMiddleware<StopwatchMiddleWare>();
@@ -248,7 +250,7 @@ public void Configure(IApplicationBuilder app)
 }
 ~~~
 
-You can create conditions based on configuration values or as shown here, based on properties of the request context. In this case a query string property is used, but you can use headers, form properties or any other property of the request context.
+You can create conditions based on configuration values or as shown here, based on properties of the request context. In this case a query string property is used. You can use HTTP headers, form properties or any other property of the request context.
 
 You are also able to nest the maps to create child and grandchild branches of needed.
 
