@@ -20,7 +20,7 @@ This fifth part of this series doesn't really show a customization. This part is
 - [Customizing ASP.NET Core Part 04: HTTPS]({% post_url customizing-aspnetcore-04-https.md %})
 - **Customizing ASP.NET Core Part 05: HostedServices - This article**
 - [Customizing ASP.NET Core Part 06: MiddleWares]({% post_url customizing-aspnetcore-06-middlewares.md %})
-- Customizing ASP.NET Core Part 07: OutputFormatter
+- [Customizing ASP.NET Core Part 07: OutputFormatter]({% post_url customizing-aspnetcore-07-outputformatter.md %})
 - Customizing ASP.NET Core Part 08: ModelBinder
 - Customizing ASP.NET Core Part 09: ActionFilter
 - Customizing ASP.NET Core Part 10: TagHelpers
