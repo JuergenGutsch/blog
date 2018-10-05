@@ -53,7 +53,7 @@ public class SampleHostedService : IHostedService
 }
 ~~~
 
-A `HostedService` needs tom implement a `StartAsync()` and a `StopAsync()` method. The `StartAsync()` is the place where you implement the logic to execute. This method gets executed once immediately after the application starts. The method `StopAsync()` on the other hand gets executed just before the application stops. This also means, to start a kind of a scheduled service you need to implement it by your own. You will need to implement a loop which executes the code regularly.
+A `HostedService` needs to implement a `StartAsync()` and a `StopAsync()` method. The `StartAsync()` is the place where you implement the logic to execute. This method gets executed once immediately after the application starts. The method `StopAsync()` on the other hand gets executed just before the application stops. This also means, to start a kind of a scheduled service you need to implement it by your own. You will need to implement a loop which executes the code regularly.
 
 To get a `HostedService` executed you need to register it in the ASP.NET Core dependency injection container as a singleton instance:
 
