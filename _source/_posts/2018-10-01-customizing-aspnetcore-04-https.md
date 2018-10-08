@@ -27,7 +27,7 @@ Personally I like the flexible way to load the certificate from a file.
 - [Customizing ASP.NET Core Part 03: Dependency Injection]({% post_url customizing-aspnetcore-03-dependency-injection.md %})
 - **Customizing ASP.NET Core Part 04: HTTPS - This article**
 - [Customizing ASP.NET Core Part 05: HostedServices]({% post_url customizing-aspnetcore-05-hostedservices.md %})
-- Customizing ASP.NET Core Part 06: MiddleWares
+- [Customizing ASP.NET Core Part 06: MiddleWares]({% post_url customizing-aspnetcore-06-middlewares.md %})
 - Customizing ASP.NET Core Part 07: OutputFormatter
 - Customizing ASP.NET Core Part 08: ModelBinder
 - Customizing ASP.NET Core Part 09: ActionFilter
