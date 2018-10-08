@@ -81,7 +81,7 @@ Use the following line **ONLY** to play around with this configuration:
 listenOptions.UseHttps("certificate.pfx", "topsecret");
 ~~~
 
-The problem is the hard coded password. **Never ever** store a password in a code file that gets pushed to any source code repository. Ensure you load the password threw the configuration API of ASP.NET Core. Use the user secrets on your local development machine and use environment variables on a server. On Azure use the Application Settings to store the passwords. Passwords will be hidden on the Azure Portal UI, if they are marked as passwords.
+The problem is the hard coded password. **Never ever** store a password in a code file that gets pushed to any source code repository. Ensure you load the password from the configuration API of ASP.NET Core. Use the user secrets on your local development machine and use environment variables on a server. On Azure use the Application Settings to store the passwords. Passwords will be hidden on the Azure Portal UI, if they are marked as passwords.
 
 ## Conclusion
 

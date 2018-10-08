@@ -44,7 +44,7 @@ public class SampleHostedService : IHostedService
 }
 ~~~
 
-A `HostedService` needs tom implement a `StartAsync()` and a `StopAsync()` method. The `StartAsync()` is the place where you implement the logic to execute. This method gets executed once immediately after the application starts. The method `StopAsync()` on the other hand gets executed just before the application stops. This also means, to start a kind of a scheduled service you need to implement it by your own. You will need to implement a loop which executes the code regularly.
+A `HostedService` needs to implement a `StartAsync()` and a `StopAsync()` method. The `StartAsync()` is the place where you implement the logic to execute. This method gets executed once immediately after the application starts. The method `StopAsync()` on the other hand gets executed just before the application stops. This also means, to start a kind of a scheduled service you need to implement it by your own. You will need to implement a loop which executes the code regularly.
 
 To get a `HostedService` executed you need to register it in the ASP.NET Core dependency injection container as a singleton instance:
 
@@ -111,4 +111,4 @@ You can now start to do some more complex thing with the `HostedServices`. Be ca
 
 For bigger applications I would suggest to move such tasks in a separate application that is specialized to execute background tasks. A separate Docker container, a BackroundWorker on Azure, Azure Functions or something like this. However it should be separated from the main application in that case
 
-In the next part I'm going to write about `MiddleWares` and how you can use them to implement special logic to the request pipeline, or how you are able to serve specific logic on different paths. **Customizing ASP.NET Core Part 06: MiddleWares** (not yet finished)
+In the next part I'm going to write about `MiddleWares` and how you can use them to implement special logic to the request pipeline, or how you are able to serve specific logic on different paths. [Customizing ASP.NET Core Part 06: MiddleWares]({% post_url customizing-aspnetcore-06-middlewares.md %})
