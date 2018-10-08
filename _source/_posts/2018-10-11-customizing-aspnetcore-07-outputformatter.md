@@ -21,7 +21,7 @@ In this seventh post I want to write about, how to send your Data in different f
 - [Customizing ASP.NET Core Part 05: HostedServices]({% post_url customizing-aspnetcore-05-hostedservices.md %})
 - [Customizing ASP.NET Core Part 06: MiddleWares]({% post_url customizing-aspnetcore-06-middlewares.md %})
 - **Customizing ASP.NET Core Part 07: OutputFormatter - This article**
-- Customizing ASP.NET Core Part 08: ModelBinder
+- [Customizing ASP.NET Core Part 08: ModelBinders]({{% post_url customizing-aspnetcore-08-modelbinders.md})
 - Customizing ASP.NET Core Part 09: ActionFilter
 - Customizing ASP.NET Core Part 10: TagHelpers
 
@@ -304,4 +304,4 @@ In Postman change the `Accept` header to `text/csv` and press send again:
 
 Isn't that cool? I really like the way to change the format based on the except header. This way you are able to create an Web API for many different clients and that accept many different formats. There are still a lot of potential clients outside which don't use JSON and prefer XML or CSV.
 
-The other way around would be an option to consume CSV or any other format inside the Web API. Let's assume your client would send you a list of persons in CSV format. How would you solve this? Parsing the String manually in the action method would work, but it's not a nice option. This is what ModelBinders can do for us. Let's see how this works in the next chapter about **Customizing ASP.NET Core Part 08: ModelBinder** (not yet finished)
+The other way around would be an option to consume CSV or any other format inside the Web API. Let's assume your client would send you a list of persons in CSV format. How would you solve this? Parsing the String manually in the action method would work, but it's not a nice option. This is what ModelBinders can do for us. Let's see how this works in the next chapter about [Customizing ASP.NET Core Part 08: ModelBinders]({{% post_url customizing-aspnetcore-08-modelbinders.md}).
