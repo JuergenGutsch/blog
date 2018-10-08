@@ -111,4 +111,4 @@ You can now start to do some more complex thing with the `HostedServices`. Be ca
 
 For bigger applications I would suggest to move such tasks in a separate application that is specialized to execute background tasks. A separate Docker container, a BackroundWorker on Azure, Azure Functions or something like this. However it should be separated from the main application in that case
 
-In the next part I'm going to write about `MiddleWares` and how you can use them to implement special logic to the request pipeline, or how you are able to serve specific logic on different paths. **Customizing ASP.NET Core Part 06: MiddleWares** (not yet finished)
+In the next part I'm going to write about `MiddleWares` and how you can use them to implement special logic to the request pipeline, or how you are able to serve specific logic on different paths. [Customizing ASP.NET Core Part 06: MiddleWares]({% post_url customizing-aspnetcore-06-middlewares.md %})
