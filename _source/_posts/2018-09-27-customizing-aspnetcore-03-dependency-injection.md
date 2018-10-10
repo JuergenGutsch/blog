@@ -21,7 +21,7 @@ In the third part we'll take a look into the ASP.NET Core dependency injection a
 - **Customizing ASP.NET Core Part 03: Dependency Injection - This article**
 - [Customizing ASP.NET Core Part 04: HTTPS]({% post_url customizing-aspnetcore-04-https.md %})
 - [Customizing ASP.NET Core Part 05: HostedServices]({% post_url customizing-aspnetcore-05-hostedservices.md %})
-- [Customizing ASP.NET Core Part 06: MiddleWares]({% post_url customizing-aspnetcore-06-middlewares.md %})
+- [Customizing ASP.NET Core Part 06: Middlewares]({% post_url customizing-aspnetcore-06-middlewares.md %})
 - [Customizing ASP.NET Core Part 07: OutputFormatter]({% post_url customizing-aspnetcore-07-outputformatter.md %})
 - [Customizing ASP.NET Core Part 08: ModelBinders]({% post_url customizing-aspnetcore-08-modelbinders.md %})
 - Customizing ASP.NET Core Part 09: ActionFilter

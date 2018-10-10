@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Customizing ASP.​NET Core Part 06: MiddleWares"
+title: "Customizing ASP.​NET Core Part 06: Middlewares"
 teaser: "Wow, it is already the sixth part of this series. In this post I'm going to write about middlewares and how you can use them to customize your app a little more. I quickly go threw the basics about middlewares and than I'll write about some more specials things you can do with middlewares."
 author: "Jürgen Gutsch"
 comments: true
@@ -19,13 +19,13 @@ Wow, it is already the sixth part of this series. In this post I'm going to writ
 - [Customizing ASP.NET Core Part 03: Dependency Injection]({% post_url customizing-aspnetcore-03-dependency-injection.md %})
 - [Customizing ASP.NET Core Part 04: HTTPS]({% post_url customizing-aspnetcore-04-https.md %})
 - [Customizing ASP.NET Core Part 05: HostedServices]({% post_url customizing-aspnetcore-05-hostedservices.md %})
-- **Customizing ASP.NET Core Part 06: MiddleWares - This article**
+- **Customizing ASP.NET Core Part 06: Middlewares - This article**
 - [Customizing ASP.NET Core Part 07: OutputFormatter]({% post_url customizing-aspnetcore-07-outputformatter.md %})
 - [Customizing ASP.NET Core Part 08: ModelBinders]({% post_url customizing-aspnetcore-08-modelbinders.md %})
 - Customizing ASP.NET Core Part 09: ActionFilter
 - Customizing ASP.NET Core Part 10: TagHelpers
 
-## About MiddleWares
+## About middlewares
 
 The most of you already know what middlewares are, but some of you maybe don't. Even if you already use ASP.NET Core for a while, you don't really need to know details about middlewares, because they are mostly hidden behind nicely named extension methods like `UseMvc()`, `UseAuthentication()`, `UseDeveloperExceptionPage()` and so on. Every time you call a `Use`-method in the `Startup.cs` in the `Configure` method, you'll implicitly use at least one ore maybe more middlewares.
 
@@ -33,7 +33,7 @@ A middleware is a peace of code that handles the request pipeline. Imagine the r
 
 Middlewares are executed in the order they are configured. The first configured middleware is the first that gets executed.
 
-In an ASP.NET Core web, if the client requests an image or any other static file, the `StaticFileMiddleWare` searches for that resource and return that resource if it finds one. If not this middleware does nothing except to call the next one. If there is no last middleware that handles the request pipeline, the request returns nothing. The `MvcMiddleWare` also checks the requested resource, tries to map it to a configured route, executes the controller, created a view and returns a HTML or Web API result. If the `MvcMiddleWare` doesn't find a matching controller, it anyway will return a result in this case it is a 404 Status result. It returns an echo in any case. This is why the `MvcMiddleWare` is the last configured middleware.
+In an ASP.NET Core web, if the client requests an image or any other static file, the `StaticFileMiddleware` searches for that resource and return that resource if it finds one. If not this middleware does nothing except to call the next one. If there is no last middleware that handles the request pipeline, the request returns nothing. The `MvcMiddleware` also checks the requested resource, tries to map it to a configured route, executes the controller, created a view and returns a HTML or Web API result. If the `MvcMiddleware` doesn't find a matching controller, it anyway will return a result in this case it is a 404 Status result. It returns an echo in any case. This is why the `MvcMiddleware` is the last configured middleware.
 
 ![](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/index/_static/request-delegate-pipeline.png?view=aspnetcore-2.1)
 (Image source: [https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-2.1](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-2.1))
@@ -162,17 +162,17 @@ This way we get the next middleware via the constructor and the current context 
 To use this middleware, there is a generic `UseMiddleware()` method available you can use in the configure method:
 
 ~~~ csharp
-app.UseMiddleware<StopwatchMiddleWare>();
+app.UseMiddleware<StopwatchMiddleware>();
 ~~~
 
 The more elegant way is to create an extensions method that encapsulates this call:
 
 ~~~ csharp
-public static class StopwatchMiddleWareExtension
+public static class StopwatchMiddlewareExtension
 {
     public static IApplicationBuilder UseStopwatch(this IApplicationBuilder app)
     {
-        app.UseMiddleware<StopwatchMiddleWare>();
+        app.UseMiddleware<StopwatchMiddleware>();
         return app;
     }
 }
@@ -186,7 +186,7 @@ app.useStopwatch();
 
 This is the way you can provide additional functionality to a ASP.NET Core web through the request pipeline. You are able to manipulate the request or even the response using middlewares. 
 
-The `AuthenticationMiddleWare` for example tries to request user information from the request. If it doesn't find some it asked the client about it by sending a specific response back to the client. If it finds some, it adds the information to the request context and makes it available to the entire application this way.
+The `AuthenticationMiddleware` for example tries to request user information from the request. If it doesn't find some it asked the client about it by sending a specific response back to the client. If it finds some, it adds the information to the request context and makes it available to the entire application this way.
 
 ## What else can we do using middlewares?
 
@@ -273,6 +273,14 @@ private static void UseHealthChecksCore(IApplicationBuilder app, PathString path
 ~~~
 
 (See [here on GitHib](https://github.com/aspnet/Diagnostics/blob/release/2.2/src/Microsoft.AspNetCore.Diagnostics.HealthChecks/Builder/HealthCheckApplicationBuilderExtensions.cs))
+
+## UPDATE 10/10/2018
+
+After I published this post [Hisham](https://www.twitter.com/hishambinateya) asked me a question on [Twitter](https://twitter.com/hishambinateya/status/1049672027299356672):
+
+> Another question that's middlewares related, I'm not sure why I never seen anyone using IMiddleware instead of writing InvokeAsync manually?!! 
+
+`IMiddleware` is new in ASP.NET Core 2.0 and actually I never knew that it exists before he tweeted about it.    I'll definitely have a deeper look into `IMiddleware` and will write about it. Until that you should read Hishams really good post about it: [Why you aren't using IMiddleware?](http://www.hishambinateya.com/why-you-arenot-using-imiddleware)
 
 ## Conclusion
 
