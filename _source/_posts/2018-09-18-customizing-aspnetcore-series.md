@@ -19,7 +19,7 @@ The initial topics are based on my talk about [Customizing ASP.NET Core](https:/
 
 For this series I'm going to follow the same order as in that presentation, which is the order from bottom to top, from the server configuration parts, over Web.API up to the MVC topics.
 
-## The series topics
+## Initial series topics
 
 - [Customizing ASP.NET Core Part 01: Logging]({% post_url customizing-aspnetcore-01-logging.md %})
 - [Customizing ASP.NET Core Part 02: Configuration]({% post_url customizing-aspnetcore-02-configuration.md %})
@@ -28,9 +28,14 @@ For this series I'm going to follow the same order as in that presentation, whic
 - [Customizing ASP.NET Core Part 05: HostedServices]({% post_url customizing-aspnetcore-05-hostedservices.md %})
 - [Customizing ASP.NET Core Part 06: Middlewares]({% post_url customizing-aspnetcore-06-middlewares.md %})
 - [Customizing ASP.NET Core Part 07: OutputFormatter]({% post_url customizing-aspnetcore-07-outputformatter.md %})
-- Customizing ASP.NET Core Part 08: ModelBinder
+- [Customizing ASP.NET Core Part 08: ModelBinders]({% post_url customizing-aspnetcore-08-modelbinders.md %})
 - Customizing ASP.NET Core Part 09: ActionFilter
 - Customizing ASP.NET Core Part 10: TagHelpers
+
+## Additional series topics
+
+* Customizing ASP.NET Core Part 11: Hosting
+* Customizing ASP.NET Core Part 12: InputFormatter
 
 ## Do you want to see that talk?
 
