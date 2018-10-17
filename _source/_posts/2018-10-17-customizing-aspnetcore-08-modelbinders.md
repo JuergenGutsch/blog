@@ -6,10 +6,8 @@ author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
-- .NET Core
-- Unit Test
-- XUnit
-- MSTest
+- ASP.NET Core
+- ModelBinders
 ---
 
 In the last post about `OutputFormatters` I wrote about sending data out to the clients in different formats. In this post we are going to do it the other way. This post is about data you get into your Web API from outside. What if you get data in a special format or what if you get data you need to validate in a special way. `ModelBinders` will help you handling this.
@@ -29,16 +27,16 @@ In the last post about `OutputFormatters` I wrote about sending data out to the 
 
 ## About ModelBinders
 
-ModelBinders are responsible to bind the incoming data to a specific Model. It binds the data sent with the request to the model. The default binders are able to bind data that are sent in the request body in the QueryString format or JSON. It also maps data from the URL QueryString to the models properties.
+ModelBinders are responsible to bind the incoming data to specific action method parameters. It binds the data sent with the request to the parameters. The default binders are able to bind data that are sent via the QueryString or sent within the request body. Within the body the data can be sent in URL format or JSON.
 
-TODO: More content
+The model binding tries to find the values in the request by the parameter names. The form values, the route data and the query string values are stored as a key-value pair collection and the binding tries to find the parameter name in the keys of the collection.
 
-## Preparation
+## Preparation of the test project
 
 In this post I'd like to send CSV data to a Web API method. I will reuse the CSV data we created in the last post:
 
 ~~~ csv
- Id,FirstName,LastName,Age,EmailAddress,Address,City,Phone
+Id,FirstName,LastName,Age,EmailAddress,Address,City,Phone
 48,Samantha,White,18,Angel.Morgan@shaw.ca,"8202 77th Street ",Mascouche,(682) 381-4092
 1,Eric,Wright,2,Briana.Ross@gmx.com,"8104 Scott Avenue ",Canutillo,(253) 366-5637
 55,Amber,Watson,46,Sarah.Foster@gmx.com,"9206 Lewis Avenue ",Coleman,(632) 375-4415
@@ -167,7 +165,7 @@ public class CsvModelBinder : IModelBinder
 
 In the method `BindModelAsync` we get the `ModelBindingContext` with all the information in it we need to get the data and to de-serialize it.
 
-First the context get's checked against null values. After that we set a default argument name to model, if none is specified. If this is done we are able to fetch the value by the name we previously set. 
+First the `context` get's checked against null values. After that we set a default argument name to model, if none is specified. If this is done we are able to fetch the value by the name we previously set. 
 
 If there's no value, we shouldn't throw an exception in this case. The reason is that maybe the next configured `ModelBinder` is responsible. If we throw an exception the execution of the current request is broken and the next configured `ModelBinder` doesn't have the chance to get executed.
 
@@ -195,17 +193,40 @@ public ActionResult<object> Post(
 
 Here the type of our `CsvModelBinder` is set as `binderType` to that attribute.
 
-![]({{site.baseurl}}/img/customize-aspnetcore/modelbinder.PNG)
-
 [Steve Gordon](https://twitter.com/stevejgordon) wrote about a second option in his blog post: [Custom ModelBinding in ASP.NET MVC Core](https://www.stevejgordon.co.uk/html-encode-string-aspnet-core-model-binding/). He uses a `ModelBinderProvider` to add the `ModelBinder` to the list of existing ones. 
 
 I personally prefer the explicit declaration, because the most custom `ModelBinders` will be pretty specific to an action or to an specific type and `theres` no hidden magic in the background.
+
+## Testing the ModelBinder
+
+To test it, we need to create a new Request in Postman. I set the request type to POST and put the URL https://localhost:5001/api/persons in the address bar. No I need to add the CSV data in the body of the request. Because it is a URL formatted body, I needed to put the data as `persons` variable into the body:
+
+~~~ text
+persons=Id,FirstName,LastName,Age,EmailAddress,Address,City,Phone
+48,Samantha,White,18,Angel.Morgan@shaw.ca,"8202 77th Street ",Mascouche,(682) 381-4092
+1,Eric,Wright,2,Briana.Ross@gmx.com,"8104 Scott Avenue ",Canutillo,(253) 366-5637
+55,Amber,Watson,46,Sarah.Foster@gmx.com,"9206 Lewis Avenue ",Coleman,(632) 375-4415
+
+~~~
+
+After pressing send, I got the result as shown below:
+
+![]({{site.baseurl}}/img/customize-aspnetcore/modelbinder.PNG)
+
+Now the clients are able to send CSV based data to the client.
 
 ## Conclusion
 
 This is a good way to transform the input in a way the action really needs. You could also use the ModelBinders to do some custom validation against the database or whatever you need to do before the model get's passed to the action.
 
-While playing around with the `ModelBinderProvider` Steve describes in his blog, I stumbled upon `InputFormatters` formatters. Would this be the right way to transform CSV input into objects? I definitely need to learn some more details about the `InputFormatters`and will use this as 12th topic of this series.
+To learn more about ModelBinders, you need to have a look into the pretty detailed documentation:
 
-In the next part I will show you what you can do with ActioFilters: Customizing ASP.NET Core Part 09: ActionFilter (not yet done)
+* [Model Binding in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/mvc/models/model-binding)
+* [Custom Model Binding in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/mvc/advanced/custom-model-binding)
+
+While playing around with the `ModelBinderProvider` Steve describes in his blog, I stumbled upon `InputFormatters`. Would this actually be the right way to transform CSV input into objects? I definitely need to learn some more details about the `InputFormatters`and will use this as 12th topic of this series.
+
+Please follow the [introduction post of this series]({% post_url customizing-aspnetcore-series.md %}) to find additional customizing topics I will write about.
+
+In the next part I will show you what you can do with ActionFilters: Customizing ASP.NET Core Part 09: ActionFilter (not yet done)
 
