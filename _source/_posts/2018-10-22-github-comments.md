@@ -42,7 +42,7 @@ I already asked on twitter about that and got some positive feedback.
 
 There are already some JavaScript codes available which can be used to add GitHub Issues as comments. The GitHub API is well documented and it should be easy to do this. 
 
-I already evaluated a solution to use. I will go with Utterance
+I already evaluated a solution to use: I will go with Utterance
 
 > "A lightweight comments widget built on GitHub issues"
 
@@ -62,6 +62,8 @@ At the end I just need to add a small HTML snippet to my blog:
 </script>
 ~~~
 
+This script will search for Issues with the same title as the current page. If there's no such issue, it will create a new one. If there is such an issue it will create an comment on that issue. This script also supports markdown.
+
 ## Open questions
 
 One pretty important open question: 
@@ -73,9 +75,9 @@ One pretty important open question:
    - He runs an authentication service and a service that posts the comments into GitHub Issues
    - I think in that case I just need to host it by myself. The codes are open source and [available on GitHub](https://github.com/utterance).
 
-The second question is easy to solve. As I said I will just host the stuff by my own in case Jeremy will shut down his services. The first question is much more essential. It would be cool to get the comments somehow in a readable format. I would than write a small script to import the comments as GitHub Issues.
+The second question is easy to solve. As I said I will just host the stuff by my own in case Jeremy will shut down his services. The first question is much more essential. It would be cool to get the comments somehow in a readable format. I would than write a small script or a small console app to import the comments as GitHub Issues.
 
-## Importing the Disqus comments to GitHub Issues
+## Exporting the Disqus comments to GitHub Issues
 
 Fortunately there is an export feature on Disqus, in the administration settings of the site:
 
@@ -87,5 +89,163 @@ After clicking "Export Comment" the export gets scheduled and you'll get an emai
 
 This is pretty clean XML and it should be easy to import that automatically into GitHub Issues. Now I need to figure out how the GitHub API works and to write a small C# Script to import all the comments.
 
+This XML also includes the authors names and usernames. This is cool to know don't have any value for me, because Disqus user are no GitHub user. I can't set the comments in behalf of real GitHub users. So any migrated comment will be done by myself and I need to mark the comment, that it originally came from another reader.
 
+So it will be something like this:
+
+~~~ csharp
+var comment = $@"Comment written by {post.Author} at {post.CreatedAt}:
+
+{post.Message}
+";
+~~~
+
+## Importing the comments
+
+I decided to write a small console app and to do some initial tests on a test repo. I extracted the exported data and moved it into the .NET Core console app folder and tried to play around with it.
+
+First I read all threads out of the file and than the posts afterwards. A only select the threads that are not marked as closed and not marked as deleted. I also check the blog post URL of the thread, because sometimes the thread was created by a local test run, sometimes I changed the publication date of a post afterwards, which also changed the URL and sometimes the thread was created by a post that was displayed via a proxying page. I tried to filter all that stuff out. The URL need to start with http://asp.net-hacker.rocks or https://asp.net-hacker.rocks to be valid. Also the posts shouldn't be marked as deleted or marked as spam
+
+Than I assigned the posts to the specific threads using the provided thread id and ordered the posts by date. This breaks the dialogues of the Disqus threads, but should be ok for the first step.
+
+Than I create the actual issue post it and post the assign comments to the new issue. 
+
+That's it.
+
+Reading the XML file is easy using the XmlDocument this is also available in .NET Core:
+
+~~~ csharp
+var doc = new XmlDocument();
+doc.Load(path);
+var nsmgr = new XmlNamespaceManager(doc.NameTable);
+nsmgr.AddNamespace(String.Empty, "http://disqus.com");
+nsmgr.AddNamespace("def", "http://disqus.com");
+nsmgr.AddNamespace("dsq", "http://disqus.com/disqus-internals");
+
+IEnumerable<Thread> threads = await FindThreads(doc, nsmgr);
+IEnumerable<Post> posts = FindPosts(doc, nsmgr);
+
+Console.WriteLine($"{threads.Count()} valid threads found");
+Console.WriteLine($"{posts.Count()} valid posts found");
+~~~
+
+I need to use the XmlNamespaceManager here to use tags and properties using the Disqus namespaces. The XmlDocument as well as the XmlNamespaceManager need to get passed into the read methods then. The two find methods are than reading the threads and posts out of the XmlDocument.
+
+In the next snippet I show the code to read the threads:
+
+~~~ csharp
+private static async Task<IEnumerable<Thread>> FindThreads(XmlDocument doc, XmlNamespaceManager nsmgr)
+    {
+        var xthreads = doc.DocumentElement.SelectNodes("def:thread", nsmgr);
+
+        var threads = new List<Thread>();
+        var i = 0;
+        foreach (XmlNode xthread in xthreads)
+        {
+            i++;
+
+            long threadId = xthread.AttributeValue<long>(0);
+            var isDeleted = xthread["isDeleted"].NodeValue<bool>();
+            var isClosed = xthread["isClosed"].NodeValue<bool>();
+            var url = xthread["link"].NodeValue();
+            var isValid = await CheckThreadUrl(url);
+
+            Console.WriteLine($"{i:###} Found thread ({threadId}) '{xthread["title"].NodeValue()}'");
+
+            if (isDeleted)
+            {
+                Console.WriteLine($"{i:###} Thread ({threadId}) was deleted.");
+                continue;
+            }
+            if (isClosed)
+            {
+                Console.WriteLine($"{i:###} Thread ({threadId}) was closed.");
+                continue;
+            }
+            if (!isValid)
+            {
+                Console.WriteLine($"{i:###} the url Thread ({threadId}) is not valid: {url}");
+                continue;
+            }
+
+            Console.WriteLine($"{i:###} Thread ({threadId}) is valid");
+            threads.Add(new Thread(threadId)
+            {
+                Title = xthread["title"].NodeValue(),
+                Url = url,
+                CreatedAt = xthread["createdAt"].NodeValue<DateTime>()
+
+            });
+        }
+
+        return threads;
+    }
+~~~
+
+I think there's nothing magic in it. Even assigning the posts to the threads is just some LINQ code.
+
+To create the actual issues and comments, I use the Octokit.NET library which is available on NuGet and GitHub. 
+
+~~~ shell
+dotnet add package Octokit
+~~~
+
+This library is quite simple to use and well documented:
+
+~~~ csharp
+private static async Task PostIssuesToGitHub(IEnumerable<Thread> threads)
+{
+    var client = new GitHubClient(new ProductHeaderValue("DisqusToGithubIssues"));
+    var basicAuth = new Credentials(repoOwner, "majuhekaph557!");
+    client.Credentials = basicAuth;
+
+    // load the existing issues
+    var issues = await client.Issue.GetAllForRepository(repoOwner, repoName);
+    foreach (var thread in threads)
+    {
+        // check for existing issues
+        if (issues.Any(x => x.Title.Equals(thread.Title)))
+        {
+            continue;
+        }
+
+        var newIssue = new NewIssue(thread.Title);
+        newIssue.Body = thread.Url;
+		// create a new issue in github
+        var issue = await client.Issue.Create(repoOwner, repoName, newIssue);
+        Console.WriteLine($"New issue (#{issue.Number}) created: {issue.Url}");
+        
+        foreach (var post in thread.Posts)
+        {
+            var message = $@"Comment written by {post.Author} at {post.CreatedAt}:
+
+{post.Message}
+";
+                    
+			// create a new comment in github
+            var comment = await client.Issue.Comment.Create(repoOwner, repoName, issue.Number, message); 
+            Console.WriteLine($"New comment by {post.Author} at {post.CreatedAt}");
+        }
+    }
+}
+~~~
+
+After I started that code, the console app starts to add issues and comments to GitHub:
+
+![](..\img\github-comments\disqus-on-github.png)
+
+The comments are set as expected:
+
+![](..\img\github-comments\disqus-on-github-comment.png)
+
+## Octokit.AbuseException
+
+Unfortunately that run doesn't finish. After the first few issues were entered I got an exception like this.
+
+~~~ text
+Octokit.AbuseException: 'You have triggered an abuse detection mechanism and have been temporarily blocked from content creation. Please retry your request again later.'
+
+~~~
+
+I now need to find a way to add issues and comments in a more friendly way to not get blocked by GitHub.
 
