@@ -213,7 +213,7 @@ After pressing send, I got the result as shown below:
 
 ![]({{site.baseurl}}/img/customize-aspnetcore/modelbinder.PNG)
 
-Now the clients are able to send CSV based data to the client.
+Now the clients are able to send CSV based data to the server.
 
 ## Conclusion
 
