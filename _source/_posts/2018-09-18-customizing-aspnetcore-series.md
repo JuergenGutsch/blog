@@ -35,7 +35,8 @@ For this series I'm going to follow the same order as in that presentation, whic
 ## Additional series topics
 
 * Customizing ASP.NET Core Part 11: Hosting
-* Customizing ASP.NET Core Part 12: InputFormatter
+* Customizing ASP.NET Core Part 12: InputFormatters
+* Customizing ASP.NET Core Part 13: ViewComponents
 
 ## Do you want to see that talk?
 
