@@ -228,5 +228,5 @@ While playing around with the `ModelBinderProvider` Steve describes in his blog,
 
 Please follow the [introduction post of this series]({% post_url customizing-aspnetcore-series.md %}) to find additional customizing topics I will write about.
 
-In the next part I will show you what you can do with ActionFilters: Customizing ASP.NET Core Part 09: ActionFilter (not yet done)
+In the next part I will show you what you can do with ActionFilters: [Customizing ASP.NET Core Part 09: ActionFilter]({% post_url customizing-aspnetcore-09-actionfilters.md %})
 
