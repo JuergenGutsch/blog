@@ -29,13 +29,14 @@ For this series I'm going to follow the same order as in that presentation, whic
 - [Customizing ASP.NET Core Part 06: Middlewares]({% post_url customizing-aspnetcore-06-middlewares.md %})
 - [Customizing ASP.NET Core Part 07: OutputFormatter]({% post_url customizing-aspnetcore-07-outputformatter.md %})
 - [Customizing ASP.NET Core Part 08: ModelBinders]({% post_url customizing-aspnetcore-08-modelbinders.md %})
-- Customizing ASP.NET Core Part 09: ActionFilter
+- [Customizing ASP.NET Core Part 09: ActionFilter]({% post_url customizing-aspnetcore-09-actionfilters.md %})
 - Customizing ASP.NET Core Part 10: TagHelpers
 
 ## Additional series topics
 
 * Customizing ASP.NET Core Part 11: Hosting
-* Customizing ASP.NET Core Part 12: InputFormatter
+* Customizing ASP.NET Core Part 12: InputFormatters
+* Customizing ASP.NET Core Part 13: ViewComponents
 
 ## Do you want to see that talk?
 
