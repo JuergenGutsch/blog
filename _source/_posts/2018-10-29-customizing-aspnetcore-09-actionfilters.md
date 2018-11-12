@@ -15,7 +15,7 @@ This post is a little late this time. My initial plan was to throw out two posts
 
 Anyway, we keep on customizing on the controller level in this ninth post of this blog series. I'll have a look into ActionFilters and hot to create your own ActionFilter to keep your Actions small and readable.
 
-## Initial series topics
+## The series topics
 
 - [Customizing ASP.NET Core Part 01: Logging]({% post_url customizing-aspnetcore-01-logging.md %})
 - [Customizing ASP.NET Core Part 02: Configuration]({% post_url customizing-aspnetcore-02-configuration.md %})
@@ -26,7 +26,7 @@ Anyway, we keep on customizing on the controller level in this ninth post of thi
 - [Customizing ASP.NET Core Part 07: OutputFormatter]({% post_url customizing-aspnetcore-07-outputformatter.md %})
 - [Customizing ASP.NET Core Part 08: ModelBinders]({% post_url customizing-aspnetcore-08-modelbinders.md %})
 - **Customizing ASP.NET Core Part 09: ActionFilters - This article**
-- Customizing ASP.NET Core Part 10: TagHelpers
+- [Customizing ASP.NET Core Part 10: TagHelpers]({% post_url customizing-aspnetcore-10-taghelpers %})
 
 ## About ActionFilters
 
