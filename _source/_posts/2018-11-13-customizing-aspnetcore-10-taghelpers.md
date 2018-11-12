@@ -36,11 +36,35 @@ TagHelpers are not a new thing in ASP.NET Core, it was there since the first ver
 
 A very basic example of extending HTML tags is the built in AnchorTagHelper:
 
-~~~ csharp
-
+~~~ html
+<!-- old fashioned HtmlHelper -->
+<li>@Html.Link("Home", "Index", "Home")</li>
+<!-- new TagHelper -->
+<li><a asp-controller="Home" asp-action="Index">Home</a></li>
 ~~~
 
+The HtmlHelper are knida strange between the HTML tags, for HTML developers. It is hard to read code. and kinds disturbing and interrupting while reading the code. It is maybe not for ASP.NET Core developers who are used to read that kind of code. But compared to the TagHelpers it really is ugly. The TagHelpers feel more natural and more like HTML even if they are not and even if they are getting rendered on the server. 
 
+Many of the HtmlHelper can be replaced with a TagHelper. 
+
+There are also some new tags built with TagHelpers. Tags that are not existing in HTML, but look like HTML. One example is the EnvironmentTagHelper:
+
+~~~ html
+<environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</environment>
+<environment exclude="Development">
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+            asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+            asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+</environment>
+~~~
+
+This TagHelper renders or doesn't render the contents depending of the current runtime environment. In this case the target environment is the development mode. The first environment tag renders the contents if the current runtime environment is set to Development and the second one renders the contents if it not set to Development. This makes it a useful helper to render debugable scripts or styles in development mode and minified and optimized code in any other runtime environment.
+
+## Creating custom TagHelpers
 
 
 
