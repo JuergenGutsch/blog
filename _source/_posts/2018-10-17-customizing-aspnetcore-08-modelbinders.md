@@ -22,7 +22,7 @@ In the last post about `OutputFormatters` I wrote about sending data out to the 
 - [Customizing ASP.NET Core Part 06: Middlewares]({% post_url customizing-aspnetcore-06-middlewares.md %})
 - [Customizing ASP.NET Core Part 07: OutputFormatter]({% post_url customizing-aspnetcore-07-outputformatter.md %})
 - **Customizing ASP.NET Core Part 08: ModelBinders - This article**
-- Customizing ASP.NET Core Part 09: ActionFilter
+- [Customizing ASP.NET Core Part 09: ActionFilter]({% post_url customizing-aspnetcore-09-actionfilters.md %})
 - Customizing ASP.NET Core Part 10: TagHelpers
 
 ## About ModelBinders
@@ -228,5 +228,5 @@ While playing around with the `ModelBinderProvider` Steve describes in his blog,
 
 Please follow the [introduction post of this series]({% post_url customizing-aspnetcore-series.md %}) to find additional customizing topics I will write about.
 
-In the next part I will show you what you can do with ActionFilters: Customizing ASP.NET Core Part 09: ActionFilter (not yet done)
+In the next part I will show you what you can do with ActionFilters: [Customizing ASP.NET Core Part 09: ActionFilter]({% post_url customizing-aspnetcore-09-actionfilters.md %})
 
