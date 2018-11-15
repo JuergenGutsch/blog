@@ -23,7 +23,7 @@ In the last post about `OutputFormatters` I wrote about sending data out to the 
 - [Customizing ASP.NET Core Part 07: OutputFormatter]({% post_url customizing-aspnetcore-07-outputformatter.md %})
 - **Customizing ASP.NET Core Part 08: ModelBinders - This article**
 - [Customizing ASP.NET Core Part 09: ActionFilter]({% post_url customizing-aspnetcore-09-actionfilters.md %})
-- Customizing ASP.NET Core Part 10: TagHelpers
+- [Customizing ASP.NET Core Part 10: TagHelpers]({% post_url customizing-aspnetcore-10-taghelpers %})
 
 ## About ModelBinders
 
@@ -213,7 +213,7 @@ After pressing send, I got the result as shown below:
 
 ![]({{site.baseurl}}/img/customize-aspnetcore/modelbinder.PNG)
 
-Now the clients are able to send CSV based data to the client.
+Now the clients are able to send CSV based data to the server.
 
 ## Conclusion
 

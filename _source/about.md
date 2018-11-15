@@ -5,7 +5,11 @@ author: Jürgen Gutsch
 comments: false
 ---
 
-Why ASP.NET Hacker? It doesn't really have a deeper sense. I chose this name because we got some blue ASP.NET Hacker badges on the ASP.NET hackathon at the MVP Summit 2015 in Redmond. I think this matches exactly what we do with ASP.NET, if we want do achieve the customers requirements. And this matches more exactly what we did in the past with ASP.NET Webforms. We hacked around ASP.NET to get the things working. Finally it is the recommended way to hack around ASP.NET Core. To extend, to reduce, to transform ASP.NET Core and .NET Core Applications to solve problems and to get the customers happy. ;)
+Why ASP.NET Hacker? It doesn't really have a deeper sense. I chose this name because we got some blue ASP.NET Hacker badges on the ASP.NET hackathon at the MVP Summit 2015 in Redmond.
+
+![]({{ site.baseurl }}/img/aspnethacker.jpg)
+
+ I think this matches exactly what we do with ASP.NET, if we want do achieve the customers requirements. And this matches more exactly what we did in the past with ASP.NET Webforms. We hacked around ASP.NET to get the things working. Finally it is the recommended way to hack around ASP.NET Core. To extend, to reduce, to transform ASP.NET Core and .NET Core Applications to solve problems and to get the customers happy. ;)
 
 I am a .NET addicted web developer, working with ASP.NET since 2002. (I started playing around in 2001 with the beta versions of .NET 1.0)
 
