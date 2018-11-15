@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Customizing ASP.NET Core Part 09: ActionFilter"
+title: "Customizing ASP.​NET Core Part 09: ActionFilter"
 teaser: "We keep on customizing on the controller level in this ninth post of this series. I'll have a look into ActionFilters and hot to create your own ActionFilter to keep your Actions small and readable."
 author: "Jürgen Gutsch"
 comments: true
@@ -183,4 +183,4 @@ Personally I like the way to keep the actions clean using ActionFilters. If I fi
 
 There are some more kind of filters, which all work similar. To learn more about the different kind of filters, you definitely need to [read the docs](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/filters).
 
-In the tenth part of the series we move to the actual view logic and extend the Razor Views with custom TagHelpers. Customizing ASP.NET Core Part 10: TagHelpers (not yet done)
+In the tenth part of the series we move to the actual view logic and extend the Razor Views with custom TagHelpers: [Customizing ASP.NET Core Part 10: TagHelpers]({% post_url customizing-aspnetcore-10-taghelpers %})
