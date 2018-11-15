@@ -23,7 +23,7 @@ In this seventh post I want to write about, how to send your Data in different f
 - **Customizing ASP.NET Core Part 07: OutputFormatter - This article**
 - [Customizing ASP.NET Core Part 08: ModelBinders]({% post_url customizing-aspnetcore-08-modelbinders.md %})
 - [Customizing ASP.NET Core Part 09: ActionFilter]({% post_url customizing-aspnetcore-09-actionfilters.md %})
-- Customizing ASP.NET Core Part 10: TagHelpers
+- [Customizing ASP.NET Core Part 10: TagHelpers]({% post_url customizing-aspnetcore-10-taghelpers %})
 
 ## About OutputFormatters
 
