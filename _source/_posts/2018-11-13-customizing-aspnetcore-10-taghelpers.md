@@ -43,7 +43,7 @@ A very basic example of extending HTML tags is the built in AnchorTagHelper:
 <li><a asp-controller="Home" asp-action="Index">Home</a></li>
 ~~~
 
-The HtmlHelper are knida strange between the HTML tags, for HTML developers. It is hard to read code. and kinds disturbing and interrupting while reading the code. It is maybe not for ASP.NET Core developers who are used to read that kind of code. But compared to the TagHelpers it really is ugly. The TagHelpers feel more natural and more like HTML even if they are not and even if they are getting rendered on the server. 
+The HtmlHelper are kinda strange between the HTML tags, for HTML developers. It is hard to read - kinds of disturbing and interrupting while reading the code. It is maybe not for ASP.NET Core developers who are used to read that kind of code. But compared to the TagHelpers it is really ugly. The TagHelpers feel more natural and more like HTML even if they are not and even if they are getting rendered on the server. 
 
 Many of the HtmlHelper can be replaced with a TagHelper. 
 
