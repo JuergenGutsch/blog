@@ -51,23 +51,13 @@ layout: layoutpage
 
 
         {% if page.comments == true %}
-        <div id="disqus_thread"></div>
-        <script>
-            var disqus_config = function() {
-                this.page.url = location.protocol + '//asp.net-hacker.rocks' + location.pathname;
-                this.page.identifier = location.pathname;
-            };
-
-            (function() {
-                var d = document,
-                    s = d.createElement('script');
-
-                s.src = '//aspnethacker.disqus.com/embed.js';
-
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
+        <script src="https://utteranc.es/client.js"
+                repo="juergengutsch/blog"
+                issue-term="title"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
         </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript> {% endif %}
+        {% endif %}
     </footer>
 </article>
