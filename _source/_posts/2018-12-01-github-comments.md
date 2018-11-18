@@ -293,3 +293,7 @@ At the end it worked pretty cool. After the migration and after I changed the re
 ![]({{site.baseurl}}/img/github-comments/utterances-comments.png)
 
 If you want to add a comment as a reader, you need to logon with your GitHub account and you need to grand the utterances app to post to my repo with our name. 
+
+No every new commend will be stored in the repository of my blog. All the contents are in the same repository. There will be an issue per post, so it is almost directly linked. 
+
+What do you think? Do you like it? Tell me about your opinion :-)
