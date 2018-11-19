@@ -16,9 +16,9 @@ I recently realized that I ran this new blog for almost exactly three years now 
 
 This blog is based on [Pretzel](https://github.com/Code52/pretzel), which is a .NET based [Jekyll](https://jekyllrb.com/) clone, that creates a static website. Pretzel as well as Jekyll is optimized for blogs or similar structured web sites. Both systems take markdown files and turn them based on the [Liquid template engine](https://jekyllrb.com/docs/step-by-step/02-liquid/) into static HTML pages. This works pretty well and I really like the way to push markdown files to the GitHub repo and get an updated blog a few seconds later on Azure. This is continuous delivery using GitHub and Azure for blog posts. It is amazing. And I really love blogging this way.
 
-Because the blog is static HTML at the end I need to extend it with software as a service solutions to create dynamic content or to track the success of that blog.
-
 > Actually the blog is successful from my perspective. Around 6k visits per week is a good number, I guess. 
+
+Because the blog is static HTML, at the end I need to extend it with software as a service solutions to create dynamic content or to track the success of that blog.
 
 So I added [Disqus](https://disqus.com/) to enable comments on this blog. Disqus was quite popular at that time for this kind of blogs and I also get some traffic from Disqus. Anyway, now this service started to show some advertisement on my page and it also shows advertisement that is not really related to the contents of my page. 
 
@@ -32,15 +32,13 @@ Sure Disqus is a free service and someone need to pay for it, but the ownership 
 
 ## Owning the comments
 
-The comments are important contents, you provided to me, to the other readers and to the entire developer community. But they are completely separated from the blog post they relate to. They are stored on a different cloud. Actually I have no idea where Disqus stores the comments.
+The comments are important contents you provide to me, to the other readers and to the entire developer community. But they are completely separated from the blog post they relate to. They are stored on a different cloud. Actually I have no idea where Disqus stores the comments.
 
 How do I own the comments? 
 
-My idea is to use GitHub issues of the blog repository to collect the comments. Every first comment to a post creates a GitHub issue and any comment is a comment on this issue. With this solution the actual posts and the comments are in the same repository, they can be linked together and I own this comments a little more than previously.
+My idea the was to use GitHub issues of the blog repository to collect the comments. Every first comment of a blog post should create a GitHub issue and any comment is a comment on this issue. With this solution the actual posts and the comments are in the same repository, they can be linked together and I own this comments a little more than previously.
 
 I already asked on twitter about that and got some positive feedback.
-
-> "For my blog comments I'm thinking about moving back from disqus to github issue based comments. Mainly because of the ads I don't want to show. What do you think?" TODO Twitter link
 
 ## Evaluating a solution
 
@@ -51,6 +49,8 @@ I already evaluated a solution to use and decided to go with Utterance
 > "A lightweight comments widget built on GitHub issues"
 
 Utterance was built by [Jeremy Danyow](https://www.danyow.net/author/jeremy/). I stumbled upon it on Jeremys blog post about [Using GitHub Issues for Blog Comments](https://www.danyow.net/using-github-issues-for-blog-comments/). Jeremy works as a Senior Software Engineer at Microsoft, he is member of the Aurelia core team and created also [gist.run](https://gist.run/). 
+
+As far as I understood, Utterances is a light weight version of Microsofts comment system used with the new docs on [https://docs.microsoft.com](https://docs.microsoft.com). Also Microsoft stores the comments as Issues on GitHub, which is nice because they can create real issues out of it, in case there are real Problems with the docs, etc.
 
 More Links about it: https://utteranc.es/ and https://github.com/utterance
 
@@ -96,7 +96,7 @@ The exported file is a GZ compressed XML file including all threads and posts. A
 
 This is pretty clean XML and it should be easy to import that automatically into GitHub Issues. Now I needed to figure out how the GitHub API works and to write a small C# Script to import all the comments.
 
-This XML also includes the authors names and usernames. This is cool to know, but it doesn't have any value for me anymore, becaus Disqus users are no GitHub users. I can't set the comments in behalf of real GitHub users. So any migrated comment will be done by myself and I need to mark the comment, that it originally came from another reader.
+This XML also includes the authors names and usernames. This is cool to know, but it doesn't have any value for me anymore, because Disqus users are no GitHub users. I can't set the comments in behalf of real GitHub users. So any migrated comment will be done by myself and I need to mark the comment, that it originally came from another reader.
 
 So it will be something like this:
 
@@ -111,7 +111,7 @@ var message = $@"Comment written by **{post.Author}** on **{post.CreatedAt}**
 
 I decided to write a small console app and to do some initial tests on a test repo. I extracted the exported data and moved it into the .NET Core console app folder and tried to play around with it.
 
-First I readed all threads out of the file and than the posts afterwards. A only selected the threads that are not marked as closed and not marked as deleted. I also checked the blog post URL of the thread, because sometimes the thread was created by a local test run, sometimes I changed the publication date of a post afterwards, which also changed the URL and sometimes the thread was created by a post that was displayed via a proxying page. I tried to filter all that stuff out. The URL need to start with http://asp.net-hacker.rocks or https://asp.net-hacker.rocks to be valid. Also the posts shouldn't be marked as deleted or marked as spam
+First I read all threads out of the file and than the posts afterwards. A only selected the threads which are not marked as closed and not marked as deleted. I also checked the blog post URL of the thread, because sometimes the thread was created by a local test run, sometimes I changed the publication date of a post afterwards, which also changed the URL and sometimes the thread was created by a post that was displayed via a proxying page. I tried to filter all that stuff out. The URL need to start with http://asp.net-hacker.rocks or https://asp.net-hacker.rocks to be valid. Also the posts shouldn't be marked as deleted or marked as spam
 
 Than I assigned the posts to the specific threads using the provided thread id and ordered the posts by date. This breaks the dialogues of the Disqus threads, but should be ok for the first step.
 
@@ -197,14 +197,14 @@ To create the actual issues and comments, I use the [Octokit.NET](https://github
 dotnet add package Octokit
 ~~~
 
-This library is quite simple to use and well documented:
+This library is quite simple to use and well documented. You have the choice between basic authentication and token authentication to connect to GitHub. I chose the token authentication which is the proposed way to connect. To get the token you need to go to the settings of your GitHub account. Choose a personal access token and specify the rights the for the token. The basic rights to contribute to the specific repository are enough in this case:
 
 ~~~ csharp
 private static async Task PostIssuesToGitHub(IEnumerable<Thread> threads)
 {
     var client = new GitHubClient(new ProductHeaderValue("DisqusToGithubIssues"));
-    var basicAuth = new Credentials("secret personal token from github");
-    client.Credentials = basicAuth;
+    var tokenAuth = new Credentials("secret personal token from github");
+    client.Credentials = tokenAuth;
 
     var issues = await client.Issue.GetAllForRepository(repoOwner, repoName);
     foreach (var thread in threads)
@@ -239,6 +239,8 @@ URL: {thread.Url}
 }
 ~~~
 
+This method gets the list of Disqus threads, creates the GitHub client and inserts one thread by another. I also read the existing Issues from GitHub in case I need to run the migration twice because of an error. After the Issue is created, I only needed to create the comments per Issue.
+
 After I started that code, the console app starts to add issues and comments to GitHub:
 
 ![]({{site.baseurl}}/img/github-comments/disqus-on-github.png)
@@ -261,7 +263,7 @@ This Exception happens because I reached the creation rate limit (user.creation_
 
 You can see such security related events in the security tap of your GitHub account settings.
 
-There is no solution to solve this problem, except to add more checks and fallbacks to the migration code. I checked which issue already exists and migrate only the issues that don't exist. I also added a five second delay between each request to GitHub. This only increases the migration time, and  helps to start the migration only two times. 
+There is no real solution to solve this problem, except to add more checks and fallbacks to the migration code. I checked which issue already exists and migrate only the issues that don't exist. I also added a five second delay between each request to GitHub. This only increases the migration time, and helps to start the migration only two times. Without the delay I got the exception more often during the tests.
 
 ## Using Utterances
 
@@ -279,7 +281,7 @@ On https://utteranc.es/ there is a kind of a configuration wizard that creates t
 </script>
 ~~~
 
-This loads Uttereances client script, configures my blog repository and the way the issued will be found in my repository. You have different options for the issue-term. Since I set the blog post title as GitHub issue title, I need to tell Utterances to look at the tile. The theme I want to use here is the GitHub light theme.  The dark theme doesn't fit the blog style. I was also able to override the CSS by overriding the following two CSS classes:
+This loads the Uttereances client script, configures my blog repository and the way the issued will be found in my repository. You have different options for the issue-term. Since I set the blog post title as GitHub issue title, I need to tell Utterances to look at the tile. The theme I want to use here is the GitHub light theme.  The dark theme doesn't fit the blog style. I was also able to override the CSS by overriding the following two CSS classes:
 
 ~~~ css
 .utterances {}
