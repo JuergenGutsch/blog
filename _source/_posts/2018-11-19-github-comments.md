@@ -269,7 +269,7 @@ There is no real solution to solve this problem, except to add more checks and f
 
 Once the Issues are migrated to GutHub, I need to use Utterances to the blog. At first you need to install the [utterances app](https://github.com/apps/utterances) on your repository. The repository needs to be public and the issues should be enabled obviously. 
 
-On (https://utteranc.es/)[https://utteranc.es/] there is a kind of a configuration wizard that creates the HTML snippet for you, which you need to add to your blog. In my case it is the small snippet I already showed previously:
+On [https://utteranc.es/](https://utteranc.es/) there is a kind of a configuration wizard that creates the HTML snippet for you, which you need to add to your blog. In my case it is the small snippet I already showed previously:
 
 ~~~ html
 <script src="https://utteranc.es/client.js"
