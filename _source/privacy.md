@@ -5,7 +5,7 @@ author: Jürgen Gutsch
 comments: false
 ---
 
-This Blog uses **Google Analytics** to track the traffic of this web page. It also uses **Google Adsense** to display an add per page and to collect some money to cover the costs. I also use **Google Feedburner** to track the RSS feed usage as well. And I use **Disqus** to enable page and blog post comments.
+This Blog uses **Google Analytics** to track the traffic of this web page. It also uses **Google Adsense** to display an add per page and to collect some money to cover the costs. I also use **Google Feedburner** to track the RSS feed usage as well. And I use **Utterances and GitHub** to enable page and blog post comments.
 
 All this third party tools are not directly embedded into the blog, but loaded via JavaScript. Except Feedburner which is an external link to the RSS feed.
 
@@ -21,35 +21,43 @@ I use **Google Analytics** to get more insights about how much readers are visit
 
 I also use **Google Adsense** to get a little bit of money out of that blog. Google Adsense may collect the Readers data to track activities and interests. Please opt out at Google Adsense or turn on a an Ad-Blocker in case you don't want to get tracked. On the other hand, it would help me a little bit to cover the costs of that blog and the efford to write the posts.
 
-And we use **Disqus** to give you the chance to drop comments to the blog posts. Disqus asks for a name and an optional email address. Feel free enter whatever you want, or whatever makes sense for you. It would be good to know your name. Disqus may offer an option to opt-out and to delete your personal data. Disqus may also track you using an IP address or an cookies.
+And we use **Utterances and GitHub** to give you the chance to drop comments to the blog posts. Utterances asks for the rights to post comments as GitHub issues in your behalf. Utterances doesn't store any credentials since it uses GitHub to authenticate. If you don't want to allow Utterances to post your behalf anymore, you are able to remove Utterances from your GitHub account. Utterances will not store any personal data. Utterances may track you using an IP address or an cookies.
 
 To track the activities on our news feed, we use **Googles Feedburner**, which is also tracking reads and clicks on the feed items. I use this to get insights about the feed usages. I don't care about the individual readers, but about the amount of readers and about the country of origin. 
 
 ## How is it collected?
 
-Google Analytics, Google Adsense, Disqus and Googles Feedburner may use Cookies and IP address tracking. Disqus also collects the readers name and optionally his email address via the comment form on my blog posts.
+Google Analytics, Google Adsense, Utterances, GitHub and Googles Feedburner may use Cookies and IP address tracking. GitHub may also collect the readers activities and I collect your comments including your GitHub username in my blog repository.
 
 ## Why is it being collected?
 
 I'm pretty much interested in the number of readers on the blog and in the number of readers per blog post. This is why I track the readers activities on my blog. Google Adsense wants to provide relevant adds for you and needs to track you because of that.
 
-I also like to give you the chance to drop a comment, to know more about your opinion about my posts. Disqus adds this option for me.
+I also like to give you the chance to drop a comment, to know more about your opinion about my posts. Utterances and GitHub adds this option for me.
 
 ## How will it be used?
 
-Google and Disqus may use this information to track the visitors, to get more information about the visitory and to recognize the visitors. 
+Google may use this information to track the visitors, to get more information about the visitors and to recognize the visitors. 
 
 ## Who will it be shared with?
 
-Please visit the Google and Disqus privacy information to find out how the data are shared.
+Please visit the Googles privacy information to find out how the data are shared.
 
-I don't collect user information directly and I don't share any user information directly.
+I collect the readers comments including the GitHub username directly and in a transparent manner. This information are public available through this blog and the GitHub repository of this blog.
 
 ## What will be the effect of this on the individuals concerned?
 
-The individuals may be recognized by Google and Disqus. This is the only relevant concern on this pages. Please visit the Google and Disqus privacy information to find out what else they do with the collected data.
+The individuals may be recognized by Google. This is the only relevant concern on this service. Please visit the Google privacy information to find out what else they do with the collected data.
 
 
 ## Is the intended use likely to cause individuals to object or complain?
 
 The usage of the collected data won't cause the visitors to object or complain.
+
+## Sources
+
+* Google Adsense: http://adsense.google.com
+* Google Analytics: https://analytics.google.com/
+* Feedburner: [http://feedburner.com/](http://feedburner.com/)
+* Utterances: [https://utteranc.es/](https://utteranc.es/)
+* GitHub: [https://github.com/](https://github.com/)
