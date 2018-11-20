@@ -8,7 +8,7 @@
 
     {{ content }}
 
-    <footer>
+    <footer id="articlefooter">
         <div>
             {% assign filename = page.url | replace_first: '/', '' | replace: '/', '-' | replace: '.html', '.md' %}
             <p>
@@ -70,11 +70,23 @@
 
 
         {% if page.comments == true %}
-        <script src="https://utteranc.es/client.js" 
-                repo="juergengutsch/blog" 
-                issue-term="title" 
-                theme="github-light" 
-                crossorigin="anonymous" async>
+        <script>
+            $(function() {
+                if (pp_accepted) {
+                    (function() {
+                        var d = document,
+                            s = d.createElement('script');
+                        s.src = 'https://utteranc.es/client.js';
+                        s.setAttribute('repo', 'juergengutsch/blog');
+                        s.setAttribute('issue-term', 'title');
+                        s.setAttribute('theme', 'github-light');
+                        s.setAttribute('crossorigin', 'anonymous');
+                        s.setAttribute('async', true);
+
+                        d.getElementById('articlefooter').appendChild(s);
+                    })();
+                }
+            });
         </script>
         {% endif %}
     </footer>

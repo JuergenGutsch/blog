@@ -58,6 +58,7 @@ The usage of the collected data won't cause the visitors to object or complain.
 
 * Google Adsense: http://adsense.google.com
 * Google Analytics: https://analytics.google.com/
-* Feedburner: [http://feedburner.com/](http://feedburner.com/)
+* Feedburner: [https://help.github.com/articles/github-privacy-statement/](https://help.github.com/articles/github-privacy-statement/)
 * Utterances: [https://utteranc.es/](https://utteranc.es/)
 * GitHub: [https://github.com/](https://github.com/)
+
