@@ -36,7 +36,7 @@ The comments are important contents you provide to me, to the other readers and 
 
 How do I own the comments? 
 
-My idea the was to use GitHub issues of the blog repository to collect the comments. Every first comment of a blog post should create a GitHub issue and any comment is a comment on this issue. With this solution the actual posts and the comments are in the same repository, they can be linked together and I own this comments a little more than previously.
+My idea was to use GitHub issues of the blog repository to collect the comments. Every first comment of a blog post should create a GitHub issue and any comment is a comment on this issue. With this solution the actual posts and the comments are in the same repository, they can be linked together and I own this comments a little more than previously.
 
 I already asked on twitter about that and got some positive feedback.
 
@@ -52,7 +52,7 @@ Utterance was built by [Jeremy Danyow](https://www.danyow.net/author/jeremy/). I
 
 As far as I understood, Utterances is a light weight version of Microsofts comment system used with the new docs on [https://docs.microsoft.com](https://docs.microsoft.com). Also Microsoft stores the comments as Issues on GitHub, which is nice because they can create real issues out of it, in case there are real Problems with the docs, etc.
 
-More Links about it: https://utteranc.es/ and https://github.com/utterance
+More Links about it: [https://utteranc.es/](https://utteranc.es/) and [https://github.com/utterance](https://github.com/utterance).
 
 At the end I just need to add a small HTML snippet to my blog:
 
@@ -296,7 +296,7 @@ At the end it worked pretty cool. After the migration and after I changed the re
 
 If you want to add a comment as a reader, you need to logon with your GitHub account and you need to grand the utterances app to post to my repo with our name. 
 
-No every new commend will be stored in the repository of my blog. All the contents are in the same repository. There will be an issue per post, so it is almost directly linked. 
+Not every new commend will be stored in the repository of my blog. All the contents are in the same repository. There will be an issue per post, so it is almost directly linked. 
 
 What do you think? Do you like it? Tell me about your opinion :-)
 
