@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Unit testing data access in .NET Core"
+title: "Unit testing data access in ASP.​NET Core"
 teaser: "Recently I got asked to explain how to unit test a controller that retrieves data using an entity Framework Core DbContext. In this post I'm going to show you how to use GenFu, Moq and XUnit to create small and isolated unit tests for your ASP.NET Core application."
 author: "Jürgen Gutsch"
 comments: true
