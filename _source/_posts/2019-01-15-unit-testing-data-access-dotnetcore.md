@@ -468,6 +468,8 @@ Not using the CbContext in the Controller directly makes it a lot easier to test
 
 Faking the DbContext is a bit more effort, but also possible as you saw in the last section. 
 
+Please find the complete code sample her on GitHub: [https://github.com/JuergenGutsch/unit-testing-aspnetcore3](https://github.com/JuergenGutsch/unit-testing-aspnetcore3)
+
 ## Conclusion
 
 > @Mohammad I hope this post will help you and answer your questions :-)
