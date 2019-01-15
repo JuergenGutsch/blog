@@ -44,7 +44,7 @@ This lines are creating a solution directory adding a web to test and a XUnit te
 dotnet add WebToTest.Tests reference WebToTest
 ~~~
 
-This command wont work in the current version of the .NET Core, because the XUnit project still targets netcoreapp2.2. You cannot reference a higher target version. It should be equal or lower than the target version of the referencing project. You should change the the target to netcoreapp3.0 in the csproj of the test project before executing this command:
+This command won't work in the current version of the .NET Core, because the XUnit project still targets netcoreapp2.2. You cannot reference a higher target version. It should be equal or lower than the target version of the referencing project. You should change the the target to netcoreapp3.0 in the csproj of the test project before executing this command:
 
 > ~~~ xml
 > <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -464,7 +464,7 @@ In this tutorial the setup took the biggest part, just to get a running API cont
 * We created another test on an action that returns an ActionResult
 * We ran the tests successfully in the console using the .NET CLI
 
-Not using the CbContext in the Controller directly makes it a lot easier to test the controller by passing in a mock service. Why? Because it is easier to fake the service instead of the DB context. It also keeps the controller small which makes maintenance a lot easier later on.
+Not using the DbContext in the Controller directly makes it a lot easier to test the controller by passing in a mock service. Why? Because it is easier to fake the service instead of the DbContext. It also keeps the controller small which makes maintenance a lot easier later on.
 
 Faking the DbContext is a bit more effort, but also possible as you saw in the last section. 
 
