@@ -277,7 +277,7 @@ dotnet ef database update -p WebToTest
 
 In the console you will now see how the database gets created and seeded:
 
-![](/img/unit-test-data/seeding.png)
+![]({{site.baseurl}}/img/unit-test-data/seeding.png)
 
 Now the web project is complete and should run. You can try it by calling the following command and calling the URL https://localhost:5001/api/person in the browser:
 
@@ -287,7 +287,7 @@ dotnet run -p WebToTest
 
 You now should see the 26 persons as JSON in the browser:
 
-![](/img/unit-test-data/json.png)
+![]({{site.baseurl}}/img/unit-test-data/json.png)
 
 ## Testing the controller
 
@@ -369,7 +369,7 @@ dotnet test WebToTest.Tests
 
 This should result in the following output if all is done right:
 
-![](/img/unit-test-data/dotnetrun.png)
+![]({{site.baseurl}}/img/unit-test-data/dotnetrun.png)
 
 
 
