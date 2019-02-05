@@ -72,20 +72,18 @@
         {% if page.comments == true %}
         <script>
         $(function() {
-            if (pp_accepted) {
-                (function() {
-                    var d = document,
-                        s = d.createElement('script');
-                    s.src = 'https://utteranc.es/client.js';
-                    s.setAttribute('repo', 'juergengutsch/blog');
-                    s.setAttribute('issue-term', 'title');
-                    s.setAttribute('theme', 'github-light');
-                    s.setAttribute('crossorigin', 'anonymous');
-                    s.setAttribute('async', true);
+            (function() {
+                var d = document,
+                    s = d.createElement('script');
+                s.src = 'https://utteranc.es/client.js';
+                s.setAttribute('repo', 'juergengutsch/blog');
+                s.setAttribute('issue-term', 'title');
+                s.setAttribute('theme', 'github-light');
+                s.setAttribute('crossorigin', 'anonymous');
+                s.setAttribute('async', true);
 
-                    d.getElementById('articlefooter').appendChild(s);
-                })();
-            }   
+                d.getElementById('articlefooter').appendChild(s);
+            })();
         });
         </script>
         {% endif %}
