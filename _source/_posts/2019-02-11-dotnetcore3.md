@@ -36,7 +36,7 @@ Anyways...
 
 ## The .NET CLI
 
-Every time I install a new version of the .NET Core runtime I try `dotnet new` and I was positively shocked about what I saw this time:![](../img/netcore3/dotnet-new.png)
+Every time I install a new version of the .NET Core runtime I try `dotnet new` and I was positively shocked about what I saw this time:![]({{site.baseurl}}/img/netcore3/dotnet-new.png)
 
 You are now able to create a Windows Forrms or a WPF application using the .NET CLI. This is cool. And for sure I needed to try it out:
 
@@ -47,19 +47,19 @@ dotnet new -n WpfTest -o WpfTest
 
 And yes, it is working as you can see here in Visual Studio Code:
 
-![](../img/netcore3/wpf.png)
+![]({{site.baseurl}}/img/netcore3/wpf.png)
 
 And this is the WinForms project in VS Code
 
-![](../img/netcore3/win.png)
+![]({{site.baseurl}}/img/netcore3/win.png)
 
 Running `dotnet run` on the WPF project:
 
-![](../img/netcore3/wpf-gui.png)
+![]({{site.baseurl}}/img/netcore3/wpf-gui.png)
 
 And again on the WinForms GUI:
 
-![](../img/netcore3/win-gui.png)
+![]({{site.baseurl}}/img/netcore3/win-gui.png)
 
 ## IDE
 
