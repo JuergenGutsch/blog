@@ -12,7 +12,7 @@ tags:
 - UI
 ---
 
-Maybe you already heard or read about the fact that Microsoft brings WinForms and WPF to .NET Core 3.0. Maybe you already saw the presentations on the Connect conference, or any other conference or recording when Scott Hanselman shows how to run a pretty old WPF application on .NET Core. I saw a demo where he run BabySmash on .NET Core. 
+Maybe you already heard or read about the fact that Microsoft brings WinForms and WPF to .NET Core 3.0. Maybe you already saw the presentations on the Connect conference, or any other conference or recording when Scott Hanselman shows how to run a pretty old WPF application on .NET Core. I saw a demo where he run [BabySmash](https://www.hanselman.com/babysmash/) on .NET Core. 
 
 > BTW: My oldest sun really loved that BybySmash when he was a baby :-)
 
@@ -20,7 +20,7 @@ You did not hear, read or see about it?
 
 ## WPF and WinForms on .NET Core?
 
-I was really wondering about this step, even because I wrote an article for a German .NET magazine some months before where I mentioned that Microsoft won't build a UI Stack for .NET Core. There where some other UI stacks built by the community. The most popular is Avalonia.
+I was really wondering about this step, even because I wrote an article for a German .NET magazine some months before where I mentioned that Microsoft won't build a UI Stack for .NET Core. There where some other UI stacks built by the community. The most popular is [Avalonia](http://avaloniaui.net/).
 
 But this step makes sense anyway. Since the .NET Standards moves the API of .NET Core more to the same level of .NET Framework, it was a question of time when the APIs are almost equal. WPF and WinForms is based on .NET Libraries, it should basically also run on .NET Core.
 
