@@ -29,3 +29,7 @@ I'm working as a software developer, consultant and trainer at the [YooApplicati
 Along with family and job, I'm writing articles in .NET Magazines and posts in this blog about ASP.NET, .NET, web technologies and the .NET community. I'm also leading a [.NET user group in Basel](http://www.dotnet-nordwest.ch/). From January 2007 until November 2015 I was also leading the .NET user group Konstanz-Kreuzlingen
 
 You can find more about me and my activities on [about.me/juergengutsch](http://about.me/juergengutsch)
+
+## Become a blog sponsor
+
+Currently I'm looking for a sponsor that supports me writing good and valuable content. Currently I’m using Google AdWords to get some money out of the effort I push into my blog. Actually I’d like to remove Google AdWords to provide more valuable and more relevant advertisement to the readers. I don't want to annoy readers with AdWords banners and unrelated content. [Information for blog sponsors](https://asp.net-hacker.rocks/sponsors.html)
