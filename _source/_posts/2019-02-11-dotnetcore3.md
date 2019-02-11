@@ -14,7 +14,7 @@ tags:
 
 Maybe you already heard or read about the fact that Microsoft brings WinForms and WPF to .NET Core 3.0. Maybe you already saw the presentations on the Connect conference, or any other conference or recording when Scott Hanselman shows how to run a pretty old WPF application on .NET Core. I saw a demo where he run [BabySmash](https://www.hanselman.com/babysmash/) on .NET Core. 
 
-> BTW: My oldest sun really loved that BybySmash when he was a baby :-)
+> BTW: My oldest sun really loved that BabySmash when he was a baby :-)
 
 You did not hear, read or see about it? 
 
@@ -71,6 +71,6 @@ The best choice to work with WinForms and WPF on .NET Core is Visual Studio 2017
 
 I don't think I will now start to write desktop apps on .NET Core 3, because I'm a web guy. But it is a really nice option to build apps like this on .NET Core. 
 
-> BTW: Even EF 6 will work in .NET Core 3, that means you also son't need to rewrite the database access part of your desktop application.
+> BTW: Even EF 6 will work in .NET Core 3, that means you also don't need to rewrite the database access part of your desktop application.
 
 As I wrote, you can now use this super fast framework and the option to create self contained apps. I would suggest to try it out, to play around with it. Do you have an older desktop application based on WPF or WinForms? I would be curious about whether you can run it on .NET Core 3. Tell me how easy it was to get it running on .NET Core 3.
