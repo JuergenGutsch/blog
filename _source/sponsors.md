@@ -1,13 +1,14 @@
 ---
 layout: page
 title: Information for blog sponsors
+description: Currently I’m using Google AdWords to get some money out of the effort I push into my blog. Actually I’d like to remove Google AdWords to provide more valuable and more relevant advertisement to the readers. I don't want to annoy readers with AdWords banners and unrelated content.
 author: Jürgen Gutsch
 comments: false
 ---
 
 ## Looking for a sponsor
 
-Currently I’m using Google AdWords to get some money out of the effort I push into my blog. Actually I’d like to remove Google AdWords to provide more valuable and more relevant advertisement to the readers. I don't want to annoy readers with AdWords banners and another downside of AdWords is that it get’s blocked by ad-blocker, so it doesn't reach all of the readers.
+Currently I’m using Google AdWords to get some money out of the effort I'm currently pushing into my blog. Actually I’d like to remove Google AdWords to provide more valuable and more relevant advertisement to the readers. I don't want to annoy readers with AdWords banners and another downside of AdWords is that it get’s blocked by ad-blocker, so it doesn't reach all of the readers.
 
  I’d like to add a short note at the end of every blog post similar to Scott Hanselman’s blog where he is mentioning the current sponsor of that specific post.
 
@@ -15,7 +16,7 @@ This kind of advertisement won’t be blocked by any ad-blocker and it won't ann
 
 ## How to sponsor
 
-I thought a lot about what kind of sponsorship would be the best option. Should I choose the pay-per-post option or the pay-per-month option.
+I thought a lot about what kind of sponsorship would be the best option. Shall I choose the pay-per-post option or the pay-per-month option.
 
 * Pay-per-post:
   * The note about the sponsor would be placed explicitly for that post and is part of the content.
@@ -31,7 +32,7 @@ At the end I decided to go with the pay-per-post option, because I think this wi
 
 ## Sponsored post
 
-I also decided to place sponsored post. This posts should be fulfill specific criteria to not annoy the readers:
+I also decided to place sponsored post. This posts should fulfill specific criteria to not annoy the readers:
 
 * The content should be related to the topics of that blog
   * (ASP).NET (Core), C#, development tools, hosting, community
@@ -40,7 +41,7 @@ I also decided to place sponsored post. This posts should be fulfill specific cr
 * The content should add value for the readers
   * Tools and services described should be useful to the readers
 * The content should be written as a tutorial
-  * Ho to use the tool or the service
+  * About how to use your tool or your service
 * The content should be authentic and target developers
   * Dev speak, no marketing speak
 * It would be the best option, if I write that post to keep my style in the blog.
@@ -76,11 +77,13 @@ Here are some numbers about the blog:
 - Some posts will get listed on <http://asp.net> and mentioned in the ASP.NET Community Standup
 
   - That will generate traffic as well
-
 - I promote my posts on 
-
-- - Facebook 480 follower (less relevant)
+  - Facebook 480 follower (less relevant)
   - Twitter 1200 Tech-Follower (pretty much relevant)
+
+![]({{site.baseurl}}/img/sponsors/November2018.jpg)
+
+![]({{site.baseurl}}/img/sponsors/October2018.jpg)
 
 
 
