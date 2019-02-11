@@ -34,10 +34,10 @@ For this series I'm going to follow the same order as in that presentation, whic
 
 ## Additional series topics
 
-* [Customizing ASP.NET Core Part 11: WebHostBuilder]({% post_url customizing-aspnetcore-11-webhostbuilder.md %})
-* Customizing ASP.NET Core Part 12: Hosting
-* Customizing ASP.NET Core Part 13: InputFormatters
-* Customizing ASP.NET Core Part 14: ViewComponents
+- [Customizing ASP.NET Core Part 11: WebHostBuilder]({% post_url customizing-aspnetcore-11-webhostbuilder.md %})
+- [customizing ASP.NET Core Part 12: Hosting]({% post_url customizing-aspnetcore-12-hosting.md %})
+- Customizing ASP.NET Core Part 13: InputFormatters
+- Customizing ASP.NET Core Part 14: ViewComponents
 
 ## Do you want to see that talk?
 
