@@ -32,4 +32,4 @@ You can find more about me and my activities on [about.me/juergengutsch](http://
 
 ## Become a blog sponsor
 
-Currently I'm looking for a sponsor that supports me writing good and valuable content. Currently I’m using Google AdWords to get some money out of the effort I push into my blog. Actually I’d like to remove Google AdWords to provide more valuable and more relevant advertisement to the readers. I don't want to annoy readers with AdWords banners and unrelated content. [Information for blog sponsors](https://asp.net-core.hacker.rocks/sponsors.html)
+Currently I'm looking for a sponsor that supports me writing good and valuable content. Currently I’m using Google AdWords to get some money out of the effort I push into my blog. Actually I’d like to remove Google AdWords to provide more valuable and more relevant advertisement to the readers. I don't want to annoy readers with AdWords banners and unrelated content. [Information for blog sponsors](https://asp.net-hacker.rocks/sponsors.html)
