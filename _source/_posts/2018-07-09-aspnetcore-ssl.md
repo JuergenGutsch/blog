@@ -39,7 +39,7 @@ In the Production and Staging environment mode there is this middleware:
 app.UseHsts();
 ~~~
 
-This enables HSTS (HTTP Strinct Transport Protocol), which is a HTTP/2 feature to avoid man-in-the-middle attacks. It tells the browser to cache the certificate for the specific host-headers and for a specific time range. If the certificate changes before the time range ends, something is wrong with the page. ([More about HSTS](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security))
+This enables HSTS (HTTP Strict Transport Protocol), which is a HTTP/2 feature to avoid man-in-the-middle attacks. It tells the browser to cache the certificate for the specific host-headers and for a specific time range. If the certificate changes before the time range ends, something is wrong with the page. ([More about HSTS](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security))
 
 The next new middleware redirects all requests without HTTPS to use the HTTPS version:
 
@@ -60,7 +60,7 @@ dotnet dev-certs https --help
 On my machine I trusted the development certificate to not get the ugly error screen in the browser about an untrusted certificate and an unsecure connection every time I want to debug a ASP.NET Core application. This works quite well:
 
 ~~~ shell
-dotnet dev-cert https --trust
+dotnet dev-certs https --trust
 ~~~
 
 This command trusts the development certificate, by adding it to the certificate store or to the keychain on Mac. 
