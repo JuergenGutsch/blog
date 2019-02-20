@@ -18,7 +18,7 @@ In my post about [Configuring HTTPS in ASP.NET Core 2.1]({% post_url aspnetcore-
 
 In this post I'm going to answer this question. 
 
-## Initial series topics
+## This series topics
 
 - [Customizing ASP.NET Core Part 01: Logging]({% post_url customizing-aspnetcore-01-logging.md %})
 - [Customizing ASP.NET Core Part 02: Configuration]({% post_url customizing-aspnetcore-02-configuration.md %})
