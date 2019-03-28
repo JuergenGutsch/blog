@@ -207,5 +207,3 @@ This is not really much code to automatically generate test data for your test o
 
 ### I think ...
 ... GenFu becomes my favorite library to create test and dummy data. I like the way GenFu generates well looking random dummy data. GenFu is really easy to use and to extend. 
-
-BTW: You'll find the small play around application on GitHub: [https://github.com/JuergenGutsch/GenFuUserGroups/](https://github.com/juergengutsch/GenFuUserGroups/)
