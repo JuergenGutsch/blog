@@ -29,27 +29,19 @@
             </p>
             <p>
                 <script>
-                    $(function() {
-                        if (pp_accepted) {
-                            (function() {
-                                var d = document,
-                                    s = d.createElement('script');
+                    (function() {
+                        var d = document,
+                            s = d.createElement('script');
 
-                                s.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+                        s.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
 
-                                s.setAttribute('async', true);
-                                (d.head || d.body).appendChild(s);
-                            })();
-                        }
-                    });
+                        s.setAttribute('async', true);
+                        (d.head || d.body).appendChild(s);
+                    })();
                 </script>
                 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2112692016899285" data-ad-slot="9378927858" data-ad-format="auto"></ins>
                 <script>
-                    $(function() {
-                        if (pp_accepted) {
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        }
-                    });
+                    (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
             </p>
         </div>
@@ -72,20 +64,18 @@
         {% if page.comments == true %}
         <script>
         $(function() {
-            if (pp_accepted) {
-                (function() {
-                    var d = document,
-                        s = d.createElement('script');
-                    s.src = 'https://utteranc.es/client.js';
-                    s.setAttribute('repo', 'juergengutsch/blog');
-                    s.setAttribute('issue-term', 'title');
-                    s.setAttribute('theme', 'github-light');
-                    s.setAttribute('crossorigin', 'anonymous');
-                    s.setAttribute('async', true);
+            (function() {
+                var d = document,
+                    s = d.createElement('script');
+                s.src = 'https://utteranc.es/client.js';
+                s.setAttribute('repo', 'juergengutsch/blog');
+                s.setAttribute('issue-term', 'title');
+                s.setAttribute('theme', 'github-light');
+                s.setAttribute('crossorigin', 'anonymous');
+                s.setAttribute('async', true);
 
-                    d.getElementById('articlefooter').appendChild(s);
-                })();
-            }   
+                d.getElementById('articlefooter').appendChild(s);
+            })();
         });
         </script>
         {% endif %}
