@@ -4,6 +4,7 @@
 # pretzel
 _source/_drafts/
 _source/_site/
+_site/
 
 # User-specific files
 *.suo
