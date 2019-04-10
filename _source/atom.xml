@@ -14,7 +14,7 @@ layout: nil
     <email>juergen@gutsch-online.de</email>
   </author>
 
-  {% for post in site.posts %}
+  {% for post in site.posts limit:20 %}
   <entry>
     <id>{{ site.baseurl }}{{ post.url }}</id>
     <link type="text/html" rel="alternate" href="{{ site.baseurl }}{{ post.url }}"/>
