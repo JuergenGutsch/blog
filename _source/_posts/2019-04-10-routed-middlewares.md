@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Routed Middlewares in ASP.NET Core 3.0"
+title: "Implement Middlewares using Endpoint Routing in ASP.​NET Core 3.0"
 teaser: "If you have a Middleware that needs to work on a specific path, you should implement it by mapping it to a route in ASP.NET Core 3.0, instead of just checking the path names. This post shows how it should be done in ASP.NET Core 3.0"
 author: "Jürgen Gutsch"
 comments: true
@@ -16,11 +16,15 @@ If you have a Middleware that needs to work on a specific path, you should imple
 
 At the Global MVP Summit 2019 in Redmond  I attended the hackathon where I worked on [my GraphQL Middlewares for ASP.NET Core](https://github.com/JuergenGutsch/graphql-aspnetcore/). I asked [Glen Condron](https://twitter.com/condrong) for a review of the API and the way the Middleware gets configured. He told me that we did it all right. We followed the proposed way to provide and configure an ASP.NET Core Middleware. But he also told me that there is a new way in ASP.NET Core 3.0 to use this kind of Middlewares. 
 
-Glen asked [James Newton King](https://twitter.com/JamesNK) who works on the new routing to show me how this needs to be done in ASP.NET Core 3.0. James pointed me to the ASP.NET Core Health Checks and explained me the new way to go.
+Glen asked [James Newton King](https://twitter.com/JamesNK) who works on the new Endpoint Routing to show me how this needs to be done in ASP.NET Core 3.0. James pointed me to the ASP.NET Core Health Checks and explained me the new way to go.
 
 > BTW: That's kinda closing the loop: Four summits ago [Damien Bowden](http://twitter.com/damienbod) and I where working on the initial drafts of the ASP.NET Core Health Checks together with Glen Condron. Awesome that this is now in production ;-)
 
 The new ASP.NET Core 3.0 implementation of the GraphQL Middlewares is in the *aspnetcore30* branch of the repository: [https://github.com/JuergenGutsch/graphql-aspnetcore](https://github.com/JuergenGutsch/graphql-aspnetcore)
+
+## About Endpoint Routing
+
+The MVP fellow [Steve Gordon](https://twitter.com/stevejgordon) had an [early look into Endpoint Routing](https://www.stevejgordon.co.uk/asp-net-core-first-look-at-global-routing-dispatcher). His great post may help you to understand Entpoint Routing.
 
 ## How it worked before:
 
