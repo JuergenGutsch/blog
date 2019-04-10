@@ -12,7 +12,7 @@ layout: nil
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
 
-    {% for post in site.posts %}
+    {% for post in site.posts limit:20 %}
     <item>
       <title>{{ post.title | xml_escape }}</title>
       <link>{{ site.baseurl }}{{ post.url }}</link>
