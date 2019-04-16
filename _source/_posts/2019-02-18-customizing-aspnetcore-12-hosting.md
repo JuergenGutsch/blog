@@ -11,7 +11,9 @@ tags:
 - WebHostBuilder
 ---
 
-In this 12th part of this series, I'm going to write about how to customize hosting in ASP.NET Core. We will look into the hosting options, different kind of hosting and a quick look into hosting on the IIS.
+In this 12th part of this series, I'm going to write about how to customize hosting in ASP.NET Core. We will look into the hosting options, different kind of hosting and a quick look into hosting on the IIS. And while writing this post this again seems to get a long one.
+
+> This will change in ASP.NET Core 3.0. I anyway decided to do this post about ASP.NET Core 2.2 because it still needs some time until ASP.NET Core 3.0 is released.
 
 ## This series topics
 
@@ -30,7 +32,7 @@ In this 12th part of this series, I'm going to write about how to customize host
 
 ## Quick setup
 
-For this series I need to setup a small empty web application.
+For this series we just need to setup a small empty web application.
 
 ~~~ shell
 dotnet new web -n ExploreHosting -o ExploreHosting
@@ -43,7 +45,9 @@ cd ExploreHosting
 code .
 ~~~
 
+And voila, we get a simple project open in VS Code:
 
+![](../img/customize-aspnetcore/simpleproject.PNG)
 
 ## WebHostBuilder
 
@@ -63,9 +67,13 @@ public class Program
 }
 ~~~
 
+As we already know from the previous posts the default build has all the needed stuff pre-configured. All you need to run an application successfully on Azure or on an on-premise IIS is configured for you.
+
+But you are able to override almost all of this default configurations. Also the hosting configuration.
+
 ### Kestrel
 
-After the `WebHostBuilder` is created we can use a various functions to configure the builder. Here we already see one of them which specifies which `Startup` class should be used. In the last post we saw the `UseKestrel` method to configure the Kestrel options:
+After the `WebHostBuilder` is created we can use various functions to configure the builder. Here we already see one of them, which specifies the `Startup` class that should be used. In the last post we saw the `UseKestrel` method to configure the Kestrel options:
 
 ~~~csharp
 .UseKestrel((host, options) =>
@@ -78,7 +86,7 @@ After the `WebHostBuilder` is created we can use a various functions to configur
 >
 > Docs: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel
 
-This first argument is a `WebHostBuilderContext` to access already configured hosting settings or the configuration itself. The second argument is object to configure Kestrel. This is what we did in the last post to configure the socket endpoints where the host needs to listen to:
+This first argument is a `WebHostBuilderContext` to access already configured hosting settings or the configuration itself. The second argument is an object to configure Kestrel. This snippet shows what we did in the last post to configure the socket endpoints where the host needs to listen to:
 
 ~~~ csharp
 .UseKestrel((host, options) =>
@@ -94,11 +102,11 @@ This first argument is a `WebHostBuilderContext` to access already configured ho
 })
 ~~~
 
-
+This will override the default configuration where you are able to pass in URLs, eg. using the `applicationUrl` property of the `launchSettings.json` or an environment variable.
 
 ### HTTP.sys
 
-Did you know that there is another Hosting option? A different web server implementation? It is [HTTP.sys](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/httpsys). This is a pretty mature library within Windows that can be used to host your application.
+Did you know that there is another hosting option? A different web server implementation? It is [HTTP.sys](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/httpsys). This is a pretty mature library deep within Windows that can be used to host your application.
 
 ~~~ csharp
 .UseHttpSys(options =>
@@ -107,17 +115,23 @@ Did you know that there is another Hosting option? A different web server implem
 })
 ~~~
 
-The HTTP.sys is different to Kestrel. It cannot be used in IIS because it is not compatible with the [ASP.NET Core Module](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/aspnet-core-module?view=aspnetcore-2.2) for IIS. The reason to use HTTP.sys is Windows Authentication (which cannot be used in Kestrel) and if you need to expose it to the internet without the IIS. Also the IIS is running on top of HTTP.sys for years. To learn more about HTTP.sys please read the [docs](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/httpsys).
+The HTTP.sys is different to Kestrel. It cannot be used in IIS because it is not compatible with the [ASP.NET Core Module](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/aspnet-core-module?view=aspnetcore-2.2) for IIS. 
+
+The main reason to use HTTP.sys instead of Kestrel is Windows Authentication which cannot be used in Kestrel only. Another reason is, if you need to expose it to the internet without the IIS. 
+
+Also the IIS is running on top of HTTP.sys for years. Which means `UseHttpSys()` and IIS are using the same web server implementation. To learn more about HTTP.sys please read the [docs](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/httpsys).
 
 ### Hosting on IIS 
 
-ASP.NET Core shouldn't be exposed to the internet, even if it's supported for even Kestrel or the HTTP.sys. It would be the best to have something like a reverse proxy in between or at least a service that watches the hosting process. For ASP.NET Core the IIS isn't only a reverse proxy. It also takes care of the hosting process in case it brakes because of an error or whatever. It'll restart the process in that case.
+ASP.NET Core shouldn't be directly exposed to the internet, even if it's supported for even Kestrel or the HTTP.sys. It would be the best to have something like a reverse proxy in between or at least a service that watches the hosting process. For ASP.NET Core the IIS isn't only a reverse proxy. It also takes care of the hosting process in case it brakes because of an error or whatever. It'll restart the process in that case. Also NgineX may be used as an reverse proxy on Linux that also takes care of the hosting process.
 
-To host an ASP.NET Core web on an IIS or on Azure you need to publish it first. Publishing doesn't only compiles the project. It also prepares the project to host it on IIS or on an webserver on Linux like EngnX. 
+To host an ASP.NET Core web on an IIS or on Azure you need to publish it first. Publishing doesn't only compiles the project. It also prepares the project to host it on IIS or on an webserver on Linux like NgineX. 
 
 > dotnet publish
 
+![](../img/customize-aspnetcore/dotnet-publish.png)
 
+This produces an output that can be mapped in the IIS
 
 
 
