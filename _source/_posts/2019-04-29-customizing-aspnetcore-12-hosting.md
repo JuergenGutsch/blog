@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Customizing ASP.​NET Core Part 12: Hosting "
-teaser: ""
+title: "Customizing ASP.NET Core Part 12: Hosting "
+teaser: "In this 12th part of this series, I'm going to write about how to customize hosting in ASP.NET Core. We will look into the hosting options, different kind of hosting and a quick look into hosting on the IIS. This post is just an overview bout the different kind of application hosting."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -14,6 +14,8 @@ tags:
 In this 12th part of this series, I'm going to write about how to customize hosting in ASP.NET Core. We will look into the hosting options, different kind of hosting and a quick look into hosting on the IIS. And while writing this post this again seems to get a long one.
 
 > This will change in ASP.NET Core 3.0. I anyway decided to do this post about ASP.NET Core 2.2 because it still needs some time until ASP.NET Core 3.0 is released.
+
+This post is just an overview bout the different kind of application hosting. It is surely possible to go a lot more into the details for each topic, but this would increase the size of this post a lot and I need some more topics for future blog posts ;-)
 
 ## This series topics
 
@@ -47,7 +49,7 @@ code .
 
 And voila, we get a simple project open in VS Code:
 
-![](../img/customize-aspnetcore/simpleproject.PNG)
+![]({{site.baseurl}}/img/customize-aspnetcore/simpleproject.PNG)
 
 ## WebHostBuilder
 
@@ -106,7 +108,7 @@ This will override the default configuration where you are able to pass in URLs,
 
 ### HTTP.sys
 
-Did you know that there is another hosting option? A different web server implementation? It is [HTTP.sys](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/httpsys). This is a pretty mature library deep within Windows that can be used to host your application.
+Do you know that there is another hosting option? A different web server implementation? It is [HTTP.sys](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/httpsys). This is a pretty mature library deep within Windows that can be used to host your ASP.NET COre application.
 
 ~~~ csharp
 .UseHttpSys(options =>
@@ -123,17 +125,45 @@ Also the IIS is running on top of HTTP.sys for years. Which means `UseHttpSys()`
 
 ### Hosting on IIS 
 
-ASP.NET Core shouldn't be directly exposed to the internet, even if it's supported for even Kestrel or the HTTP.sys. It would be the best to have something like a reverse proxy in between or at least a service that watches the hosting process. For ASP.NET Core the IIS isn't only a reverse proxy. It also takes care of the hosting process in case it brakes because of an error or whatever. It'll restart the process in that case. Also NgineX may be used as an reverse proxy on Linux that also takes care of the hosting process.
+An ASP.NET Core Application shouldn't be directly exposed to the internet, even if it's supported for even Kestrel or the HTTP.sys. It would be the best to have something like a reverse proxy in between or at least a service that watches the hosting process. For ASP.NET Core the IIS isn't only a reverse proxy. It also takes care of the hosting process in case it brakes because of an error or whatever. It'll restart the process in that case. Also Nginx may be used as an reverse proxy on Linux that also takes care of the hosting process.
 
-To host an ASP.NET Core web on an IIS or on Azure you need to publish it first. Publishing doesn't only compiles the project. It also prepares the project to host it on IIS or on an webserver on Linux like NgineX. 
+To host an ASP.NET Core web on an IIS or on Azure you need to publish it first. Publishing doesn't only compiles the project. It also prepares the project to host it on IIS, on Azure or on an webserver on Linux like Nginx. 
 
-> dotnet publish
+> dotnet publish -o ..\published -r win32-x64
 
-![](../img/customize-aspnetcore/dotnet-publish.png)
+![]({{site.baseurl}}/img/customize-aspnetcore/dotnet-publish.png)
 
-This produces an output that can be mapped in the IIS
+This produces an output that can be mapped in the IIS. It also creates a web.config to add settings for the IIS or Azure. It contains the compiled web application as a DLL. 
 
+If you publish a self-contained application it also contains the runtime itself. A self-contained application brings it's own .NET Core runtime, but the size of the delivery increases a lot. 
 
+And on the IIS? Just create a new web and map it to the folder where you placed the published output:
 
-## HostBuilder
+![](../img/customize-aspnetcore/iis-hosting.png)
 
+It get's a little more complicated if you need to change the security, if you have some database connections and so on. This would be a topic for a separate blog post. But in this small sample it simply works:
+
+![]({{site.baseurl}}/img/customize-aspnetcore/iis-hosted.PNG)
+
+This is the output of the small Middleware in the `startup.cs` of the demo project:
+
+~~~ csharp
+app.Run(async (context) =>
+{
+    await context.Response.WriteAsync("Hello World!");
+});
+~~~
+
+## Nginx
+
+Unfortunately I cannot write about Nginx, because I don't have a running Linux currently to play around with it. This is one of the many future projects I have. I just got ASP.NET Core running on Linux using the Kestrel webserver.
+
+## Conclusion
+
+ASP.NET Core and the .NET CLI already contain all the tools to get it running on various platforms and to set it up to get it ready for Azure and the IIS, as well as Nginx. This is super easy and well described in the docs.
+
+> BTW: What do you think about the new docs experience compared to the old MSDN documentation?
+
+I'll definitely go deeper into some of the topics and in ASP.NET Core there are some pretty cool hosting features that make it a lot more flexible to host your application: 
+
+Currently we have the `WebHostBuilder` that creates the hosting environment of the applications. In 3.0 we get the `HostBuilder` that is able to create a hosting environment that is completely independent from any web context. I'm going to write about the `HostBuilder` in one of the next blog posts.
