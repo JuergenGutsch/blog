@@ -18,7 +18,7 @@ In my post about [Configuring HTTPS in ASP.NET Core 2.1]({% post_url aspnetcore-
 
 In this post I'm going to answer this question. 
 
-## Initial series topics
+## This series topics
 
 - [Customizing ASP.NET Core Part 01: Logging]({% post_url customizing-aspnetcore-01-logging.md %})
 - [Customizing ASP.NET Core Part 02: Configuration]({% post_url customizing-aspnetcore-02-configuration.md %})
@@ -29,8 +29,9 @@ In this post I'm going to answer this question.
 - [Customizing ASP.NET Core Part 07: OutputFormatter]({% post_url customizing-aspnetcore-07-outputformatter.md %})
 - [Customizing ASP.NET Core Part 08: ModelBinders]({% post_url customizing-aspnetcore-08-modelbinders.md %})
 - [Customizing ASP.NET Core Part 09: ActionFilter]({% post_url customizing-aspnetcore-09-actionfilters.md %})
-- [Customizing ASP.NET Core Part 10: TagHelpers]({% post_url customizing-aspnetcore-10-taghelpers %})
-
+- [Customizing ASP.NET Core Part 10: TagHelpers]({% post_url customizing-aspnetcore-10-taghelpers.md %})
+- **customizing ASP.NET Core Part 11: WebHostBuilder - This article**
+- [customizing ASP.NET Core Part 12: Hosting - This article]({% post_url customizing-aspnetcore-12-hosting.md %})
 
 ## WebHostBuilderContext
 
