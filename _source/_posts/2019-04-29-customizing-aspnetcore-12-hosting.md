@@ -30,7 +30,7 @@ This post is just an overview bout the different kind of application hosting. It
 - [Customizing ASP.NET Core Part 09: ActionFilter]({% post_url customizing-aspnetcore-09-actionfilters.md %})
 - [Customizing ASP.NET Core Part 10: TagHelpers]({% post_url customizing-aspnetcore-10-taghelpers.md %})
 - [Customizing ASP.NET Core Part 11: WebHostBuilder]({% post_url customizing-aspnetcore-11-webhostbuilder.md %})
-- **customizing ASP.NET Core Part 12: Hosting - This article**
+- **Customizing ASP.NET Core Part 12: Hosting - This article**
 
 ## Quick setup
 
@@ -108,7 +108,7 @@ This will override the default configuration where you are able to pass in URLs,
 
 ### HTTP.sys
 
-Do you know that there is another hosting option? A different web server implementation? It is [HTTP.sys](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/httpsys). This is a pretty mature library deep within Windows that can be used to host your ASP.NET COre application.
+Do you know that there is another hosting option? A different web server implementation? It is [HTTP.sys](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/servers/httpsys). This is a pretty mature library deep within Windows that can be used to host your ASP.NET Core application.
 
 ~~~ csharp
 .UseHttpSys(options =>
@@ -139,7 +139,7 @@ If you publish a self-contained application it also contains the runtime itself.
 
 And on the IIS? Just create a new web and map it to the folder where you placed the published output:
 
-![](../img/customize-aspnetcore/iis-hosting.png)
+![]({{site.baseurl}}/img/customize-aspnetcore/iis-hosting.png)
 
 It get's a little more complicated if you need to change the security, if you have some database connections and so on. This would be a topic for a separate blog post. But in this small sample it simply works:
 
