@@ -386,7 +386,47 @@ The first template is fine to deploy an ASP.NET Application to an Azure App Serv
 
 ![](../img/azure-devops/azure-devops-new-release-stage.png)
 
-I prefer to choose the branch name as stage name. The first stage will be called Master, because it will deploy the build artefact of the master branch. I will also add another stage and call it develop.
+I prefer to choose the branch name as stage name. The first stage will be called `master`, because it will deploy the build artefact of the master branch. I will also add another stage and call it `develop`.
+
+![](../img/azure-devops/azure-devops-new-release-stage2.png)
+
+The next step is to choose the artifact we want to deploy. Click at the "Add an artifact" area to choose the output of the build pipeline we just created.
+
+![](../img/azure-devops/azure-devops-new-release-artifact.png)
+
+We also want to deploy continuously. So we need to tell the release pipeline to run when the build was done. After we chose the artifact, we see an small lightning icon on the artifact. Click this icon to choose the trigger for this pipeline:
+
+![](../img/azure-devops/azure-devops-new-release-trigger.png)
+
+Here we need to enable the Continuous deployment trigger and to add branch filters for the `master` and the `develop` branch. This will trigger the release pipeline, if a successful build of the master or the develop branch will happen. 
+
+As well for the stages we need to configure the trigger. We also need to select the small lightning icon the stages. Than we need to enable the artifact filter where we need to select the configured artifact where we need to choose the `master` branch:
+
+![](../img/azure-devops/azure-devops-new-release-stage-filter.png)
+
+We also need to do the same thing for the `develop` stage.
+
+If this is done the next step is to configure the  tasks of the actual pipelines. To do this you can either select one stage at the Tasks tab on the top or to choose the link on the stage:
+
+![](../img/azure-devops/azure-devops-new-release-stage-add-tasks.png)
+
+(Note to myself: Need to find a better way to draw circles in the train.)
+
+Let's chose the `master` stage first. The view will change and we see the similar task configuration as for the builds. We have the Agent job visible where we can add tasks:
+
+![](../img/azure-devops/azure-devops-new-release-stage-add-tasks-add.png)
+
+Search for the "Azure App Service Deploy" task and add it to the Agent job. Here we need to choose the Azure Subscription and the name of the Azure App Service where your application should run. The package or folder to deploy should be the default. Here you can see that the previously built Zip package will be deployed.
+
+![](../img/azure-devops/azure-devops-new-release-stage-add-tasks-azure.png)
+
+Do the same steps for the develop stage, but choose the development environment on Azure instead.
+
+### If you don't have an Azure subscription configured yet, you need to do so first. 
+
+If you use the same Azure Account on Azure DevOps and your Azure Portal, you will see some subscriptions here. But they are not yet configured to be used in Azure DevOps. First you need to authorize Azure DevOps to connect to this specific Azure subscription. After you selected an Subscription click, on the "Authorize" button to create an OAuth connection to Azure.
+
+If you don't see any Subscriptions, click on manage to configure a new connection to an Azure subscription or to an Azure Resource Group. Choose "Azure Resource Manager" as a service connection type and follow the instructions to create a new connection to your Azure subscription.
 
 
 
