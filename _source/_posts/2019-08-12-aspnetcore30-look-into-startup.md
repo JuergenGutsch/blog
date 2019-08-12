@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "I the last post, I took a quick look into the `Program.cs` of ASP.NET Core 3.0 and I quickly explored the Generic Hosting Model. But also the Startup class has something new in it. We will see some small but important changes."
-teaser: "Description"
+title: "New in ASP.NET Core 3.0 - Taking a quick look into the Startup.cs"
+teaser: "I the last post, I took a quick look into the Program.cs of ASP.NET Core 3.0 and I quickly explored the Generic Hosting Model. But also the Startup class has something new in it. We will see some small but important changes."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
