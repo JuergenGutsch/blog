@@ -50,7 +50,7 @@ The empty web project is a ASP.NET Core project without any ASP.NET Core UI feat
 
 The new stuff is into in the `Configure` method. The first lines look familiar. Depending on the hosting environment the development exception page will be shown.
 
-`app.UseRouting()` is new. This is a middleware that enables the new endpoint routing. The new thing is, that routing is decoupled from the specific ASP.NET Feature. In the previous Version every feature (MVC, Razor Pages, SIgnalR, etc.) had its own endpoint implementation. Now the endpoint and routing configuration can be done independently. The Middlewares that need to handle a specific endpoint will now be mapped to a specific endpoint or route. SO the Middlewares don't need to handle the routes anymore.
+`app.UseRouting()` is new. This is a middleware that enables the new endpoint routing. The new thing is, that routing is decoupled from the specific ASP.NET Feature. In the previous Version every feature (MVC, Razor Pages, SIgnalR, etc.) had its own endpoint implementation. Now the endpoint and routing configuration can be done independently. The Middlewares that need to handle a specific endpoint will now be mapped to a specific endpoint or route. So the Middlewares don't need to handle the routes anymore.
 
 If you wrote a Middleware in the past which needs to work on a specific endpoint, you added the logic to check the endpoint inside the middleware or you used the `MapWhen()` extension method on the `IApplicationBuilder` to add the Middleware to a specific endpoint.
 
@@ -136,5 +136,5 @@ The Configure method doesn't really change, except the new endpoint routing part
 
 This is also just a quick look into the `Startup.cs` with just some small but useful changes. 
 
-In the next post I'm going to do a little more detailed look into the new endpoint routing. While working on the [GraphQL endpoint for ASP.NET Core](https://github.com/JuergenGutsch/graphql-aspnetcore), I learned a lot about the endpoint routing. Iven this feature males a lot of sense to me, even if it means to rethink some things, when you build and provide a Middleware.
+In the next post I'm going to do a little more detailed look into the new endpoint routing. While working on the [GraphQL endpoint for ASP.NET Core](https://github.com/JuergenGutsch/graphql-aspnetcore), I learned a lot about the endpoint routing. This feature makes a lot of sense to me, even if it means to rethink some things, when you build and provide a Middleware.
 
