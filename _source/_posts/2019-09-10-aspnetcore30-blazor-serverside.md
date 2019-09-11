@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Neu in ASP.NET Core 3.0 - Blazor Server Side"
+title: "New in ASP.NET Core 3.0 - Blazor Server Side"
 teaser: "o have a look into the generic hosting models, we should also have a look into the different application models we have in ASP.NET Core.  In this and the next post I'm going to write about Blazor, which is a new member of the ASP.NET Core family."
 author: "Jürgen Gutsch"
 comments: true
