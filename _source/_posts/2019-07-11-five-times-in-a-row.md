@@ -14,7 +14,7 @@ tags:
 
 Another year later, again it was the July 1st and I got the email from the Global MVP Administrator I'm waiting for :-)
 
-![](../img/MVP_Logo_Horizontal_Preferred_Cyan300_CMYK_72ppi.png)
+![]({{site.baseurl}}/img/MVP_Logo_Horizontal_Preferred_Cyan300_CMYK_72ppi.png)
 
 Yes, this is kind of a yearly series of posts. But I'm really excited that I got re-awarded to be an MVP for the fifth year in a row. This is absolutely amazing and makes me really proud.
 
