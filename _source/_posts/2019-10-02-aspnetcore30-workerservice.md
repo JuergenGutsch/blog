@@ -1,15 +1,15 @@
 ---
 layout: post
 title: "New in ASP.NET Core 3.0: Worker Services"
-teaser: "Description"
+teaser: "In this post I'm giving a quick introduction into the Worker Services and what you can do with it. I'm also introducing a small project that shows the usage of Worker Services, gRPC and many more cool new ASP.NET Core 3.0 stuff."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
 - .NET Core
 - ASP.NET Core
-- Tests
-- Tag
+- gRPC
+- Docker
 ---
 
 I mentioned in on of the first posts of this series, that we are now able to create ASP.NET Core applications without a web server and without all the HTTP stuff that is needed to provide content via HTTP or HTTPS. At the first glance it sounds wired. Why should I create a ASP.NET application that doesn't provide any kind of an endpoint over HTTP? Is this really ASP.NET. Well, it is not ASP.NET in the sense of creating web applications. But it is part of the ASP.NET Core and uses all the cool features that we are got used to in ASP.NTE Core:
@@ -19,13 +19,19 @@ I mentioned in on of the first posts of this series, that we are now able to cre
 * Dependency Injection
 * etc.
 
-In this kind of applications we are able to span up a worker service that is completely independent from the HTTP stack. 
+In this kind of applications we are able to span up a worker service which is completely independent from the HTTP stack. 
 
 > Worker services can run in any kind of .NET Core applications, but they don't need the `IWebHostBuilder` to run
 
 ## The worker service project
 
-In Visual Studio or by using the .NET CLI you are able to create a new worker service project. This looks pretty much like a common .NET Core project, but all the web specific stuff is missing. The only 3 code files here are the `Program.cs` and a `Worker.cs`.
+In Visual Studio or by using the .NET CLI you are able to create a new worker service project. 
+
+``` shell
+dotnet new worker -n MyWorkerServiceProject -o MyWorkerServiceProject
+```
+
+This project looks pretty much like a common .NET Core project, but all the web specific stuff is missing. The only two code files here are the `Program.cs` and a `Worker.cs`.
 
 The `Program.cs` looks a little different compared to the other ASP.NET Core projects:
 
@@ -92,7 +98,7 @@ In a microservice environment it would make sense to run one or more worker serv
 
 ## Let's create an example
 
-With the next couple of post I'm going to create a small example.
+With the next couple of post I'm going to create an example on how to use worker services.
 
 I'm going to write weather station that provides a gRPC endpoint to fetch the whether data of a specific date. I'll also write a worker service that fetches the data using a gRPC Client and prepares the data for another app that will displaying it. At the end we will at least have three Applications:
 
@@ -106,5 +112,11 @@ I'm going to put those apps and the database into docker containers and put them
 
 The weather station will have a SQLite inside the docker container. The separate database on a fourth docker container is for the worker and the web app to share the date. I'm not yet sure what database I want to use. If you have an idea, just drop me a comment.
 
+I'm going to create a new repository on GitHub for this project and will add the link to the next posts.
 
+## Conclusion
+
+I guess the Worker Services will be as most useful in micro service environments. But it might also be a good way to handle those mentioned aspects in common ASP.NET Core applications. Feel free to try it out.
+
+But what I tried to show here as well, is the possibility to use a different hosting model to run a different kind of (ASP.NET) Core application that still uses all the useful features of the ASP.NET Core framework. The way Microsoft decoupled ASP.NET from the generic hosting model is awesome. DI, Configuration and Logging is decoupled as well and ready to use in such applications.
 
