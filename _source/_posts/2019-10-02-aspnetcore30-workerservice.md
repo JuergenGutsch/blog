@@ -77,8 +77,6 @@ The `BackgroundService` base class is still a well known `IHostedService` that e
 
 This demo worker just does a endless loop and writes the current date and time every second to the logger.
 
-
-
 ## What you can do with Worker Services
 
 With this kind of services you are able to create services that do some stuff for you in the background or you can simply create service applications that can run as a windows service or as a service inside a docker container.
@@ -91,4 +89,22 @@ Worker Services are running one time on startup or just create a infinite loop t
 * Startup initialization
 
 In a microservice environment it would make sense to run one or more worker services in console applications inside docker containers. This way it is easy to maintain and deploy them separately from the main application and they can be scaled separately.
+
+## Let's create an example
+
+With the next couple of post I'm going to create a small example.
+
+I'm going to write weather station that provides a gRPC endpoint to fetch the whether data of a specific date. I'll also write a worker service that fetches the data using a gRPC Client and prepares the data for another app that will displaying it. At the end we will at least have three Applications:
+
+* **The weather station**: A gRPC service that provides an endpoint to fetch the weather data of an specific date. 
+* **The weather data loader**: A worker service running a gRPC Client that fetches the data every day and puts the data into a database. Console application.
+* **The weather stats app**: Loads the data from the database and shows the current weather and a graph of all loaded weather data. Blazor Server Side
+
+I'm going to put those apps and the database into docker containers and put them together using docker-compose. 
+
+>  I'll simulate the days by changing to the next day every second starting by 1/1/2019. I already have weather data of some weather stations in Washington state and will reuse this data. 
+
+The weather station will have a SQLite inside the docker container. The separate database on a fourth docker container is for the worker and the web app to share the date. I'm not yet sure what database I want to use. If you have an idea, just drop me a comment.
+
+
 
