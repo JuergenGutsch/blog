@@ -80,7 +80,9 @@ public class Worker : BackgroundService
 
 The `BackgroundService` base class is still a well known `IHostedService` that exists for a while. It just has some base implementation in it to simplify the API. You would also be able to create a `WorkerService` by implementing the `IHostedService` directly.
 
-This demo worker just does a endless loop and writes the current date and time every second to the logger.
+This demo worker just does a endless loop and writes the current date and time every second to the logger:
+
+![]({{site.baseurl}}/img/workerservice/workerservice.png)
 
 ## What you can do with Worker Services
 
