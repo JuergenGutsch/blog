@@ -8,8 +8,7 @@ image: /img/cardlogo-dark.png
 tags: 
 - .NET Core
 - ASP.NET Core
-- gRPC
-- Docker
+- Worker Service
 ---
 
 I mentioned in on of the first posts of this series, that we are now able to create ASP.NET Core applications without a web server and without all the HTTP stuff that is needed to provide content via HTTP or HTTPS. At the first glance it sounds wired. Why should I create a ASP.NET application that doesn't provide any kind of an endpoint over HTTP? Is this really ASP.NET. Well, it is not ASP.NET in the sense of creating web applications. But it is part of the ASP.NET Core and uses all the cool features that we are got used to in ASP.NTE Core:
@@ -118,5 +117,5 @@ I'm going to create a new repository on GitHub for this project and will add the
 
 I guess the Worker Services will be as most useful in micro service environments. But it might also be a good way to handle those mentioned aspects in common ASP.NET Core applications. Feel free to try it out.
 
-But what I tried to show here as well, is the possibility to use a different hosting model to run a different kind of (ASP.NET) Core application that still uses all the useful features of the ASP.NET Core framework. The way Microsoft decoupled ASP.NET from the generic hosting model is awesome. DI, Configuration and Logging is decoupled as well and ready to use in such applications.
+But what I tried to show here as well, is the possibility to use a different hosting model to run a different kind of (ASP.NET) Core application, which still uses all the useful features of the ASP.NET Core framework. The way Microsoft decoupled ASP.NET from the generic hosting model is awesome. 
 
