@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Neu in ASP.NET Core 3.0 - Blazor Server Side"
+title: "New in ASP.NET Core 3.0 - Blazor Client Side"
 teaser: "In the last post we had a quick look into Blazor Server Side, which doesn't really differ on the hosting level. Blazor Client Site on the other hand differs for sure, because it doesn't need a web server, it completely runs in the browser inside a WebAssembly."
 author: "Jürgen Gutsch"
 comments: true
