@@ -14,7 +14,7 @@ tags:
 
 In the last post we had a quick look into Blazor Server Side, which doesn't really differ on the hosting level. This is a regular ASP.NET Core application that will run on a web server. Blazor Client Site on the other hand differs for sure, because it doesn't need a web server, it completely runs in the browser.
 
-Microsoft compiled the Mono runtime into a WebAssembly. With this, it is possible to execute .NET Assemblies natively inside the WebAssembly in the browser. This doesn't need a web serve. There is no HTTP traffic between the browser and a server part anymore.
+Microsoft compiled the Mono runtime into a WebAssembly. With this, it is possible to execute .NET Assemblies natively inside the WebAssembly in the browser. This doesn't need a web serve. There is no HTTP traffic between the browser and a server part anymore. Except you are fetching data from a remote service.
 
 ## Let's have a look at the HostBuilder
 
@@ -34,7 +34,7 @@ public class Program
 }
 ```
 
-This time we create `IWebAssemblyHostBuilder` instead of a `IHostBuilder`. Actually it is a completely different Interface and doesn't derive from the `IHostBuilder` at the time I wrote this. But it looks pretty similar. In this case also a default configuration of the `IWebAssemblyHostBuilder` is created and similar to the ASP.NET Core projects, a `Startup` class is used to configure the application.
+Here we create `IWebAssemblyHostBuilder` instead of a `IHostBuilder`. Actually it is a completely different Interface and doesn't derive from the `IHostBuilder` at the time I wrote this. But it looks pretty similar. In this case also a default configuration of the `IWebAssemblyHostBuilder` is created and similar to the ASP.NET Core projects, a `Startup` class is used to configure the application.
 
 The `Startup` class is pretty empty but has the same structure as all the other ones. You are able to configure services to the IoC container and to configure the application:
 
