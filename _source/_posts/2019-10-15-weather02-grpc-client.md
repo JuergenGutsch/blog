@@ -91,7 +91,7 @@ Creating the gRPC client needs some configuration, since there is no gRPC client
 
 This needs us to change the link to the proto file in the project files. The server:
 
-``` csharp
+``` xml
 <ItemGroup>
   <Protobuf Include="..\Protos\weather.proto" 
     GrpcServices="Server" 
@@ -101,7 +101,7 @@ This needs us to change the link to the proto file in the project files. The ser
 
 The client:
 
-``` csharp
+``` xml
 <ItemGroup>
   <Protobuf Include="..\Protos\weather.proto" 
     GrpcServices="Client" 
