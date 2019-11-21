@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ASP.NET Core 3.0 Weather Application - The gRPC Client"
-teaser: ""
+teaser: "In this post I'm going to write the worker service, which fetches the weather data from the previously created weather station. The worker service will include a gRPC client to connect to the service and it will store the data in a MongoDB database."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -12,17 +12,13 @@ tags:
 - gRPC
 ---
 
-The next couple of posts will be a series that describes how to build a kind of a microservice app using the latest ASP.NET Core 3.0 features.
-
-I'm going to use gRPC, Worker Services, SignalR, Blazor and maybe the Identity Server to secure all the services. If some time is left, I'll put all the stuff into docker containers.
-
 ## Introduction
 
 I'm going to write an application that reads weather data in, stores them and provides statistical information about that weather. In this case I use downloaded data from a weather station in Kent (WA). I'm going to simulate a day in two seconds. 
 
 I will write a small gRPC services which will be our weather station in Kent. I'm also goin to write a worker service that hosts a gRPC Client to connect to the weather station to fetch the data every day. This worker service also stores the date into a database. The third application is a Blazor app that fetches the data from the database and displays the data in a chart and in a table.
 
-In this post I will continue with the client that fetches the data from the server.
+In this post I'm going to continue with the client that fetches the data from the server. I will create a worker service, which fetches the weather data from the previously created weather station. The worker service will include a gRPC client to connect to the service and it will store the data in a MongoDB database.
 
 ## Setup the app
 
@@ -79,9 +75,9 @@ public class WeatherWorker : BackgroundService
 
 > I just realized that there is no unique wording for this kind of service. There is `Worker Service`, `Background Service` and `Hosted Service`. In General, it is all the same thing. 
 >
-> A `HostedService` is a class that gets added to the dependency injection container, to get executed by the generic hosting service once after the application starts. This could be used to initialize a database or something else. This class gets executed asynchronous in the background. If this class runs an endless loop to execute stuff periodically we could call it a service, like a windows service. Because it also runs asynchronously in the background it is a `Background Serivce`. The implementation of a `Background Service` is called a worker in those kind of projects. That's why we also talk about a `Worker Service`. Also the entire application could be called a `Worker Service`, since it runs workers like a windows service.
+> A `HostedService` is a class that gets added to the dependency injection container, to get executed by the generic hosting service once after the application starts. This could be used to initialize a database or something else. This class gets executed asynchronous in the background. If this class runs an endless loop to execute stuff periodically we could call it a service, like a windows service. Because it also runs asynchronously in the background it is a `Background Serivce`. The implementation of a `Background Service` is called a worker in those kind of projects. That's why we also talk about a `Worker Service`. Also the entire application could be called a `Worker Service`, since it runs workers like a service.
 
-Now we need to create the gRPC client to fetch the data from the weather station.
+Now we need to create the gRPC client to fetch the data from the weather station:
 
 ## The gRPC client
 
@@ -179,83 +175,124 @@ After I retrieved the weather data, I write some of the information out to the c
 
 ## The database 
 
-Since the applications will run on docker, I'm going to use an open source data base server to store the data. This time I need to share the database with the UI project. The current app writes the data into the database and the UI project will read and display the data. So I need a separate container that host the database. In this this case I would try to use a PostgreSQL.
+Since the applications will run on docker, I'm going to use an open source data base server to store the data. This time I need to share the database with the UI project. The current app writes the data into the database and the UI project will read and display the data. So I need a separate container that host the database. In this this case I would try to use a MongoDB.
 
 To use the PostgreSQL I need to add the Entity Framework Provider first:
 
 ~~~xml
-<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.0.1" />
+<PackageReference Include="MongoDB.Driver" Version="2.9.3" />
 ~~~
 
-
-
-At first I defined a really simple `DbContext` that contains just one entity to work with:
+At first I defined a `WeatherService` that contains the connection to the MongoDB:
 
 ~~~csharp
-public class ApplicationDbContext : DbContext
+public interface IWeatherService
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
-    {        }
-    
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    Task<List<WeatherData>> Get();
+    Task<WeatherData> Get(int id);
+    Task<WeatherData> Create(WeatherData weather);
+    Task Update(int id, WeatherData weatherIn);
+    Task Remove(WeatherData weatherIn);
+    Task Remove(int id);
+}
+public class WeatherService : IWeatherService
+{
+    private readonly IMongoCollection<WeatherData> _weatherData;
+
+    public WeatherService(IWeatherDatabaseSettings settings)
     {
-        modelBuilder.Entity<WeatherData>()
-            .HasKey(x => x.Id);
+        var client = new MongoClient(settings.ConnectionString);
+        var database = client.GetDatabase(settings.DatabaseName);
+
+        _weatherData = database.GetCollection<WeatherData>(
+            settings.WeatherCollectionName);
+    }
+
+    public async Task<List<WeatherData>> Get() =>
+        (await _weatherData.FindAsync(book => true)).ToList();
+
+    public async Task<WeatherData> Get(int id) =>
+        (await _weatherData.FindAsync<WeatherData>(weather => weather.Id == id)).FirstOrDefault();
+
+    public async Task<WeatherData> Create(WeatherData weather)
+    {
+        await _weatherData.InsertOneAsync(weather);
+        return weather;
     }
     
-    public DbSet<WeatherData> WeatherData { get; set; }
+    public async Task Update(int id, WeatherData weatherIn) =>
+        await _weatherData.ReplaceOneAsync(weather => weather.Id == id, weatherIn);
+
+    public async Task Remove(WeatherData weatherIn) =>
+        await _weatherData.DeleteOneAsync(weather => weather.Id == weatherIn.Id);
+
+    public async Task Remove(int id) =>
+        await _weatherData.DeleteOneAsync(weather => weather.Id == id);
 }
 ~~~
 
-This `DbContext` needs to be registered in the `Program.cs`:
+This `WeatherService` and the needed Settings need to be registered in the `Program.cs`:
 
 ~~~csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
         .ConfigureServices((hostContext, services) =>
         {                    
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(
-                    hostContext.Configuration.GetConnectionString("DefaultConnection")));
+            services.Configure<WeatherDatabaseSettings>(
+                hostContext.Configuration.GetSection(nameof(WeatherDatabaseSettings)));
+
+            services.AddSingleton<IWeatherDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<WeatherDatabaseSettings>>().Value);
+
+            services.AddTransient<IWeatherService, WeatherService>();
+
             services.AddHostedService<WeatherWorker>();
         });
 ~~~
 
 This registration works the same way as in the regular ASP.NET Core Startup classes. The DI container is the same, only the location, where the configuration needs to be done is different.
 
+At first I register the `WeatherDatabaseSettings` which reads the settings out of the `appsettings.json`. The second line registers an instance of the settings together with the settings interface. This is not really needed, but shows how you could register a service like this.
+
+The third registration is the actual  `WeatherService`
+
 Since the connection string is read from the `appsettings.json` file, I also need to add the connection string here:
 
 ~~~json
 {
-    "ConnectionStrings": {
-        "DefaultConnection": "Host=my_host;Database=my_db;Username=my_user;Password=my_pw"
-    },
-    // ...
+  "WeatherDatabaseSettings": {
+    "WeatherCollectionName": "WeatherData",
+    "ConnectionString": "mongodb+srv://weatherstats:weatherstats@instancename.azure.mongodb.net/test?retryWrites=true&w=majority",
+    "DatabaseName": "WeacherDataDb"
+  },
+  // ...
 }
 ~~~
 
-If the `DbContext` is registered, I'm almost able to use it in the `Worker.cs`. I need to inject the `DbContext` first:
+Currently it is a MongoDB hosted on Azure, but later on I will use an instance inside a Docker container. It seems to be more useful to have it all all boxed in containers. From my perspective this makes shipping the entire application more easy and flexible.
+
+However, If the `WeatherService` is registered, I'm almost able to use it in the `Worker.cs`. I need to inject the `WeatherService` first:
 
 ~~~csharp
 public class WeatherWorker : BackgroundService
 {
     private readonly ILogger<WeatherWorker> _logger;
-    private readonly ApplicationDbContext _dbContext;
+    private readonly IWeatherService _weatherService;
 
     public WeatherWorker(ILogger<WeatherWorker> logger,
-        ApplicationDbContext dbContext)
+        IWeatherService weatherService)
     {
         _logger = logger;
-        _dbContext = dbContext;
+        _weatherService = weatherService;
     }
 ~~~
 
-Now I can add the lines to save the weather date to the database:
+Now I can add this lines to save the weather date to the database:
 
 ~~~csharp
-_dbContext.WeatherData.Add(new WeatherData
+await _weatherService.Create(new WeatherData
 {
+    Id = i,
     WeatherStation = "US1WAKG0045",
     AvgTemperature = weather.AvgTemperature,
     AvgWindSpeed = weather.AvgWindSpeed,
@@ -264,12 +301,22 @@ _dbContext.WeatherData.Add(new WeatherData
     Precipitaion = weather.Precipitaion,
     Date = weather.Date.ToDateTime()
 });
-await _dbContext.SaveChangesAsync(stoppingToken);
 ~~~
 
-
+That's it. Now the weather data fetched from the weather station will be saved into a database using a worker service. 
 
 ## Conclusion
 
+This is working quite well. It's really the first time I use a MongoDB, but it's nice, since it is just working and easy to setup. During development I'm going to use the instance on Azure and later on I will setup a dockerized instance. 
 
+I really like the way gRPC works and how easy it is to setup a gRPC client. But I think it makes sense to have a gRPC client template available with the .NET CLI by default. This way it wouldn't be needed to find the right packages to include in various blog posts and documentations. Because this get's hard and confusing, if some of resources are just a little bit outdated. The way to add a gRPC service as a service reference using VIsual Studio 2019 is nice, but doesn't really help developers who use VSCode or/and are working on different platforms.
+
+As mentioned the worker and the weather station are working pretty well, but there is still a lot to do:
+
+* I need to create the web client
+* I will add health checks to monitor the entire application
+* I need to dockerize all the stuff 
+* I will to push it so somewhere
+
+But this are topics for the next blog posts :-)
 
