@@ -83,7 +83,7 @@ Now we need to create the gRPC client to fetch the data from the weather station
 
 Creating the gRPC client needs some configuration, since there is no gRPC client template project available yet in the .NET CLI. Since the server and the client have to use the same proto file to setup a connection, it would make sense to copy the proto file of the server project into the solution folder and to share it between the projects. This is why I created a new Protos folder in the solution folder and moved the `weather.proto` into it.
 
-![](C:\git\blog\_source\img\weatherstats\protofile.png)
+![]({{site.baseurl}}/img/weatherstats/protofile.png)
 
 This needs us to change the link to the proto file in the project files. The server:
 
@@ -171,7 +171,15 @@ This snippet simulates the daily execution. There is a `DateTIme` defined that r
 
 On line seven of this snippet I use the client to call the generated method `GetWeatherAsync` with a new `WeatherRequest`. The `WeatherRequest` contains the current `DateTime` as a `Google Protobuf Timestamp`. This type already has methods to convert the .NET UTC `DateTimes` into this kind of Timestamps. 
 
-After I retrieved the weather data, I write some of the information out to the console. I'm going to add some code here to write the data to the database used by the Web UI.
+After I retrieved the weather data, I write some of the information out to the console. 
+
+Now I am able to run both applications using two console sessions and it should work. One for the server and one for the client. The worker service application should be able to connect to the weather station and to fetch the data:
+
+![]({{site.baseurl}}/img/weatherstats/run.png)
+
+As you can see in the screenshot it works absolutely fine.
+
+I'm now going to add some code to write the data to the database which is also used by the Web UI.
 
 ## The database 
 
@@ -307,7 +315,7 @@ That's it. Now the weather data fetched from the weather station will be saved i
 
 ## Conclusion
 
-This is working quite well. It's really the first time I use a MongoDB, but it's nice, since it is just working and easy to setup. During development I'm going to use the instance on Azure and later on I will setup a dockerized instance. 
+This is working quite well. It's actually the first time I use a MongoDB, but it's nice, since it is just working and easy to setup. During development I'm going to use the instance on Azure and later on I will setup a dockerized instance. 
 
 I really like the way gRPC works and how easy it is to setup a gRPC client. But I think it makes sense to have a gRPC client template available with the .NET CLI by default. This way it wouldn't be needed to find the right packages to include in various blog posts and documentations. Because this get's hard and confusing, if some of resources are just a little bit outdated. The way to add a gRPC service as a service reference using VIsual Studio 2019 is nice, but doesn't really help developers who use VSCode or/and are working on different platforms.
 
