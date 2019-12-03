@@ -91,8 +91,6 @@ Also the `appsettings` to connect the MongoDB server are the same:
 }
 ~~~
 
-
-
 ## Display the data
 
 To quickly test the connection to the data base I reuse the `FetchData` Razor component (`FetchData.razor`) and inject the `IWeatherService` directly
@@ -122,7 +120,7 @@ This gives me the `WeatherService` instance in a property called `WeatherService
 }
 ~~~
 
-With the async loading in mind I can add a loading message that disapears as soon as the data are available:
+With the `async` loading in mind I can add a loading message that disappears as soon as the data are available in the variable `weatherData`:
 
 ~~~html
 @if (weatherData == null)
@@ -155,6 +153,8 @@ else
 }
 ~~~
 
+The table to show the data is pretty simple and written using common Razor syntax. I'm iterating over the data to render the table rows and their values.
+
 I now can start the application to check weather it's working or not:
 
 ~~~shell
@@ -167,6 +167,22 @@ And it works:
 ![](../img/weatherstats/weathertable.png)
 
 
+
+## Playing around
+
+Since I have the connection and the weather data available I can start playing around. At first I want to update the UI every time I get a new data point. This means I need to trigger a push from the server to the client. 
+
+Microsoft says that Blazor is the replacement of Web Forms. That means that Blazor also is stateful. What if we just wrap the data loading part inside a loop to load it every second? This won't work inside the `OnInitializedAsync()` method, because it will await the execution and renders the component when the loop is finished. The loop shouldn't be the problem, but the I need to find the time to execute the loop.
+
+
+
+
+
+
+
+The next thing I want to try is to plot the data on a graph.
+
+In the past, I worked a lot with time series like this. Actually the time series in the past where about financial data, but they look the same. We have a temporal frequency and a data point with one to many values. In the table above I display three different series, using the same frequency and the same temporal coverage. The weather service provide five series, because it also includes the min and max temperature per data point. Those data can be plotted on a graph, e. g. as a line chart. The time is the x-axis and the values will be on the y-axis. All I need to do now is a graph library for razor that can be feed with the data we fetch from the database.
 
 
 
