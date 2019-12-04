@@ -18,12 +18,9 @@ You got the idea?
 
 I'm going to push the Advent calendar posts every day via twitter and I will list them here in this introduction post.
 
-* #1: Title of that resource
-  Authors Name
-  Link to the advents post
-* #2: Title of that resource
-  Authors Name
-  Link to the advents post
-* #3: ...
+* #1: [NDC Conference Videos]({% post_url advent-post-ndc-conferences.md %})
+* #2: [Steve Gordon's blog]({% post_url advent-post-steve-gordon.md %})
+* #3: [Fritz and Friends]({% post_url advent-post-fritz-and-friends.md %})
+* #4: [Damien Bowden's blog]({% post_url advent-post-damien-bowden.md %})
 
 Until yet, I've just a few ideas which resources I'm going to write about. So you are free to propose some nice and useful links in the comments below. 
