@@ -129,7 +129,7 @@ public class ApplicationDbContext : DbContext
 
 ## The gRPC endpoint
 
-Let's start changing the gRPC endpoint. Personally I really love starting to code from the UI perspective, this forces me to not do more than the UI really needs. In hour case the gRPC endpoint is the UI. So I use the `weather.proto` file to design the API:
+Let's start changing the gRPC endpoint. Personally I really love starting to code from the UI perspective, this forces me to not do more than the UI really needs. In our case the gRPC endpoint is the UI. So I use the `weather.proto` file to design the API:
 
 ```protobuf
 syntax = "proto3";

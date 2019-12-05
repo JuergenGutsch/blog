@@ -16,14 +16,12 @@ During this years Advent, I'd like to post a kind of an Advent calendar. Until D
 
 You got the idea?
 
-I'm going to push the Advent calendar posts every day via twitter and I will list them here in this introduction post.
+I'm going to push the Advent calendar posts every day via twitter and I will list them here in this introduction post:
 
-* #1: Title of that resource
-  Authors Name
-  Link to the advents post
-* #2: Title of that resource
-  Authors Name
-  Link to the advents post
-* #3: ...
+* #01: [NDC Conference Videos]({% post_url advent-post-ndc-conferences.md %})
+* #02: [Steve Gordon's blog]({% post_url advent-post-steve-gordon.md %})
+* #03: [Fritz and Friends]({% post_url advent-post-fritz-and-friends.md %})
+* #04: [Damien Bowden's blog]({% post_url advent-post-damien-bowden.md %})
+* #05: [.NET Core 3.1 is out]({% post_url advent-post-dotnet31.md %})
 
 Until yet, I've just a few ideas which resources I'm going to write about. So you are free to propose some nice and useful links in the comments below. 
