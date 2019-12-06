@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.NET Hack Advent Post 04: Andrew Lock's blog"
+title: "ASP.NET Hack Advent Post 06: Andrew Lock's blog"
 teaser: "This is the sixth post of the ASP.NET Hack Advent. Until December 24th I'm going to post a link to a good community resource per day and a few lines about it."
 author: "Jürgen Gutsch"
 comments: true
