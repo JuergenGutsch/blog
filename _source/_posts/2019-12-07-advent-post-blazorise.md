@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "ASP.NET Hack Advent Post 07: Andrew Lock's blog"
-teaser: "This is the sixth post of the ASP.NET Hack Advent. Until December 24th I'm going to post a link to a good community resource per day and a few lines about it."
+title: "ASP.NET Hack Advent Post 07: Blazorise"
+teaser: "This is the seventh post of the ASP.NET Hack Advent. Until December 24th I'm going to post a link to a good community resource per day and a few lines about it."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -14,15 +14,17 @@ tags:
 
 ![]({{site.baseurl}}/img/advent/advent.jpg)
 
-This sixth post is about a block that is full of different, but detailed posts about .NET Core and ASP.NET Core. The blog's name ".NET Escapades" kinda describes, that author is writing about almost all he is experiencing related to .NET Core and ASP.NET Core. 
+Recently I stumbled upon a really cool project that provides frontend components for Blazor. It supports Blazor server side and Blazor WebAssembly on the client side. I found that project, while I was searching for a chart component for a Blazor demo application I'm currently working on.
 
-This blog is running by Andrew Lock, who is a full stack ASP.NET developer, living in Devon (UK). As well as the other blog authors I introduced in the last advent posts, he is a Microsoft MVP and pretty much involved and well known in the .NET developer community. 
+![](https://github.com/stsrki/Blazorise/raw/master/docs/assets/images/blazorise.png)
 
-He also published the book [ASP.NET Core in Action](https://www.manning.com/books/asp-net-core-in-action?a_aid=aspnetcore-in-action&a_bid=5b1b11eb) in June last year.
+This project is called Blazorise, is completely open source and hosted on GitHub. It is built on top of Blazor and CSS frameworks like Bootstrap, Material and Bulma. (Actually I've never heard about Bulma.)
 
-Blog: [https://andrewlock.net/](https://andrewlock.net/)
+Blazorise contains a lot of useful components, including a library to create Charts and DataGrids. It is actively maintained, well documented and also has demo pages for all three CSS Framework implementations.
 
-GitHub: [https://github.com/andrewlock](https://github.com/andrewlock)
+If you are working with Blazor, you should have a look at it:
 
-Twitter: [https://twitter.com/andrewlocknet](https://twitter.com/andrewlocknet)
+Website: [https://blazorise.com/](https://blazorise.com/)
+
+GitHub: [https://github.com/stsrki/Blazorise](https://github.com/stsrki/Blazorise)
 
