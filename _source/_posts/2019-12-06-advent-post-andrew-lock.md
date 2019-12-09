@@ -14,7 +14,7 @@ tags:
 
 ![]({{site.baseurl}}/img/advent/advent.jpg)
 
-This sixth post is about a block that is full of different, but detailed posts about .NET Core and ASP.NET Core. The blog's name ".NET Escapades" kinda describes, that author is writing about almost all he is experiencing related to .NET Core and ASP.NET Core. 
+This sixth post is about a blog that is full of different, but detailed posts about .NET Core and ASP.NET Core. The blog's name ".NET Escapades" kinda describes, that author is writing about almost all he is experiencing related to .NET Core and ASP.NET Core. 
 
 This blog is running by Andrew Lock, who is a full stack ASP.NET developer, living in Devon (UK). As well as the other blog authors I introduced in the last advent posts, he is a Microsoft MVP and pretty much involved and well known in the .NET developer community. 
 
