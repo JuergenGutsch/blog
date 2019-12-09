@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "ASP.NET Hack Advent Post 07: Hanselman debugs a .NET Core Linux app in WSL2 with VS on Windows"
-teaser: "This is the seventh post of the ASP.NET Hack Advent. Until December 24th I'm going to post a link to a good community resource per day and a few lines about it."
+title: "ASP.NET Hack Advent Post 08: Hanselman debugs a .NET Core Linux app in WSL2 with VS on Windows"
+teaser: "This is the eighth post of the ASP.NET Hack Advent. Until December 24th I'm going to post a link to a good community resource per day and a few lines about it."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
