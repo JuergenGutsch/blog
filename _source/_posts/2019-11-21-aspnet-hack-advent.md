@@ -26,7 +26,8 @@ I'm going to push the Advent calendar posts every day via twitter and I will lis
 - #06: [Andrew Lock's blog]({% post_url advent-andrew-lock.md %})
 - #07: [Blazorise]({% post_url advent-post-blazorise.md %})
 - #08: [Hanselman debugs a .NET Core Linux app in WSL2 with VS on Windows]({% post_url advent-post-netcore-wsl-debug-linux.md %})
-- #09:
-- #10:
+- #09: [November 2019 .NET/ASP.NET Documentation Update]({% post_url advent-post-core-docs-update.md %})
+- #10: 
+- #11: 
 
 Until yet, I've just a few ideas which resources I'm going to write about. So you are free to propose some nice and useful links in the comments below. 
