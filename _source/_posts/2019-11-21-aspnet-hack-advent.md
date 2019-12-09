@@ -23,7 +23,7 @@ I'm going to push the Advent calendar posts every day via twitter and I will lis
 - #03: [Fritz and Friends]({% post_url advent-post-fritz-and-friends.md %})
 - #04: [Damien Bowden's blog]({% post_url advent-post-damien-bowden.md %})
 - #05: [.NET Core 3.1 is out]({% post_url advent-post-dotnet31.md %})
-- #06: [Andrew Lock's blog]({% post_url advent-andrew-lock.md %})
+- #06: [Andrew Lock's blog]({% post_url advent-post-andrew-lock.md %})
 - #07: [Blazorise]({% post_url advent-post-blazorise.md %})
 - #08: [Hanselman debugs a .NET Core Linux app in WSL2 with VS on Windows]({% post_url advent-post-netcore-wsl-debug-linux.md %})
 - #09: [November 2019 .NET/ASP.NET Documentation Update]({% post_url advent-post-core-docs-update.md %})
