@@ -15,3 +15,4 @@ tags:
 ![]({{site.baseurl}}/img/advent/advent.jpg)
 
 https://focus.dotnetconf.net/
+
