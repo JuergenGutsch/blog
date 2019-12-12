@@ -29,6 +29,8 @@ I'm going to push the Advent calendar posts every day via twitter and I will lis
 - #09: [November 2019 .NET/ASP.NET Documentation Update]({% post_url advent-post-core-docs-update.md %})
 - #10: [Wasmtime]({% post_url advent-post-wasmtime.md %})
 - #11: [Updating an ASP.NET Core 2.2 Web Site to .NET Core 3.1]({% post_url advent-post-wasmtime.md %})
-- #12:
+- #12: [.NET Rocks Podcasts]({% post_url advent-post-dotnet-rocks.md %}) 
+- #13:
+- #14:
 
 Until yet, I've just a few ideas which resources I'm going to write about. So you are free to propose some nice and useful links in the comments below. 
