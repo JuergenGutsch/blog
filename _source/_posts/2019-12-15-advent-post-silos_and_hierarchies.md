@@ -9,10 +9,18 @@ tags:
 - .NET Core
 - ASP.NET Core
 - ASP.NET Hack Advent
-- OpenSource
+- Blog Post
 ---
 
 ![]({{site.baseurl}}/img/advent/advent.jpg)
 
-https://yellow-brick-code.org/?p=1255
+This post is a special one. Not really related to .NET Core or ASP.NET Core, but to software development in general. I recently stumbled upon this post and while reading it I found myself remembering the days back when I needed to write code others estimated and specified for me. 
+
+[About silos and hierarchies in software development](https://yellow-brick-code.org/?p=1255)
+
+The woman who wrote this post lives in Cologne Germany and worked in really special environments, like self organizing teams and companies. I met Krisztina Hirth several times at community events in Germany. I really like her ideas, the way she thinks and the way she writes. You should definitely also read her other posts on her blog: [https://yellow-brick-code.org/](https://yellow-brick-code.org/)
+
+Twitter: [https://twitter.com/yellowbrickc](https://twitter.com/yellowbrickc)
+
+
 
