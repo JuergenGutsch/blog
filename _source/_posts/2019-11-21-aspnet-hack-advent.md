@@ -18,10 +18,21 @@ You got the idea?
 
 I'm going to push the Advent calendar posts every day via twitter and I will list them here in this introduction post:
 
-* #01: [NDC Conference Videos]({% post_url advent-post-ndc-conferences.md %})
-* #02: [Steve Gordon's blog]({% post_url advent-post-steve-gordon.md %})
-* #03: [Fritz and Friends]({% post_url advent-post-fritz-and-friends.md %})
-* #04: [Damien Bowden's blog]({% post_url advent-post-damien-bowden.md %})
-* #05: [.NET Core 3.1 is out]({% post_url advent-post-dotnet31.md %})
+- #01: [NDC Conference Videos]({% post_url advent-post-ndc-conferences.md %})
+- #02: [Steve Gordon's blog]({% post_url advent-post-steve-gordon.md %})
+- #03: [Fritz and Friends]({% post_url advent-post-fritz-and-friends.md %})
+- #04: [Damien Bowden's blog]({% post_url advent-post-damien-bowden.md %})
+- #05: [.NET Core 3.1 is out]({% post_url advent-post-dotnet31.md %})
+- #06: [Andrew Lock's blog]({% post_url advent-post-andrew-lock.md %})
+- #07: [Blazorise]({% post_url advent-post-blazorise.md %})
+- #08: [Hanselman debugs a .NET Core Linux app in WSL2 with VS on Windows]({% post_url advent-post-netcore-wsl-debug-linux.md %})
+- #09: [November 2019 .NET/ASP.NET Documentation Update]({% post_url advent-post-core-docs-update.md %})
+- #10: [Wasmtime]({% post_url advent-post-wasmtime.md %})
+- #11: [Updating an ASP.NET Core 2.2 Web Site to .NET Core 3.1]({% post_url advent-post-wasmtime.md %})
+- #12: [.NET Rocks Podcasts]({% post_url advent-post-dotnet-rocks.md %}) 
+- #13: [.NET Conf: Focus on Blazor]({% post_url advent-post-dotnetconf-blazor.md})
+- #14: [MailKit]({% post_url advent-post-mailkit.md})
+- #15:
+- #16:
 
 Until yet, I've just a few ideas which resources I'm going to write about. So you are free to propose some nice and useful links in the comments below. 
