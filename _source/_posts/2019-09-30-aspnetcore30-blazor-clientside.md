@@ -18,7 +18,7 @@ Microsoft compiled the Mono runtime into a WebAssembly. With this, it is possibl
 
 ## Let's have a look at the HostBuilder
 
-This time the `Program.cs` look different compared to the default ASP.NET Core projects:
+This time the `Program.cs` looks different compared to the default ASP.NET Core projects:
 
 ``` csharp
 public class Program
@@ -34,9 +34,9 @@ public class Program
 }
 ```
 
-Here we create IWebAssemblyHostBuilder instead of an IHostBuilder. Actually, it is a completely different Interface and doesn't derive from the IHostBuilder at the time I wrote this. But it looks pretty similar. In this case, also a default configuration of the IWebAssemblyHostBuilder is created and similar to the ASP.NET Core projects, a Startup class is used to configure the application.
+Here we create `IWebAssemblyHostBuilder` instead of an `IHostBuilder`. Actually, it is a completely different Interface and doesn't derive from the `IHostBuilder` at the time I wrote this. But it looks pretty similar. In this case, also a default configuration of the `IWebAssemblyHostBuilder` is created and similar to the ASP.NET Core projects, a `Startup` class is used to configure the application.
  
-The Startup class is pretty empty but has the same structure as all the other ones. You are able to configure services to the IoC container and to configure the application:
+The `Startup` class is pretty empty but has the same structure as all the other ones. You are able to configure services to the IoC container and to configure the application:
 
 ``` csharp
 public class Startup
@@ -54,7 +54,7 @@ public class Startup
 
 Usually, you won't configure a lot here, except the services. The only thing you can really do here is to execute code on startup, to maybe initialize a kind of a database or whatever you need to do on startup.
  
-The important line of code here is the line where the root component is added to the application. Actually, it is the App.cshtml in the root of the project. In Blazor server side this is the host page that calls the root component and here it is configured in the Startup.
+The important line of code here is the line where the root component is added to the application. Actually, it is the `App.cshtml` in the root of the project. In Blazor server side this is the host page that calls the root component and here it is configured in the `Startup`.
  
 All the other UI stuff is pretty much equal in both versions of Blazor. 
 
