@@ -11,7 +11,7 @@ tags:
 - Worker Service
 ---
 
-I mentioned in on of the first posts of this series, that we are now able to create ASP.NET Core applications without a web server and without all the HTTP stuff that is needed to provide content via HTTP or HTTPS. At first glance, it sounds weird. Why should I create an ASP.NET application that doesn't provide any kind of an endpoint over HTTP? Is this really ASP.NET? Well, it is not ASP.NET in the sense of creating web applications. But it is part of the ASP.NET Core and uses all the cool features that we got used to in ASP.NET Core:
+I mentioned in one of the first posts of this series, that we are now able to create ASP.NET Core applications without a web server and without all the HTTP stuff that is needed to provide content via HTTP or HTTPS. At first glance, it sounds weird. Why should I create an ASP.NET application that doesn't provide any kind of an endpoint over HTTP? Is this really ASP.NET? Well, it is not ASP.NET in the sense of creating web applications. But it is part of the ASP.NET Core and uses all the cool features that we got used to in ASP.NET Core:
 
 * Logging
 * Configuration
@@ -109,7 +109,7 @@ I'm going to write a weather station that provides a gRPC endpoint to fetch the 
 
 I'm going to put those apps and the database into docker containers and put them together using docker-compose. 
 
->  I'll simulate the days by changing to the next day every second starting by 1/1/2019. I already have weather data of some weather stations in Washington state and will reuse this data. 
+I'll simulate the days by changing to the next day every second starting by 1/1/2019. I already have weather data of some weather stations in Washington state and will reuse this data. 
 
 The weather station will have an SQLite inside the docker container. The separate database on a fourth docker container is for the worker and the web app to share the data. I'm not yet sure what database I want to use. If you have an idea, just drop me a comment.
 
