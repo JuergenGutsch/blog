@@ -5,7 +5,7 @@ teaser: "This is the nineteenth post of the ASP.NET Hack Advent. Until December 
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
-T- .NET Core
+- .NET Core
 - ASP.NET Core
 - ASP.NET Hack Advent
 - Blog Post
@@ -13,17 +13,17 @@ T- .NET Core
 
 ![]({{site.baseurl}}/img/advent/advent.jpg)
 
-Because I got a lot of questions about migrating ASP.NET Core applications to 3.1, I will introduce another really good blog post about it. This time it is a post about a real project that needs to be migrated from ASP.NET Core 2.2. to 2.1. He is writing about how to update the project file and about what needs to be changed in the `Startup.cs`:
+Because I got a lot of questions about migrating ASP.NET Core applications to 3.1, I will introduce another really good blog post about it. This time it is a post about a real project that needs to be migrated from ASP.NET Core 2.2. to 2.1. He is writing about how to update the project file and about what needs to be changed in the Startup.cs:
 
-https://medium.com/@alexandre.malavasi/migration-from-asp-net-core-2-2-to-3-1-real-project-ca382ea7eef7
+[Migration from Asp.Net Core 2.2 to 3.1 — Real project](https://medium.com/@alexandre.malavasi/migration-from-asp-net-core-2-2-to-3-1-real-project-ca382ea7eef7)
 
 This post was written by Alexandre Malavasi on December 16. He is a consultant and .NET developer from Brazil, who is currently working and living in Dublin Ireland. 
 
-Twitter: https://twitter.com/alemalavasi
+Twitter: [https://twitter.com/alemalavasi](https://twitter.com/alemalavasi)
 
-Medium: https://medium.com/@alexandre.malavasi
+Medium: [https://medium.com/@alexandre.malavasi](https://medium.com/@alexandre.malavasi)
 
-LinkedIn: https://www.linkedin.com/in/alexandremalavasi/
+LinkedIn: [https://www.linkedin.com/in/alexandremalavasi/](https://www.linkedin.com/in/alexandremalavasi/)
 
 
 
