@@ -5,6 +5,7 @@ teaser: "This is the nineteenth post of the ASP.NET Hack Advent. Until December 
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
+tags: 
 - .NET Core
 - ASP.NET Core
 - ASP.NET Hack Advent
