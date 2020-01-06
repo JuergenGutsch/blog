@@ -19,3 +19,7 @@ Scott Hanselman again writes about ASP.NET Core applications on Linux. This time
 [Moving an ASP.NET Core from Azure App Service on Windows to Linux by testing in WSL and Docker first](https://www.hanselman.com/blog/MovingAnASPNETCoreFromAzureAppServiceOnWindowsToLinuxByTestingInWSLAndDockerFirst.aspx)
 
 Again this is one of his pretty detailed and deep dive posts. You definitely have to read it, if you want to run your ASP.NET Core application on Linux.
+
+Blog: [https://www.hanselman.com/blog](https://www.hanselman.com/blog)
+
+Twitter: [https://twitter.com/shanselman](https://twitter.com/shanselman)

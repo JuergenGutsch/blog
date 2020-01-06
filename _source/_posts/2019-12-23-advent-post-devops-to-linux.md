@@ -14,11 +14,13 @@ tags:
 
 ![]({{site.baseurl}}/img/advent/advent.jpg)
 
-
-
-
+After you migrated your ASP.NET Core application to a Linux based App Service, you should setup a CI/CD pipeline ideally on Azure DevOps. And again it is Scott Hanselman who wrote a great post about it:
 
 [Setting up Azure DevOps CI/CD for a .NET Core 3.1 Web App hosted in Azure App Service for Linux](https://www.hanselman.com/blog/SettingUpAzureDevOpsCICDForANETCore31WebAppHostedInAzureAppServiceForLinux.aspx)
 
+So, read this post to learn more about ASP.NET Core on Linux.
 
+Blog: [https://www.hanselman.com/blog](https://www.hanselman.com/blog)
+
+Twitter: [https://twitter.com/shanselman](https://twitter.com/shanselman)
 
