@@ -37,7 +37,8 @@ I'm going to push the Advent calendar posts every day via twitter and I will lis
 - #17: [Creating Common Intermediate Language projects with .NET SDK]({% post_url il-projects.md %})
 - #18: [The .NET Foundation has a new Executive Director]({% post_url advent-post-net-foundation.md %})
 - #19: [Migrate a real project from ASP.NET Core 2.2 to 3.1]({% post_url advent-post-dotnet31-migration.md %})
-- #20:
+- #20: [The ultimate guide to secure cookies with web.config in .NET]({% post_url advent-post-secure-cookies.md %})
 - #21:
+- #22:
 
 Until yet, I've just a few ideas which resources I'm going to write about. So you are free to propose some nice and useful links in the comments below. 
