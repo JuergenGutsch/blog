@@ -185,7 +185,7 @@ I'm now going to add some code to write the data to the database which is also u
 
 Since the applications will run on docker, I'm going to use an open source data base server to store the data. This time I need to share the database with the UI project. The current app writes the data into the database and the UI project will read and display the data. So I need a separate container that host the database. In this this case I would try to use a MongoDB.
 
-To use the PostgreSQL I need to add the Entity Framework Provider first:
+To use the MongoDB I need to add the Data Provider first:
 
 ~~~xml
 <PackageReference Include="MongoDB.Driver" Version="2.9.3" />
