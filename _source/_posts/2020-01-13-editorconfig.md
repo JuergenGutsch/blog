@@ -14,9 +14,9 @@ tags:
 
 In the backend developer team of the YOO we are currently discussing coding style guidelines and ways to enforce them. Since we are developer with different mindsets and backgrounds, we need to find a way to enforce the rules in a way that works in different editors too.
 
-> BTW: C# developers often came from other languages and technologies before they started to work with this awesome language. Universities mostly teach Java, ore the developer were front end developers in the past, or started with PHP. Often .NET developers start with VB.NET and switch to C# later. Me as well: I also started as a front end developer with HTML4, CSS2 and JavaScript, used VB Script and VB6 on the server side in 2001. Later I used VB.NET on the server and switched to C# in 2007. 
+> BTW: C# developers often came from other languages and technologies before they started to work with this awesome language. Universities mostly teach Java, or the developer were front end developers in the past, or started with PHP. Often .NET developers start with VB.NET and switch to C# later. Me as well: I also started as a front end developer with HTML4, CSS2 and JavaScript, used VB Script and VB6 on the server side in 2001. Later I used VB.NET on the server and switched to C# in 2007. 
 
-In our company we use ASP.NET Core more and more. This also means we are more and more free to use the best editor we want to use. And we are more and more free to use platform we want to work with. Some of use already prefer VSCode to work on ASP.NET Core projects. Maybe we'll have a fellow colleague in the future who prefers VSCode on Linux or VS on a Mac. This also makes the development environments divers. 
+In our company we use ASP.NET Core more and more. This also means we are more and more free to use the best editor we want to use. And we are more and more free to use platform we want to work with. Some of us use already and prefer VSCode to work on ASP.NET Core projects. Maybe we'll have a fellow colleague in the future who prefers VSCode on Linux or VS on a Mac. This also makes the development environments divers. 
 
 Back when we used Visual Studio only, Style Cop was the tool to enforce coding style guidelines. Since a couple of years there is a new tool that works in almost all editors out in the world.
 
