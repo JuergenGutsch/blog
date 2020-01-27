@@ -168,21 +168,49 @@ And it works:
 
 
 
-## Playing around
+## Playing around: Fetch new data every second
 
 Since I have the connection and the weather data available I can start playing around. At first I want to update the UI every time I get a new data point. This means I need to trigger a push from the server to the client. 
 
-Microsoft says that Blazor is the replacement of Web Forms. That means that Blazor also is stateful. What if we just wrap the data loading part inside a loop to load it every second? This won't work inside the `OnInitializedAsync()` method, because it will await the execution and renders the component when the loop is finished. The loop shouldn't be the problem, but I need to find the right time to execute the loop.
+Microsoft says that Blazor is the replacement of Web Forms. That means that Blazor also is stateful. What if we just wrap the data loading part inside a loop to load it every second? This won't work inside the `OnInitializedAsync()` method, because it will await the execution and renders the component when the loop is finished. The loop shouldn't be the problem, but I need to find the right time to execute the loop and to update the view.
 
+The solution is the method `OnAfterRenderAsync()` and the call of the method `StateHasChanged()`. Let's have a look at the code before getting into details:
 
+~~~ csharp
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await ReloadData();
+        }
+    }
 
+    private async Task ReloadData()
+    {
+        while(true)
+        {
+            try
+            {
+                weatherData = await WeatherService.Get();
+                this.StateHasChanged();            
+                await Task.Delay(1000);
+            }
+            catch(Exception e)
+            {
+                // break in case of an error 
+                break;
+            }  
+        }
+    }
+~~~
 
+In the `OnAfterRenderAsync` method I check whether it is the first call or not. Because I  want to call the loop to load the data only ones during the first rendering. Inside the `RelaodData()` method I have the loop that executes every second. So every second I load the data from the database and I tell the component that the state has changed and the component needs to re-render.
 
-
+## Playing around: Plot the data
 
 The next thing I want to try is to plot the data on a graph.
 
-In the past, I worked a lot with time series like this. Actually the time series in the past where about financial data, but they look the same. And it is not important if the numbers are weather data or financial data. We have a temporal frequency and a data point with one to many values. In the table above I display three different series, using the same frequency and the same temporal coverage. The weather service actually provides five series, because it also includes the min and max temperature per data point. Those data can be plotted on a graph, e. g. as a line chart. The time is the x-axis and the values will be on the y-axis. All I need to do now is a graph library for razor that can be fed with the data we fetch from the database.
+In the past, I worked a lot with time series like this. Actually the time series I worked with in the past were about financial data, but they look the same. We have a time axis (X) and a value axis (Y). And actually it is not important, whether the numbers are weather data or financial data. We have a temporal frequency and a data point with one to many values. In the table above I display three different series, using the same frequency and the same temporal coverage. The weather service actually provides five series, because it also includes the min and max temperature per data point. Those data can be plotted on a graph, e. g. as a line chart. All I need to do now is to find a a graph library for razor that can be fed with the data we fetched from the database.
 
-
+I found a cool project called Blazorize in GitHub that contains a lot of readz to use Blazor components. It also provides chart controls.
 
