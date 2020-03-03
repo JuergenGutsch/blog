@@ -157,4 +157,153 @@ public class ExampleHealthCheck : IHealthCheck
 }
 ~~~
 
-This class implements CheckHealthAsync method from the IHealthCheck interface. The HealthCheckContext contains the already registered health checks in the property Registration. This might be useful to check the state of other specific health checks.  
+This class implements `CheckHealthAsync` method from the `IHealthCheck` interface. The `HealthCheckContext` contains the already registered health checks in the property `Registration`. This might be useful to check the state of other specific health checks. 
+
+To add this class as a health check in the application we need to use the generic `AddCheck` method:
+
+~~~csharp
+services.AddHealthChecks()
+    .AddCheck<ExampleHealthCheck>("class based", null, new[] { "class" });
+~~~
+
+We also need to specify a name and at least one tag. With the second argument. I'm able to set a default failing state. But null is fine, in case I handle all exceptions inside the health check, I guess.
+
+
+
+## Expose the health state
+
+As mentioned, I'm able to provide an endpoint to expose the health state of my application to systems that depends on the current app. But by default it responses just with a simple string that only shows the simple state. It would be nice to see some more details to tell the consumer what actually is happening.
+
+Fortunately this is also possible by passing `HealthCheckOptions` into the `MapHealthChecks` method:
+
+~~~csharp
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHealthChecks("/health", new HealthCheckOptions()
+    {
+        Predicate = _ => true,
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+    });
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
+~~~
+
+With the Predicate you are able to filter specific health checks to execute and to get the state of those. In this case I want to execute them all. The `ResponseWriter` is needed to write the health information of the specific checks to the response. In that case I used a `ResponseWriter` from a community project that provides some cool UI features and a ton of ready-to-use health checks.
+
+* GitHub: [https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks](https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks)
+* NuGet: [HealthChecks.UI.Client](https://www.nuget.org/packages/AspNetCore.HealthChecks.UI/)
+
+~~~shell
+dotnet add package AspNetCore.HealthChecks.UI
+~~~
+
+The `UIResponseWriter` of that project writes a JSON output  to the HTTP response that includes many details about the used health checks:
+
+~~~json
+{
+  "status": "Unhealthy",
+  "totalDuration": "00:00:00.7348450",
+  "entries": {
+    "Foo": {
+      "data": {},
+      "description": "Foo is OK!",
+      "duration": "00:00:00.0010118",
+      "status": "Healthy"
+    },
+    "Bar": {
+      "data": {},
+      "description": "Bar is somewhat OK!",
+      "duration": "00:00:00.0009935",
+      "status": "Degraded"
+    },
+    "FooBar": {
+      "data": {},
+      "description": "FooBar is not OK!",
+      "duration": "00:00:00.0010034",
+      "status": "Unhealthy"
+    },
+    "ping": {
+      "data": {},
+      "description": "Ping Degraded",
+      "duration": "00:00:00.7165044",
+      "status": "Degraded"
+    },
+    "class based": {
+      "data": {},
+      "description": "A healthy result.",
+      "duration": "00:00:00.0008822",
+      "status": "Healthy"
+    }
+  }
+}
+~~~
+
+In case the overall state is Unhealthy the endpoint sends the result with a 503 HTTP response status, otherwise it is a 200. This is really useful if you just want to handle the HTTP response status.
+
+The community project provides a lot more features. Also a nice UI to visualize the health state to humans. But I will show you this in a later section.
+
+## Handle the states inside the application 
+
+In the most cases you don't want to just expose the state to depending consumer of your app. It might also be that you need to handle the different states in your application, by showing a message in case the application is not working properly, disabling parts of the application that are not working, switching to a fallback source, or whatever is needed to run the application in an degraded state.
+
+To do things like this, you can use the `HealthCheckService` that is already registered to the IoC Container with the `AddHealthChecks()` method. You can inject the `HealthCheckService` using the `IHealthCheckService` interface wherever you want.
+
+Let's see how this is working!
+
+In the `HomeController` I created a constructor that injects the `IHealthCheckService` the same way as other services need to be injected. I also created a new Action called Health that uses the `HealthCheckService` and calls the method `CheckHealthAsync`() to execute the checks and to retrieve a `HealthReport`. The `HealthReport` is than passed to the view:
+
+~~~csharp
+public class HomeController : Controller
+{
+    private readonly IHealthCheckService _healthCheckService;
+
+    public HomeController(
+        IHealthCheckService healthCheckService)
+    {
+        _healthCheckService = healthCheckService;
+    }
+
+    public async Task<IActionResult> Health()
+    {
+        var health = await _healthCheckService.CheckHealthAsync();
+        
+        return View(health);
+    }
+~~~
+
+
+
+I also created a view called Health.cshtml. This view retrieves the Health report and displays the results:
+
+~~~html
+@using Microsoft.Extensions.Diagnostics.HealthChecks;
+@model HealthReport
+
+@{
+    ViewData["Title"] = "Health";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's health.</p>
+
+<p>
+    <span>@Model.Status</span> - <span>Duration: @Model.TotalDuration.TotalMilliseconds</span>
+</p>
+<ul>
+    @foreach (var entry in Model.Entries)
+    {
+    <li>
+        @entry.Value.Status - @entry.Value.Description<br>
+        Tags: @String.Join(", ", entry.Value.Tags)<br>
+        Duration: @entry.Value.Duration.TotalMilliseconds
+    </li>
+    }
+</ul>
+~~~
+
+To try it out I need to run the application using `dotnet run` in the console and calling https://localhost:5001/home/health in the browser:
+
+![](../img/healthchecks/healthview.png)
+
