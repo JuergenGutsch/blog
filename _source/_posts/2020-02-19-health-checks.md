@@ -273,9 +273,9 @@ public class HomeController : Controller
     }
 ~~~
 
+Optionally you are able to pass a predicate to the method `CheckHealthAsync()`. With the Predicate you are able to filter specific health checks to execute and to get the state of those. In this case I want to execute them all. 
 
-
-I also created a view called Health.cshtml. This view retrieves the Health report and displays the results:
+I also created a view called `Health.cshtml`. This view retrieves the `HealthReport` and displays the results:
 
 ~~~html
 @using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -303,7 +303,33 @@ I also created a view called Health.cshtml. This view retrieves the Health repor
 </ul>
 ~~~
 
-To try it out I need to run the application using `dotnet run` in the console and calling https://localhost:5001/home/health in the browser:
+To try it out, I just need to run the application using `dotnet run` in the console and calling https://localhost:5001/home/health in the browser:
 
 ![](../img/healthchecks/healthview.png)
+
+You could also try to analyze the `HealthReport` in the Controller, in your services to do something specific in case the the application isn't healthy anymore. 
+
+## A pretty health state UI
+
+The already mentioned GitHub project [AspNetCore.Diagnostics.HealthChecks](https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks) also provides a pretty UI to display the results in a nice and human readable way.
+
+This just needs a little more configuration in the `Startup.cs`
+
+Inside the method `ConfigureServices()` I needed to add the health checks UI services
+
+~~~csharp
+services.AddHealthChecksUI();
+~~~
+
+And inside the method `Configure()` I need to map the health checks UI Middleware right after the call of `MapHealthChecks`:
+
+~~~csharp
+endpoints.MapHealthChecksUI();
+~~~
+
+This adds a new route to our application to call the UI
+
+/healthchecks-ui
+
+
 
