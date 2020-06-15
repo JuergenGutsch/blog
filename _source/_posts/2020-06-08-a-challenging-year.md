@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Off-Topic] 2020 will be a year full of challenges"
-teaser: "This post really is off-topic. It seemed that 2020 started to become a good year. Life was kind of normal and I was looking forward to the upcoming events. But life wouldn't be life if there were no changes and challenges."
+teaser: "This post really is off-topic. It seemed that 2020 started to get a good year. Life was kind of normal and I was looking forward to the upcoming events. But life wouldn't be life if there were no changes and challenges."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -12,7 +12,7 @@ tags:
 
 This post really is off-topic. 
 
-It seemed that 2020 started to become a good year. Life was kind of normal and I was looking forward to the upcoming events. Community events as well as family events. I was really looking forward to the MVP Summit 2020, to meeting good friends again and to visiting my favorite city in the US.
+It seemed that 2020 started to get a good year. Life was kind of normal and I was looking forward to the upcoming events. Community events as well as family events. I was really looking forward to the MVP Summit 2020, to meeting good friends again and to visit my favorite city in the US.
 
 But life wouldn't be life if there were no changes and challenges.
 
@@ -32,9 +32,9 @@ This for sure results in new challenging situations, like moving into a new apar
 
 The second challenging situation is the one that happens to all of us all over the world. The COVID-19 lockdowns all over the world are challenging for everyone. Especially the kids and their parents. Fortunately, I am able to work from home and, fortunately, child care is divided 50/50 between me and my wife. (She is still called my wife because we are still married.) But to work and to do home-schooling and child care in parallel is different, challenging and might be really hard and almost impossible for some parents. 
 
-Since COVID-19 happened to central Europe, I was working from home. Actually, today is the first day in weeks I commute to work. Feels strange sitting in the train, for more than one hour, and wearing a face mask. The train is almost empty. Only a few people are talking because of those annoying masks.
+Since COVID-19 happened to central Europe, I was working from home. Actually, today is the first day since weeks I commute to work. Feels strange sitting in the train, for more than one hour, and wearing a face mask. The train is almost empty. Only a few people are talking because of those annoying masks.
 
-And, the first time in months, I have some time to write a blog post. I used to write while commuting, so I took the chance to write some stuff.
+And, the first time since months, I have some time to write a blog post. I used to write while commuting, so I took the chance to write some stuff.
 
 > Actually, I started this post two weeks ago. Now it is the second time since COVID-19 to commute to work :-D 
 
@@ -42,7 +42,7 @@ And, the first time in months, I have some time to write a blog post. I used to 
 
 The new situation and the less commute time are the reasons why I didn't write a blog post ore something else since January. 
 
-The move to the new apartment is complete. The kids know the new situation since more than a month and get used to it. It is all settling and calming down and the numbers around COVID-19 are getting better and better in central Europe. Let's have a small look into the future: 
+The move to the new apartment is done. The kids know the new situation since more than a month and get used to it. It is all settling and calming down and the numbers around COVID-19 are getting better and better in central Europe. Let's have a small look into the future: 
 
 I'm going to start challenging myself again to do some more stuff for the developer community:
 
