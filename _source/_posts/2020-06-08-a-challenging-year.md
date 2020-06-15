@@ -12,7 +12,7 @@ tags:
 
 This post really is off-topic. 
 
-It seemed that 2020 started to get a good year. Live was kind of normal and I was looking forward to the upcoming events. Community events as well as family events. I was really looking forward to the MVP Summit 2020, to meet good friends again and to visit my favorite city in the US.
+It seemed that 2020 started to get a good year. Life was kind of normal and I was looking forward to the upcoming events. Community events as well as family events. I was really looking forward to the MVP Summit 2020, to meet good friends again and to visit my favorite city in the US.
 
 But life wouldn't be life, if there where no changes and challenges.
 
