@@ -20,7 +20,7 @@ Post your content here
 
 ## The Blazor project
 
-I decided to use Blazor server side in this part. In the next post I'm going to create a Blazor, which needs a little more work to do, but uses a lot more techniques to write about. But the server side Blazor seems to be the best for now.
+I decided to use Blazor server side in this part. In the next post I'm going to create a Blazor WebAssembly project, which needs a little more work to do, but uses a lot more techniques to write about. But the server side Blazor seems to be the best for now.
 
 To create the Blazor project, I use the following commands in the console:
 
@@ -76,7 +76,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ~~~
 
-You already saw the same service registrations in the worker project. This time I added the registrations in the method `ConfigureServices` the `Startup.cs` 
+You already saw the same service registrations in the worker project. This time I added the registrations in the method `ConfigureServices` of the `Startup.cs` 
 
 Also the `appsettings` to connect the MongoDB server are the same:
 
@@ -212,5 +212,5 @@ The next thing I want to try is to plot the data on a graph.
 
 In the past, I worked a lot with time series like this. Actually the time series I worked with in the past were about financial data, but they look the same. We have a time axis (X) and a value axis (Y). And actually it is not important, whether the numbers are weather data or financial data. We have a temporal frequency and a data point with one to many values. In the table above I display three different series, using the same frequency and the same temporal coverage. The weather service actually provides five series, because it also includes the min and max temperature per data point. Those data can be plotted on a graph, e. g. as a line chart. All I need to do now is to find a a graph library for razor that can be fed with the data we fetched from the database.
 
-I found a cool project called Blazorize in GitHub that contains a lot of readz to use Blazor components. It also provides chart controls.
+I found a cool project called Blazorize in GitHub that contains a lot of ready to use Blazor components. It also provides chart controls.
 
