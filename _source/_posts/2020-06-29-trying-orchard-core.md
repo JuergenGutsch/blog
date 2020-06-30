@@ -16,7 +16,7 @@ Since I while I planned to try out the Orchard Core Application Framework. Back 
 
 ## Why a blog series
 
-Actually this post wasn't planned to be a series but as usual the posts are getting longer and longer. The more I write, the more came in mind to write about. Bloggers now this, I guess. So I needed to decide, weather I want to write a monster blog post or a series of smaller posts. Maybe the later is easier to read and to write.
+Actually this post wasn't planned to be a series but as usual the posts are getting longer and longer. The more I write, the more came in mind to write about. Bloggers now this, I guess. So I needed to decide, whether I want to write a monster blog post or a series of smaller posts. Maybe the later is easier to read and to write.
 
 ## What is Orchard Core?
 
