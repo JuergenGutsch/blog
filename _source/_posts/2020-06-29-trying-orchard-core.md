@@ -12,27 +12,27 @@ tags:
 - Tag
 ---
 
-Since I while, I planned to try the Orchard Core Application Framework. Back than I saw an awesome video where [Sébastien Ros](https://github.com/sebastienros) showed an early version of Orchard Core. If I remember right it was this ASP.NET Community Standup: [ASP.NET Community Standup - November 27, 2018 - Sebastien Ros on Headless CMS with Orchard Core](https://youtu.be/4o9zG17cfa0)
+Since I while I planned to try out the Orchard Core Application Framework. Back than I saw an awesome video where [Sébastien Ros](https://github.com/sebastienros) showed an early version of Orchard Core. If I remember right it was this ASP.NET Community Standup: [ASP.NET Community Standup - November 27, 2018 - Sebastien Ros on Headless CMS with Orchard Core](https://youtu.be/4o9zG17cfa0)
 
 ## Why a blog series
 
-Actually this post wasn't planned to be a series, but as usual the posts are getting longer and longer. The more I write, the more came in mind to write about. Bloggers now this, I guess. So I needed to decide, whether I want to write a monster blog post or a small series. Maybe the later is easier to read and to write.
+Actually this post wasn't planned to be a series but as usual the posts are getting longer and longer. The more I write, the more came in mind to write about. Bloggers now this, I guess. So I needed to decide, weather I want to write a monster blog post or a series of smaller posts. Maybe the later is easier to read and to write.
 
 ## What is Orchard Core?
 
 > Orchard Core is an open-source modular and multi-tenant application framework built with ASP.NET Core, and a content management system (CMS) built on top of that application framework.
 
-Orchard Core is not a new version of the Orchard CMS. It is a completely new thing, written in ASP.NET Core. The Orchard CMS was designed as a CMS, but Orchard Core was designed to be an application framework that can be used to build a CMS, a blog or whatever you want to build. I really like the idea to have a framework like this.  
+Orchard Core is not a new version of the Orchard CMS. It is a completely new thing written in ASP.NET Core. The Orchard CMS was designed as a CMS, but Orchard Core was designed to be an application framework that can be used to build a CMS, a blog or whatever you want to build. I really like the idea to have a framework like this.  
 
 I don't want to repeat the stuff, that is already on the website. To learn more about it just visit it: [https://www.orchardcore.net/](https://www.orchardcore.net/)
 
-I had a look into the Orchard CMS, back then when I was evaluating a new blog. It was goo, but I didn't really feel confident. 
+I had a look into the Orchard CMS, back then when I was evaluating a new blog. It was good, but I didn't really feel confident. 
 
 Currently the RC2 is out since a couple of days and version 1 should be released in September 2020. The [roadmap](https://github.com/OrchardCMS/OrchardCore/wiki/Roadmap) already defines features for future releases.
 
 ## Let's have a first glimpse
 
-When I try a CMS or something like this, I try to follow the quick start guide. I want to start the application up to have first look and feel. As a .NET Core fanboy I decided to use the .NET CLI to run the application. But first I have to clone the repository, to have a more detailed look later on and to run the sample application:
+When I try a CMS or something like this, I try to follow the quick start guide. I want to start the application up to have a first look and feel. As a .NET Core fan-boy I decided to use the .NET CLI to run the application. But first I have to clone the repository, to have a more detailed look later on and to run the sample application:
 
 ~~~shell
 git clone https://github.com/OrchardCMS/OrchardCore.git
@@ -55,13 +55,13 @@ dotnet run
 
 ![](../img/orchardcore/dotnet-run.png)
 
-As usual in ASP.NET Core, I get two URLs to call the app. The HTTP version on port 5000 and the HTTPS version on port 5001.
+As usual in ASP.NET Core I get two URLs to call the app. The HTTP version on port 5000 and the HTTPS version on port 5001.
 
 I'm now should be able to call the CMS in the browser. Et voilà:
 
 ![](../img/orchardcore/first-start.png)
 
-Since every CMS has an admin area, I try `/admin` for sure.
+Since every CMS has an admin area, I tried `/admin` for sure.
 
 At the first start it asks you about to set initial credentials and stuff like this. I already did this before. At every other start I just see the log-in screen:
 
@@ -71,7 +71,7 @@ After the log-in I feel myself warmly welcomed... kinda :-D
 
 ![](../img/orchardcore/logged-in.png)
 
-Actually this screenshot is a little small, because it hides the Admin menu which is the last item in menu. You should definitely have a look into the `/admin/features` page that has a ton of features to enable.  Stuff like GraphQL API, Lucene search indexing, Markdown editing, templating, authentication providers and a lot more.
+Actually this screenshot is a little small, because it hides the administration menu which is the last item in menu. You should definitely have a look into the `/admin/features` page that has a ton of features to enable.  Stuff like GraphQL API, Lucene search indexing, Markdown editing, templating, authentication providers and a lot more.
 
 But I won't go threw all the menu items. You can just have a look by yourself. I actually want to explore the application framework. 
 
@@ -81,11 +81,11 @@ This is why I stopped the application and open it in VS Code and this is where t
 
 ![](../img/orchardcore/code.png)
 
-Ok. This is where I thought the fascinating stuff is. There is almost nothing. There are a ton of language files, an almost empty `wwwroot` folder, some configuration files and the common files like a csproj, the `startup.cs` and the `program.cs`. Except the localization part, it completely looks like an empty ASP.NET Core project. 
+Ok. This is where I thought the fascinating stuff is. There is almost nothing. There are a ton of language files, an almost empty `wwwroot` folder, some configuration files and the common files like a `*.csproj`, the `startup.cs` and the `program.cs`. Except the localization part, it completely looks like an empty ASP.NET Core project. 
 
 Where is all the Orchard stuff? I expected a lot more to see.
 
-The Program.cs looks pretty common, except the usage of `NLog` which is provided via `OrchardCore.Logging` package:
+The `Program.cs` looks pretty common, except the usage of `NLog` which is provided via `OrchardCore.Logging` package:
 
 ~~~csharp
 using System.Threading.Tasks;
@@ -149,7 +149,7 @@ It only adds the services for the Orchard CMS in the method `ConfigureServices` 
 
 Actually this Startup configures the Orchard Core as CMS. It seems I would also be able to add the Orchard Core to the `ServiceCollection` by using `AddOrchardCore()`. I guess this would just add Core functionality to the application. Let's see if I'm right. 
 
-Both the `AddOrchardCms()` and the `AddOrchardCore()` are overloaded and can be configured using an `OrchardCoreBuilder`. Using this overloads you can add Orchard Core features to your application. I guess the method has a set of features preconfigured to acts like a CMS:
+Both the `AddOrchardCms()` and the `AddOrchardCore()` methods are overloaded and can be configured using an `OrchardCoreBuilder`. Using this overloads you can add Orchard Core features to your application. I guess the method `AddOrchardCms()` has a set of features preconfigured to behave like a CMS:
 
 ![](../img/orchardcore/orchardcoreconf.png)
 
@@ -161,6 +161,8 @@ I think, it is time to have a look into the docs at [https://docs.orchardcore.ne
 
 The docs are pretty clear. Orchard Core comes in two different targets: The Orchard Core Framework and the Orchard Core CMS. The sample I opened here is the Orchard Core CMS sample. To learn how the Framework works, I need to clone the Orchard Core Samples repository: [https://github.com/OrchardCMS/OrchardCore.Samples](https://github.com/OrchardCMS/OrchardCore.Samples)
 
+I will write about this in the next part this series.
+
 ## Not a conclusion yet
 
-I will continue exploring the Orchard Core Framework within the next days and continue write about it in parallel. The stuff I saw until now were really promising and I like the fact that it simply works without a lot of configuration. Exploring the new CMS would be another topic and really interesting as well. Maybe I will find some time in the future.
+I will continue exploring the Orchard Core Framework within the next days and continue to write about it in parallel. The stuff I saw until now is really promising and I like the fact that it simply works without a lot of configuration. Exploring the new CMS would be another topic and really interesting as well. Maybe I will find some time in the future.
