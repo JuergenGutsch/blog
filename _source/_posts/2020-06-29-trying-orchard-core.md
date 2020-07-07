@@ -16,7 +16,7 @@ Since I while I planned to try out the Orchard Core Application Framework. Back 
 
 ## Why a blog series
 
-Actually this post wasn't planned to be a series but as usual the posts are getting longer and longer. The more I write, the more came in mind to write about. Bloggers now this, I guess. So I needed to decide, weather I want to write a monster blog post or a series of smaller posts. Maybe the later is easier to read and to write.
+Actually this post wasn't planned to be a series but as usual the posts are getting longer and longer. The more I write, the more came in mind to write about. Bloggers now this, I guess. So I needed to decide, whether I want to write a monster blog post or a series of smaller posts. Maybe the later is easier to read and to write.
 
 ## What is Orchard Core?
 
@@ -53,23 +53,23 @@ Since this should be a ASP.NET Core application, it should be possible to run th
 dotnet run
 ~~~
 
-![](../img/orchardcore/dotnet-run.png)
+![]({{ site.baseurl }}/img/orchardcore/dotnet-run.png)
 
 As usual in ASP.NET Core I get two URLs to call the app. The HTTP version on port 5000 and the HTTPS version on port 5001.
 
 I'm now should be able to call the CMS in the browser. Et voilà:
 
-![](../img/orchardcore/first-start.png)
+![]({{ site.baseurl }}/img/orchardcore/first-start.png)
 
 Since every CMS has an admin area, I tried `/admin` for sure.
 
 At the first start it asks you about to set initial credentials and stuff like this. I already did this before. At every other start I just see the log-in screen:
 
-![](../img/orchardcore/log-in.png)
+![]({{ site.baseurl }}/img/orchardcore/log-in.png)
 
 After the log-in I feel myself warmly welcomed... kinda :-D
 
-![](../img/orchardcore/logged-in.png)
+![]({{ site.baseurl }}/img/orchardcore/logged-in.png)
 
 Actually this screenshot is a little small, because it hides the administration menu which is the last item in menu. You should definitely have a look into the `/admin/features` page that has a ton of features to enable.  Stuff like GraphQL API, Lucene search indexing, Markdown editing, templating, authentication providers and a lot more.
 
@@ -79,7 +79,7 @@ But I won't go threw all the menu items. You can just have a look by yourself. I
 
 This is why I stopped the application and open it in VS Code and this is where the fascinating stuff is.
 
-![](../img/orchardcore/code.png)
+![]({{ site.baseurl }}/img/orchardcore/code.png)
 
 Ok. This is where I thought the fascinating stuff is. There is almost nothing. There are a ton of language files, an almost empty `wwwroot` folder, some configuration files and the common files like a `*.csproj`, the `startup.cs` and the `program.cs`. Except the localization part, it completely looks like an empty ASP.NET Core project. 
 
@@ -151,7 +151,7 @@ Actually this Startup configures the Orchard Core as CMS. It seems I would also 
 
 Both the `AddOrchardCms()` and the `AddOrchardCore()` methods are overloaded and can be configured using an `OrchardCoreBuilder`. Using this overloads you can add Orchard Core features to your application. I guess the method `AddOrchardCms()` has a set of features preconfigured to behave like a CMS:
 
-![](../img/orchardcore/orchardcoreconf.png)
+![]({{ site.baseurl }}/img/orchardcore/orchardcoreconf.png)
 
 It is a lot of guessing and trying right now. But I didn't read any documentation until now. I just want to play around.
 
