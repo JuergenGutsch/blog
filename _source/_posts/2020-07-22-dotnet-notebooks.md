@@ -26,13 +26,15 @@ In this blog post I'll try to show you how to install and to use it.
 
 ## Install Jupyter Notebook 
 
-You need to have Python3 installed on your machine. The best way to install Python on Windows is to use [Chocolatey](https://chocolatey.org/):
+You need to have Python3 installed on your machine. The best way to install Python on Windows is to use [Chocolatey](https://chocolatey.org/packages/python/3.8.4):
 
 ```shell
 choco install python
 ```
 
-https://chocolatey.org/packages/python/3.8.4
+> Actually I use [Chocolatey](https://chocolatey.org/) since many years as a Windows package manager and never had any problems.
+
+Alternatively you could [download and install Pythion 3 directly](https://www.python.org/downloads/) or by [using the Anaconda installer](https://www.anaconda.com/products/individual).
 
 If Python is installed you can install Jupyter Notebook using the Python package manager PIP:
 
@@ -45,25 +47,27 @@ You now can use Jupyter by just type `jupyter notebook` in the console. This wou
 ```shell
 jupyter kernelspec list
 ```
-We'll see the Python3 kernel in the console output:
+We'll see the `python3` kernel in the console output:
 
 ![](../img/dotnet-notebook/listkernels01.png)
 
 ## Install .NET Interactive
 
-The goal is to have the .NET Interactive kernel running in Jupyter. To get this done you first need to install the latest build of .NET Interactive from MyGet:
+The goal is to have the .NET Interactive kernels running in Jupyter. To get this done you first need to install the latest build of .NET Interactive from [MyGet](https://myget.org/):
 
 ```shell
 dotnet tool install -g --add-source "https://dotnet.myget.org/F/dotnet-try/api/v3/index.json" Microsoft.dotnet-interactive
 ```
 
-Or the latest version from NuGet:
+> Since NuGet is not the place to publish continuous integration build artifacts, Microsoft uses MyGet as well to publish previews, nightly builds, and continuous integration build artifacts.
+
+Or install the latest stable version from NuGet:
 
 ```shell
 dotnet tool install -g Microsoft.dotnet-interactive
 ```
 
-If this is installed you can use `dotnet interactive` to install the Jupyter kernels:
+If this is installed you can use `dotnet interactive` to install the kernels to Jupyter Notebooks
 
 ```shell
 dotnet interactive jupyter install
@@ -71,7 +75,7 @@ dotnet interactive jupyter install
 
 ![](../img/dotnet-notebook/installonjupyter.png)
 
-Let's see if the kernels are installed:
+Let's see, whether the kernels are installed or not:
 
 ```
 jupyter kernelspec list
@@ -86,20 +90,71 @@ That's it. We now have four different kernels installed.
 Let's run Jupyter by calling the next command. Be sure to navigate into a folder where your notebooks are or where you want to save your notebooks:
 
 ```shell
+cd \git\hub\dotnet-notebook
 jupyter notebook
 ```
 
 ![startnotebook](../img/dotnet-notebook/startnotebook.png)
 
-It now starts a webserver and opens a Browser. The current folder will be the working folder for the currently running Jupyter instance. I don't have any files in that folder. I now want to start playing around with a C# notebook:
+It now starts a webserver that serves the notebooks from the current location and opens a Browser. The current folder will be the working folder for the currently running Jupyter instance. I don't have any files in that folder yet. 
+
+Here we have the Python3 and the three new .NET notebook types available:
 
 ![notebook01](../img/dotnet-notebook/notebook01.png)
 
-Here we have the Python3 and the three new .NET notebook types available.
+I now want to start playing around with a C# notebook. So I create a new .NET (C#) notebook:
 
 ## Try .NET Interactive
 
-Let's add some content and a code snippet. At first I added a Markdown cell. Cells are content elements the support specific content types. A Markdown cell is one type as well as a Code cell. The later executes a code snippet and shows the output underneath:
+Let's add some content and a code snippet. At first I added a Markdown cell. 
+
+The so called "cells" are content elements the support specific content types. A Markdown cell is one type as well as a Code cell. The later executes a code snippet and shows the output underneath:
 
 ![notebook02](../img/dotnet-notebook/notebook02.png)
+
+That is a easy one. Now let's play with variables usage. I placed two more code cells and some small markdown cells below:
+
+ ![notebook02](../img/dotnet-notebook/notebook03.png)
+
+And re-run the entire notebook:
+
+![notebook02](../img/dotnet-notebook/notebook04.png) 
+
+As well as in Python notebooks the variables are used in the entire notebook and not only in the single code cell. 
+
+## What else?
+
+Inside a .NET Interactive notebook you can do the same stuff as in a regular code file. You are able to connect to a database, to Azure or just open a file locally on your machine. You can import namespaces as well as reference NuGet packages:
+
+```
+#r "nuget:NodaTime,2.4.8"
+#r "nuget:Octokit,0.47.0"
+
+using Octokit;
+using NodaTime;
+using NodaTime.Extensions;
+using XPlot.Plotly;
+```
+
+### VS Code
+
+VS Code is supporting Jupyter Notebooks using [Microsoft's Python Add-In](https://marketplace.visualstudio.com/items?itemName=ms-python.python): 
+
+![vscode01](../img/dotnet-notebook/vscode01.png)
+
+Actually it needs a couple of seconds until the Jupyter server is started. If it is up and running, it works like charm in VS Code. I prefer VS Code over the browser interface.
+
+### GitHub
+
+If you use a notepad to open a notebook file, you will see that it is a JSON file that also contains the outputs of the code cells:
+
+![vscode01](../img/dotnet-notebook/source.PNG)
+
+Because of that, I was really surprised that GitHub supports Jupyter Notebooks as well and displays it in a human readable format including the outputs:
+
+![vscode01](../img/dotnet-notebook/github.png)
+
+The rendering is limited but good enough to read the document
+
+## Conclusion
 
