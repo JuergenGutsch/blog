@@ -12,6 +12,9 @@ tags:
 - Roslyn
 ---
 
+> UPDATE: While trying the .editorconfig and writing this post, I did a fundamental mistake. I added a ruleset file to the projects and this is the reason why it worked. It wasn't really the .editorconfig in this case. I'm really sorry about that.
+> Please find [this post to learn how it is really working]({% post_url editorconfig-netframework.md %}).
+
 In January I wrote a post about setting up VS2019 and VSCode to use the `.editorconfig`. In this post I'm going to write about how to get the `.editorconfig` settings checked during build time.
 
 It works like it should work: In the editors. And it works in VS2019 at build-time. But it doesn't work at build time using MSBuild. This means it won't work with the .NET CLI, it won't work with VSCode and it won't work on any build server that uses MSBuild.
