@@ -67,11 +67,11 @@ app.UseEndpoints(endpoints =>
 
 This will give you a URL where you can check the health state of your application. Let's quickly run the application and call this endpoint with a browser:
 
-![](../img/healthchecks/run.png)
+![]({{site.baseurl}}/img/healthchecks/run.png)
 
 Celling the endpoint:
 
-![](../img/healthchecks/healthy.png)
+![]({{site.baseurl}}/img/healthchecks/healthy.png)
 
 Our application is absolutely healthy. For sure, because there is no health check yet, that checks for something.
 
@@ -305,7 +305,7 @@ I also created a view called `Health.cshtml`. This view retrieves the `HealthRep
 
 To try it out, I just need to run the application using `dotnet run` in the console and calling https://localhost:5001/home/health in the browser:
 
-![](../img/healthchecks/healthview.png)
+![]({{site.baseurl}}/img/healthchecks/healthview.png)
 
 You could also try to analyze the `HealthReport` in the Controller, in your services to do something specific in case the the application isn't healthy anymore. 
 
@@ -352,7 +352,7 @@ This way you are able to register as many health endpoints to the UI as you like
 
 Let's call the UI using this route `/healthchecks-ui`
 
-![](../img/healthchecks/healthchecksui.png)
+![]({{site.baseurl}}/img/healthchecks/healthchecksui.png)
 
 (Wow... Actually, the ping seemed to work, when I did this screenshot. )
 
