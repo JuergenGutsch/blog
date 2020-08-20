@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ASP.NET Core Health Checks"
-teaser: "In this post I'd like to what are the ASP.NET Core Health Checks for and what you can do with it."
+teaser: "In this post I'd like to show what the ASP.NET Core Health Checks is for and what you can do with it."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
