@@ -12,7 +12,7 @@ tags:
 - Tag
 ---
 
-Since a while I planned to write about the ASP.NET Health Checks which are actually pretty cool. The development of the ASP.NET Core Health Checks started in fall 2016. At that time it was a architectural draft. In November 2016 during the Global MVP Summit in Redmond we got ask to hack some health checks based in the architectural draft. It was Damien Bowden and me who met Glen Condron and Andrew Nurse during the Hackathon on the last summit day to get into the ASP.NET Health Checks, to write the very first checks and to try the framework. 
+Since a while I planned to write about the ASP.NET Health Checks which are actually pretty cool. The development of the ASP.NET Core Health Checks started in fall 2016. At that time it was a architectural draft. In November 2016 during the Global MVP Summit in Redmond we got ask to hack some health checks based on the architectural draft. It was Damien Bowden and me who met Glen Condron and Andrew Nurse during the Hackathon on the last summit day to get into the ASP.NET Health Checks and to write the very first checks and to try the framework. 
 
 > Actually, I prepared a talk about the ASP.NET Health Checks. And I would be happy to do the presentation at your user group or your conference.
 
@@ -20,16 +20,16 @@ Since a while I planned to write about the ASP.NET Health Checks which are actua
 
 Imagine that you are creating an ASP.NET application that is pretty much dependent on some sub systems, like a database, a file system, an API, or something like that. This is a pretty common scenario. Almost every application is dependent on a database. If the connection to the database got lost for different reasons, the application will definitely break. This is how applications are developed since years. The database is the simplest scenario to imagine what the ASP.NET health checks are good for, but not the real reason why they are developed. So let's continue with the database scenario. 
 
-* What if, you where able the check whether the database is available or not before you connect to it. 
-* What if, you where able to tell your application to show a user friendly message about the database that is not available. 
-* What if, you could simply switch to a fallback database in case the actual one is not available? 
-* What if, you could tell a load balancer to switch to a different fallback environment, in case your application is unhealthy because of the missing database?
+* What if you where able the check whether the database is available or not before you actually connect to it. 
+* What if you where able to tell your application to show a user friendly message about the database that is not available. 
+* What if you could simply switch to a fallback database in case the actual one is not available? 
+* What if you could tell a load balancer to switch to a different fallback environment, in case your application is unhealthy because of the missing database?
 
 You can exactly do this with the ASP.NET Health Checks:
 
-Check the health and availability of your sub-systems, provide an endpoint that tells other systems about the health of the current application and consume health check endpoints of other systems.
+Check the health and availability of your sub-systems, provide an endpoint that tells other systems about the health of the current application, and consume health check endpoints of other systems.
 
-health checks are mainly made for microservice environments. where loosely coupled applications need to know the health state of the systems they are depending on. But they are also useful in more monolithic applications that are dependent on some kind of subsystems and infrastructure.
+Health checks are mainly made for microservice environments. where loosely coupled applications need to know the health state of the systems they are depending on. But they are also useful in more monolithic applications that are also dependent on some kind of subsystems and infrastructure.
 
 # How to enable health checks?
 
@@ -51,9 +51,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ~~~
 
-This also the place where we add the checks later on. But this should be good for now.
+This is also the place where we add the checks later on. But this should be good for now.
 
-To also provide an endpoint to tell other applications about the state of the current system you need to map a route to the health checks inside the Configure method of the Startup class:
+To also provide an endpoint to tell other applications about the state of the current system you need to map a route to the health checks inside the  Configure method of the Startup class:
 
 ~~~csharp
 app.UseEndpoints(endpoints =>
@@ -97,7 +97,7 @@ Those lines add three different health checks. They are named and the actual che
 
 Usually a health check result has at least one tag to group them by topic or whatever. The message should be meaningful to easily identify the actual problem.
 
-Those lines are not really useful, but show how the health check are working. If we run the app again and call the endpoint we would see a Unhealthy state, because it always shows the lowest state, which is Unhealthy. Feel free to play around with the different `HealthCheckResult`
+Those lines are not really useful, but they show how the health check are working. If we run the app again and call the endpoint, we would see a Unhealthy state, because it always shows the lowest state, which is Unhealthy. Feel free to play around with the different `HealthCheckResult`
 
 Now let's demonstrate an more useful health check. This one pings a needed resource in the internet and checks the availability:
 
@@ -112,25 +112,25 @@ services.AddHealthChecks()
                 var reply = ping.Send("asp.net-hacker.rocks");
                 if (reply.Status != IPStatus.Success)
                 {
-                    return HealthCheckResult.Unhealthy("Ping Unhealthy");
+                    return HealthCheckResult.Unhealthy("Ping is unhealthy");
                 }
 
                 if (reply.RoundtripTime > 100)
                 {
-                    return HealthCheckResult.Degraded("Ping Degraded");
+                    return HealthCheckResult.Degraded("Ping is degraded");
                 }
 
-                return HealthCheckResult.Healthy("Ping Healthy");
+                return HealthCheckResult.Healthy("Ping is healthy");
             }
         }
         catch
         {
-            return HealthCheckResult.Unhealthy();
+            return HealthCheckResult.Unhealthy("Ping is unhealthy");
         }
     });
 ~~~
 
-This won't work, because my blog runs on Azure and Microsoft doesn't allow pings there. Anyway, this demo shows you how to handle the specific results and how to return the right `HealthCheckResults` depending on the state of the the actual check.  
+This actually won't work, because my blog runs on Azure and Microsoft doesn't allow to ping the app services. Anyway, this demo shows you how to handle the specific results and how to return the right `HealthCheckResults` depending on the state of the the actual check.  
 
 But it doesn't really make sense to write those tests as lambda expressions and to mess with the `Startup` class. Good there is a way to also add class based health checks. 
 
@@ -166,7 +166,7 @@ services.AddHealthChecks()
     .AddCheck<ExampleHealthCheck>("class based", null, new[] { "class" });
 ~~~
 
-We also need to specify a name and at least one tag. With the second argument. I'm able to set a default failing state. But null is fine, in case I handle all exceptions inside the health check, I guess.
+We also need to specify a name and at least one tag. With the second argument I'm able to set a default failing state. But null is fine, in case I handle all exceptions inside the health check, I guess.
 
 
 
@@ -226,7 +226,7 @@ The `UIResponseWriter` of that project writes a JSON output  to the HTTP respons
     },
     "ping": {
       "data": {},
-      "description": "Ping Degraded",
+      "description": "Ping is degraded",
       "duration": "00:00:00.7165044",
       "status": "Degraded"
     },
@@ -242,11 +242,11 @@ The `UIResponseWriter` of that project writes a JSON output  to the HTTP respons
 
 In case the overall state is Unhealthy the endpoint sends the result with a 503 HTTP response status, otherwise it is a 200. This is really useful if you just want to handle the HTTP response status.
 
-The community project provides a lot more features. Also a nice UI to visualize the health state to humans. But I will show you this in a later section.
+The community project provides a lot more features. Also a nice UI to visualize the health state to humans. I'm going to show you this in a later section.
 
 ## Handle the states inside the application 
 
-In the most cases you don't want to just expose the state to depending consumer of your app. It might also be that you need to handle the different states in your application, by showing a message in case the application is not working properly, disabling parts of the application that are not working, switching to a fallback source, or whatever is needed to run the application in an degraded state.
+In the most cases you don't want to just expose the state to depending consumer of your app. It might also be the case that you need to handle the different states in your application, by showing a message in case the application is not working properly, disabling parts of the application that are not working, switching to a fallback source, or whatever is needed to run the application in an degraded state.
 
 To do things like this, you can use the `HealthCheckService` that is already registered to the IoC Container with the `AddHealthChecks()` method. You can inject the `HealthCheckService` using the `IHealthCheckService` interface wherever you want.
 
@@ -267,9 +267,9 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Health()
     {
-        var health = await _healthCheckService.CheckHealthAsync();
+        var healthReport = await _healthCheckService.CheckHealthAsync();
         
-        return View(health);
+        return View(healthReport);
     }
 ~~~
 
@@ -327,9 +327,42 @@ And inside the method `Configure()` I need to map the health checks UI Middlewar
 endpoints.MapHealthChecksUI();
 ~~~
 
-This adds a new route to our application to call the UI
+This adds a new route to our application to call the UI: `/healthchecks-ui`
 
-/healthchecks-ui
+We also need to register our health API to the UI. This will be done using small setting to the appsetings.json:
 
+~~~ json
+{
+  ... ,
+  "HealthChecksUI": {
+    "HealthChecks": [
+      {
+        "Name": "HTTP-Api",
+        "Uri": "https://localhost:5001/health"
+      }
+    ],
+    "EvaluationTimeOnSeconds": 10,
+    "MinimumSecondsBetweenFailureNotifications": 60
+  }
+}
 
+~~~
 
+This way you are able to register as many health endpoints to the UI as you like. Think about a separate application that only shows the health states of all your microservices. This would be the way to go.
+
+Let's call the UI using this route `/healthchecks-ui`
+
+![](../img/healthchecks/healthchecksui.png)
+
+(Wow... Actually, the ping seemed to work, when I did this screenshot. )
+
+This is awesome. This is a really great user interface to display the health of all your services. 
+
+About the Webhooks and customization of the UI, you should read the great docs in the repository.
+
+## Conclusion
+
+The health checks are definitely a thing you should look into. No matter what kind of web application you are writing, it can help you to create more stable and more responsive applications. Applications that know about their health can handle degraded of unhealthy states in a way that won't break the whole application. This is very useful, at least from my perspective ;-) 
+
+To play around with the demo application used for this post visit the repository on GitHub: 
+https://github.com/JuergenGutsch/healthchecks-demo
