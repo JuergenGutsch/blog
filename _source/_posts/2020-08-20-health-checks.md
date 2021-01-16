@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ASP.NET Core Health Checks"
-teaser: "The development of the ASP.NET Core health checks started in fall 2016."
+teaser: "In this post I'd like to show what the ASP.NET Core Health Checks is for and what you can do with it."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
