@@ -34,7 +34,7 @@ The installation packages for the Linux distributions are a little bit hidden in
 
 As you can see in the first screenshot, my WSL2 is based on Ubuntu 18.04 LTS. So, I should choose the link to the package for this specific version:
 
-![ubuntu packages](C:\git\blog\_source\img\wsl\ubuntupackages.PNG)
+![ubuntu packages]({{site.baseurl}}/img/wsl/ubuntupackages.PNG)
 
 The link forwards me to the installation guide.
 
