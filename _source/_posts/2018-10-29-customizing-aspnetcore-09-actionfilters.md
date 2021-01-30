@@ -11,6 +11,10 @@ tags:
 - Logging
 ---
 
+> **Update 2021-01-31**
+>
+> This series is pretty much outdated. As asked by a reader, I compiled the entire series into a book and updated the contents to the latest version of ASP.NET Core  Read [here]({% post_url my-book.md %}) to learn more about it 
+
 This post is a little late this time. My initial plan was to throw out two posts of this series per week, but this doesn't work out, since there are sometimes some more family and work tasks to do than expected. 
 
 Anyway, we keep on customizing on the controller level in this ninth post of this blog series. I'll have a look into ActionFilters and hot to create your own ActionFilter to keep your Actions small and readable.

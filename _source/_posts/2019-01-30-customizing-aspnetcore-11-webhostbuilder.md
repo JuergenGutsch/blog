@@ -11,6 +11,10 @@ tags:
 - WebHostBuilder
 ---
 
+> **Update 2021-01-31**
+>
+> This series is pretty much outdated. As asked by a reader, I compiled the entire series into a book and updated the contents to the latest version of ASP.NET Core  Read [here]({% post_url my-book.md %}) to learn more about it 
+
 In my post about [Configuring HTTPS in ASP.NET Core 2.1]({% post_url aspnetcore-ssl.md %}), a reader asked how to configure the HTTPS settings using user secrets.
 
 > "How would I go about using user secrets to pass the password to `listenOptions.UseHttps(...)`? I can't fetch the configuration from within `Program.cs` no matter what I try. I've been Googling solutions for like a half hour so any help would be greatly appreciated."

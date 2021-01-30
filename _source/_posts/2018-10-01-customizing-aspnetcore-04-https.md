@@ -10,6 +10,10 @@ tags:
 - HTTPS
 ---
 
+> **Update 2021-01-31**
+>
+> This series is pretty much outdated. As asked by a reader, I compiled the entire series into a book and updated the contents to the latest version of ASP.NET Core  Read [here]({% post_url my-book.md %}) to learn more about it 
+
 HTTPS is on by default now and a first class feature. On Windows the certificate which is needed to enable HTTPS is loaded from the windows certificate store. If you create a project on Linux and Mac the certificate is loaded from a certificate file. 
 
 > Even if you want to create a project to run it behind and IIS or an NGinX webserver HTTPS is enabled. Usually you would manage the certificate on the IIS or NGinX webserver in that case. But this shouldn't be a problem and you shouldn't disable HTTPS in the ASP.NET Core settings.

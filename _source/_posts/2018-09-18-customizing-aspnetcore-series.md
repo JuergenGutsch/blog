@@ -9,6 +9,10 @@ tags:
 - ASP.NET Core
 ---
 
+> **Update 2021-01-31**
+>
+> This series is pretty much outdated. As asked by a reader, I compiled the entire series into a book and updated the contents to the latest version of ASP.NET Core  Read [here]({% post_url my-book.md %}) to learn more about it 
+
 With this post I want to introduce a new blog series about things you can or maybe need to customize in ASP.NET Core. Initially this series will contain ten different topics. Maybe later I'll write some more posts about that.
 
 The initial topics are based on my talk about [Customizing ASP.NET Core](https://sessionize.com/s/juergengutsch/customizing_aspnet_core/19237). I did this talk several times in German and English. I did the talk on the [.NET Conf 2018](https://channel9.msdn.com/Events/dotnetConf/2018/S306) as well. 

@@ -12,6 +12,10 @@ tags:
 - MSTest
 ---
 
+> **Update 2021-01-31**
+>
+> This series is pretty much outdated. As asked by a reader, I compiled the entire series into a book and updated the contents to the latest version of ASP.NET Core  Read [here]({% post_url my-book.md %}) to learn more about it 
+
 In the third part we'll take a look into the ASP.NET Core dependency injection and how to customize it to use a different dependency injection container if needed.
 
 ## The series topics

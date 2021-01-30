@@ -10,6 +10,10 @@ tags:
 - OutputFormatter
 ---
 
+> **Update 2021-01-31**
+>
+> This series is pretty much outdated. As asked by a reader, I compiled the entire series into a book and updated the contents to the latest version of ASP.NET Core  Read [here]({% post_url my-book.md %}) to learn more about it 
+
 In this seventh post I want to write about, how to send your Data in different formats and types to the client. By default the ASP.NET Core Web API sends the data as JSON, but there are some more ways to send the data.
 
 ## The series topics
