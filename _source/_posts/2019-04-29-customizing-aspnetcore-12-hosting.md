@@ -11,6 +11,16 @@ tags:
 - WebHostBuilder
 ---
 
+> **Update 2021-02-01**
+>
+> This series is pretty much outdated! 
+>
+> As asked by a reader, I compiled the entire series into a book and updated the contents to the latest version of ASP.NET Core. This book is now ready to get [ordered on Amazon](https://www.amazon.com/Customizing-ASP-NET-Core-5-0-framework-ebook/dp/B08P5LHN8Z/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=1611725557&sr=8-1): 
+>
+> ![Customizing ASP.NET Core]({{site.baseurl}}/img/book/newtitlesmall.png)
+>
+> Read [here]({% post_url my-book.md %}) to learn more about the book 
+
 In this 12th part of this series, I'm going to write about how to customize hosting in ASP.NET Core. We will look into the hosting options, different kind of hosting and a quick look into hosting on the IIS. And while writing this post this again seems to get a long one.
 
 > This will change in ASP.NET Core 3.0. I anyway decided to do this post about ASP.NET Core 2.2 because it still needs some time until ASP.NET Core 3.0 is released.

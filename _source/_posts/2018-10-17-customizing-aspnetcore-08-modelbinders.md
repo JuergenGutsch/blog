@@ -10,6 +10,16 @@ tags:
 - ModelBinders
 ---
 
+> **Update 2021-02-01**
+>
+> This series is pretty much outdated! 
+>
+> As asked by a reader, I compiled the entire series into a book and updated the contents to the latest version of ASP.NET Core. This book is now ready to get [ordered on Amazon](https://www.amazon.com/Customizing-ASP-NET-Core-5-0-framework-ebook/dp/B08P5LHN8Z/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=1611725557&sr=8-1): 
+>
+> ![Customizing ASP.NET Core]({{site.baseurl}}/img/book/newtitlesmall.png)
+>
+> Read [here]({% post_url my-book.md %}) to learn more about the book  
+
 In the last post about `OutputFormatters` I wrote about sending data out to the clients in different formats. In this post we are going to do it the other way. This post is about data you get into your Web API from outside. What if you get data in a special format or what if you get data you need to validate in a special way. `ModelBinders` will help you handling this.
 
 ## The series topics

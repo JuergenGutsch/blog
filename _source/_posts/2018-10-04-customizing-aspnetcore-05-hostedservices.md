@@ -10,6 +10,16 @@ tags:
 - HostedServices
 ---
 
+> **Update 2021-02-01**
+>
+> This series is pretty much outdated! 
+>
+> As asked by a reader, I compiled the entire series into a book and updated the contents to the latest version of ASP.NET Core. This book is now ready to get [ordered on Amazon](https://www.amazon.com/Customizing-ASP-NET-Core-5-0-framework-ebook/dp/B08P5LHN8Z/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=1611725557&sr=8-1): 
+>
+> ![Customizing ASP.NET Core]({{site.baseurl}}/img/book/newtitlesmall.png)
+>
+> Read [here]({% post_url my-book.md %}) to learn more about the book 
+
 This fifth part of this series doesn't really show a customization. This part is more about a feature you can use to create background services to run tasks asynchronously inside your application. Actually I use this feature to regularly fetch data from a remote service in a small ASP.NET Core application. 
 
 ## The series topics

@@ -10,6 +10,16 @@ tags:
 - TagHelpers
 ---
 
+> **Update 2021-02-01**
+>
+> This series is pretty much outdated! 
+>
+> As asked by a reader, I compiled the entire series into a book and updated the contents to the latest version of ASP.NET Core. This book is now ready to get [ordered on Amazon](https://www.amazon.com/Customizing-ASP-NET-Core-5-0-framework-ebook/dp/B08P5LHN8Z/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=1611725557&sr=8-1): 
+>
+> ![Customizing ASP.NET Core]({{site.baseurl}}/img/book/newtitlesmall.png)
+>
+> Read [here]({% post_url my-book.md %}) to learn more about the book 
+
 This was initially planned as the last topic of this series, because this also was the last part of the talk about customizing ASP.NET Core I did in the past. See the [initial post]({% post_url customizing-aspnetcore-series.md %}) about this series. Now I have three additional customizing topics to talk about. If you like to propose another topic feel free to drop a comment in the initial post.
 
 In this tenth part of this series I'm going to write about TagHelpers. The built in TagHelpers are pretty useful and making the razor more pretty and more readable. Creating custom TagHelpers will make your life much easier.
