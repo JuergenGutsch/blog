@@ -9,9 +9,15 @@ tags:
 - ASP.NET Core
 ---
 
-> **Update 2021-01-31**
+> **Update 2021-02-01**
 >
-> This series is pretty much outdated. As asked by a reader, I compiled the entire series into a book and updated the contents to the latest version of ASP.NET Core  Read [here]({% post_url my-book.md %}) to learn more about it 
+> This series is pretty much outdated! 
+>
+> As asked by a reader, I compiled the entire series into a book and updated the contents to the latest version of ASP.NET Core. This book is now ready to get [ordered on Amazon](https://www.amazon.com/Customizing-ASP-NET-Core-5-0-framework-ebook/dp/B08P5LHN8Z/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=1611725557&sr=8-1): 
+>
+> ![Customizing ASP.NET Core]({{site.baseurl}}/img/book/newtitlesmall.png)
+>
+> Read [here]({% post_url my-book.md %}) to learn more about the book
 
 With this post I want to introduce a new blog series about things you can or maybe need to customize in ASP.NET Core. Initially this series will contain ten different topics. Maybe later I'll write some more posts about that.
 
