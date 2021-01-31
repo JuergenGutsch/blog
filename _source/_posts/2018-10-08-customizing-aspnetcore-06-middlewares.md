@@ -10,6 +10,16 @@ tags:
 - Middlewares
 ---
 
+> **Update 2021-02-01**
+>
+> This series is pretty much outdated! 
+>
+> As asked by a reader, I compiled the entire series into a book and updated the contents to the latest version of ASP.NET Core. This book is now ready to get [ordered on Amazon](https://www.amazon.com/Customizing-ASP-NET-Core-5-0-framework-ebook/dp/B08P5LHN8Z/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=1611725557&sr=8-1): 
+>
+> ![Customizing ASP.NET Core]({{site.baseurl}}/img/book/newtitlesmall.png)
+>
+> Read [here]({% post_url my-book.md %}) to learn more about the book 
+
 Wow, it is already the sixth part of this series. In this post I'm going to write about middlewares and how you can use them to customize your app a little more. I quickly go threw the basics about middlewares and than I'll write about some more specials things you can do with middlewares.
 
 ## The series topics
