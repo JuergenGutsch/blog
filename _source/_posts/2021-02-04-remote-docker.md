@@ -12,11 +12,11 @@ tags:
 - VSCode
 ---
 
-As mentioned in the last post I want to write about remote working inside a docker container.  But at first, we should get an idea about why we should ever remote work inside a docker container.
+As mentioned [in the last post]({% post_url remote-wsl.md%}) I want to write about remote working inside a docker container.  But at first, we should get an idea about why we should ever remote work inside a docker container.
 
 ## Why should I do that?
 
-One of our customers is running an OpenShift Kubernetes cluster and also likes to have the technology-specific development environments in a container that runs in Kubernetes. We had a NodeJS development container, a Python development container, and so on...  All the containers had an SSH server installed, Git, the specific SDKs, and all the stuff that is needed to develop. Using VSCode we connected to the containers via SSH and developed inside the container.
+One of our customers is running an OpenShift/Kubernetes cluster and also likes to have the technology-specific development environments in a container that runs in Kubernetes. We had a NodeJS development container, a Python development container, and so on...  All the containers had an SSH server installed, Git, the specific SDKs, and all the stuff that is needed to develop. Using [VSCode](https://code.visualstudio.com/) we connected to the containers via SSH and developed inside the container.
 
 Having the development environment in a container is one reason. Maybe not the most popular reason. But trying stuff inside a container because the local environment isn't the same makes a lot of sense. If you want to debug an application in a production-like environment makes absolute sense. 
 
