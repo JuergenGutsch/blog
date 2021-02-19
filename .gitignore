@@ -6,6 +6,9 @@ _source/_drafts/
 _source/_site/
 _site/
 
+#zetlr
+.ztr-directory
+
 # User-specific files
 *.suo
 *.user
