@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Title"
-teaser: "Description"
+title: "Trying the REST Client extension for VSCode"
+teaser: "I recently stumbled upon a tweet by Lars Richter who mentioned and linked to a REST Client extension in Visual Studio Code. I had a more detailed look and was pretty impressed by this extension. This post is a quick introduction about the REXT Client extension for Visual Studio Code"
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -23,7 +23,7 @@ The REST Client Extension for VSCode was developed by [Huachao Mao](https://twit
 
 If you follow this link, you will find a really great documentation about the extension, how it works, and how to use it. This also means this post is pretty useless, except you want to read a quick overview ;-)
 
-![rest client extension](../img/restclient/extension.png)
+![rest client extension]({{site.baseurl}}/img/restclient/extension.png)
 
 The source code of the REST Client extension is hosted on GitHub:
 
@@ -51,7 +51,7 @@ This project already contains a Web API controller. I'm going to use this for th
 
 To have the *.http files in one place I created an `ApiTest` folder and place a `WeatherForecast.http` in it. I'm not yet sure if it makes sense to put such files into the project, because these files won't go into production. I think, in a real-world project, I would place the files somewhere outside the actual project folder, but inside the source code repository. Let's keep it there for now:
 
-![http file](../img/restclient/httpfile.png)
+![http file]({{site.baseurl}}/img/restclient/httpfile.png)
 
 I already put the following line into that file:
 
@@ -67,7 +67,7 @@ At first, start the project by pressing F5 or by using `dotnet run` in the shell
 
 If the project is running you can click the **Send Request** CodeLens link and see what happens.
 
-![result](../img/restclient/result01.png)
+![result]({{site.baseurl}}/img/restclient/result01.png)
 
 It opens the response in a new tab group in VSCode and shows you the response headers as well as the response content
 
@@ -147,7 +147,7 @@ namespace RestClient.Models
 If you now start the project you will see the new endpoints in the Swagger UI that is already configured in the Web API project. 
 Call the following URL to see the Swagger UI: https://localhost:5001/swagger/index.html
 
-![swaggerui](../img/restclient/swaggerui.png)
+![swaggerui]({{site.baseurl}}/img/restclient/swaggerui.png)
 
 The Swagger UI will help you to configure the REST Client files. 
 
@@ -171,7 +171,7 @@ DELETE https://localhost:5001/Person/2 HTTP/1.1
 
 If you now open the POST `/Person` section in the Swagger UI and try the request, you'll get all the information you need for the REST Client:
 
-![swagger details](../img/restclient/swagger-details.png)
+![swagger details]({{site.baseurl}}/img/restclient/swagger-details.png)
 
 In the http file it will look like this:
 
@@ -211,7 +211,7 @@ content-type: application/json
 
 This is how it looks in VSCode, if you click the CodeLens link for the GET request :
 
-![results](../img/restclient/results02.png)
+![results]({{site.baseurl}}/img/restclient/results02.png)
 
 You are now able to test all the API endpoints this way 
 
