@@ -81,8 +81,6 @@ Here are some numbers about the blog:
   - Facebook 480 follower (less relevant)
   - Twitter 1200 Tech-Follower (pretty much relevant)
 
-![]({{site.baseurl}}/img/sponsors/November2018.jpg)
-
 ![]({{site.baseurl}}/img/sponsors/October2018.jpg)
 
 
