@@ -66,10 +66,10 @@ After some discussions, I will go with the following rates:
 
 Here are some numbers about the blog:
 
-- The blog has around 18000 unique visitors per month and around 24000 sessions 
-  - Around 33000 page requests.
-- The RSS feed (includes the content) has around 8000 views and around 
-  - 2300 clicks back to the site per month, that results in page requests.
+- The blog has around 5500 unique visitors per month and around 6500 sessions 
+  - Around 7500 page requests.
+- The RSS feed (includes the content) has around 1200 views and around 
+  - 2500 clicks back to the site per month, that results in page requests.
 
 * Some posts will be cross posted on DZone and linked on dotnetkicks.com and discover.NET. 
   * DZone probably will remove the sponsor note, but will generate traffic anyway
@@ -78,12 +78,17 @@ Here are some numbers about the blog:
 
   - That will generate traffic as well
 - I promote my posts on 
-  - Facebook 480 follower (less relevant)
-  - Twitter 1200 Tech-Follower (pretty much relevant)
+  - Facebook 460 followers (less relevant)
+  - Twitter 1500 tech-followers (pretty much relevant) 
+  - LinkedIn 660 followers (relevant) 
+  
+Google Analytics statistics:
 
 ![]({{site.baseurl}}/img/sponsors/October2018.jpg)
 
+The FeedBurner statistics:
 
+![]({{site.baseurl}}/img/sponsors/February2021-feed.jpg)
 
 ## Thanks
 
