@@ -19,7 +19,7 @@ In July 2015 I got the first time awarded as a [Microsoft MVP for Developer Tech
 
 I'm working as a Software Engineer at the [YOO AG](http://yoo.digital/) in Basel (Switzerland).
 
-![]({{ site.baseurl }}/img/yoologo.png)
+![]({{ site.baseurl }}/img/yoologo_neu.png)
 
 Along with family and job, I'm writing articles in .NET Magazines and posts in this blog about ASP.NET, .NET, web technologies, and the .NET community. I'm also leading a [.NET user group in Basel](http://www.dotnet-nordwest.ch/). From January 2007 until November 2015 I was also leading the .NET user group Konstanz-Kreuzlingen.
 
