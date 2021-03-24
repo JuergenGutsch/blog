@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ASP.NET Core in .NET 6 - Part 02 - Update on dotnet watch"
-teaser: "Description"
+teaser: "This is the second part of the ASP.NET Core on .NET 6 series. In this post, I want to have a look into the updates on dotnet watch."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -12,17 +12,18 @@ tags:
 - Tag
 ---
 
-Post your content here
+This is the second part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I want to have a look into the updates on `dotnet watch`. The [announcement post from February 17th](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-6-preview-1/) mentioned that `dotnet watch` now does `dotnet watch run` by default.
 
-This is the second part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post I want to have a look onto the updates on `dotnet watch`. The [announcement post  from February 17th](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-6-preview-1/) mentioned that `dotnet watch` now does `dotnet watch run` by default
+Actually, this doesn't work in preview 1 because this feature didn't make it to this release by accident: https://github.com/dotnet/aspnetcore/issues/30470
 
-Actually this doesn't work in the current preview.
+BTW: This feature isn't mentioned anymore. The team changed the post and didn't add it to preview 2 though.
 
-The idea is to just use `dotnet watch` without specifying the `run` command that should executed after a file changed. `run` should be the default command. But it is not. 
+The idea is to just use `dotnet watch` without specifying the `run` command that should be executed after a file is changed. `run` is now the default command:
 
-I had a look into the sources of the preview
+![image-20210324204842033](C:\Users\webma\AppData\Roaming\Typora\typora-user-images\image-20210324204842033.png)
 
-https://github.com/dotnet/sdk/blob/release/6.0.1xx-preview1/src/BuiltInTools/dotnet-watch/Program.cs
+This is just a small thing but might save some time.
 
+## What's next?
 
-
+In the next part In going to look into the support for IAsyncDisposable in MVC.
