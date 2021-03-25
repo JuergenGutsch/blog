@@ -20,7 +20,7 @@ BTW: This feature isn't mentioned anymore. The team changed the post and didn't 
 
 The idea is to just use `dotnet watch` without specifying the `run` command that should be executed after a file is changed. `run` is now the default command:
 
-![image-20210324204842033](C:\Users\webma\AppData\Roaming\Typora\typora-user-images\image-20210324204842033.png)
+![dotnetwatch.png]({{site.baseurl}}/img/aspnetcore6/dotnetwatch.png)
 
 This is just a small thing but might save some time.
 
