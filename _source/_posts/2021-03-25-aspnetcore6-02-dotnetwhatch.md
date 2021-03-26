@@ -26,4 +26,4 @@ This is just a small thing but might save some time.
 
 ## What's next?
 
-In the next part In going to look into the support for IAsyncDisposable in MVC.
+In the next part In going to look into the [support for IAsyncDisposable in MVC]({% post_url aspnetcore6-03-iasyncdisposable.md %}).

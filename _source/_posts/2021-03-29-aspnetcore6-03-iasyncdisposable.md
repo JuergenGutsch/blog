@@ -76,8 +76,8 @@ This will actually dispose the async resource .
 
 Microsoft has some really detailed docs about it:
 
-* 
-* 
+* [IAsyncDisposable Interface](https://docs.microsoft.com/en-us/dotnet/api/system.iasyncdisposable?view=net-5.0)
+* [Implement a DisposeAsync method](https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-disposeasync)
 
 ## What's next?
 
