@@ -12,7 +12,7 @@ tags:
 - Tag
 ---
 
-This is the second part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I want to have a look at the Support for `IAsyncDisposable` in MVC.
+This is the third part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I want to have a look at the Support for `IAsyncDisposable` in MVC.
 
 The `IAsyncDisposable` is a thing since .NET Core 3.0. If I'm right, we got that together with the async streams to release those kind of streams asynchronously. Now MVC is supporting this interface as well and you can use it anywhere in your code on controllers, classes, etc. to release async resources.
 
@@ -81,4 +81,4 @@ Microsoft has some really detailed docs about it:
 
 ## What's next?
 
-In the next part In going to look into the support for DynamicComponent in Blazor.
+In the next part In going to look into the support for [DynamicComponent]({% post_url aspnetcore6-04-dynamiccomponent.md %}) in Blazor.
