@@ -8,8 +8,6 @@ image: /img/cardlogo-dark.png
 tags: 
 - .NET Core
 - ASP.NET Core
-- Tests
-- Tag
 ---
 
 An interesting question on Twitter leads me to write this small post. The question was how to suppress opening a browser when you run `dotnet watch run`.
