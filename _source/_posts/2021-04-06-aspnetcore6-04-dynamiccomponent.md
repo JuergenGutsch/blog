@@ -6,10 +6,8 @@ author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
-- .NET Core
 - ASP.NET Core
-- Tests
-- Tag
+- .NET 6
 ---
 
 This is the fourth part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I want to have a look `DynamicComponent` in Blazor.
