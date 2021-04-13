@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ASP.NET Core in .NET 6 - Part 04 - DynamicComponent in Blazor"
-teaser: ""
+teaser: "This is the fourth part of the ASP.NET Core on .NET 6 series. In this post, I want to have a look at the DynamicComponent in Blazor that can be used to dynamically render a component specified by type"
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -10,7 +10,7 @@ tags:
 - .NET 6
 ---
 
-This is the fourth part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I want to have a look `DynamicComponent` in Blazor.
+This is the fourth part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I want to have a look at the `DynamicComponent` in Blazor.
 
 What does Microsoft say about it?
 
@@ -66,4 +66,4 @@ Think about a timeline of news, a newsfeed, or stuff like this on a web page, th
 
 ## What's next?
 
-In the next part In going to look into the support for `ElementReference` in Blazor.
+In the next part In going to look into the support for [ElementReference]({% post_url aspnetcore6-05-elementreference.md %}) in Blazor.
