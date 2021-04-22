@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.NET Core in .NET 6 - Part 05 - Input ElementReference in Blazor"
+title: "ASP.​NET Core in .NET 6 - Part 05 - Input ElementReference in Blazor"
 teaser: "This is the fifth part of the ASP.NET Core on .NET 6 series. In this post, I want to have a look at the input ElementReference in Blazor that is exposed to relevant components."
 author: "Jürgen Gutsch"
 comments: true

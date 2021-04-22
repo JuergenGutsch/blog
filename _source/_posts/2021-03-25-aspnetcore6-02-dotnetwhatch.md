@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.NET Core in .NET 6 - Part 02 - Update on dotnet watch"
+title: "ASP.​NET Core in .NET 6 - Part 02 - Update on dotnet watch"
 teaser: "This is the second part of the ASP.NET Core on .NET 6 series. In this post, I want to have a look into the updates on dotnet watch."
 author: "Jürgen Gutsch"
 comments: true
