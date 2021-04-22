@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.NET Core in .NET 6 - Part 04 - DynamicComponent in Blazor"
+title: "ASP.​NET Core in .NET 6 - Part 04 - DynamicComponent in Blazor"
 teaser: "This is the fourth part of the ASP.NET Core on .NET 6 series. In this post, I want to have a look at the DynamicComponent in Blazor that can be used to dynamically render a component specified by type"
 author: "Jürgen Gutsch"
 comments: true
