@@ -86,4 +86,4 @@ It's working and it is quite cool to prevent null reference exceptions against A
 
 ## What's next?
 
-In the next part In going to look into the support for `Support for custom event arguments in Blazor` in ASP.NET Core.
+In the next part In going to look into the support for [Support for custom event arguments in Blazor]({% post_url aspnetcore6-07-custom-event-arguments.md %}) in ASP.NET Core.
