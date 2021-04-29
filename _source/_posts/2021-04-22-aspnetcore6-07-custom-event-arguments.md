@@ -16,7 +16,7 @@ In Blazor you can create custom events and Microsoft now added the support for c
 
 ## Exploring custom event arguments in Blazor
 
- At first I'm going to crate a new Blazor WebAssembly project:
+ At first, I'm going to create a new Blazor WebAssembly project using the .NET CLI:
 
 ``` shell
 dotnet new blazorwasm -n BlazorCustomEventArgs -o BlazorCustomEventArgs
@@ -24,32 +24,40 @@ cd BlazorCustomEventArgs
 code .
 ```
 
-After VSCode opens I crate new folder called `CustomEvents` and place a new C# file called `CustomPasteEventArgs.cs` in it. This file contains the first snippet:
+These commands create the project, change the directory into the project folder, and opens VSCode.
+
+After VSCode opens, I create a new folder called `CustomEvents` and place a new C# file called `CustomPasteEventArgs.cs` in it. This file contains the first snippet:
 
 ~~~csharp
 using System;
 using Microsoft.AspNetCore.Components;
 
-[EventHandler("oncustompaste", typeof(CustomPasteEventArgs), enableStopPropagation: true, enablePreventDefault: true)]
-public static class EventHandlers
+namespace BlazorCustomEventArgs.CustomEvents
 {
-    // This static class doesn't need to contain any members. It's just a place where we can put
-    // [EventHandler] attributes to configure event types on the Razor compiler. This affects the
-    // compiler output as well as code completions in the editor.
-}
+    [EventHandler("oncustompaste", typeof(CustomPasteEventArgs), enableStopPropagation: true, enablePreventDefault: true)]
+    public static class EventHandlers
+    {
+        // This static class doesn't need to contain any members. It's just a place where we can put
+        // [EventHandler] attributes to configure event types on the Razor compiler. This affects the
+        // compiler output as well as code completions in the editor.
+    }
 
-public class CustomPasteEventArgs : EventArgs
-{
-    // Data for these properties will be supplied by custom JavaScript logic
-    public DateTime EventTimestamp { get; set; }
-    public string PastedData { get; set; }
+    public class CustomPasteEventArgs : EventArgs
+    {
+        // Data for these properties will be supplied by custom JavaScript logic
+        public DateTime EventTimestamp { get; set; }
+        public string PastedData { get; set; }
+    }
 }
 ~~~
 
-In the Index.razor in the Pages folder we add the next snippet of the blog post:
+Additionally, I added a namespace to be complete.
+
+In the `Index.razor` in the Pages folder we add the next snippet of the blog post:
 
 ~~~html
 @page "/"
+@using BlazorCustomEventArgs.CustomEvents
 
 <p>Try pasting into the following text box:</p>
 <input @oncustompaste="HandleCustomPaste" />
@@ -65,12 +73,11 @@ In the Index.razor in the Pages folder we add the next snippet of the blog post:
 }
 ~~~
 
-This crates an `input` element and outputs a message that will be generated on the CustomPaste event. 
+I need to add the `using` to match the namespace of the `CustomPasteEventArgs`. This creates an `input` element and outputs a message that will be generated on the `CustomPaste` event handler. 
 
-At the end we need to add some JavaScript in the `index.html` that is located in the `wwwroot` folder. This file hosts the actual WebAssembly application.
+At the end, we need to add some JavaScript in the `index.html` that is located in the `wwwroot` folder. This file hosts the actual WebAssembly application. Place this script directly after the script tag for the `blazor.webassembly.js`:
 
 ~~~html
-<!-- You should add this directly after the <script> tag for blazor.server.js or blazor.webassembly.js -->
 <script>
     Blazor.registerCustomEventType('custompaste', {
         browserEventName: 'paste',
@@ -86,21 +93,21 @@ At the end we need to add some JavaScript in the `index.html` that is located in
 </script>
 ~~~
 
-This binds the default `paste` event to the `custompaste` event and adds the pasted text data as well as the current date to the `CustomPasteEventArgs`. In that case the JavaScript object literal should match the `CustomPasteEventArg` to get it working property, except the casing of the properties.
+This binds the default `paste` event to the `custompaste` event and adds the pasted text data, as well as the current date to the `CustomPasteEventArgs`. In that case the JavaScript object literal should match the `CustomPasteEventArg` to get it working property, except the casing of the properties.
 
-Let's try it out. I run the application by calling the `dotnet run` command in the console:
+> Blazor doesn't protect you to write some JavaScript ;-)
 
-![image-20210429080601034](C:\Users\webma\AppData\Roaming\Typora\typora-user-images\image-20210429080601034.png)
+Let's try it out. I run the application by calling the `dotnet run` command or the `dotnet watch` command in the console:
+
+![dotnet run]({{site.baseurl}}/img/aspnetcore6/run-blazor.png)
 
 If the browser doesn't start automatically copy the displayed HTTPS URL into the browser. It should look like this:
 
-![image-20210429080218976](C:\Users\webma\AppData\Roaming\Typora\typora-user-images\image-20210429080218976.png)
+![custom event args 1]({{site.baseurl}}/img/aspnetcore6/customevent01.png)
 
 Now I past some text into the `input` element. Et voilà:
 
-![image-20210429080302002](C:\Users\webma\AppData\Roaming\Typora\typora-user-images\image-20210429080302002.png)
-
-Don't be confused about the date. Since it is created via JavaScript using `new Date()`  it is a UTC date, which means minus 2 hours within my CET time zone, during daylight saving time.
+![custom event args 2]({{site.baseurl}}/img/aspnetcore6/customevent02.png)Don't be confused about the date. Since it is created via JavaScript using `new Date()`  it is a UTC date, which means minus two hours within the CET time zone, during daylight saving time. 
 
 ## What's next?
 
