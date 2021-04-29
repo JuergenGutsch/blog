@@ -109,4 +109,4 @@ On the other hand, it would be great, if Microsoft exposes much more features vi
 
 ## What's next?
 
-In the next part In going to look into the support for `Nullable Reference Type Annotations` in ASP.NET Core.
+In the next part In going to look into the support for [Nullable Reference Type Annotations]({% post_url aspnetcore6-06-nullable-annotations.md %}) in ASP.NET Core.
