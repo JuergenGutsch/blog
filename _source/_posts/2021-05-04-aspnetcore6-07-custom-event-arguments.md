@@ -111,4 +111,4 @@ Now I past some text into the `input` element. Et voilà:
 
 ## What's next?
 
-In the next part In going to look into the support for `CSS isolation for MVC Views and Razor Pages` in ASP.NET Core.
+In the next part In going to look into the support for [CSS isolation for MVC Views and Razor Pages]({% post_url aspnetcore6-08-css-isolation.md %}) in ASP.NET Core.
