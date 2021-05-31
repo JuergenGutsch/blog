@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "ASP.NET Core in .NET 6 - Part 08 - CSS isolation for MVC Views and Razor Pages"
-teaser: "This is the eighth part of the ASP.NET Core on .NET 6 series. In this post, I'd like to have a quick  into the support for SS isolation for MVC Views and Razor Pages."
+title: "ASP.​NET Core in .NET 6 - Part 08 - CSS isolation for MVC Views and Razor Pages"
+teaser: "This is the eighth part of the ASP.NET Core on .NET 6 series. In this post, I'd like to have a quick look into the support for SS isolation for MVC Views and Razor Pages."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -49,7 +49,7 @@ Ensure the first part of the URL is the name of your application. It is `CssIsol
 
 We'll now have a red H1 header:
 
-![Isolated CSS: red header]({{site.baseurl}}//img/aspnetcore6/css-isolation.png)
+![Isolated CSS: red header]({{site.baseurl}}/img/aspnetcore6/css-isolation.png)
 
 ### How is this solved?
 
