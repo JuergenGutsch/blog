@@ -13,11 +13,11 @@ tags:
 
 ---
 
-This is the eighth part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I'd like to have a look into the inferring of generic types from ancestor components.
+This is the ninth part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I'd like to have a look into the inferring of generic types from ancestor components.
 
-In Blazor generic ancestor components need to have the generic type defined in the markup code, until yet. With the preview 2 of .NET 6 ancestor components infer the generic type from the parent component.
+In Blazor generic ancestor components need to have the generic type defined in the markup code, until yet. With the preview 2 of .NET 6 ancestor components can infer the generic type from the parent component.
 
-In the announcement post Microsoft shows a quick demo with the Grid component. Let's have a quick look at the snippets:
+In the announcement post, Microsoft shows a quick demo with the Grid component. Let's have a quick look at the snippets:
 
 ``` html
 <Grid Items="@people">
@@ -26,7 +26,7 @@ In the announcement post Microsoft shows a quick demo with the Grid component. L
 </Grid>
 ```
 
- In this snippet the Column component has the generic type with the `TItem` property. This is not longer needed as they showed with this sample:
+In this snippet, the Column component has the generic type with the `TItem` property. This is not longer needed as they showed with this sample:
 
 ~~~html
 <Grid Items="@people">
@@ -41,7 +41,7 @@ Since I don't like grids at all, I would like to try to build a `SimpleList` com
 
 ## Try to infer generic types 
 
-As usual I have to create a project first. This time I'm going to use a Blazor Server project
+As usual, I have to create a project first. This time I'm going to use a Blazor Server project
 
 ~~~ shell
 dotnet new blazorserver -n ComponentGenericTypes -o ComponentGenericTypes
@@ -49,7 +49,7 @@ cd ComponentGenericTypes
 code .
 ~~~
 
-This creates a new Blazor Server project called `ComponentGenericTypes`, changes into the project directory and opens VSCode to start working on the project.
+This creates a new Blazor Server project called `ComponentGenericTypes`, changes into the project directory, and opens VSCode to start working on the project.
 
 To generate some meaningful dummy data, I'm going to add my favorite NuGet package GenFu:
 
@@ -81,9 +81,9 @@ In the `Index.razor`, I replaced the existing code with the following:
 }
 ~~~
 
-This will nit work yet, but let's quickly go threw it to get the idea. Since this code uses two components that are located in the the Components folder, we need to add a using of `ComponentGenericTypes.Components`, as well as a using to `ComponentGenericType.Date` because we like to use the `Person` class. Both the components and the class don't exist yet.
+This will not work yet, but let's quickly go through it to get the idea. Since this code uses two components that are located in the Components folder, we need to add a using of `ComponentGenericTypes.Components`, as well as a using to `ComponentGenericType.Date` because we like to use the `Person` class. Both the components and the class don't exist yet.
 
-At the bottom of the file we create a list of 15 person using `GenFu` and assign it to a variable that is bound to the `SimpleList` component. The `ListItem` component is the direct child component of the `SimpleList` and behaves like a template for for the items. It also contains markup code to display the values. 
+At the bottom of the file, we create a list of 15 persons using `GenFu` and assign it to a variable that is bound to the `SimpleList` component. The `ListItem` component is the direct child component of the `SimpleList` and behaves like a template for the items. It also contains markup code to display the values. 
 
 For the `Person` class I created a new C# file in the `Data` folder and added the following code:
 
@@ -99,7 +99,7 @@ namespace ComponentGenericTypes.Data
 }
 ~~~
 
-This is a pretty simple class. But the property names are important. If such a class is instantiated by GenFu, it automatically writes first names into the `FirstName` property, last names into the `LastName` property and it also writes valid email addresses into the `Email` property. It also works with Streets, Addresses, ZIP codes, phone numbers and so on. This is why GenFu is my favorite NuGet package.
+This is a pretty simple class. But the property names are important. If such a class is instantiated by GenFu, it automatically writes first names into the `FirstName` property, last names into the `LastName` property and it also writes valid email addresses into the `Email` property. It also works with Streets, Addresses, ZIP codes, phone numbers, and so on. This is why GenFu is my favorite NuGet package.
 
 Now let's create a `Components` folder and place the `SimpleList` component inside. The code looks like this:
 
@@ -117,7 +117,7 @@ Now let's create a `Components` folder and place the `SimpleList` component insi
 
 It defines the generic type parameter `TItem` and a property called `Items` that is of type `IEnemuerable` of `TItem`. That makes the component generic to use almost any kind of `IEnumerables`. To use child components, the `SimpleList` also contains a `RenderFragment` property called `ChildContent`. 
 
-The second attribute does the magic. This cascades the generic type parameter of a specific type to the child component. This is why we don't need to specify the generic type in the ancestor component. In the third line we also cascade the property Items to the child component. 
+The second attribute does the magic. This cascades the generic type parameter of a specific type to the child component. This is why we don't need to specify the generic type in the ancestor component. In the third line, we also cascade the property Items to the child component. 
 
 Now it's time to create the `ListItem` component:
 
@@ -135,7 +135,7 @@ Now it's time to create the `ListItem` component:
 }
 ~~~
 
-This components iterated threw the list of items and renders the `ChildContent` which in this case is a generic `RenderFragment`. The generic one creates a `context` variable of type `TItem` that can be used to bind the passed value to child components or html markup. As seen in the `Index.razor` the `context` variable will be of type `Person`:
+This component iterates through the list of items and renders the `ChildContent` which in this case is a generic `RenderFragment`. The generic one creates a `context` variable of type `TItem` that can be used to bind the passed value to child components or HTML markup. As seen in the `Index.razor` the `context` variable will be of type `Person`:
 
 ~~~html
 <ListItem>
@@ -146,7 +146,7 @@ This components iterated threw the list of items and renders the `ChildContent` 
 </ListItem>
 ~~~
 
-That's it! The index page now will show a list of 15 person:
+That's it! The index page now will show a list of 15 persons:
 
 ![Generic List Component]({{site.baseurl}}/img/aspnetcore6/genericcomponent.png)
 
