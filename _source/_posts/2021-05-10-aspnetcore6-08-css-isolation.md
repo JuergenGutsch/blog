@@ -49,7 +49,7 @@ Ensure the first part of the URL is the name of your application. It is `CssIsol
 
 We'll now have a red H1 header:
 
-![Isolated CSS: red header]({{site.baseurl}}//img/aspnetcore6/css-isolation.png)
+![Isolated CSS: red header]({{site.baseurl}}/img/aspnetcore6/css-isolation.png)
 
 ### How is this solved?
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.NET Core in .NET 6 - Part 09 - Infer component generic types from ancestor components"
+title: "ASP.​NET Core in .NET 6 - Part 09 - Infer component generic types from ancestor components"
 teaser: "This is the ninth part of the ASP.NET Core on .NET 6 series. In this post, I'd like to have a look into the inferring of generic types from ancestor components."
 author: "Jürgen Gutsch"
 comments: true
@@ -99,9 +99,9 @@ namespace ComponentGenericTypes.Data
 }
 ~~~
 
-This is a pretty simple class. But the property names are important. If such a class is instantiated by GenFu, it automatically writes first names into the FirstName property, last names into the LastName property and it also writes valid email addresses into the Email properties. It also works with Streets, Addresses, ZIP codes, phone numbers and so on. This is why GenFu is my favorite NuGet package.
+This is a pretty simple class. But the property names are important. If such a class is instantiated by GenFu, it automatically writes first names into the `FirstName` property, last names into the `LastName` property and it also writes valid email addresses into the `Email` property. It also works with Streets, Addresses, ZIP codes, phone numbers and so on. This is why GenFu is my favorite NuGet package.
 
-Now let's create a Components folder and place the SimpleList component inside. The code looks like this:
+Now let's create a `Components` folder and place the `SimpleList` component inside. The code looks like this:
 
 ~~~html
 @typeparam TItem
@@ -135,7 +135,7 @@ Now it's time to create the `ListItem` component:
 }
 ~~~
 
-This components iterated threw the list of items and renders the `ChildContent` which in this case is a generic `RenderFragment`. The generic one creates a `context` that can be used to bind the passed value to child components or html markup. As seen in the `Index.razor`:
+This components iterated threw the list of items and renders the `ChildContent` which in this case is a generic `RenderFragment`. The generic one creates a `context` variable of type `TItem` that can be used to bind the passed value to child components or html markup. As seen in the `Index.razor` the `context` variable will be of type `Person`:
 
 ~~~html
 <ListItem>
@@ -146,9 +146,11 @@ This components iterated threw the list of items and renders the `ChildContent` 
 </ListItem>
 ~~~
 
+That's it! The index page now will show a list of 15 person:
 
+![Generic List Component]({{site.baseurl}}/img/aspnetcore6/genericcomponent.png)
 
-
+Since I'm not really a Blazor expert the way how I implemented the components might be not completely right, but it's working and shows the idea of the topic of this blog post. 
 
 ## What's next?
 
