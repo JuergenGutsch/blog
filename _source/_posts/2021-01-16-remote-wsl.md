@@ -14,7 +14,7 @@ tags:
 
 > It is a long time since I did the last post... I was kind of busy finalizing a book. Also, COVID19 and the remote only working periods steal my commuting writing time. Two hours on the train that I used to use to write blog posts and stuff. My book is finished and will be published soon and to make 2021 better than 2020, I force myself to write for my blog.
 
-For a while, I have the [WSL2](https://docs.microsoft.com/en-us/windows/wsl/about)  (Windows Subsystem for Linux) installed on my computer to play around with Linux and to work with Docker. We did a lot using Docker the last year at the [YOO](https://www.yoo.digital/) and id is pretty easy using [Docker Desktop](https://www.docker.com/products/docker-desktop) and the WSL. Recently I had to check a demo building and running on Linux. My first thought was using and running a Docker container to work with, but this seemed to be too much effort for a simple check.
+For a while, I have the [WSL2](https://docs.microsoft.com/en-us/windows/wsl/about)  (Windows Subsystem for Linux) installed on my computer to play around with Linux and to work with Docker. We did a lot using Docker the last year at the [YOO](https://www.yoo.digital/) and it is pretty easy using [Docker Desktop](https://www.docker.com/products/docker-desktop) and the WSL. Recently I had to check a demo building and running on Linux. My first thought was using and running a Docker container to work with, but this seemed to be too much effort for a simple check.
 
 So why not do this in the WSL directly?
 
