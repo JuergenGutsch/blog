@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.​NET Core in .NET 6 - Part 08 - CSS isolation for MVC Views and Razor Pages"
+title: "ASP.​NET Core in .NET 6 - CSS isolation for MVC Views and Razor Pages"
 teaser: "This is the eighth part of the ASP.NET Core on .NET 6 series. In this post, I'd like to have a quick look into the support for SS isolation for MVC Views and Razor Pages."
 author: "Jürgen Gutsch"
 comments: true
