@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.​NET Core in .NET 6 - Part 03 - Support for IAsyncDisposable in MVC"
+title: "ASP.​NET Core in .NET 6 - Support for IAsyncDisposable in MVC"
 teaser: "This is the third part of the ASP.NET Core on .NET 6 series. In this post, I want to have a look at the IAsyncDisposable interface."
 author: "Jürgen Gutsch"
 comments: true
