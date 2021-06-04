@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.​NET Core in .NET 6 - Part 09 - Infer component generic types from ancestor components"
+title: "ASP.​NET Core in .NET 6 - Infer component generic types from ancestor components"
 teaser: "This is the ninth part of the ASP.NET Core on .NET 6 series. In this post, I'd like to have a look into the inferring of generic types from ancestor components."
 author: "Jürgen Gutsch"
 comments: true

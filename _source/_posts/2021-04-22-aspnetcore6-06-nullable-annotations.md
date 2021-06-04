@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.​NET Core in .NET 6 - Part 06 - Nullable Reference Type Annotations"
+title: "ASP.​NET Core in .NET 6 - Nullable Reference Type Annotations"
 teaser: "This is the sixth part of the ASP.NET Core on .NET 6 series. In this post, I want to have a quick into the new Nullable Reference Type Annotations in some ASP.NET Core APIs."
 author: "Jürgen Gutsch"
 comments: true

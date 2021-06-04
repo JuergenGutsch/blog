@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.NET Core in .NET 6 - Part 07 - Support for custom event arguments in Blazor"
+title: "ASP.NET Core in .NET 6 - Support for custom event arguments in Blazor"
 teaser: "This is the seventh part of the ASP.NET Core on .NET 6 series. In this post, I want to have a quick  into the support for custom event arguments in Blazor."
 author: "Jürgen Gutsch"
 comments: true
