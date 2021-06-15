@@ -154,4 +154,4 @@ Since I'm not really a Blazor expert the way how I implemented the components mi
 
 ## What's next?
 
-In the next part In going to look into the support for `preserve prerendered state in Blazor apps` in ASP.NET Core.
+In the next part In going to look into the support for [Preserve prerendered state in Blazor apps]({% post_url aspnetcore6-10-blazor-preserve-prerendered-state.md %}) in ASP.NET Core.
