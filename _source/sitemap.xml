@@ -11,17 +11,17 @@ layout: nil
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://asp.net-hacker.rocks/archive.html</loc>
+    <loc>{{ site.baseurl }}/archive.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.800</priority>
   </url>
   <url>
-    <loc>https://asp.net-hacker.rocks/about.html</loc>
+    <loc>{{ site.baseurl }}/about.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.800</priority>
   </url>
   <url>
-    <loc>https://asp.net-hacker.rocks/sponsors.html</loc>
+    <loc>{{ site.baseurl }}/sponsors.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.800</priority>
   </url>
