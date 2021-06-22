@@ -37,8 +37,6 @@ In this snippet, the Column component has the generic type with the `TItem` prop
 
 Since I don't like grids at all, I would like to try to build a `SimpleList` component that uses a generic  `ListItem` ancestor component to render the items in the list:
 
-
-
 ## Try to infer generic types 
 
 As usual, I have to create a project first. This time I'm going to use a Blazor Server project
