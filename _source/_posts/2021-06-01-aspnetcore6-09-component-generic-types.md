@@ -37,8 +37,6 @@ In this snippet, the Column component has the generic type with the `TItem` prop
 
 Since I don't like grids at all, I would like to try to build a `SimpleList` component that uses a generic  `ListItem` ancestor component to render the items in the list:
 
-
-
 ## Try to infer generic types 
 
 As usual, I have to create a project first. This time I'm going to use a Blazor Server project
@@ -154,4 +152,4 @@ Since I'm not really a Blazor expert the way how I implemented the components mi
 
 ## What's next?
 
-In the next part In going to look into the support for `preserve prerendered state in Blazor apps` in ASP.NET Core.
+In the next part In going to look into the support for [Preserve prerendered state in Blazor apps]({% post_url aspnetcore6-10-blazor-preserve-prerendered-state.md %}) in ASP.NET Core.
