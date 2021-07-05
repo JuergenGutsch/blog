@@ -8,7 +8,9 @@ image: /img/cardlogo-dark.png
 tags: 
 - ASP.NET Core
 - .NET 6
-- Blazor
+- HTTP/3
+- TLS
+- HTTPS
 
 ---
 
@@ -16,7 +18,9 @@ This is the next part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetc
 
 In the preview 3, Microsoft started to add support for HTTP/3 which brings a lot of improvements to the web. HTTP3 brings a faster connection setup as well as improved performance on low-quality networks.
 
-Microsoft now adds support for HTTP/3 and the support for TLS (https). 
+Microsoft now adds support for HTTP/3 as well as the support to configure TLS (https) for HTTP/3.
+
+[More about HTTP/3](https://en.wikipedia.org/wiki/http/3) 
 
 ## HTTP/3 endpoint TLS configuration
 
@@ -28,7 +32,7 @@ cd Http3Tls
 code .
 ~~~
 
-This creates an MVC app, changes into the project folder and opens VSCode.
+This commands create an MVC app, change into the project folder and open VSCode.
 
 In the `Program.cs` we need to configure HTTP/3 as shown in Microsoft's blog post:
 
