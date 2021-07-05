@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.NET Core in .NET 6 - HTTP/3 endpoint TLS configuration"
+title: "ASP.​NET Core in .NET 6 - HTTP/3 endpoint TLS configuration"
 teaser: "This is the next part of the ASP.NET Core on .NET 6 series. In this post, I'd like to have a look into HTTP/3 endpoint TLS configuration."
 author: "Jürgen Gutsch"
 comments: true
