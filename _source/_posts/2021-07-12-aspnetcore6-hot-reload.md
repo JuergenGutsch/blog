@@ -1,75 +1,51 @@
 ---
 layout: post
 title: "ASP.​NET Core in .NET 6 - HTTP/3 endpoint TLS configuration"
-teaser: "This is the next part of the ASP.NET Core on .NET 6 series. In this post, I'd like to have a look into HTTP/3 endpoint TLS configuration."
+teaser: "This is the next part of the ASP.NET Core on .NET 6 series. In this post, I'd like to have a look at the .NET 6 support for Hot Reload."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
 - ASP.NET Core
 - .NET 6
-- HTTP/3
-- TLS
-- HTTPS
-
 ---
 
-This is the next part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I'd like to have a look into HTTP/3 endpoint TLS configuration.
+This is the next part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I'd like to have a look at the .NET 6 support for Hot Reload.
 
-In the preview 3, Microsoft started to add support for HTTP/3 which brings a lot of improvements to the web. HTTP3 brings a faster connection setup as well as improved performance on low-quality networks.
+In the preview 3, Microsoft started to add support for hot reload, which automatically gets started when you write `dotnet watch`. The preview 4 includes better support for hot reload. Currently I'm using the preview 5 to play around with hot reload.
 
-Microsoft now adds support for HTTP/3 as well as the support to configure TLS (https) for HTTP/3.
+## Playing around with Hot Reload
 
-[More about HTTP/3](https://en.wikipedia.org/wiki/http/3) 
-
-## HTTP/3 endpoint TLS configuration
-
-Let's see how you can configure HTTP/3 in a small MVC app using the following commands:
+To play around and to see how it works, I also create a new MVC project using the following commands:
 
 ~~~shell
-dotnet new mvc -o Http3Tls -n Http3Tls
-cd Http3Tls
+dotnet new mvc -o HotReload -n HotReload
+cd HotReload
 code .
 ~~~
 
 This commands create an MVC app, change into the project folder and open VSCode.
 
-In the `Program.cs` we need to configure HTTP/3 as shown in Microsoft's blog post:
+`dotnet run` will not start the application with hot reload enabled, but `dotnet watch` does. 
 
-~~~csharp
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        CreateHostBuilder(args).Build().Run();
-    }
+Run the command `dotnet watch` and see what happens, if you changes some C#, HTML, or CSS files. It immediately updates the browser and shows you the results. You can see what's happening in the console as well.
 
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder
-                    .ConfigureKestrel((context, options) =>
-                    {
-                        options.EnableAltSvc = true;
-                        options.Listen(IPAddress.Any, 5001, listenOptions =>
-                        {
-							// Enables HTTP/3
-                            listenOptions.Protocols = HttpProtocols.Http3;
-                            // Adds a TLS certificate to the endpoint
-                            listenOptions.UseHttps(httpsOptions =>
-                            {
-                                httpsOptions.ServerCertificate = LoadCertificate();
-                            });
-                        });
-                    })
-                    .UseStartup<Startup>();
-            });
-}
+![image-20210705173955666](C:\Users\webma\AppData\Roaming\Typora\typora-user-images\image-20210705173955666.png)
+
+As mentioned initially, hot reload is enabled by default, if you use dotnet watch. If you don't want to use hot reload, you need to add the option --no-hot-reload to the command:
+
+~~~shell
+dotnet watch --no-hot-reload
 ~~~
 
-The flag `EnableAltSvc` sets a Alt-Svc header to the browsers to tell them, that there are alternative services to the existing HTTP/1 or HTTP/2. This is needed to tell the browsers, that the alternative services - HTTP/3 in this case - should be treated like the existing ones. This needs a https connection to be secure and trusted.
+
+
+
+
+
+
+
 
 ## What's next?
 
-In the next part In going to look into the support for `.NET Hot Reload support` in ASP.NET Core.
+In the next part In going to look into the support for `BlazorWebView controls for WPF & Windows Forms` in ASP.NET Core.
