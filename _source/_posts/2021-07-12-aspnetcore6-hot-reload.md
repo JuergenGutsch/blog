@@ -12,7 +12,7 @@ tags:
 
 This is the next part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I'd like to have a look at the .NET 6 support for Hot Reload.
 
-In the preview 3, Microsoft started to add support for Hot Reload, which automatically gets started when you write `dotnet watch`. The preview 4 also includes support for Hot Reload in Visual Studio. Currently I'm using the preview 5 to play around with Hot Reload.
+In the preview 3, Microsoft started to add support for Hot Reload, which automatically gets started when you write `dotnet watch`. The preview 4 also includes support for Hot Reload in Visual Studio. Currently, I'm using the preview 5 to play around with Hot Reload.
 
 ## Playing around with Hot Reload
 
@@ -24,11 +24,11 @@ cd HotReload
 code .
 ~~~
 
-This commands create an MVC app, change into the project folder and open VSCode.
+These commands create an MVC app, change into the project folder, and open VSCode.
 
 `dotnet run` will not start the application with Hot Reload enabled, but `dotnet watch` does. 
 
-Run the command `dotnet watch` and see what happens, if you changes some C#, HTML, or CSS files. It immediately updates the browser and shows you the results. You can see what's happening in the console as well.
+Run the command `dotnet watch` and see what happens, if you change some C#, HTML, or CSS files. It immediately updates the browser and shows you the results. You can see what's happening in the console as well.
 
 ![image-20210705173955666](C:\Users\webma\AppData\Roaming\Typora\typora-user-images\image-20210705173955666.png)
 
@@ -38,7 +38,7 @@ As mentioned initially, Hot Reload is enabled by default, if you use `dotnet wat
 dotnet watch --no-hot-reload
 ~~~
 
-Hot Reload also works with WPF and Windows Forms Projects, as well as with .NET MAUI projects.
+Hot Reload should also work with WPF and Windows Forms Projects, as well as with .NET MAUI projects. I had a quick try with WPF and it didn't really work with XAML files. Sometimes it also did an infinite build loop. Every build 
 
 More about Hot Reload in this blog post: [https://devblogs.microsoft.com/dotnet/introducing-net-hot-reload/](https://devblogs.microsoft.com/dotnet/introducing-net-hot-reload/)
 
