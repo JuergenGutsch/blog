@@ -12,7 +12,7 @@ tags:
 
 This is the next part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I'd like to have a look at the .NET 6 support for Hot Reload.
 
-In the preview 3, Microsoft started to add support for hot reload, which automatically gets started when you write `dotnet watch`. The preview 4 includes better support for hot reload. Currently I'm using the preview 5 to play around with hot reload.
+In the preview 3, Microsoft started to add support for Hot Reload, which automatically gets started when you write `dotnet watch`. The preview 4 also includes support for Hot Reload in Visual Studio. Currently I'm using the preview 5 to play around with Hot Reload.
 
 ## Playing around with Hot Reload
 
@@ -26,25 +26,21 @@ code .
 
 This commands create an MVC app, change into the project folder and open VSCode.
 
-`dotnet run` will not start the application with hot reload enabled, but `dotnet watch` does. 
+`dotnet run` will not start the application with Hot Reload enabled, but `dotnet watch` does. 
 
 Run the command `dotnet watch` and see what happens, if you changes some C#, HTML, or CSS files. It immediately updates the browser and shows you the results. You can see what's happening in the console as well.
 
 ![image-20210705173955666](C:\Users\webma\AppData\Roaming\Typora\typora-user-images\image-20210705173955666.png)
 
-As mentioned initially, hot reload is enabled by default, if you use dotnet watch. If you don't want to use hot reload, you need to add the option --no-hot-reload to the command:
+As mentioned initially, Hot Reload is enabled by default, if you use `dotnet watch`. If you don't want to use Hot Reload, you need to add the option `--no-hot-reload` to the command:
 
 ~~~shell
 dotnet watch --no-hot-reload
 ~~~
 
+Hot Reload also works with WPF and Windows Forms Projects, as well as with .NET MAUI projects.
 
-
-
-
-
-
-
+More about Hot Reload in this blog post: [https://devblogs.microsoft.com/dotnet/introducing-net-hot-reload/](https://devblogs.microsoft.com/dotnet/introducing-net-hot-reload/)
 
 ## What's next?
 
