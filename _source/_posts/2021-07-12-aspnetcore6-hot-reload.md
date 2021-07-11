@@ -8,11 +8,12 @@ image: /img/cardlogo-dark.png
 tags: 
 - ASP.NET Core
 - .NET 6
+- Hot Reload
 ---
 
 This is the next part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I'd like to have a look at the .NET 6 support for Hot Reload.
 
-In the preview 3, Microsoft started to add support for Hot Reload, which automatically gets started when you write `dotnet watch`. The preview 4 also includes support for Hot Reload in Visual Studio. Currently, I'm using the preview 5 to play around with Hot Reload.
+In the preview 3, Microsoft started to add support for Hot Reload, which automatically gets started when you write `dotnet watch`. The preview 4 also includes support for Hot Reload in Visual Studio. Currently, I'm using the preview 5 to try Hot Reload.
 
 ## Playing around with Hot Reload
 
