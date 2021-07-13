@@ -1,47 +1,44 @@
 ---
 layout: post
-title: "ASP.​NET Core in .NET 6 - HTTP/3 endpoint TLS configuration"
-teaser: "This is the next part of the ASP.NET Core on .NET 6 series. In this post, I'd like to have a look at the .NET 6 support for Hot Reload."
+title: "ASP.NET Core in .NET 6 - Shadow-copying in IIS"
+teaser: "This is the next part of the ASP.NET Core on .NET 6 series. In this post, I'd like to explore the Shadow-copying in IIS."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
 - ASP.NET Core
 - .NET 6
-- Hot Reload
+- Shadow copy
+- IIS
 ---
 
-This is the next part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I'd like to have a look at the .NET 6 support for Hot Reload.
+This is the next part of the [ASP.NET Core on .NET 6 series]({% post_url aspnetcore6-01.md %}). In this post, I'd like to explore the Shadow-copying in IIS.
 
-In the preview 3, Microsoft started to add support for Hot Reload, which automatically gets started when you write `dotnet watch`. The preview 4 also includes support for Hot Reload in Visual Studio. Currently, I'm using the preview 5 to try Hot Reload.
+Since .NET is locking the assemblies that are running by a process, it is impossible to replace them during an update scenario. Specially in scenarios where you self-host an IIS server or where you need to update an running application via FTP. 
 
-## Playing around with Hot Reload
+To solve this, Microsoft added a new feature to the ASP.NET Core module for IIS to shadow copy the application assemblies to a specific folder.
 
-To play around and to see how it works, I also create a new MVC project using the following commands:
+## Exploring Shadow-copying in IIS
 
-~~~shell
-dotnet new mvc -o HotReload -n HotReload
-cd HotReload
-code .
+To enable shadow-copying you need to install the latest preview version of the ASP.NET Core module 
+
+> On a self-hosted IIS server, this requires a new version of the hosting bundle. On Azure App Services, you will be required to install a new ASP.NET Core runtime site extension
+> (https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-6-preview-3/#shadow-copying-in-iis)
+
+If you have the requirements ready, you should add a web.config to your project or edit the weg.config that is created during the publish process (dotnet publish). Since most of us are using continuous integration and can't touch the web.config after it gets crated automatically, you should add it to the project. Just copy the one that got created using dotnet publish. Continuous integration will not override an existing web.config
+
+To enable it you will need to add some new handler settings to the web.config:
+
+~~~xml
+<aspNetCore processPath="%LAUNCHER_PATH%" arguments="%LAUNCHER_ARGS%" stdoutLogEnabled="false" stdoutLogFile=".\logs\stdout">
+    <handlerSettings>
+        <handlerSetting name="experimentalEnableShadowCopy" value="true" />
+        <handlerSetting name="shadowCopyDirectory" value="../ShadowCopyDirectory/" />
+    </handlerSettings>
+</aspNetCore>
 ~~~
 
-These commands create an MVC app, change into the project folder, and open VSCode.
-
-`dotnet run` will not start the application with Hot Reload enabled, but `dotnet watch` does. 
-
-Run the command `dotnet watch` and see what happens, if you change some C#, HTML, or CSS files. It immediately updates the browser and shows you the results. You can see what's happening in the console as well.
-
-![image-20210705173955666](C:\Users\webma\AppData\Roaming\Typora\typora-user-images\image-20210705173955666.png)
-
-As mentioned initially, Hot Reload is enabled by default, if you use `dotnet watch`. If you don't want to use Hot Reload, you need to add the option `--no-hot-reload` to the command:
-
-~~~shell
-dotnet watch --no-hot-reload
-~~~
-
-Hot Reload should also work with WPF and Windows Forms Projects, as well as with .NET MAUI projects. I had a quick try with WPF and it didn't really work with XAML files. Sometimes it also did an infinite build loop. Every build 
-
-More about Hot Reload in this blog post: [https://devblogs.microsoft.com/dotnet/introducing-net-hot-reload/](https://devblogs.microsoft.com/dotnet/introducing-net-hot-reload/)
+This enables shadow-copying and specifies the shadow copy directory.
 
 ## What's next?
 
