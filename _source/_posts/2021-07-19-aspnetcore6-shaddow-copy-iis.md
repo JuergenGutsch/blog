@@ -25,9 +25,9 @@ To enable shadow-copying you need to install the latest preview version of the A
 > On a self-hosted IIS server, this requires a new version of the hosting bundle. On Azure App Services, you will be required to install a new ASP.NET Core runtime site extension
 > (https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-6-preview-3/#shadow-copying-in-iis)
 
-If you have the requirements ready, you should add a web.config to your project or edit the weg.config that is created during the publish process (dotnet publish). Since most of us are using continuous integration and can't touch the web.config after it gets crated automatically, you should add it to the project. Just copy the one that got created using dotnet publish. Continuous integration will not override an existing web.config
+If you have the requirements ready, you should add a `web.config` to your project or edit the `weg.config` that is created during the publish process (dotnet publish). Since most of us are using continuous integration and can't touch the `web.config` after it gets crated automatically, you should add it to the project. Just copy the one that got created using dotnet publish. Continuous integration will not override an existing `web.config`.
 
-To enable it you will need to add some new handler settings to the web.config:
+To enable it you will need to add some new `handlerSettings` to the `web.config`:
 
 ~~~xml
 <aspNetCore processPath="%LAUNCHER_PATH%" arguments="%LAUNCHER_ARGS%" stdoutLogEnabled="false" stdoutLogFile=".\logs\stdout">
@@ -39,6 +39,8 @@ To enable it you will need to add some new handler settings to the web.config:
 ~~~
 
 This enables shadow-copying and specifies the shadow copy directory.
+
+After the changes are deployed, you should be able to update the assemblies of a running application.
 
 ## What's next?
 
