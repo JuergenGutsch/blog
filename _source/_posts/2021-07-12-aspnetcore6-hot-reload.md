@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.​NET Core in .NET 6 - HTTP/3 endpoint TLS configuration"
+title: "ASP.​NET Core in .NET 6 - Hot Reload"
 teaser: "This is the next part of the ASP.NET Core on .NET 6 series. In this post, I'd like to have a look at the .NET 6 support for Hot Reload."
 author: "Jürgen Gutsch"
 comments: true
@@ -31,7 +31,7 @@ These commands create an MVC app, change into the project folder, and open VSCod
 
 Run the command `dotnet watch` and see what happens, if you change some C#, HTML, or CSS files. It immediately updates the browser and shows you the results. You can see what's happening in the console as well.
 
-![image-20210705173955666](C:\Users\webma\AppData\Roaming\Typora\typora-user-images\image-20210705173955666.png)
+![Hot Reload in action]({{site.baseurl}}/img/aspnetcore6/hotreload.png)
 
 As mentioned initially, Hot Reload is enabled by default, if you use `dotnet watch`. If you don't want to use Hot Reload, you need to add the option `--no-hot-reload` to the command:
 
