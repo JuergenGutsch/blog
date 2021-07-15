@@ -45,4 +45,4 @@ More about Hot Reload in this blog post: [https://devblogs.microsoft.com/dotnet/
 
 ## What's next?
 
-In the next part In going to look into the support for `Shadow-copying in IIS` .
+In the next part In going to look into the support for [Shadow-copying in IIS]({% post_url aspnetcore6-shaddow-copy-iis.md %}).
