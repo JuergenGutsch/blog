@@ -127,5 +127,5 @@ Actually, it is not really the ViewState, because it not gets sent back to the s
 
 ## What's next?
 
-In the next part In going to look into the support for `HTTP/3 endpoint TLS configuration` in ASP.NET Core.
+In the next part In going to look into the support for [HTTP/3 endpoint TLS configuration]({% post_url aspnetcore6-http3-tls %}) in ASP.NET Core.
 
