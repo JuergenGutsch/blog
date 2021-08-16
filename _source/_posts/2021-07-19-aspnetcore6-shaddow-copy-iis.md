@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.NET Core in .NET 6 - Shadow-copying in IIS"
+title: "ASP.​NET Core in .NET 6 - Shadow-copying in IIS"
 teaser: "This is the next part of the ASP.NET Core on .NET 6 series. In this post, I'd like to explore the Shadow-copying in IIS."
 author: "Jürgen Gutsch"
 comments: true
@@ -44,4 +44,4 @@ After the changes are deployed, you should be able to update the assemblies of a
 
 ## What's next?
 
-In the next part In going to look into the support for `BlazorWebView controls for WPF & Windows Forms` in ASP.NET Core.
+In the next part In going to look into [minimal APIs]({% post_url aspnetcore6-minimal-apis %}) in ASP.NET Core.
