@@ -24,6 +24,17 @@ This is not longer needed. The `IAsyncEnumerable<T>` does this for you with a lo
 
 Even EF Core supports the `IAsyncEnumerable<T>` to query the data. Because of that, working with EF Core is improved as well. Data you fetch from the database using EF Core can now directly streamed to the output. 
 
+~~~shell
+dotnet new webapi -n AsyncStreams -o AsyncStreams
+cd AsyncStreams\
+
+code .
+
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+~~~
+
+
+
 
 
 
