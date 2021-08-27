@@ -68,7 +68,7 @@ If you already know ASP.NET Core, you will know some of the things that are used
 
 `app.Run()` starts the application to serve the endpoints.
 
-You can start the project like any other ASP.NET Core project by running `dotnet run` or by clicking F5 in your IDE
+You can start the project like any other ASP.NET Core project by running `dotnet run` or by clicking F5 in your IDE.
 
 Actually, it is all working as any other ASP.NET Core project, but most of the stuff is encapsulated and preconfigured in the `WebApplicationBuilder` and can be accessed via properties. If you like to register some additional services, you need to access the Services property of the `WebApplicationBuilder`:
 
@@ -82,7 +82,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddControllersWithViews();
 ~~~
 
-Here you can also add the known services like authentication, authorization, and even MVC Controllers with views
+Here you can also add the known services like authentication, authorization, and even MVC Controllers with views.
 
 To configure the `Configuration`, `Logging`, `Host`, etc. you also need to access the relevant properties. 
 
