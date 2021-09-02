@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "ASP.​NET Core in .NET 6 - Async streaming"
-teaser: "This is the next part of the ASP.NET Core on .NET 6 series. In this post, I'd like to have a look into async streaming.
-"author: "Jürgen Gutsch"
+teaser: "This is the next part of the ASP.NET Core on .NET 6 series. In this post, I'd like to have a look into async streaming."
+author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
