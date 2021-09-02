@@ -144,5 +144,5 @@ What do you think? Just drop me a comment.
 
 ## What's next?
 
-In the next part In going to look into the support for `Async streaming` in ASP.NET Core.
+In the next part In going to look into the support for [Async streaming]({% post_url aspnetcore6-async-stream.md %}) in ASP.NET Core.
 
