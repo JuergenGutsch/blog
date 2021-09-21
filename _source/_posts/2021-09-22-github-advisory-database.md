@@ -85,21 +85,21 @@ You can execute such checks on the build server immediately before you actually 
 
 If you own a repository on GitHib you can easily draft and propose a new security advisory to the GitHub database. In your repository on GitHub there is a "Security" tab. If you click on that tab, you'll find the "Security advisories" page on the left-hand menu. Here you see your already drafted advisories as well as a button to create a new one:
 
-![image-20210913215021624](..\img\gsa\gsa01.png)
+![image-20210913215021624]({{site.baseurl}}/img/gsa/gsa01.png)
 
 If you don't own that repository, you will see the same page but without the button to draft an advisory.
 
 If you click that button, you'll see a nice form to draft the advisory.
 
-![image-20210913220736613](..\img\gsa\gsa02.png)
+![image-20210913220736613]({{site.baseurl}}/img/gsa/gsa02.png)
 
-![image-20210913220644670](..\img\gsa\gsa03.png)
+![image-20210913220644670]({{site.baseurl}}/img/gsa/gsa03.png)
 
 Once it is drafted, you can request a CVE identifier or just publish it. The GitHub team will then review it and add it to the advisory database:
 
-![image-20210913221748858](..\img\gsa\gsa04.png)
+![image-20210913221748858]({{site.baseurl}}/img/gsa/gsa04.png)
 
-![image-20210913221830226](..\img\gsa\gsa05.png)
+![image-20210913221830226]({{site.baseurl}}/img/gsa/gsa05.png)
 
 That's it.
 
