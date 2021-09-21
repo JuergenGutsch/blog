@@ -46,8 +46,8 @@ h3,
 h4,
 h5,
 h6 {
-    color: #4ECDA2;
     font-weight: lighter;
+    color: #4ECDA2;
     line-height: 1.35em;
 }
 
@@ -56,7 +56,10 @@ h1 {
 }
 
 h2 {
-    font-size: 2em;
+    font-size: 3em;
+}
+h3 {
+	font-size: 2em;
 }
 
 a,
