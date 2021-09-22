@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Do you know the GitHub Advisory Database?"
-teaser: "Since a while I'm trying to get into the topics of application security. One of the huge topics that is critical is about vulnerabilities in dependencies. This post is about why you should know the GitHub Advisory Database."
+teaser: "Since a while I'm trying to get into the topics of application security. One of the huge topics is about possible vulnerabilities in dependencies. This post is about why you should know the GitHub Advisory Database."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -12,7 +12,7 @@ tags:
 - DevSecOps
 ---
 
-For a while, I'm trying to get into the topics of application security. Application security is a really huge area and covers a lot of topics. It contains user authentication as well as CORS, various kinds of injections, and many other errors you can do during development. One of the huge topics is about vulnerabilities in dependencies.
+For a while, I'm trying to get into the topics of application security. Application security is a really huge area and covers a lot of topics. It contains user authentication as well as CORS, various kinds of injections, and many other errors you can do during development. One of the huge topics is about possible vulnerabilities in dependencies.
 
 Almost every developer is using third-party libraries and components directly, via NuGet, NPM, pip, or whatever package manager. I did and still do as well. 
 
