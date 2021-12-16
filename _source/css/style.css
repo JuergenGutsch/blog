@@ -246,7 +246,7 @@ article footer img.add {
     height: auto;
     width: auto;
     border: none;
-    float: left;
+    float:none;
     margin: 0;
 }
 
@@ -324,6 +324,9 @@ article>ol li {
         margin: 20px -10px !important;
         padding: 10px !important;
     }
+    article footer p{
+        margin-right: 0;
+    }
     h1 {
         margin-top: -0px;
     }
@@ -356,6 +359,15 @@ article>ol li {
         width: 80%;
         height: auto;
     }
+    article footer img.add {
+        float: none;
+        width: 100%;
+        height: auto;
+    }
+    article footer p{
+        margin-right: 0;
+    }
+
     #header .section li#feedlink {
         display: none;
     }
