@@ -14,66 +14,64 @@
             <p>
                 If you found any error on this post, feel free to tell me: Add a comment below,
                 <a href="https://github.com/JuergenGutsch/blog/issues" target="_blank">file an issue on GitHub</a> or
-                <a href="https://github.com/JuergenGutsch/blog/tree/master/_source/_posts/{{filename}}" target="_blank">edit this page on GitHub and send me an PullRequest</a>.
+                <a href="https://github.com/JuergenGutsch/blog/tree/master/_source/_posts/{{filename}}"
+                    target="_blank">edit this page on GitHub and send me an PullRequest</a>.
             </p>
             <p>
                 <strong>Do you like this post?</strong> If yes, please share this post on
-                <a href="https://twitter.com/intent/tweet?url={{ site.baseurl }}{{ page.url }}&amp;text={{ page.title }}&amp;via=sharpcms" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                <a href="https://twitter.com/intent/tweet?url={{ site.baseurl }}{{ page.url }}&amp;text={{ page.title }}&amp;via=sharpcms"
+                    onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
                     target="_blank" title="Share on Twitter">Twitter</a>,
-                <a href="https://facebook.com/sharer.php?u={{ site.baseurl }}{{ page.url }}&amp;t={{ page.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank"
-                    title="Share on Facebook">Facebook</a>,
-                <a href="https://plus.google.com/share?url={{ site.baseurl }}{{ page.url }}&amp;t={{ page.title }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=430');return false;" target="_blank"
-                    title="Share on Google+">Google+</a>,
-                <a href="https://www.reddit.com/submit?url={{ site.baseurl }}{{ page.url }}&amp;title={{ page.title }}" target="_blank" title="Share on Reddit">Reddit</a> or just share this
-                <a href="{{ site.baseurl }}{{ page.url }}" class="permalink" rel="bookmark">link</a> and click on the banner below. Thanks :)
+                <a href="https://facebook.com/sharer.php?u={{ site.baseurl }}{{ page.url }}&amp;t={{ page.title }}"
+                    onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                    target="_blank" title="Share on Facebook">Facebook</a>,
+                <a href="https://plus.google.com/share?url={{ site.baseurl }}{{ page.url }}&amp;t={{ page.title }}"
+                    onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=430');return false;"
+                    target="_blank" title="Share on Google+">Google+</a>,
+                <a href="https://www.reddit.com/submit?url={{ site.baseurl }}{{ page.url }}&amp;title={{ page.title }}"
+                    target="_blank" title="Share on Reddit">Reddit</a> or just share this
+                <a href="{{ site.baseurl }}{{ page.url }}" class="permalink" rel="bookmark">link</a> and click on the
+                banner below. Thanks :)
             </p>
             <p>
-                <script>
-                    (function() {
-                        var d = document,
-                            s = d.createElement('script');
-
-                        s.src = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-
-                        s.setAttribute('async', true);
-                        (d.head || d.body).appendChild(s);
-                    })();
-                </script>
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2112692016899285" data-ad-slot="9378927858" data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+                <a href="https://www.yoo.digital/?utm_source=asp.net-hacker.rocks&utm_medium=banner&utm_campaign=job-ad&utm_id=Job-Ad&utm_content=ad_blog_juergen" target="_blank">
+                    <img src="/img/yoo-hire-juergen.gif" class="add" alt="Jürgen Gutsch" />
+                </a><br>
+                Current blog sponsor: <a href="https://www.yoo.digital/?utm_source=asp.net-hacker.rocks&utm_medium=banner&utm_campaign=job-ad&utm_id=Job-Ad&utm_content=ad_blog_juergen" target="_blank">YOO AG</a>
             </p>
         </div>
         <div>
             <p>
                 <img src="/img/guj.png" alt="Jürgen Gutsch" />
-                <strong>Jürgen Gutsch</strong><br/>
-                <a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br/>
-                <span>.NET junkie, addicted to web and software development, clean coder, MVP for Developer Technologies</span>
+                <strong>Jürgen Gutsch</strong><br />
+                <a href="https://twitter.com/sharpcms/" target="_blank"><strong>@sharpcms</strong></a><br />
+                <span>.NET junkie, addicted to web and software development, clean coder, MVP for Developer
+                    Technologies</span>
             </p>
         </div>
         <div id="page-navigation clear">
-            <div class="left"> {% if page.previous.url %} <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}">&larr; {{page.previous.title}}</a> {% endif %} </div>
-            <div class="right"> {% if page.next.url %} <a href="{{page.next.url}}" title="next Post: {{page.next.title}}">{{page.next.title}} &rarr; </a> {% endif %} </div>
+            <div class="left"> {% if page.previous.url %} <a href="{{page.previous.url}}"
+                    title="Previous Post: {{page.previous.title}}">&larr; {{page.previous.title}}</a> {% endif %} </div>
+            <div class="right"> {% if page.next.url %} <a href="{{page.next.url}}"
+                    title="next Post: {{page.next.title}}">{{page.next.title}} &rarr; </a> {% endif %} </div>
             <div class="clear">&nbsp;</div>
         </div>
 
         {% if page.comments == true %}
         <script>
-        $(function() {
-            (function() {
-                var d = document,
-                    s = d.createElement('script');
-                s.src = 'https://utteranc.es/client.js';
-                s.setAttribute('repo', 'juergengutsch/blog');
-                s.setAttribute('issue-term', 'title');
-                s.setAttribute('theme', 'github-light');
-                s.setAttribute('crossorigin', 'anonymous');
-                s.setAttribute('async', true);
-                d.getElementById('articlefooter').appendChild(s);
-            })();
-        });
+            $(function () {
+                (function () {
+                    var d = document,
+                        s = d.createElement('script');
+                    s.src = 'https://utteranc.es/client.js';
+                    s.setAttribute('repo', 'juergengutsch/blog');
+                    s.setAttribute('issue-term', 'title');
+                    s.setAttribute('theme', 'github-light');
+                    s.setAttribute('crossorigin', 'anonymous');
+                    s.setAttribute('async', true);
+                    d.getElementById('articlefooter').appendChild(s);
+                })();
+            });
         </script>
         {% endif %}
     </footer>
