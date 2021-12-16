@@ -66,7 +66,7 @@ Execute a vulnerability check on the packages you use whenever it is possible. U
 Even Microsoft packages contain vulnerabilities as you can see here:
 [https://github.com/advisories/GHSA-q7cg-43mg-qp69](https://github.com/advisories/GHSA-q7cg-43mg-qp69)
 
-GitHub does such checks on the code level for you using the [Dependabot](https://github.com/dependabot). In case you don't host your code on GitHub you should use different tools like the already mentioned CLI tools or commercial tools like [SonaSource](https://www.sonarsource.com/), [Snyk](https://snyk.io/), or similar.
+GitHub does such checks on the code level for you using the [Dependabot](https://github.com/dependabot). In case you don't host your code on GitHub you should use different tools like the already mentioned CLI tools or commercial tools like [SonaSource](https://www.sonarsource.com/), Snyk, or similar.
 
 You can execute such checks on the build server immediately before you actually build your code. You could continue building in case the vulnerabilities are of a low or moderate level. You could stop building the code in case there are high or critical vulnerabilities
 
