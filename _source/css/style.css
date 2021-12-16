@@ -242,6 +242,13 @@ article footer img {
     margin: 0 40px;
     margin-bottom: 20px;
 }
+article footer img.add {
+    height: auto;
+    width: auto;
+    border: none;
+    float: left;
+    margin: 0;
+}
 
 article pre[class*="language-"] {
     background-color: #3B3D4A !important;
