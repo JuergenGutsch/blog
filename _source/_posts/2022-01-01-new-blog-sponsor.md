@@ -12,7 +12,7 @@ tags:
 
 I warmly welcome the [YOO Inc.](https://yoo.digital) as a new sponsor of my blog:
 
-![](../img/yoo-hire-juergen.gif)
+![]({{site.baseurl}}/img/yoo-hire-juergen.gif)
 
 The YOO Inc., is located in Basel, Switzerland and serves national as well as international clients and specializes in creating custom digital solutions for distinct business needs.
 
