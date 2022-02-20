@@ -1,18 +1,19 @@
 ---
 layout: post
-title: "ASP.NET Core on .NET 7.0"
-teaser: "Description"
+title: "ASP.NET Core on .NET 7.0 - Roadmap, preview 1 and file upload in minimal APIs"
+teaser: "The first preview version of .NET 7.0 which is released just a couple of days ago. Three months after .NET 6.0 was released. This is thee chance to have the first glimpse."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
 - .NET Core
 - ASP.NET Core
+- Minimal API
 ---
 
-I really like the transparent development of .NET and ASP.NET Core. It is all openly discussed publicly on GitHub and the first preview version is released just three months after the last version is released.
+I really like the transparent development of .NET and ASP.NET Core. It is all openly discussed publicly announced on GitHub and [developer blogs](https://devblogs.microsoft.com/dotnet/).
 
-Same with version 7.0 which will be released beginning of November.
+Same with the the first preview version of .NET 7.0 which is released just a couple of days ago. Three months after .NET 6.0 was released. This is thee chance to have the first glimpse at ASP.NET Core 7.0 which will be released beginning of November this year.
 
 ## Roadmap for ASP.NET Core 7.0
 
@@ -26,11 +27,11 @@ The roadmap refers to the specific GitHub issues that contain a lot of exciting 
 
 ## ASP.NET Core 7.0 Preview 1
 
-Just yesterday Microsoft released the first preview version of .NET 7.0 and Daniel Roth published a detailed explanation about what was done in ASP.NET Core with this release.
+Just a couple of days ago Microsoft released the first preview version of .NET 7.0 and Daniel Roth published a detailed explanation about what was done in ASP.NET Core with this release.
 
 [ASP.NET Core updates in .NET 7 Preview 1](https://devblogs.microsoft.com/dotnet/asp-net-core-updates-in-net-7-preview-1/)  
 
-Again, I will go through the previews and write about interesting upcoming features that will be in the final release like this one:
+Even this year, I will go through the previews and write about interesting upcoming features that will be in the final release like this one:
 
 ## IFormFile and IFormFileCollection support in minimal APIs
 
