@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ASP.NET Core on .NET 7.0 - File upload and streams using Minimal API"
+title: "ASP.​NET Core on .NET 7.0 - File upload and streams using Minimal API"
 teaser: "It seems he Minimal API that got introduced in ASP.NET Core 6.0 will now be finished in 7.0. One feature that was heavily missed in 6.0 was the File Upload, as well as the possibility to read the request body as a stream. Let's have a look how this would look alike. "
 author: "Jürgen Gutsch"
 comments: true
@@ -93,7 +93,7 @@ Once the file is saved, you can do whatever you need to do with it.
 > **Important note:**
 > Currently the file upload doesn't work in case there is a cookie header in the POST request or in case authentication is enabled. This will be fixed in one of the next preview versions. For now you should delete the cookies before sending the request
 
-![image-20220402213039253](../img/aspnetcore7/iformfile.png)
+![iformfile]({{site.baseurl}}/img/aspnetcore7/iformfile.png)
 
 # Read the request body as stream
 
@@ -110,7 +110,7 @@ app.MapPost("v2/stream", async (Stream body) =>
 
 I'm going to use this endpoint to to store a binary in the file system. BTW: This stream is readonly and not buffered, that means it can only be read once:
 
-![image-20220402225652537](../img/aspnetcore7/stream.png)
+![request body as stream]({{site.baseurl}}/img/aspnetcore7/stream.png)
 
 It works the same way by using a `PipeReader` instead of a `Stream`:
 
