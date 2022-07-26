@@ -34,7 +34,7 @@ This will create the new project and opens it in VSCode.
 
 In the `Program.cs` you now need to add output caching to the `ServiceCollection` as well as using the middleware on the `app`:
 
-~~~
+~~~ csharp
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOutputCache();
@@ -52,13 +52,13 @@ This enables output caching in your application.
 
 Let's use output caching with the classic example that displays the current date and time.
 
-~~~
+~~~ csharp
 app.MapGet("/time", () => DateTime.Now.ToString());
 ~~~
 
 This creates a new endpoint that displays the current date and time. Every time you refresh the result in the browser, you got a new time displayed. No magic here. Now we are going to add some caching magic to another endpoint:
 
-~~~
+~~~ csharp
 app.MapGet("/time_cached", () => DateTime.Now.ToString())
 	.CacheOutput();
 ~~~
@@ -67,7 +67,7 @@ If you access this endpoint and refresh it in the browser, the time will not cha
 
 This is good for more or less static outputs that don't change a lot. What if you have a frequently used API that just needs a short cache to reduce the calculation effort or to just reduce the database access. You can reduce the caching time to, let's say, 10 seconds:
 
- ~~~
+~~~ csharp
  builder.Services.AddOutputCache(options =>
  {
      options.DefaultExpirationTimeSpan = TimeSpan.FromSeconds(10);
@@ -80,7 +80,7 @@ If you now start refreshing the endpoint we created previously, you'll get a new
 
 If you provide a more dynamic API that receives parameters using query strings. You can vary the cache by the query string:
 
-~~~
+~~~ csharp
 app.MapGet("/time_refreshable", () => DateTime.Now.ToString())
     .CacheOutput(p => p.VaryByQuery("time"));
 ~~~
@@ -89,14 +89,14 @@ This adds another endpoint that varies the cache by the query string argument ca
 
 The `VaryByQuery` function allows you to add more than one query string:
 
-~~~
+~~~ csharp
 app.MapGet("/time_refreshable", () => DateTime.Now.ToString())
     .CacheOutput(p => p.VaryByQuery("time", "culture", "format"));
 ~~~
 
 In case you like to vary the cache by HTTP headers you can do this the same way using the `VaryByHeader` function:
 
-~~~
+~~~ csharp
 app.MapGet("/time_cached", () => DateTime.Now.ToString())
     .CacheOutput(p => p.VaryByHeader("content-type"));
 ~~~
