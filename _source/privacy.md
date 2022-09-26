@@ -5,7 +5,7 @@ author: Jürgen Gutsch
 comments: false
 ---
 
-This Blog uses **Google Analytics** to track the traffic of this web page. It also uses **Google Adsense** to display an add per page and to collect some money to cover the costs. I also use **Google Feedburner** to track the RSS feed usage as well. And I use **Utterances and GitHub** to enable page and blog post comments.
+This Blog uses **Google Analytics** to track the traffic of this web page. I also use **Google Feedburner** to track the RSS feed usage as well. And I use **Utterances and GitHub** to enable page and blog post comments.
 
 All this third party tools are not directly embedded into the blog, but loaded via JavaScript. Except Feedburner which is an external link to the RSS feed.
 
@@ -19,19 +19,17 @@ This blog doesn't collect any data directly, but uses third party tools that may
 
 I use **Google Analytics** to get more insights about how much readers are visiting this blog, how much readers are reading each blog post and where the readers came from. Google added an option to anonymize the readers data and we turned that option on. In addition we enabled the option to delete the collected user data after 14 months.
 
-I also use **Google Adsense** to get a little bit of money out of that blog. Google Adsense may collect the Readers data to track activities and interests. Please opt out at Google Adsense or turn on a an Ad-Blocker in case you don't want to get tracked. On the other hand, it would help me a little bit to cover the costs of that blog and the efford to write the posts.
-
 And we use **Utterances and GitHub** to give you the chance to drop comments to the blog posts. Utterances asks for the rights to post comments as GitHub issues in your behalf. Utterances doesn't store any credentials since it uses GitHub to authenticate. If you don't want to allow Utterances to post your behalf anymore, you are able to remove Utterances from your GitHub account. Utterances will not store any personal data. Utterances may track you using an IP address or an cookies.
 
 To track the activities on our news feed, we use **Googles Feedburner**, which is also tracking reads and clicks on the feed items. I use this to get insights about the feed usages. I don't care about the individual readers, but about the amount of readers and about the country of origin. 
 
 ## How is it collected?
 
-Google Analytics, Google Adsense, Utterances, GitHub and Googles Feedburner may use Cookies and IP address tracking. GitHub may also collect the readers activities and I collect your comments including your GitHub username in my blog repository.
+Google Analytics, Utterances, GitHub and Googles Feedburner may use Cookies and IP address tracking. GitHub may also collect the readers activities and I collect your comments including your GitHub username in my blog repository.
 
 ## Why is it being collected?
 
-I'm pretty much interested in the number of readers on the blog and in the number of readers per blog post. This is why I track the readers activities on my blog. Google Adsense wants to provide relevant adds for you and needs to track you because of that.
+I'm pretty much interested in the number of readers on the blog and in the number of readers per blog post. This is why I track the readers activities on my blog. 
 
 I also like to give you the chance to drop a comment, to know more about your opinion about my posts. Utterances and GitHub adds this option for me.
 
