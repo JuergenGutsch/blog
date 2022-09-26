@@ -15,12 +15,6 @@ title : ASP.NET Hacker
             <h2><a class="postlink" href="{{ post.url }}">{{ post.title }}</a></h2>
             {% endif %}
             <p class="postdate">{{ post.author }} - {{ post.date | date: "%d %B, %Y" }}</p>
-            <!--<ul class="postdate">
-			{% for tag in post.tags %}
-				<li><a href="#">{{ tag }}</a></li>
-			{% endfor %}
-			</ul>-->
-
             <p>{{ post.teaser }}</p>
             <p><a href="{{ post.url}}#disqus_thread">Comments</a></p>
         </div>
