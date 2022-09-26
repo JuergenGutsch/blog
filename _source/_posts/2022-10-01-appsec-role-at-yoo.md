@@ -1,6 +1,6 @@
 ---
-layout: Application Security at YOO
-title: "Title"
+layout: post
+title: "Application Security at YOO"
 teaser: "Description"
 author: "Jürgen Gutsch"
 comments: true
@@ -12,38 +12,54 @@ tags:
 - Tag
 ---
 
-Since almost a year, I'm working on an pretty exciting project. I'm defining and creating a new role inside our company that is responsible for application security. Application Security was never a missing aspect in our development team. All the colleagues are great developers and highly motivated to create secure application. 
+Since almost a year, I'm worked on a pretty exciting project. I defined and created a new role for our company that is responsible for application security. Application security was never a missing aspect in our development process. All the colleagues were great developers and highly motivated to create secure application. 
 
-The actual problem was a missing standard, that sets up every project in the same secure way and that helps the QA to also test security aspects.
+The actual problem was a missing standard, that sets up every project in the same secure way, that helps the QA to also test security aspects, that uses the same tools to improve the software quality and software security and that keeps the awareness about security during the entire development process.
 
 ## Defining the new role
 
-Defining and creating this role also means, I will take over this role and being responsible to ensure and maintain the security  standards through the entire company. I will also be responsible to keep awareness about security through the entire company and to train the developers, the DevOps responsible persons as well as the QA. I will not going to be the only person that is responsible for application security in general. My job will be to make all collogues feel responsible for application security. That they all have security in mind, that all features will be analyzed from the security perspective as well.
+Defining and creating this new role also meant that I took over this role and to be responsible to ensure and maintain the security standards through the entire company. I'm also responsible to keep awareness about security through the entire company and to train the developers, the DevOps responsible person as well as the QA. I am not the only person that is responsible for application security in general. My job is to make all collogues feel responsible to create secure applications. That they all have security in mind, that all features will be analyzed from the security perspective as well.
 
-And this is why the process of secure software development doesn't start at development or DevOps. It actually starts at the sales phase. The sales person need to know what type of customer he is selling our services, what type of data the potential customer will be handling with the new project and what type of possible risks he has. The sales person need to know what level of security he needs to sell.
+And this is why the process of secure software development doesn't start at development or DevOps. 
+
+## Adding security to the company
+
+Actually, the secure software development process starts at the sales phase. The sales person need to know what type of customer he is selling our services, what type of data the potential customer will be handling with the new project and what type of possible risks he has. The sales person need to know what level of security he needs to sell. (Exactly, we need to sell security. See next section why)
+
+The process continues with the requiremence engineering, even the UX and UI specialists need to take care about security. DevOps is following by setting up the secure software development infrastructure and secure deployments per project. DevOps is also supporting the developers with the right tools that checks for software quality and possible vulnerabilities and code flaws. In the development phase, required security aspects need to be implemented and QA needs to know how to test this. Maybe tooling will support the QA to make automated security tests.
 
 ## Selling security
 
-True, we well sell levels of security. Ensure the application security is effort. The more secure the more effort during development and afterwards, while ensuring and testing the application security. A potential customer in a sensitive or risky environment should know that security will cost something. A bank, a power plant, and other big and risky industry are paying for security person that keeps unauthorized people outside of their restricted areas. Such companies should be aware and willing to pay for implementing higher security mechanisms to keep unauthorized person out of the digital restricted areas as well.
+True, we need to sell levels of security. Ensuring the application security is some effort. The more secure the more effort during development and afterwards, while ensuring and testing the application security. A potential customer in a sensitive or risky environment should know that security will cost something. A bank, a power plant, and other big and risky industry are paying for security person that keeps unauthorized people outside of their restricted areas. Such companies should be aware and willing to pay for implementing higher security mechanisms to keep unauthorized person out of the digital restricted areas as well.
 
 Actually, application security need to be ensured in every project and basic security won't be charged separately.
 
-And maybe, you as a software producing company would like to adopt the same standards and processes. Feel free to come to us and for some help. 
-
 ## What are the standards we use?
 
-It is the [OWASP](https://owasp.org) foundation that helps me diving into the new topics. So we are going to implement the OWAS Application Security Verification Standard ([ASVS](https://owasp.org/www-project-application-security-verification-standard/)) and the mobile version MASVS of it. ASVS already is divided into three levels of security. Level 1 is the basic level of security that all projects need to implement. Actually Level 1 is quite basic and despite of just a few topics, this is all stuff we as developers already knew, used and implemented. If we have thought about it and if the project pressure wasn't that high. The levels 2 and 3 are adding more security mechanisms to the projects to handle sensitive and critical data and infrastructure.
+It is the [OWASP](https://owasp.org) foundation that helps me diving into the new topics. So we are going to implement the OWAS Application Security Verification Standard ([ASVS](https://owasp.org/www-project-application-security-verification-standard/)) and the mobile version MASVS of it. ASVS already is divided into three levels of security. Level 1 is the basic level of security that all projects need to implement. Actually Level 1 is quite basic and despite of just a few topics, this is all stuff we as developers already knew, used and implemented in the past. If we have thought about it and if the project pressure wasn't that high. The levels 2 and 3 are adding more security mechanisms to the projects to handle sensitive and critical data and infrastructure.
 
-Those standards are helping us like blueprint for all our projects  to keep the levels of security and it helps our QA to know what to test from the security point of view..
+This standards is helping us like a blueprint for all our projects to keep the levels of security and it helps our QA to know what to test from the security point of view..
 
-Actually, since ASVS is adopting and covering many other standards as well, we should be sure with future security audits, no matter what standard will be used.
+Actually, since ASVS is adopting and covering many other standards as well, we will be sure with future security audits, no matter what standard will be used during the audit.
 
-## Is the YOO a secure software company?
+## Will YOO be a secure software company?
 
-The company always created secure software. Since it was more or less a side aspect in the past, we'll now focus on security by following the standards and the process we are going to implement.
+The company already creates secure software. Since it was more or less a side aspect in the past, we'll now focus on security by following the standards and the process we have implemented.
 
-So, yes, we'll be a secure software company. But we'll not be certified somehow. OWASP and ASVS are no badges or certificates we can put proudly and high nosed on our website. But we can proudly mention that we are following a standard that was created by well known and independent security experts.
+So, yes, we can now call ourself a secure software company. But we are not certified somehow. OWASP and ASVS are no badges nor provide certificates we can put proudly and high nosed on our website. But we can proudly mention that we are following a standard that was created by well known and independent security experts.
 
-## I'm still a software engineer :-)
+## The main role is still a software engineer :-)
 
-The application security role will be only an additional role to my position as a software engineer. In a midsized company like the YOO it won't be such an effort to create a new position like an application security engineer. And therefore it is just a new additional role for me. Our DevOps responsible role works the same. There's need for a dedicated position yet. Both roles are more or less consultancy roles. 
+The application security role is only an additional role to my position as a software engineer. In a midsized company like the YOO ensuring secure software software is not such an high effort that it is needed to create a new position like an application security engineer. And therefore it is just a new additional role for me. 
+
+## Learning about application security
+
+Actually, application security as a topic was kinda new to me and I never expected that it is needed to have the entire company involved. But that also was the fun part: Talking to other disciplines and talking to people that are not really involved into my day to day business. It is not completely technical to implement application security to a software company.
+
+As mentioned the website of the [OWASP](https://owasp.org) Foundation points me to various learning resources. OWAS is full of projects to learn about application security. You might know the OWASP Top 10 list of security risks. I already mentioned the ASVS. But there is a ton more.
+
+Another great learning resource is the twitter feed of Tanja Yanka. Her talks about application security are amazing and her book is a great read, even on vacation at the beaches of Greece while the kids are playing. If you want to learn about application security, follow her on twitter, read her blog, read her book and watch her talks. You also need to dive into the OWASP website and the various projects of the foundation.
+
+## Further more
+
+And maybe, you as a software producing company would like to adopt the same standards and processes. If you would like to know, how we created and implemented the secure software process, feel free to ask. If you need help to make your software development process more secure, we would be happy to help.
