@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ASP.​NET Core on .NET 7.0 - File upload and streams using Minimal API"
-teaser: "It seems he Minimal API that got introduced in ASP.NET Core 6.0 will now be finished in 7.0. One feature that was heavily missed in 6.0 was the File Upload, as well as the possibility to read the request body as a stream. Let's have a look how this would look alike. "
+teaser: "It seems the Minimal API that got introduced in ASP.NET Core 6.0 will now be finished in 7.0. One feature that was heavily missed in 6.0 was the File Upload, as well as the possibility to read the request body as a stream. Let's have a look how this would look alike. "
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -11,7 +11,7 @@ tags:
 - Minimal API
 ---
 
-It seems he Minimal API that got introduced in ASP.NET Core 6.0 will now be finished in 7.0. One feature that was heavily missed in 6.0 was the File Upload, as well as the possibility to read the request body as a stream. Let's have a look how this would look alike. 
+It seems the Minimal API that got introduced in ASP.NET Core 6.0 will now be finished in 7.0. One feature that was heavily missed in 6.0 was the File Upload, as well as the possibility to read the request body as a stream. Let's have a look how this would look alike. 
 
 ## The Minimal API
 
