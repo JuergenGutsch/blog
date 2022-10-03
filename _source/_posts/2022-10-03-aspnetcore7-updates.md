@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ASP.NET Core 7 updates"
-teaser: "Description"
+teaser: "Release candidate 1 of ASP.NET Core 7 is out for around two weeks and the release date isn't that far. Let's see what is in this version."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
