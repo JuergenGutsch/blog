@@ -295,6 +295,6 @@ Changing the culture and the UI culture also changes the way how dates, numbers,
 
 ## Sample application and Conclusion 
 
-This is actuallySalarySalary working and I created a small application to demonstrate this. This sample includes all the topics of this post. You will find the sample in Github. 
+This is actually working and I created a small application to demonstrate this. This sample includes all the topics of this post. You will find the [sample project in Github](https://github.com/JuergenGutsch/aspnetcore-globalization). 
 
-Microsoft reduces the complexity a lot. On the other hand, if you are used to working with more complex resource handling in the past, you will stumble upon small things you won't expect like me. However, adding Globalization and Localization in .NET 7 is easy and I like the way how to get it working.
+Microsoft reduces the complexity a lot. On the other hand, if you were used to work with more complex resource handling in the past, you will stumble upon small things you won't expect like me. However, adding Globalization and Localization in .NET 7 is easy and I like the way how to get it working.
