@@ -16,7 +16,6 @@ title : ASP.NET Hacker
             {% endif %}
             <p class="postdate">{{ post.author }} - {{ post.date | date: "%d %B, %Y" }}</p>
             <p>{{ post.teaser }}</p>
-            <p><a href="{{ post.url}}#disqus_thread">Comments</a></p>
         </div>
     </li>
     {% endfor %}
@@ -57,5 +56,3 @@ title : ASP.NET Hacker
         </div>
     </footer>
 </article>
-
-<script id="dsq-count-scr" src="//aspnethacker.disqus.com/count.js" async></script>
