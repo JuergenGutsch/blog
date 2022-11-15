@@ -25,7 +25,7 @@ The latter is a great help when working with git; I missed that in the other ter
 
 For a couple of weeks, I'm playing around with the Windows Terminal a little more. The reason why I looked into the Windows Terminal is, that I like the more lightweight settings. 
 
-The Windows Terminal ([download it from the windows store](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701)) and `oh-my-posh` (https://ohmyposh.dev/) are out for a while and I followed [Scott Handelman's blog posts about it](https://www.hanselman.com/blog/a-nightscout-segment-for-ohmyposh-shows-my-realtime-blood-sugar-readings-in-my-git-prompt) for a long time but wasn't able to get it running on my machine. Two weeks ago I got some help to get it running. It just turned out that I had too many posh versions installed on my machine, and the path environment variable was messed up. After cleaning my system and reinstalling oh-my-posh on my machine by [following the installation guide](https://ohmyposh.dev/docs/installation/windows) it is working quite well:
+The Windows Terminal ([download it from the windows store](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701)) and `oh-my-posh` (https://ohmyposh.dev/) are out for a while and I followed [Scott Handelman's blog posts about it](https://www.hanselman.com/blog/a-nightscout-segment-for-ohmyposh-shows-my-realtime-blood-sugar-readings-in-my-git-prompt) for a long time but wasn't able to get it running on my machine. Two weeks ago I [got some help](https://github.com/JanDeDobbeleer/oh-my-posh/discussions/2994) by [Jan De Dobbeleer](https://twitter.com/jandedobbeleer) to get it running. It just turned out that I had too many posh versions installed on my machine, and the path environment variable was messed up. After cleaning my system and reinstalling oh-my-posh on my machine by [following the installation guide](https://ohmyposh.dev/docs/installation/windows) it is working quite well:
 
 ![Terminal and posh in action]({{site.baseurl}}/img/terminal/terminal.png)
 
@@ -58,4 +58,6 @@ So I'm going to change my setup from this ...
   * oh-my-posh
   * Winget
 
-... and it seems to work great for me
+... and it seems to work great for me.
+
+Any other tools that I should have a look at? Just drop me a comment :-)
