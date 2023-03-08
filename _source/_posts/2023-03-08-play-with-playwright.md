@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Play with Playwright"
-teaser: "In this blog post, I don't want to introduce Playwright. I would like to play around with it and to use it differently. Instead of testing an pre-hosted web application, I'd like to test a web application that is self hosted in the test project using the WebApplicationFactory."
+teaser: "In this blog post, I don't want to introduce Playwright. I would like to play around with it and to use it a little differently. Instead of testing a pre-hosted web application, I'd like to test a web application that is self hosted in the test project using the WebApplicationFactory."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -12,13 +12,13 @@ tags:
 - Plaiwright
 ---
 
-Post your content here
+
 
 ## What is Playwright?
 
 [Playwright](https://playwright.dev/) is a Web UI testing framework that supports different languages and is maintained by Microsoft. Playwright can be used with JavaScript/TypeScript, Python, Java and for sure C#. It comes with windowless browser support with various browsers. It has to be used with unit testing frameworks and because of this, you can just run it within your CI/CD pipeline. The syntax is pretty intuitive and I actually love it. Besides that the documentation is really good and helps a lot to easily start working with it. 
 
-In this blog post, I don't want to introduce Playwright. Actually, the website and the documentation is a much better resource to learn about the it. I would like to play around with it and to use it differently. Instead of testing an pre-hosted web application, I'd like to test a web application that is self hosted in the test project using the `WebApplicationFactory`. This way you have really isolated UI tests that don't rely on another infrastructure and won't fail because of network problems.
+In this blog post, I don't want to introduce Playwright. Actually, the website and the documentation is a much better resource to learn about the it. I would like to play around with it and to use it differently. Instead of testing a pre-hosted web application, I'd like to test a web application that is self hosted in the test project using the `WebApplicationFactory`. This way you have really isolated UI tests that don't relate to on another infrastructure and won't fail because of network problems.
 
 Does it work? 
 
@@ -64,11 +64,11 @@ This command opens the Playwright Inspector where you can record your test case.
 
 ![image-20230125212422560](C:\Users\webma\AppData\Roaming\Typora\typora-user-images\image-20230125212422560.png)
 
-Instead of testing an external website like I did, you can also call `codegen` with the application to test that you need to start before. 
+Instead of testing an external website like I did, you can also call `codegen` with a locally running application. 
 
 Just copy the generated code into the NUnit test project and fix the namespace and class name to match the namespace of your project.
 
-Using the generated code as an example you will be able to wright more the tests manually.
+Using the generated code as an example you will be able to write more the tests manually.
 
 If this is done, just run `dotnet test` to execute the generated test and just to verify that Playwright is working.
 
@@ -208,4 +208,3 @@ This is exactly the result I expected.
 
 You'll find the the example on my GitHub repository.
 
-## 
