@@ -62,7 +62,7 @@ Using the `codegen` command helps you to autogenerate test code that can be copi
 
 This command opens the Playwright Inspector where you can record your test case. While clicking through your application the test code will be generated on the right hand side:
 
-![image-20230125212422560](C:\Users\webma\AppData\Roaming\Typora\typora-user-images\image-20230125212422560.png)
+![plaiwright codegen]({{site.baseurl}}/img/playwright/playwright01.png)
 
 Instead of testing an external website like I did, you can also call `codegen` with a locally running application. 
 
@@ -200,7 +200,7 @@ To try it out. just call dotnet test on the Command Line or PowerShell or run th
 
 The result with my test project looks like the following while running all the tests when I was offline:
 
-![image-20230307195143049](C:\Users\webma\AppData\Roaming\Typora\typora-user-images\image-20230307195143049.png)
+![test result]({{site.baseurl}}/img/playwright/playwright02.png)
 
 One failing test is the recorded test session of my blog on [https://asp.net-hacker.rocks/](https://asp.net-hacker.rocks/) and the other one is the demo test I found on [https://playwright.dev](https://playwright.dev). The passed test is the one that uses the `CustomWebApplicationFactory`
 
