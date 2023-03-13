@@ -26,7 +26,7 @@ This worked pretty nice in their environment until I created a new application w
 >
 > I also wrote "classic ASP.NET" which feels a bit wired. I worked with ASP.NET for a long time (.NET 1.0) and still work with ASP.NET for specific customers. But it really is kinda classic since ASP.NET Core is out and since I worked with ASP.NET Core a lot as well.
 
-## Hot the customer solution works
+## How the customer solution works
 
 I cannot go into the deep details, because this is the customers code, you only need to get the idea.
 

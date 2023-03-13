@@ -2,7 +2,7 @@
 <html lang="en-us">
 
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-390207-7"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -18,8 +18,7 @@
     <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Blog Feed" />
     <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Blog Feed" />
     <title>{{ page.title }}</title>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link href="/css/fontawesome/css/all.min.css" rel="stylesheet" type="text/css" />
     <link href="/css/prism.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
     <link href="/css/jquery.cookiebar.css" rel="stylesheet" type="text/css" />
@@ -125,20 +124,24 @@
             <div class="clear"></div>
             <div>
                 <ul class="social-icons">
-                    <li><a href="https://twitter.com/sharpcms" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://twitter.com/sharpcms" target="_blank"><i 
+                                class="fa-brands fa-twitter"></i></a></li>
+                    <li><a rel="me" href="https://mastodon.social/@JuergenGutsch" target="_blank"><i
+                                class="fa-brands fa-mastodon"></i></a></li>
                     <li><a href="https://www.facebook.com/juergen.gutsch" target="_blank"><i
-                                class="fab fa-facebook"></i></a></li>
-                    <li><a href="https://github.com/JuergenGutsch" target="_blank"><i class="fab fa-github"></i></a>
-                    </li>
+                                class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="https://github.com/JuergenGutsch" target="_blank"><i
+                                class="fa-brands fa-github"></i></a></li>
                     <li><a href="https://bitbucket.org/JuergenGutsch" target="_blank"><i
-                                class="fab fa-bitbucket"></i></a></li>
+                                class="fa-brands fa-bitbucket"></i></a></li>
                     <li><a href="https://www.linkedin.com/in/juergengutsch" target="_blank"><i
-                                class="fab fa-linkedin"></i></a></li>
+                                class="fa-brands fa-linkedin"></i></a></li>
                     <li><a href="https://www.xing.com/profiles/Juergen_Gutsch2" target="_blank"><i
-                                class="fab fa-xing"></i></a></li>
+                                class="fa-brands fa-xing"></i></a></li>
                     <li><a href="https://strava.com/athletes/juergengutsch" target="_blank"><i
-                                class="fab fa-strava"></i></a></li>
-                    <li><a href="http://feeds.feedburner.com/jgutsch" target="_blank"><i class="fas fa-rss"></i></a>
+                                class="fa-brands fa-strava"></i></a></li>
+                    <li><a href="http://feeds.feedburner.com/jgutsch" target="_blank"><i
+                                class="fa-solid fa-rss"></i></a>
                     </li>
                 </ul>
             </div>
@@ -147,4 +150,5 @@
     <script src="/js/prism.js"></script>
     <script type="text/javascript" src="/js/jquery.cookiebar.js"></script>
 </body>
+
 </html>
