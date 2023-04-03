@@ -24,7 +24,7 @@ And this is why the process of secure software development doesn't start with de
 
 ## Adding security to the company
 
-Actually, the secure software development process starts at the sales phase. The salesperson needs to know what type of customer he is selling our services to, what type of data the potential customer will be handled with the new project, and what type of possible risks there are. The salesperson needs to know what level of security he needs to sell. (Exactly, we need to sell security. See next section why)
+Actually, the secure software development process starts at the sales phase. The salesperson needs to know what type of customer he is selling our services to, what type of data the potential customer will be handle with the new project, and what type of possible risks there are. The salesperson needs to know what level of security he needs to sell. (Exactly, we need to sell security. See next section why)
 
 The process continues with the requirements engineering, even the UX and UI specialists need to take care of security. DevOps is following, by setting up the secure software development infrastructure and secure deployments per project. DevOps is also supporting the developers with the right tools that check for software quality and possible vulnerabilities and code flaws while building and delivering the software. In the development phase, required security aspects need to be implemented and QA needs to know how to test this. Maybe tooling will support the QA to make automated security tests.
 
@@ -48,7 +48,7 @@ The company already creates secure software. Since it was more or less a side as
 
 So, yes, we can now call ourselves a secure software company. But we are not certified somehow. OWASP and ASVS are no badges nor provide certificates we can put proudly and high-nosed on our website. But we can proudly mention that we are following a standard that was created by well-known and independent security experts.
 
-## The main role is still a software engineer :-)
+## My main role is still a software engineer :-)
 
 The application security role is only an additional role to my position as a software engineer. In a midsized company like the YOO ensuring secure software is not such a high effort that it is needed to create a new position like an application security engineer. And therefore it is just a new additional role for me. 
 
@@ -74,4 +74,4 @@ Learn more: [https://www.yoo.digital/applicationsecurity](https://www.yoo.digita
 
 ## Conclusion
 
-I'm happy to start working on my new role officially this week and I'm happy to bring the YOO a step further in creating and delivering high-quality and secure software. I'm also pretty excited about how it will go and grow over time. The implementation of a secure software process isn't complete and needs to be adjusted whenever it's needed. It is a living process that needs reviews and adjustments regularly.
+I'm happy to start working on my new role officially this week and I'm happy to bring the YOO a step further in creating and delivering high-quality and secure software. I'm also pretty excited about how it will go and grow over time. The implementation of a secure software process will never be complete and needs to be adjusted whenever it's needed. It is a living process that needs reviews and adjustments regularly.
