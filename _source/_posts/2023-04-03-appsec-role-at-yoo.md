@@ -62,7 +62,7 @@ As mentioned, the website of the [OWASP](https://owasp.org) Foundation points me
 
 Another great learning resource is the Twitter feed of [Tanya Janka](https://twitter.com/shehackspurple). Her talks about application security are amazing and her book is a great read, even on vacation at the beaches of Greece while the kids are playing:
 
-![img](../img/appsec/appsec.jpg)
+![Learning about AppSec at the beach of Kos. The Sea and playing kids in the background]({{site.baseurl}}/img/appsec/appsec.jpg)
 
 If you want to learn about application security, [follow her on Twitter](https://twitter.com/shehackspurple), [read her blog](https://shehackspurple.ca), [read her book](https://shehackspurple.ca/books/), and [watch her talks](https://shehackspurple.ca/talks/). You also need to dive into the [OWASP website](https://owasp.org) and the various projects of the foundation.
 
