@@ -40,7 +40,7 @@ dotnet add .\PlayWithPlaywright.Tests\ package Microsoft.Playwright.NUnit
 
 Run those commands and build the solution:
 
-~~~
+~~~shell
 dotnet build
 ~~~
 
@@ -48,7 +48,7 @@ The build is needed to copy a PowerShell script to the output directory of the t
 
 At next we need to install the required browsers to execute the tests via that PowerShell:
 
-~~~
+~~~shell
 .\PlayWithPlaywright.Tests\bin\Debug\net7.0\playwright.ps1 install
 ~~~
 
@@ -56,7 +56,7 @@ At next we need to install the required browsers to execute the tests via that P
 
 Using the `codegen` command helps you to autogenerate test code that can be copied to the test project:
 
-~~~
+~~~shell
 .\PlayWithPlaywright.Tests\bin\Debug\net7.0\playwright.ps1 codegen https://asp.net-hacker.rocks/
 ~~~
 
@@ -96,7 +96,7 @@ Let's see how this works together with Playwright.
 
 First, add a project reference to the web project within the Playwright test project and add a package reference to [Microsoft.AspNetCore.Mvc.Testing](https://nuget.org).
 
-~~~
+~~~shell
 dotnet add .\PlayWithPlaywright.Tests\ reference .\PlayWithPlaywright\
 
 dotnet add .\PlayWithPlaywright.Tests\ package Microsoft.AspNetCore.Mvc.Testing
@@ -114,7 +114,7 @@ public partial class Program { }
 
 To make the Playwright tests as generic as possible I created an abstract `SelfHostedPageTest` class that inherits the `PageTest` class that comes with Playwright and use the `CustomWebApplicationFactory` there and just expose the server address to the test class that inherits the `SelfHostedPageTest`:
 
-``` csharp
+```csharp
 public abstract class SelfHostedPageTest<TEntryPoint> : PageTest where TEntryPoint : class
 {
     private readonly CustomWebApplicationFactory<TEntryPoint> _webApplicationFactory;
@@ -130,7 +130,7 @@ public abstract class SelfHostedPageTest<TEntryPoint> : PageTest where TEntryPoi
 
  The actual Playwright test just inherits the `SelfHostedPageTest` as follows instead of the `PageTest`:
 
-```
+```csharp
 public class PlayWithPlaywrightHomeTests : SelfHostedPageTest<Program>
 {
     public PlayWithPlaywrightHomeTests() :
@@ -145,7 +145,7 @@ public class PlayWithPlaywrightHomeTests : SelfHostedPageTest<Program>
 
 As you can see, I pass in the Program type as generic argument to the `SelfHostedPageTest`. The `CustomWebApplicationFactory` that is used inside is almost the same implementation as done by Daniel. I just added the generic argument for the Program class and added the possibility to pass the service configuration via the constructor:
 
-~~~
+~~~csharp
 internal class CustomWebApplicationFactory<TEntryPoint> :
    WebApplicationFactory<TEntryPoint> where TEntryPoint : class
 {
@@ -179,7 +179,7 @@ internal class CustomWebApplicationFactory<TEntryPoint> :
 
 Now we can use `GetServerAddress()` to get the server address and to pass it to the `Page.GotoAsync()` method:
 
-```
+```csharp
 [Test]
 public async Task TestWithWebApplicationFactory()
 {
