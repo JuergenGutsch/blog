@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Develop cloud native applications using .NET Aspire"
-teaser: "At the .NET Conf 2023, Microsoft announced a kind of a toolset to build cloud-native applications. In this post I'm going to introduce .NET Aspire and show it in action with a small demo solution."
+teaser: "At the .NET Conf 2023, Microsoft announced a kind of toolset to build cloud-native applications. In this post, I'm going to introduce .NET Aspire and show it in action with a small demo solution."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -13,7 +13,7 @@ tags:
 - Aspire
 ---
 
-At the .NET Conf 2023, Microsoft announced a kind of a toolset to build cloud-native applications. That announcement was kind of [hidden in a talk](https://youtu.be/z1M-7Bms1Jg?si=JCSi-dqZYptF_ZEf) done by [Glenn Condron](https://twitter.com/condrong) and [David Fowler](https://twitter.com/davidfowl) about building cloud-native applications using .NET 8, which was also announced at that conference. This talk actually was about .NET Aspire, which I will quickly introduce with this post.
+At the .NET Conf 2023, Microsoft announced a kind of toolset to build cloud-native applications. That announcement was kind of [hidden in a talk](https://youtu.be/z1M-7Bms1Jg?si=JCSi-dqZYptF_ZEf) done by [Glenn Condron](https://twitter.com/condrong) and [David Fowler](https://twitter.com/davidfowl) about building cloud-native applications using .NET 8, which was also announced at that conference. This talk actually was about .NET Aspire, which I will quickly introduce with this post.
 
 Let's start first by answering a question.
 
@@ -21,7 +21,7 @@ When I did a talk about .NET Aspire recently [at the .NET user group in Basel (C
 
 ## What is a cloud-native application?
 
-Let's as the internet to find the right answer:
+Let's ask the internet to find the right answer:
 
 > **Amazon:**
 > "Cloud native is the software approach of building, deploying, and managing modern applications in cloud computing environments. Modern companies want to build highly scalable, flexible, and resilient applications that they can update quickly to meet customer demands. To do so, they use modern tools and techniques that inherently support application development on cloud infrastructure. These cloud-native technologies support fast and frequent changes to applications without impacting service delivery, providing adopters with an innovative, competitive advantage."
@@ -51,29 +51,29 @@ Let's as the internet to find the right answer:
 
 Every answer is a little different. Basically, it means a cloud-native application is built for the cloud and uses the services the cloud provides to be scalable and resilient.
 
+## What is .NET Aspire doing?
+
+.NET Aspire helps with **tooling** in VS and the CLI to create and interact with .NET Aspire apps. It also brings some project templates to create new .NET Aspire apps. .NET Aspire helps with **orchestrating**, means running and connecting to multi-project applications and their dependencies. It also provides **components** that connect to cloud dependencies like queues, caches, databases, or even prebuild containers. All those components can be orchestrated and connected to your applications using C#. .NET Aspire creates a deployment-ready development environment. Using the Azure Development CLI (azd) you can easily deploy your cloud native application to Azure.
+
+.NET Aspire is made for local development and it is made for Microsoft Azure. Developments and deployments to other clouds might be possible in the future with the support of the developer community. In the first stage, Microsoft will not support other cloud providers. Which makes sense since Azure is the number one platform for Microsoft. 
+
+.NET Aspire uses Docker Desktop to run your cloud-native application. When you press F5 in VS, your apps will be deployed to containers and will run on Docker Desktop locally. When you deploy your cloud-native application, a Bycep script will be created and your apps will be deployed to a new Azure Resource Group inside Azure Container Apps. App Service Containers are not supported yet. AKS is only supported via the community tool Aspirate.
+
+Currently, .NET Aspire is Preview 3. Which means some features might not work or are not yet implemented.
+
+But those limitations are absolutely fine for the moment.
+
 ## Why is .NET Aspire needed?
 
 Actually, it is not needed. There are good tools out there to set up the local development environment the way you can develop cloud-native applications locally. There are also tools that set up your development environment inside the cloud to develop in the same environment where your application will live. This is great and super helpful. Unfortunately, these possibilities are sometimes hard to set up and some teams can't use it for some reason. The easiest way to set up an environment locally for me as a developer on Windows using .NET was to use Docker Compose or to load or emulate the services I needed locally or to be connected to the cloud environment all the time and to use the cloud services directly. Both options are not perfect.
 
 So, you see that .NET Aspire is not needed. But it is super helpful for me as a C# developer. 
 
-## What is .NET Aspire doing?
-
-.NET Aspire helps **tooling** in VS and the CLI to create and interact with .NET Aspire apps. It also brings some project templates to create new .NET Aspire apps. .NET Aspire helps with **orchestrating**, means running and connecting to multi-project applications and their dependencies. It also provides **components** that connect to cloud dependencies like queues, caches, databases, or even prebuild containers. All those components can be orchestrated and connected to your applications. .NET Aspire creates a deployment-ready development environment. Using the Azure Development CLI (azd) you can easily deploy your cloud native application to Azure.
-
-.NET Aspire is made for local development and it is made for Microsoft Azure. Developments and deployments to other clouds might be possible in the future with the support of the developer community. In the first stage, Microsoft will not support other cloud providers. Which makes sense since Azure is the number one platform for Microsoft. 
-
-.NET Aspire uses Docker Desktop to run your cloud-native application. When you press F5 in VS, your apps will be deployed to containers and will run on Docker Desktop locally. When you deploy your cloud-native application, a Bycep script will be created and your apps will be deployed to a new Azure Resource Group inside Azure Container Apps. App Service Containers are not supported. AKS is only supported via the community tool Aspirate.
-
-Currently, .NET Aspire is Preview 3. Which means some features might not work or are not yet implemented.
-
-But those limitations are absolutely fine for the moment.
-
 ## Let's have a quick look at .NET Aspire in action
 
 Therefore, I created a frontend app using the new Blazor Web App and a backend that provides me with the data via a Web API endpoint. Both apps are just the default templates with the weather data demos. I just did a small modification: Instead of generating the weather data in the front end, it now loads them from the API. 
 
-When doing a right-click on one of the projects and select "Add", you will see two new entries in the context menu:
+When doing right-click on one of the projects and select "Add", you will see two new entries in the context menu:
 
 * ".NET Aspire Component..."
 * ".NET Aspire Orchestration Support..."
@@ -119,12 +119,12 @@ Line 3 adds Redis to the orchestration with the name "cache".  Remember that we 
 
 Line 5 adds a project reference to the orchestration with the name backend. It references the cache and it should start two instances of the backend.
 
-Line 9 adds a project reference to the frontend. This one needs the backend and adds it as a reference.
+Line 9 adds a project reference to the front end. This one needs the backend and adds it as a reference.
 
 How does the frontend know the backend address when the apps are running in orchestration? I do have the same problem when I use docker-compose to orchestrate apps. In this case, i just need to read the endpoint URL from the environment variables:
 
 ~~~csharp
-Ibuilder.Services.AddScoped(sp => new HttpClient
+IIbuilder.Services.AddScoped(sp => new HttpClient
 {
     BaseAddress = new Uri(builder.Configuration.GetValue<string>("services:backend:0"))
 });
@@ -132,13 +132,65 @@ Ibuilder.Services.AddScoped(sp => new HttpClient
 
 You will see why this is working a little later.
 
-Let's start the application but ensure Docker Desktop is running first.
+Let's start the application but ensure Docker Desktop is running first. Since it is all in preview at the moment, you may need to start the application two times. Once the app is started you'll see the URL in the console that pops up. In case no browser opens automatically copy the URL and open it in a browser.:
 
+![image-20240223094108726](C:\Users\JürgenGutsch\AppData\Roaming\Typora\typora-user-images\image-20240223094108726.png)
 
+You will see the really cool Aspire portal in the browser that shows you all the running apps:
 
+![image-20240223094441698](C:\Users\JürgenGutsch\AppData\Roaming\Typora\typora-user-images\image-20240223094441698.png)
 
+This Portal is built with the new ASP.NET Core Blazor web. 
 
-https://learn.microsoft.com/de-de/dotnet/aspire/
+On the start screen, you see all the running services. Two instances of the backend app and one instance of the frontend app. You will also recognize the instance of the Redis cache. This is coming from a docker image that got pulled by Aspire and is running as a container now. You will also see that the backends have two endpoint URLs. One is equal to both instances and the other one is the individual URL for that specific container. The one that is equal to both is routed through a kid of a proxy.
+
+This portal doesn't show you only the running services. Because of the Service defaults that got injected into the apps, it can read the health states, the logs, and the telemetry information of your apps.  This will help you to debug your locally running apps. Just click through the portal to see the logs, the traces, and the metrics.
+
+When you click on the details link of a specific running service, you can also see the environment variables that got passed to the service.  In the next screenshot, you can see that the URL of the backend app will be passed as an environment variable to the frontend. This is the environment variable we used in the frontend to connect to the backend:
+
+![image-20240223094932947](C:\Users\JürgenGutsch\AppData\Roaming\Typora\typora-user-images\image-20240223094932947.png)
+
+The orchestration makes the services to know each other this way. The backend gets the connection string to Redis via the environment variable. This is why the services can interact. So there is almost no magic here. Just C# to orchestrate and environment variables to connect the services to each other.
+
+## Deployment
+
+As mentioned your cloud-native app will be orchestrated to be cloud-ready. You can easily deploy your application to your Azure subscription. The tool that helps you with that is the Azure Developer CLI (`azd`). This CLI is super easy to use prepares your app for you and can do the deployment. After the installation of `azd` you just use it.
+
+With the console of your choice, cd to your solution folder and type `azd login`. This will open up a browser that you can use to log in with your Azure account.
+
+The following command will prepare your application to be ready for deployment:
+
+~~~shell
+azd init
+~~~
+
+It creates some configuration files and a `Bycep` script to set up your environment on Azure. Take a look at it to learn about `Bycep`. 
+
+The next command does the deployment:
+
+~~~shell
+azd up
+~~~
+
+If you own more than one subscription you are asked which one to use. The CLI is super awesome. It is an interactive one that guides you through the entire deployment. Just follow the instructions. 
+
+If the deployment is done your app is up and running on Azure. It is really that easy.
+
+It sets all up on Azure. A Redis is up and running. Your apps are running in Azure Container Apps and if you would have a SQL Server configured in .NET Aspire, it would also set up a SQL Azure for you 
+
+Just don't use preview versions of .NET. That won't run on Azure and it took me some time to figure out why my cloud native app is not running on Azure. The easiest way to not stumble into that issue is to create a `global.json` and pin your solution to an SDK version of .NET that is supported on Azure. 
+
+## Conclusion 
+
+This is just an introduction post about .NET Aspire. I hope it gives you a good overview of it.
+
+I will definitely follow the releases of .NET Aspire and I'm really looking forward to using the final release for the development of real applications that will go into production. 
+
+I really like it and will - for sure - write more deep dive about it. I also did a [talk at the .NET user group Basel](https://www.meetup.com/basel-net-user-group/events/297394460/) and would also do it at your user group, if you like. I'm also open to conference talks.
+
+Just one thing I would really like to have is the Aspire portal to be deployed as well. I think this will be super helpful to monitor applications in production. As far as I know, there are no plans yet to have this portal as a tool for production. On the other hand, if you don't properly secure this portal, it could be a really dangerous security risk and all the information that the portal provides is also available on the Azure portal. So there isn't a real need for that.
+
+Do you want to learn more about .NET Aspire? Follow the docs that are super complete and also contain super helpful tutorials about all the built in components: https://learn.microsoft.com/de-de/dotnet/aspire/
 
 
 
