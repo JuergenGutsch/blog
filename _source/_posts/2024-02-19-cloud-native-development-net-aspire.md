@@ -78,21 +78,21 @@ When doing right-click on one of the projects and select "Add", you will see two
 * ".NET Aspire Component..."
 * ".NET Aspire Orchestration Support..."
 
-![image-20240222214405599](C:\Users\JürgenGutsch\AppData\Roaming\Typora\typora-user-images\image-20240222214405599.png)
+![image-20240222214405599]({{site.baseurl}}/img/net-aspire/image-20240222214405599.png)
 
 Selecting ".NET Aspire Orchestration Support...", it creates two new projects in your solution:
 
-![image-20240222214727408](C:\Users\JürgenGutsch\AppData\Roaming\Typora\typora-user-images\image-20240222214727408.png)
+![image-20240222214727408]({{site.baseurl}}/img/net-aspire/image-20240222214727408.png)
 
 The AppHost is the project where you will do the actual composition, we will have a more detailed look later. The ServiceDefaults contains one single code file with extension methods that configure default services and Middlewares the actual projects need to use. Mainly Telemetry and HelthChecks. Actually, these service defaults are added to the actual projects when adding the Aspire Orchestration support. The following code shows the usage of the default in lines 5 and 17:
 
-![image-20240222215145900](C:\Users\JürgenGutsch\AppData\Roaming\Typora\typora-user-images\image-20240222215145900.png)
+![image-20240222215145900]({{site.baseurl}}/img/net-aspire/image-20240222215145900.png)
 
 As you can see, I also configured a HttpClient that connects to the backend API. 
 
 I also added the Aspire orchestration support to the backend API and the service defaults are added to that project as well. In this project, I configured a distributed Redis cache in line 14:
 
-![image-20240222220527042](C:\Users\JürgenGutsch\AppData\Roaming\Typora\typora-user-images\image-20240222220527042.png)
+![image-20240222220527042]({{site.baseurl}}/img/net-aspire/image-20240222220527042.png)
 
 This application contains three components: A frontend which is a Blazor web app, a backend which is a minimal API and a Redis cache. These three components need to be orchestrated to run and debug it locally. The problem is, that I don't have a local instance of Redis yet.
 
@@ -134,11 +134,11 @@ You will see why this is working a little later.
 
 Let's start the application but ensure Docker Desktop is running first. Since it is all in preview at the moment, you may need to start the application two times. Once the app is started you'll see the URL in the console that pops up. In case no browser opens automatically copy the URL and open it in a browser.:
 
-![image-20240223094108726](C:\Users\JürgenGutsch\AppData\Roaming\Typora\typora-user-images\image-20240223094108726.png)
+![image-20240223094108726]({{site.baseurl}}/img/net-aspire/image-20240223094108726.png)
 
 You will see the really cool Aspire portal in the browser that shows you all the running apps:
 
-![image-20240223094441698](C:\Users\JürgenGutsch\AppData\Roaming\Typora\typora-user-images\image-20240223094441698.png)
+![image-20240223094441698]({{site.baseurl}}/img/net-aspire/image-20240223094441698.png)
 
 This Portal is built with the new ASP.NET Core Blazor web. 
 
@@ -148,7 +148,7 @@ This portal doesn't show you only the running services. Because of the Service d
 
 When you click on the details link of a specific running service, you can also see the environment variables that got passed to the service.  In the next screenshot, you can see that the URL of the backend app will be passed as an environment variable to the frontend. This is the environment variable we used in the frontend to connect to the backend:
 
-![image-20240223094932947](C:\Users\JürgenGutsch\AppData\Roaming\Typora\typora-user-images\image-20240223094932947.png)
+![image-20240223094932947]({{site.baseurl}}/img/net-aspire/image-20240223094932947.png)
 
 The orchestration makes the services to know each other this way. The backend gets the connection string to Redis via the environment variable. This is why the services can interact. So there is almost no magic here. Just C# to orchestrate and environment variables to connect the services to each other.
 
