@@ -13,9 +13,7 @@ I think this matches exactly what we do with ASP.NET, if we want to achieve the 
 
 I am a .NET-addicted web developer, working with ASP.NET since 2002. Actually, I started playing around in 2001 with the beta versions of .NET 1.0
 
-![]({{ site.baseurl }}/img/MVP_Logo_Horizontal_Preferred_Cyan300_CMYK_72ppi.png)
-
-In July 2015 I got the first time awarded as a [Microsoft MVP for Developer Technologies](https://mvp.microsoft.com/en-us/PublicProfile/5001508?fullName=J%C3%BCrgen%20Gutsch) and got that award six times.
+In July 2015 I got the first time awarded as a [Microsoft MVP for Developer Technologies](https://mvp.microsoft.com/en-US/) and got that award 10 times. July 2025 I wasn't renewed again, since my focus shifted slightly into a diferent direction. Maybe somewhen again.
 
 I'm working as a Software Engineer at the [YOO AG](http://yoo.digital/) in Basel (Switzerland).
 
