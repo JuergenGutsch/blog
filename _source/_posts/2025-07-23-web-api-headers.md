@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hardening ASP.NET Core: HTTP Headers for Security"
-teaser: "This is yet another security post. The wrong headers can cause security issues as well as missing HTTP headers. This post will list those headers and describe how to solve the issues."
+teaser: "This is yet another security post. The wrong headers can cause security issues, as well as missing HTTP headers. This post will list those headers and describe how to solve the issues."
 author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
@@ -12,15 +12,15 @@ tags:
 - Headers
 ---
 
-This is yet another security post also for me as a reminder. Actually it happens quite often that I'm searching the internet for a solution and the results show me that I already wrote about it. So this post is also for me the next time I search for solving security header issues with ASP.NET Core.
+This is yet another security post, also for my own reminder. Actually, it happens pretty often that I'm searching the internet for a solution, and the results show me that I already wrote about it. So this post is also for me the next time I search for solving security header issues with ASP.NET Core.
 
-Web security is not just a feature; it is a must. We focus on authentication, authorization, and good code. But often, we forget **HTTP headers**. These small pieces of data, sent with every request and response, can slightly improve your application's security.
+Web security is not just a feature; it is a must. We focus on authentication, authorization, and good code. However, we often forget about HTTP Headers. These small pieces of data, sent with every request and response, can provide a slight improvement in your application's security.
 
 This post shows you how to use HTTP headers to make your ASP.NET Core application stronger. This applies to MVC, Razor Pages, Blazor Server, or Web API. We will do two things: add **security headers** for clients (like browsers) to enforce rules, and remove **"chatty" headers** that show too much server information.
 
-**The Problem:** Default ASP.NET Core setups often do not use strong HTTP security headers. This can leave your app open to common attacks like XSS or Clickjacking. Also, default headers can show details about your server and software stack. This helps attackers.
+**The Problem:** Default ASP.NET Core setups often do not use strong HTTP security headers. This can leave your app open to common attacks like XSS or Clickjacking. Additionally, default headers can display information about your server and software stack. This helps attackers.
 
-**The Solution:** You must actively add strong security headers and remove verbose ones. This two-part plan makes your app more secure and reduces attack points.
+**The Solution:** You must actively add strong security headers and remove verbose ones. This two-part plan enhances your app's security and reduces potential attack points.
 
 ## Part 1: Adding Security HTTP Headers to ASP.NET Core
 
@@ -30,9 +30,9 @@ Here, we cover important security headers. You will learn what they do and how t
 
 CSP helps to stop **Cross-Site Scripting (XSS)** and other content injection attacks. It lets you define which sources (scripts, styles, images) the browser can load.
 
-- **What it is:** An HTTP response header. It tells browsers to only load content from trusted sources. If a script tries to load from an unknown place, the browser blocks it.
+- **What it is:** An HTTP response header. It instructs browsers to load content only from trusted sources. If a script tries to load from an unknown place, the browser blocks it.
 
-- **Why use it:** It is your first defense against XSS. CSP stops bad scripts from running, reducing attack impact.
+- **Why use it:** It is your first defense against XSS. CSP stops malicious scripts from running and reducing the impact of attacks.
 
 - **How to add in ASP.NET Core:** Use a middleware in the `Program.cs`:
 
