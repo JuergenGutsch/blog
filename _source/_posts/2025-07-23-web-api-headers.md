@@ -337,4 +337,4 @@ app.UseCustomHeaders((opt) =>
 
 Securing your ASP.NET Core application means more than just input validation. It is a full approach, covering every part of web communication. By adding good security headers and removing chatty ones, you make your application much stronger.
 
-This is not a one-time task. Threats change. Your security must change too. Regularly check your header settings. Stay updated on security best practices. Keep building secure web applications.
+This is not a one-time task. Threats change. Your security must change too. Regularly check your header settings for example with [securityheaders.com](https://securityheaders.com/). Stay updated on security best practices. Keep building secure web applications.
