@@ -6,10 +6,12 @@ author: "Jürgen Gutsch"
 comments: true
 image: /img/cardlogo-dark.png
 tags: 
-- .NET Core
-- ASP.NET Core
-- AppSec
-- Headers
+- .NET
+- CSharp
+- AI
+- LLM
+- Agents
+- Orchestration
 ---
 
 For a while now, I spend my evenings and spare time on systems where an LLM doesn't only answer a question — it decides what to do next, acts on that decision, and reacts to whatever comes back. That's a different engineering problem than the usual "send a prompt, render the response" work most of us started with, and it breaks in different places. In this post, I'd like to walk through the pattern that worked best for me so far: a planner that delegates to a set of specialists, instead of one model that tries to juggle everything itself.
